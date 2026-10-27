@@ -1,33 +1,22 @@
-
 <!DOCTYPE html>
 <html lang="es">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
     <meta name="theme-color" content="#0B0806">
     <meta name="description" content="Conoce la carta de AH Parrilla: desayunos, almuerzos, platos a la parrilla, sopas, jugos y bebidas.">
-
     <title>AH Parrilla | Nuestra carta</title>
-
     <link rel="stylesheet" href="styles.css">
 </head>
 
 <body>
 
-    <!-- PORTADA -->
     <main>
 
+        <!-- PORTADA -->
         <section class="portada">
-            <img
-                class="imagen-portada"
-                src="portada-ah-parrilla.png"
-                alt="AH Parrilla, sabor que se siente y parrilla que enamora"
-            >
-
-            <a href="#carta" class="boton-carta">
-                VER NUESTRA CARTA ↓
-            </a>
+            <img class="imagen-portada" src="portada-ah-parrilla.png" alt="AH Parrilla, sabor que se siente y parrilla que enamora">
+            <a href="#carta" class="boton-carta">VER NUESTRA CARTA ↓</a>
         </section>
 
         <!-- MENÚ -->
@@ -39,38 +28,43 @@
                 <span class="adorno">✦</span>
             </div>
 
-            <p class="introduccion">
-                Descubre nuestros sabores y encuentra tu plato favorito.
-            </p>
+            <p class="introduccion">Descubre nuestros sabores y encuentra tu plato favorito.</p>
 
-            <!-- NAVEGACIÓN -->
+            <!-- NAVEGACIÓN DE CATEGORÍAS -->
             <nav class="categorias" aria-label="Categorías del menú">
+                <a href="#especial">Especial</a>
                 <a href="#desayunos">Desayunos</a>
                 <a href="#almuerzos">Almuerzos</a>
                 <a href="#platos-fuertes">Platos fuertes</a>
                 <a href="#sopas">Sopas</a>
                 <a href="#jugos">Jugos</a>
                 <a href="#bebidas">Bebidas</a>
+                <a href="#postres">Postres</a>
             </nav>
+
+            <!-- ESPECIAL DEL DÍA (NUEVO) -->
+            <section class="especial-dia" id="especial">
+                <div class="banner-destacado">
+                    <span class="estrella">★</span>
+                    <h2>ESPECIAL DEL DÍA</h2>
+                    <span class="estrella">★</span>
+                </div>
+                <div class="card-especial">
+                    <img class="imagen-especial" src="imagenes/especial-dia.jpg" alt="Especial del día">
+                    <div class="detalle-especial">
+                        <span class="precio-destacado">$19.000</span>
+                    </div>
+                </div>
+            </section>
 
             <!-- DESAYUNOS -->
             <section class="categoria-menu" id="desayunos">
-
                 <h2>🍳 Desayunos</h2>
+                <p class="descripcion-categoria">Empieza tu día con algo delicioso.</p>
 
-                <p class="descripcion-categoria">
-                    Empieza tu día con algo delicioso.
-                </p>
-
-                <img
-                    class="imagen-categoria"
-                    src="imagenes/desayunos.jpg"
-                    alt="Desayunos caseros de AH Parrilla"
-                    loading="lazy"
-                >
+                <img class="imagen-categoria" src="imagenes/desayunos.jpg" alt="Desayunos caseros de AH Parrilla" loading="lazy">
 
                 <div class="lista-platos">
-
                     <article class="plato-listado">
                         <div>
                             <h3>Desayuno sencillo</h3>
@@ -82,42 +76,25 @@
                     <article class="plato-listado">
                         <div>
                             <h3>Desayuno especial</h3>
-                            <p>Calentado, arepa, huevos, quesito,
-                                proteína y chocolate.</p>
+                            <p>Calentado, arepa, huevos, quesito, proteína y chocolate.</p>
                         </div>
                         <strong>$17.000</strong>
                     </article>
-
-                    <article class="plato-listado">
-                        <div>
-                            <h3>Especial del día</h3>
-                            <p>Consulta la preparación especial del día.</p>
-                        </div>
-                        <strong>$19.000</strong>
-                    </article>
-
                 </div>
             </section>
 
             <!-- ALMUERZOS -->
             <section class="categoria-menu" id="almuerzos">
-
                 <h2>🍽️ Almuerzos</h2>
+                <p class="descripcion-categoria">El sabor casero que siempre provoca.</p>
 
-                <p class="descripcion-categoria">
-                    El sabor casero que siempre provoca.
-                </p>
+                <img class="imagen-categoria" src="imagenes/almuerzos.jpg" alt="Almuerzos caseros de AH Parrilla" loading="lazy">
 
-                <img
-                    class="imagen-categoria"
-                    src="almuerzos.jpg"
-                    alt="Almuerzos caseros de AH Parrilla"
-                    loading="lazy"
-                >
+                <div class="header-precio-categoria">
+                    <span class="etiqueta-precio">TODOS: $20.000</span>
+                </div>
 
-                <p class="precio-categoria">TODOS: $20.000</p>
-
-                <div class="lista-platos">
+                <div class="grid-opciones-almuerzo">
                     <p>Pierna de cerdo a la parrilla</p>
                     <p>Filete de pechuga a la parrilla</p>
                     <p>Res a la parrilla</p>
@@ -133,284 +110,112 @@
                     <p>Chorizo</p>
                 </div>
 
-                <p class="nota-menu">
-                    Todos los almuerzos incluyen arroz y ensalada.
-                    Los acompañamientos adicionales varían según el plato.
-                </p>
+                <div class="bloque-acompanantes">
+                    <h4>TODOS LOS ALMUERZOS INCLUYEN:</h4>
+                    <p>Arroz (siempre) + Ensalada (siempre)</p>
+                    <small>Acompañantes adicionales: Papas a la francesa, patacón o maduro (varían según el plato).</small>
+                </div>
             </section>
 
             <!-- PLATOS FUERTES -->
             <section class="categoria-menu" id="platos-fuertes">
-
                 <h2>🥩 Platos fuertes</h2>
+                <p class="descripcion-categoria">Sabores preparados para disfrutar.</p>
 
-                <p class="descripcion-categoria">
-                    Sabores preparados para disfrutar.
-                </p>
-
-                <img
-                    class="imagen-categoria"
-                    src="imagenes/platos-fuertes.jpg"
-                    alt="Platos fuertes de AH Parrilla"
-                    loading="lazy"
-                >
+                <img class="imagen-categoria" src="imagenes/platos-fuertes.jpg" alt="Platos fuertes de AH Parrilla" loading="lazy">
 
                 <div class="lista-platos">
-
                     <article class="plato-listado">
                         <h3>Bandeja paisa</h3>
                         <strong>$32.000</strong>
                     </article>
-
                     <article class="plato-listado">
                         <h3>Cazuela de fríjoles</h3>
                         <strong>$28.000</strong>
                     </article>
-
                     <article class="plato-listado">
                         <h3>Churrasco</h3>
                         <strong>$28.000</strong>
                     </article>
-
                     <article class="plato-listado">
                         <h3>Milanesa de cerdo</h3>
                         <strong>$26.000</strong>
                     </article>
-
                     <article class="plato-listado">
                         <h3>Pechuga apanada</h3>
                         <strong>$26.000</strong>
                     </article>
-
                 </div>
             </section>
 
             <!-- SOPAS -->
             <section class="categoria-menu" id="sopas">
-
                 <h2>🍲 Sopas</h2>
+                <p class="descripcion-categoria">Tradición y sabor en cada cucharada.</p>
 
-                <p class="descripcion-categoria">
-                    Tradición y sabor en cada cucharada.
-                </p>
-
-                <div class="productos">
-
-                    <article class="producto">
-                        <img
-                            class="producto-imagen"
-                            src="imagenes/sopa-frijol.jpg"
-                            alt="Sopa de fríjol"
-                            loading="lazy"
-                        >
-                        <div class="producto-contenido">
-                            <h3 class="producto-nombre">Sopa de fríjol</h3>
-                            <p class="producto-precio">$8.000</p>
-                        </div>
-                    </article>
-
-                    <article class="producto">
-                        <img
-                            class="producto-imagen"
-                            src="imagenes/sopa-del-dia.jpg"
-                            alt="Sopa del día"
-                            loading="lazy"
-                        >
-                        <div class="producto-contenido">
-                            <h3 class="producto-nombre">Sopa del día</h3>
-                            <p class="producto-precio">$8.000</p>
-                        </div>
-                    </article>
-
-                    <article class="producto">
-                        <img
-                            class="producto-imagen"
-                            src="imagenes/crema-del-dia.jpg"
-                            alt="Crema del día"
-                            loading="lazy"
-                        >
-                        <div class="producto-contenido">
-                            <h3 class="producto-nombre">Crema del día</h3>
-                            <p class="producto-precio">$8.000</p>
-                        </div>
-                    </article>
-
+                <div class="header-precio-categoria">
+                    <span class="etiqueta-precio">TODAS: $8.000</span>
                 </div>
+
+                <img class="imagen-categoria" src="imagenes/sopas.jpg" alt="Sopas del día" loading="lazy">
+
+                <ul class="lista-simple">
+                    <li>Sopa de fríjol</li>
+                    <li>Sopa del día</li>
+                    <li>Crema del día</li>
+                </ul>
             </section>
 
             <!-- JUGOS NATURALES -->
             <section class="categoria-menu" id="jugos">
-
                 <h2>🥤 Jugos naturales</h2>
+                <p class="descripcion-categoria">Elige tu fruta favorita y disfruta.</p>
 
-                <p class="descripcion-categoria">
-                    Elige tu fruta favorita y disfruta.
-                </p>
+                <img class="imagen-categoria" src="imagenes/jugos.jpg" alt="Jugos naturales" loading="lazy">
 
-                <div class="productos">
+                <div class="opciones-precios-jugos">
+                    <div class="tarjeta-precio"><span>EN AGUA</span> <strong>$6.000</strong></div>
+                    <div class="tarjeta-precio"><span>EN LECHE</span> <strong>$9.000</strong></div>
+                </div>
 
-                    <article class="producto">
-                        <img
-                            class="producto-imagen"
-                            src="imagenes/jugo-mora.jpg"
-                            alt="Jugo natural de mora"
-                            loading="lazy"
-                        >
-                        <div class="producto-contenido">
-                            <h3 class="producto-nombre">Mora</h3>
-                            <p class="producto-descripcion">En agua o en leche.</p>
-                            <p class="producto-precio">
-                                Agua $6.000 · Leche $9.000
-                            </p>
-                        </div>
-                    </article>
-
-                    <article class="producto">
-                        <img
-                            class="producto-imagen"
-                            src="imagenes/jugo-mango.jpg"
-                            alt="Jugo natural de mango"
-                            loading="lazy"
-                        >
-                        <div class="producto-contenido">
-                            <h3 class="producto-nombre">Mango</h3>
-                            <p class="producto-descripcion">En agua o en leche.</p>
-                            <p class="producto-precio">
-                                Agua $6.000 · Leche $9.000
-                            </p>
-                        </div>
-                    </article>
-
-                    <article class="producto">
-                        <img
-                            class="producto-imagen"
-                            src="imagenes/jugo-maracuya.jpg"
-                            alt="Jugo natural de maracuyá"
-                            loading="lazy"
-                        >
-                        <div class="producto-contenido">
-                            <h3 class="producto-nombre">Maracuyá</h3>
-                            <p class="producto-descripcion">En agua o en leche.</p>
-                            <p class="producto-precio">
-                                Agua $6.000 · Leche $9.000
-                            </p>
-                        </div>
-                    </article>
-
-                    <article class="producto">
-                        <img
-                            class="producto-imagen"
-                            src="imagenes/jugo-lulo.jpg"
-                            alt="Jugo natural de lulo"
-                            loading="lazy"
-                        >
-                        <div class="producto-contenido">
-                            <h3 class="producto-nombre">Lulo</h3>
-                            <p class="producto-descripcion">En agua o en leche.</p>
-                            <p class="producto-precio">
-                                Agua $6.000 · Leche $9.000
-                            </p>
-                        </div>
-                    </article>
-
-                    <article class="producto">
-                        <img
-                            class="producto-imagen"
-                            src="imagenes/jugo-guanabana.jpg"
-                            alt="Jugo natural de guanábana"
-                            loading="lazy"
-                        >
-                        <div class="producto-contenido">
-                            <h3 class="producto-nombre">Guanábana</h3>
-                            <p class="producto-descripcion">En agua o en leche.</p>
-                            <p class="producto-precio">
-                                Agua $6.000 · Leche $9.000
-                            </p>
-                        </div>
-                    </article>
-
-                    <article class="producto">
-                        <img
-                            class="producto-imagen"
-                            src="imagenes/jugo-fresa.jpg"
-                            alt="Jugo natural de fresa"
-                            loading="lazy"
-                        >
-                        <div class="producto-contenido">
-                            <h3 class="producto-nombre">Fresa</h3>
-                            <p class="producto-descripcion">En agua o en leche.</p>
-                            <p class="producto-precio">
-                                Agua $6.000 · Leche $9.000
-                            </p>
-                        </div>
-                    </article>
-
+                <div class="sabores-jugos">
+                    <h4>SABORES:</h4>
+                    <p>Mora · Mango · Maracuyá · Lulo · Guanábana · Fresa</p>
                 </div>
             </section>
 
             <!-- BEBIDAS -->
             <section class="categoria-menu" id="bebidas">
-
-                <h2>☕ Bebidas</h2>
-
-                <p class="descripcion-categoria">
-                    El acompañamiento perfecto.
-                </p>
-
-                <div class="productos">
-
-                    <article class="producto">
-                        <img
-                            class="producto-imagen"
-                            src="imagenes/claro.jpg"
-                            alt="Claro"
-                            loading="lazy"
-                        >
-                        <div class="producto-contenido">
-                            <h3 class="producto-nombre">Claro</h3>
-                            <p class="producto-precio">$3.000</p>
-                        </div>
+                <h2>🍺 Bebidas</h2>
+                <div class="lista-platos">
+                    <article class="plato-listado">
+                        <h3>Claro</h3>
+                        <strong>$3.000</strong>
                     </article>
-
-                    <article class="producto">
-                        <img
-                            class="producto-imagen"
-                            src="imagenes/guarapo.jpg"
-                            alt="Guarapo"
-                            loading="lazy"
-                        >
-                        <div class="producto-contenido">
-                            <h3 class="producto-nombre">Guarapo</h3>
-                            <p class="producto-precio">$3.000</p>
-                        </div>
+                    <article class="plato-listado">
+                        <h3>Guarapo</h3>
+                        <strong>$3.000</strong>
                     </article>
-
-                    <article class="producto">
-                        <img
-                            class="producto-imagen"
-                            src="imagenes/michelada-soda.jpg"
-                            alt="Michelada de soda"
-                            loading="lazy"
-                        >
-                        <div class="producto-contenido">
-                            <h3 class="producto-nombre">Michelada de soda</h3>
-                            <p class="producto-precio">$7.000</p>
-                        </div>
+                    <article class="plato-listado">
+                        <h3>Michelada de soda</h3>
+                        <strong>$7.000</strong>
                     </article>
-
-                    <article class="producto">
-                        <img
-                            class="producto-imagen"
-                            src="imagenes/michelada-cerveza.jpg"
-                            alt="Michelada de cerveza"
-                            loading="lazy"
-                        >
-                        <div class="producto-contenido">
-                            <h3 class="producto-nombre">Michelada de cerveza</h3>
-                            <p class="producto-precio">$9.000</p>
-                        </div>
+                    <article class="plato-listado">
+                        <h3>Michelada de cerveza</h3>
+                        <strong>$9.000</strong>
                     </article>
+                </div>
+            </section>
 
+            <!-- POSTRES (NUEVO) -->
+            <section class="categoria-menu" id="postres">
+                <h2>🍰 Postres</h2>
+                <img class="imagen-categoria" src="imagenes/postre-natas.jpg" alt="Postre de natas" loading="lazy">
+                <div class="lista-platos">
+                    <article class="plato-listado">
+                        <h3>Postre de natas</h3>
+                        <strong>$9.000</strong>
+                    </article>
                 </div>
             </section>
 
@@ -420,9 +225,11 @@
 
     <!-- PIE DE PÁGINA -->
     <footer class="pie-pagina">
-        <h2>AH PARRILLA</h2>
-        <p>Sabor que se siente, parrilla que enamora.</p>
-        <span>EL SABOR DE NUESTRA COCINA</span>
+        <div class="redes-contacto">
+            <p><strong>Síguenos:</strong> @ah.parrilla_restaurante</p>
+            <p><strong>Domicilios:</strong> 301 825 9210</p>
+        </div>
+        <p class="mensaje-footer">♥ Gracias por elegirnos ★★★ Disfruta el verdadero sabor de casa ♥</p>
     </footer>
 
 </body>
