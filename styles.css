@@ -64,16 +64,14 @@ strong {
     font-weight: 700;
 }
 
-/* ==========================================
-   PORTADA
-   ========================================== */
+/* PORTADA */
 
 .portada {
     display: flex;
     flex-direction: column;
     align-items: center;
-    gap: 12px;
-    padding: 0 0 20px;
+    gap: 0;
+    padding: 0 0 12px;
     text-align: center;
 }
 
@@ -94,3 +92,549 @@ strong {
     padding: 10px 22px;
     border: 1px solid var(--dorado);
     border-radius: 6px;
+    background: var(--naranja);
+    color: var(--blanco);
+    font-size: 13px;
+    font-weight: 800;
+    letter-spacing: 0.8px;
+    text-align: center;
+    transition: background 0.2s ease;
+}
+
+.boton-carta:active {
+    background: #A84300;
+}
+
+/* SECCIÓN PRINCIPAL DE LA CARTA */
+
+.menu {
+    padding: 18px 14px 28px;
+}
+
+.titulo-seccion {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    margin-bottom: 6px;
+    text-align: center;
+}
+
+.titulo-seccion h2 {
+    margin: 0;
+    color: var(--dorado);
+    font-size: 22px;
+    font-weight: 800;
+    letter-spacing: 1px;
+}
+
+.adorno {
+    color: var(--naranja);
+    font-size: 18px;
+}
+
+.introduccion {
+    margin: 0 0 18px;
+    color: var(--gris);
+    font-size: 13px;
+    text-align: center;
+}
+
+/* NAVEGACIÓN ENTRE CATEGORÍAS */
+
+.categorias {
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    display: flex;
+    gap: 7px;
+    margin: 0 -14px 24px;
+    padding: 10px 14px;
+    overflow-x: auto;
+    background: rgba(11, 8, 7, 0.97);
+    border-top: 1px solid #302016;
+    border-bottom: 1px solid var(--borde);
+    scrollbar-width: none;
+    -webkit-overflow-scrolling: touch;
+}
+
+.categorias::-webkit-scrollbar {
+    display: none;
+}
+
+.categorias a {
+    flex: 0 0 auto;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 36px;
+    padding: 7px 12px;
+    border: 1px solid var(--borde);
+    border-radius: 20px;
+    background: var(--fondo-tarjeta);
+    color: var(--blanco);
+    font-size: 12px;
+    font-weight: 700;
+    white-space: nowrap;
+}
+
+.categorias a:active {
+    border-color: var(--dorado);
+    color: var(--dorado);
+}
+
+/* ESPECIAL DEL DÍA */
+
+.especial-dia {
+    margin-bottom: 28px;
+    padding: 14px 12px;
+    border: 1px solid var(--dorado);
+    border-radius: 9px;
+    background: linear-gradient(145deg, #211307, #110C08);
+    text-align: center;
+    scroll-margin-top: 82px;
+}
+
+.banner-destacado {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 3px;
+    margin-bottom: 8px;
+}
+
+.estrellas-arriba,
+.estrellas-abajo {
+    color: var(--naranja);
+    font-size: 12px;
+    letter-spacing: 4px;
+}
+
+.titulo-con-estrellas {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 7px;
+}
+
+.titulo-con-estrellas h2 {
+    margin: 0;
+    color: var(--dorado);
+    font-size: 19px;
+    font-weight: 900;
+    letter-spacing: 0.8px;
+}
+
+.estrella {
+    color: var(--naranja);
+    font-size: 15px;
+}
+
+.card-especial {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 4px;
+}
+
+.detalle-especial {
+    padding: 4px 0;
+    text-align: center;
+}
+
+.precio-destacado {
+    color: var(--dorado);
+    font-size: 27px;
+    font-weight: 900;
+}
+
+.imagen-especial {
+    display: none;
+}
+
+/* CATEGORÍAS DEL MENÚ */
+
+.categoria-menu {
+    margin-bottom: 28px;
+    padding-top: 8px;
+    scroll-margin-top: 82px;
+}
+
+.categoria-menu > h2 {
+    margin-bottom: 5px;
+    color: var(--dorado);
+    font-size: 21px;
+    font-weight: 800;
+}
+
+.descripcion-categoria {
+    margin: 0 0 12px;
+    color: var(--gris);
+    font-size: 13px;
+}
+
+/* FOTOS COMPACTAS */
+
+.imagen-categoria {
+    width: 100%;
+    height: 145px;
+    margin: 12px 0;
+    border: 1px solid var(--borde);
+    border-radius: 7px;
+    object-fit: cover;
+    object-position: center;
+}
+
+/* LISTADO DE PLATOS */
+
+.lista-platos {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    margin-top: 12px;
+}
+
+.plato-listado {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 12px;
+    min-height: 54px;
+    padding: 12px;
+    border: 1px solid #49301F;
+    border-left: 3px solid var(--naranja);
+    border-radius: 8px;
+    background: linear-gradient(135deg, #1B120C, #100C09);
+    box-shadow: 0 2px 7px rgba(0, 0, 0, 0.2);
+}
+
+.plato-listado > div {
+    flex: 1;
+    min-width: 0;
+}
+
+.plato-listado h3 {
+    margin: 0;
+    color: var(--blanco);
+    font-size: 14px;
+    line-height: 1.4;
+    font-weight: 700;
+}
+
+.plato-listado p {
+    margin: 5px 0 0;
+    color: var(--gris);
+    font-size: 12px;
+    line-height: 1.45;
+}
+
+.plato-listado > strong {
+    flex: 0 0 auto;
+    color: var(--dorado);
+    font-size: 15px;
+    font-weight: 800;
+    white-space: nowrap;
+}
+
+/* ALMUERZOS */
+
+.header-precio-categoria {
+    margin: 12px 0;
+    text-align: center;
+}
+
+.etiqueta-precio {
+    display: inline-block;
+    padding: 7px 14px;
+    border: 1px solid var(--dorado);
+    border-radius: 5px;
+    background: #211307;
+    color: var(--dorado);
+    font-size: 14px;
+    font-weight: 900;
+}
+
+.grid-opciones-almuerzo {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 8px;
+    margin: 10px 0 14px;
+}
+
+.grid-opciones-almuerzo p {
+    margin: 0;
+    padding: 11px 10px;
+    border: 1px solid #49301F;
+    border-radius: 7px;
+    background: var(--fondo-tarjeta);
+    color: var(--blanco);
+    font-size: 13px;
+    line-height: 1.4;
+}
+
+.grid-opciones-almuerzo p::before {
+    content: "•";
+    margin-right: 8px;
+    color: var(--dorado);
+    font-weight: 900;
+}
+
+.bloque-acompanantes {
+    padding: 12px;
+    border-left: 3px solid var(--naranja);
+    border-radius: 4px;
+    background: var(--fondo-tarjeta);
+}
+
+.bloque-acompanantes h4 {
+    margin-bottom: 6px;
+    color: var(--dorado);
+    font-size: 12px;
+}
+
+.bloque-acompanantes p {
+    margin-bottom: 6px;
+    color: var(--blanco);
+    font-size: 13px;
+}
+
+.bloque-acompanantes small {
+    display: block;
+    color: var(--gris);
+    font-size: 11px;
+    line-height: 1.5;
+}
+
+/* LISTAS SIMPLES */
+
+.lista-simple {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    margin: 10px 0 0;
+    padding: 0;
+    list-style: none;
+    border-top: none;
+}
+
+.lista-simple li {
+    padding: 12px;
+    border: 1px solid #49301F;
+    border-left: 3px solid var(--naranja);
+    border-radius: 8px;
+    background: linear-gradient(135deg, #1B120C, #100C09);
+    color: var(--blanco);
+    font-size: 13px;
+}
+
+.lista-simple li::before {
+    content: "•";
+    margin-right: 8px;
+    color: var(--naranja);
+}
+
+/* JUGOS */
+
+.opciones-precios-jugos {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 8px;
+    margin: 12px 0;
+}
+
+.tarjeta-precio {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 4px;
+    padding: 12px 6px;
+    border: 1px solid var(--borde);
+    border-radius: 7px;
+    background: var(--fondo-tarjeta);
+    text-align: center;
+}
+
+.tarjeta-precio span {
+    color: var(--gris);
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 0.5px;
+}
+
+.tarjeta-precio strong {
+    color: var(--dorado);
+    font-size: 17px;
+}
+
+.sabores-jugos {
+    padding: 10px;
+    border-radius: 6px;
+    background: var(--fondo-tarjeta);
+}
+
+.sabores-jugos h4 {
+    margin-bottom: 5px;
+    color: var(--dorado);
+    font-size: 12px;
+}
+
+.sabores-jugos p {
+    margin: 0;
+    color: var(--gris);
+    font-size: 12px;
+    line-height: 1.8;
+}
+
+/* PIE DE PÁGINA */
+
+.pie-pagina {
+    padding: 22px 14px;
+    border-top: 1px solid var(--borde);
+    background: #080605;
+    text-align: center;
+}
+
+.redes-contacto p {
+    margin: 5px 0;
+    color: var(--gris);
+    font-size: 12px;
+}
+
+.redes-contacto strong {
+    color: var(--dorado);
+}
+
+.mensaje-footer {
+    margin: 16px 0 0;
+    color: var(--naranja);
+    font-size: 11px;
+    line-height: 1.6;
+}
+
+/* EFECTOS Y ACCESIBILIDAD */
+
+a:focus-visible {
+    outline: 2px solid var(--dorado);
+    outline-offset: 3px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+    html {
+        scroll-behavior: auto;
+    }
+
+    * {
+        transition: none !important;
+    }
+}
+
+/* TABLET Y PANTALLAS GRANDES */
+
+@media (min-width: 600px) {
+    body {
+        font-size: 15px;
+    }
+
+    main,
+    .pie-pagina {
+        max-width: 760px;
+        margin-right: auto;
+        margin-left: auto;
+    }
+
+    .imagen-portada {
+        max-height: 300px;
+    }
+
+    .menu {
+        padding-right: 22px;
+        padding-left: 22px;
+    }
+
+    .imagen-categoria {
+        height: 190px;
+    }
+
+    .grid-opciones-almuerzo {
+        grid-template-columns: 1fr 1fr;
+        column-gap: 14px;
+    }
+
+    .grid-opciones-almuerzo p:nth-last-child(-n+2) {
+        border-bottom: 1px solid #35251A;
+    }
+}
+
+/* AJUSTES VISUALES DE TARJETAS */
+
+.lista-platos .plato-listado {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 12px;
+    min-height: 54px;
+    padding: 12px;
+    border: 1px solid #49301F;
+    border-left: 3px solid var(--naranja);
+    border-radius: 8px;
+    background: linear-gradient(135deg, #1B120C, #100C09);
+    box-shadow: 0 2px 7px rgba(0, 0, 0, 0.2);
+}
+
+.lista-platos .plato-listado h3 {
+    margin: 0;
+    color: var(--blanco);
+    font-size: 14px;
+    line-height: 1.4;
+}
+
+.lista-platos .plato-listado p {
+    margin: 5px 0 0;
+    color: var(--gris);
+    font-size: 12px;
+    line-height: 1.45;
+}
+
+.lista-platos .plato-listado > strong {
+    color: var(--dorado);
+    font-size: 15px;
+    font-weight: 800;
+    white-space: nowrap;
+}
+
+.lista-simple {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    border-top: none;
+}
+
+.lista-simple li {
+    padding: 12px;
+    border: 1px solid #49301F;
+    border-left: 3px solid var(--naranja);
+    border-radius: 8px;
+    background: linear-gradient(135deg, #1B120C, #100C09);
+}
+
+.grid-opciones-almuerzo p {
+    border: 1px solid #49301F;
+    border-radius: 7px;
+    background: var(--fondo-tarjeta);
+    padding: 11px 10px;
+    line-height: 1.4;
+}
+
+.grid-opciones-almuerzo p::before {
+    color: var(--dorado);
+}
+
+.categoria-menu {
+    margin-bottom: 28px;
+}
+
+.portada {
+    gap: 0;
+    padding-bottom: 12px;
+}
