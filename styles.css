@@ -1,11 +1,12 @@
 
 /* ==========================================
    AH PARRILLA — DISEÑO MOBILE FIRST
+   Optimizado para celulares
    ========================================== */
 
 :root {
     --fondo: #0B0807;
-    --fondo-tarjeta: #121212;
+    --fondo-tarjeta: #17100B;
     --naranja: #D35400;
     --dorado: #E5A93B;
     --blanco: #FFFFFF;
@@ -14,28 +15,44 @@
     --borde: #59351D;
 }
 
-/* REINICIO GENERAL */
+/* RESET GENERAL */
 
 * {
     box-sizing: border-box;
-    margin: 0;
-    padding: 0;
 }
 
 html {
-    background: var(--fondo);
     scroll-behavior: smooth;
-    scroll-padding-top: 130px;
+    scroll-padding-top: 78px;
 }
 
 body {
-    width: 100%;
-    min-height: 100vh;
-    overflow-x: hidden;
+    margin: 0;
     background: var(--fondo);
     color: var(--blanco);
     font-family: Arial, Helvetica, sans-serif;
-    line-height: 1.6;
+    font-size: 14px;
+    line-height: 1.5;
+    overflow-x: hidden;
+}
+
+img {
+    display: block;
+    max-width: 100%;
+}
+
+h1,
+h2,
+h3,
+h4,
+p {
+    margin-top: 0;
+}
+
+h2,
+h3,
+h4 {
+    line-height: 1.25;
 }
 
 a {
@@ -43,109 +60,59 @@ a {
     text-decoration: none;
 }
 
-/* ENCABEZADO */
-
-.encabezado {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    min-height: 62px;
-    padding: 10px 16px;
-    background: var(--fondo);
-    border-bottom: 1px solid var(--borde);
+strong {
+    font-weight: 700;
 }
 
-.marca {
-    display: flex;
-    align-items: center;
-    gap: 9px;
-}
-
-.icono-fuego {
-    color: var(--naranja);
-    font-size: 27px;
-}
-
-.marca-texto {
-    display: flex;
-    flex-direction: column;
-    line-height: 1.2;
-}
-
-.marca-texto strong {
-    color: var(--dorado);
-    font-size: 19px;
-    letter-spacing: 2px;
-}
-
-.marca-texto small {
-    color: var(--blanco);
-    font-size: 11px;
-}
-
-/* PORTADA CON TU IMAGEN */
+/* ==========================================
+   PORTADA
+   ========================================== */
 
 .portada {
     display: flex;
     flex-direction: column;
     align-items: center;
-    gap: 20px;
-    width: 100%;
-    min-height: auto;
-    padding: 0 0 28px;
-    overflow: hidden;
-    background: var(--fondo);
+    gap: 12px;
+    padding: 0 0 20px;
     text-align: center;
 }
 
-.portada::before {
-    content: none;
-}
-
-.portada-contenido {
-    display: none;
-}
-
 .imagen-portada {
-    display: block;
     width: 100%;
     height: auto;
-    max-height: 360px;
+    max-height: 240px;
     object-fit: contain;
-    background: var(--fondo);
+    object-position: center;
 }
-
-/* BOTÓN DE ACCESO A LA CARTA */
 
 .boton-carta {
     display: inline-flex;
     align-items: center;
     justify-content: center;
-    gap: 10px;
-    min-height: 48px;
+    min-height: 44px;
     margin: 0 16px;
-    padding: 12px 24px;
+    padding: 10px 22px;
     border: 1px solid var(--dorado);
-    border-radius: 5px;
+    border-radius: 6px;
     background: var(--naranja);
     color: var(--blanco);
     font-size: 13px;
-    font-weight: 900;
-    letter-spacing: 1px;
+    font-weight: 800;
+    letter-spacing: 0.8px;
     text-align: center;
-    transition: transform 0.2s ease, background 0.2s ease;
+    transition: background 0.2s ease;
 }
 
 .boton-carta:active {
-    transform: scale(0.98);
+    background: #A84300;
 }
 
-/* SECCIÓN DEL MENÚ */
+/* ==========================================
+   SECCIÓN PRINCIPAL DE LA CARTA
+   ========================================== */
 
 .menu {
-    width: 100%;
-    padding: 28px 15px 40px;
-    background: var(--fondo);
+    padding: 18px 14px 28px;
 }
 
 .titulo-seccion {
@@ -153,40 +120,45 @@ a {
     align-items: center;
     justify-content: center;
     gap: 10px;
-    margin-bottom: 10px;
+    margin-bottom: 6px;
+    text-align: center;
 }
 
 .titulo-seccion h2 {
+    margin: 0;
     color: var(--dorado);
     font-size: 22px;
-    letter-spacing: 1.5px;
-    text-align: center;
+    font-weight: 800;
+    letter-spacing: 1px;
 }
 
 .adorno {
     color: var(--naranja);
+    font-size: 18px;
 }
 
 .introduccion {
-    margin-bottom: 22px;
-    color: var(--blanco);
+    margin: 0 0 18px;
+    color: var(--gris);
     font-size: 13px;
     text-align: center;
 }
 
-/* CATEGORÍAS NAVEGABLES */
+/* ==========================================
+   NAVEGACIÓN ENTRE CATEGORÍAS
+   ========================================== */
 
 .categorias {
     position: sticky;
     top: 0;
-    z-index: 10;
+    z-index: 100;
     display: flex;
-    gap: 8px;
-    margin: 0 -15px 32px;
-    padding: 12px 15px;
+    gap: 7px;
+    margin: 0 -14px 24px;
+    padding: 10px 14px;
     overflow-x: auto;
-    background: var(--fondo);
-    border-top: 1px solid var(--borde);
+    background: rgba(11, 8, 7, 0.97);
+    border-top: 1px solid #302016;
     border-bottom: 1px solid var(--borde);
     scrollbar-width: none;
     -webkit-overflow-scrolling: touch;
@@ -198,357 +170,412 @@ a {
 
 .categorias a {
     flex: 0 0 auto;
-    display: flex;
+    display: inline-flex;
     align-items: center;
-    min-height: 40px;
-    padding: 8px 14px;
+    justify-content: center;
+    min-height: 36px;
+    padding: 7px 12px;
     border: 1px solid var(--borde);
-    border-radius: 22px;
+    border-radius: 20px;
     background: var(--fondo-tarjeta);
     color: var(--blanco);
     font-size: 12px;
-    font-weight: bold;
-    white-space: nowrap;
-    transition: background 0.2s ease, color 0.2s ease;
-}
-
-.categorias a:hover,
-.categorias a:active {
-    background: var(--naranja);
-    color: var(--blanco);
-}
-
-/* CATEGORÍAS DE PRODUCTOS */
-
-.categoria-menu {
-    margin-bottom: 38px;
-    padding-top: 12px;
-    scroll-margin-top: 125px;
-    background: var(--fondo);
-}
-
-.categoria-menu > h2 {
-    padding-left: 12px;
-    border-left: 4px solid var(--naranja);
-    color: var(--dorado);
-    font-size: 23px;
-    line-height: 1.4;
-}
-
-/* Descripciones de las categorías */
-
-.descripcion-categoria {
-    margin: 9px 0 17px;
-    color: var(--blanco);
-    font-size: 13px;
-}
-
-/* IMÁGENES DE DESAYUNOS, ALMUERZOS Y PLATOS FUERTES */
-
-.imagen-categoria {
-    display: block;
-    width: 100%;
-    max-width: 100%;
-    aspect-ratio: 4 / 3;
-    height: auto;
-    margin: 16px 0;
-    object-fit: cover;
-    object-position: center;
-    border: 1px solid var(--borde);
-    border-radius: 8px;
-    background: var(--fondo-tarjeta);
-}
-
-/* TARJETAS DE PRODUCTOS */
-
-.productos {
-    display: grid;
-    grid-template-columns: minmax(0, 1fr);
-    gap: 17px;
-    background: var(--fondo);
-}
-
-.producto {
-    display: flex;
-    flex-direction: column;
-    min-width: 0;
-    overflow: hidden;
-    border: 1px solid var(--borde);
-    border-radius: 9px;
-    background: var(--fondo-tarjeta);
-}
-
-.producto-imagen {
-    display: block;
-    width: 100%;
-    aspect-ratio: 4 / 3;
-    object-fit: cover;
-    background: var(--fondo-tarjeta);
-}
-
-.producto-contenido {
-    padding: 14px;
-    background: var(--fondo-tarjeta);
-}
-
-/* NOMBRES DE LOS PRODUCTOS */
-
-.producto-nombre {
-    margin-bottom: 5px;
-    color: var(--blanco);
-    font-size: 17px;
-    font-weight: bold;
-}
-
-/* DESCRIPCIONES DE LOS PRODUCTOS */
-
-.producto-descripcion {
-    margin-bottom: 10px;
-    color: var(--blanco);
-    font-size: 13px;
-}
-
-/* PRECIOS INDIVIDUALES */
-
-.producto-precio {
-    color: var(--dorado);
-    font-size: 20px;
-    font-weight: 900;
-}
-
-/* LISTAS DE PLATOS Y PRECIOS GENERALES */
-
-.lista-platos {
-    display: flex;
-    flex-direction: column;
-    gap: 12px;
-    margin-top: 16px;
-}
-
-.plato-listado {
-    display: flex;
-    align-items: flex-start;
-    justify-content: space-between;
-    gap: 12px;
-    padding: 12px;
-    border: 1px solid var(--borde);
-    border-radius: 7px;
-    background: var(--fondo-tarjeta);
-}
-
-.plato-listado strong {
-    color: var(--blanco);
-    font-size: 14px;
     font-weight: 700;
-}
-
-.plato-listado p {
-    margin-top: 4px;
-    color: var(--blanco);
-    font-size: 12px;
-}
-
-.plato-listado .precio,
-.plato-listado .producto-precio {
-    flex: 0 0 auto;
-    color: var(--dorado);
-    font-size: 16px;
-    font-weight: 900;
     white-space: nowrap;
 }
 
-/* PRECIOS GENERALES DE CATEGORÍAS
-   Ejemplo: TODOS: $20.000 */
-
-.precio-categoria {
-    margin: 12px 0;
-    color: var(--naranja);
-    font-size: 18px;
-    font-weight: 900;
-    letter-spacing: 0.4px;
-}
-
-/* NOTAS DE LA CARTA */
-
-.nota-menu {
-    margin-top: 14px;
-    color: var(--blanco);
-    font-size: 12px;
-    line-height: 1.6;
-}
-
-/* CATEGORÍA DE JUGOS NATURALES */
-
-#jugos > h2 {
-    color: var(--verde);
-    border-left-color: var(--verde);
-}
-
-#jugos .producto-precio,
-#jugos .precio,
-#jugos .precio-categoria {
-    color: var(--verde);
-}
-
-#jugos .producto {
-    border-color: #205D39;
-}
-
-/* PIE DE PÁGINA */
-
-.pie-pagina {
-    padding: 28px 16px;
-    border-top: 1px solid var(--borde);
-    background: var(--fondo);
-    text-align: center;
-}
-
-.pie-pagina h2 {
-    margin-bottom: 6px;
+.categorias a:active {
+    border-color: var(--dorado);
     color: var(--dorado);
-    font-size: 22px;
-    letter-spacing: 2px;
-}
-
-.pie-pagina p {
-    margin-bottom: 12px;
-    color: var(--blanco);
-    font-size: 13px;
-}
-
-.pie-pagina > span {
-    color: var(--naranja);
-    font-size: 10px;
-    font-weight: bold;
-    letter-spacing: 1.5px;
-}
-
-/* TABLETAS Y COMPUTADORES */
-
-@media (min-width: 700px) {
-    .encabezado {
-        justify-content: flex-start;
-        padding-right: 30px;
-        padding-left: 30px;
-    }
-
-    .imagen-portada {
-        max-height: 480px;
-    }
-
-    .menu {
-        max-width: 1000px;
-        margin: 0 auto;
-        padding: 40px 25px;
-    }
-
-    .productos {
-        grid-template-columns: repeat(2, minmax(0, 1fr));
-    }
-
-    .categorias {
-        justify-content: center;
-        flex-wrap: wrap;
-        overflow: visible;
-    }
-
-    .categoria-menu > h2 {
-        font-size: 26px;
-    }
-}
-
-/* PANTALLAS GRANDES */
-
-@media (min-width: 1100px) {
-    .menu {
-        max-width: 1150px;
-    }
-
-    .imagen-portada {
-        max-height: 520px;
-    }
 }
 
 /* ==========================================
-   ESTILOS PARA EL ESPECIAL DEL DÍA
+   ESPECIAL DEL DÍA
    ========================================== */
 
 .especial-dia {
-    margin-bottom: 38px;
-    padding: 16px;
-    border: 2px solid var(--dorado);
-    border-radius: 12px;
-    background: var(--fondo-tarjeta);
+    margin-bottom: 28px;
+    padding: 14px 12px;
+    border: 1px solid var(--dorado);
+    border-radius: 9px;
+    background: linear-gradient(145deg, #211307, #110C08);
     text-align: center;
+    scroll-margin-top: 82px;
 }
 
 .banner-destacado {
     display: flex;
+    flex-direction: column;
     align-items: center;
-    justify-content: center;
-    gap: 10px;
-    margin-bottom: 14px;
+    gap: 3px;
+    margin-bottom: 8px;
 }
 
-.banner-destacado h2 {
-    color: var(--dorado);
-    font-size: 20px;
-    letter-spacing: 1.5px;
-}
-
-.banner-destacado .estrella {
+.estrellas-arriba,
+.estrellas-abajo {
     color: var(--naranja);
-    font-size: 18px;
-}
-
-.card-especial {
-    display: flex;
-    flex-direction: column;
-    gap: 12px;
-}
-
-.imagen-especial {
-    display: block;
-    width: 100%;
-    max-width: 100%;
-    aspect-ratio: 16 / 9;
-    object-fit: cover;
-    border-radius: 8px;
-    border: 1px solid var(--borde);
-}
-
-.detalle-especial {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    padding: 8px;
-}
-
-.precio-destacado {
-    color: var(--dorado);
-    font-size: 24px;
-    font-weight: 900;
-    letter-spacing: 0.5px;
-}
-.banner-destacado {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 4px;
-    margin-bottom: 12px;
+    font-size: 12px;
+    letter-spacing: 4px;
 }
 
 .titulo-con-estrellas {
     display: flex;
     align-items: center;
     justify-content: center;
-    gap: 8px;
+    gap: 7px;
 }
 
-.estrellas-arriba,
-.estrellas-abajo,
+.titulo-con-estrellas h2 {
+    margin: 0;
+    color: var(--dorado);
+    font-size: 19px;
+    font-weight: 900;
+    letter-spacing: 0.8px;
+}
+
 .estrella {
     color: var(--naranja);
+    font-size: 15px;
+}
+
+.card-especial {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 4px;
+}
+
+.detalle-especial {
+    padding: 4px 0;
+    text-align: center;
+}
+
+.precio-destacado {
+    color: var(--dorado);
+    font-size: 27px;
+    font-weight: 900;
+}
+
+/* Si la imagen sigue en el HTML, se oculta */
+.imagen-especial {
+    display: none;
+}
+
+/* ==========================================
+   CATEGORÍAS DEL MENÚ
+   ========================================== */
+
+.categoria-menu {
+    margin-bottom: 30px;
+    padding-top: 8px;
+    scroll-margin-top: 82px;
+}
+
+.categoria-menu > h2 {
+    margin-bottom: 5px;
+    color: var(--dorado);
+    font-size: 21px;
+    font-weight: 800;
+}
+
+.descripcion-categoria {
+    margin: 0 0 12px;
+    color: var(--gris);
+    font-size: 13px;
+}
+
+/* Fotos compactas */
+
+.imagen-categoria {
+    width: 100%;
+    height: 145px;
+    margin: 12px 0;
+    border: 1px solid var(--borde);
+    border-radius: 7px;
+    object-fit: cover;
+    object-position: center;
+}
+
+/* ==========================================
+   LISTADO DE PLATOS
+   ========================================== */
+
+.lista-platos {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    margin-top: 12px;
+}
+
+.plato-listado {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 10px;
+    padding: 10px;
+    border: 1px solid #35251A;
+    border-radius: 6px;
+    background: var(--fondo-tarjeta);
+}
+
+.plato-listado > div {
+    flex: 1;
+    min-width: 0;
+}
+
+.plato-listado h3 {
+    margin: 0;
+    color: var(--blanco);
     font-size: 14px;
-    letter-spacing: 3px;
+    font-weight: 700;
+}
+
+.plato-listado p {
+    margin: 4px 0 0;
+    color: var(--gris);
+    font-size: 12px;
+    line-height: 1.4;
+}
+
+.plato-listado > strong {
+    flex: 0 0 auto;
+    color: var(--dorado);
+    font-size: 15px;
+    font-weight: 800;
+    white-space: nowrap;
+}
+
+/* ==========================================
+   ALMUERZOS
+   ========================================== */
+
+.header-precio-categoria {
+    margin: 12px 0;
+    text-align: center;
+}
+
+.etiqueta-precio {
+    display: inline-block;
+    padding: 7px 14px;
+    border: 1px solid var(--dorado);
+    border-radius: 5px;
+    background: #211307;
+    color: var(--dorado);
+    font-size: 14px;
+    font-weight: 900;
+}
+
+.grid-opciones-almuerzo {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 0;
+    margin: 10px 0 14px;
+    border-top: 1px solid #35251A;
+}
+
+.grid-opciones-almuerzo p {
+    margin: 0;
+    padding: 9px 8px;
+    border-bottom: 1px solid #35251A;
+    color: var(--blanco);
+    font-size: 13px;
+}
+
+.grid-opciones-almuerzo p::before {
+    content: "•";
+    margin-right: 8px;
+    color: var(--naranja);
+    font-weight: 900;
+}
+
+.bloque-acompanantes {
+    padding: 12px;
+    border-left: 3px solid var(--naranja);
+    border-radius: 4px;
+    background: var(--fondo-tarjeta);
+}
+
+.bloque-acompanantes h4 {
+    margin-bottom: 6px;
+    color: var(--dorado);
+    font-size: 12px;
+}
+
+.bloque-acompanantes p {
+    margin-bottom: 6px;
+    color: var(--blanco);
+    font-size: 13px;
+}
+
+.bloque-acompanantes small {
+    display: block;
+    color: var(--gris);
+    font-size: 11px;
+    line-height: 1.5;
+}
+
+/* ==========================================
+   LISTAS SIMPLES
+   ========================================== */
+
+.lista-simple {
+    margin: 10px 0 0;
+    padding: 0;
+    list-style: none;
+    border-top: 1px solid #35251A;
+}
+
+.lista-simple li {
+    padding: 9px 8px;
+    border-bottom: 1px solid #35251A;
+    color: var(--blanco);
+    font-size: 13px;
+}
+
+.lista-simple li::before {
+    content: "•";
+    margin-right: 8px;
+    color: var(--naranja);
+}
+
+/* ==========================================
+   JUGOS
+   ========================================== */
+
+.opciones-precios-jugos {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 8px;
+    margin: 12px 0;
+}
+
+.tarjeta-precio {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 4px;
+    padding: 12px 6px;
+    border: 1px solid var(--borde);
+    border-radius: 7px;
+    background: var(--fondo-tarjeta);
+    text-align: center;
+}
+
+.tarjeta-precio span {
+    color: var(--gris);
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 0.5px;
+}
+
+.tarjeta-precio strong {
+    color: var(--dorado);
+    font-size: 17px;
+}
+
+.sabores-jugos {
+    padding: 10px;
+    border-radius: 6px;
+    background: var(--fondo-tarjeta);
+}
+
+.sabores-jugos h4 {
+    margin-bottom: 5px;
+    color: var(--dorado);
+    font-size: 12px;
+}
+
+.sabores-jugos p {
+    margin: 0;
+    color: var(--gris);
+    font-size: 12px;
+    line-height: 1.8;
+}
+
+/* ==========================================
+   PIE DE PÁGINA
+   ========================================== */
+
+.pie-pagina {
+    padding: 22px 14px;
+    border-top: 1px solid var(--borde);
+    background: #080605;
+    text-align: center;
+}
+
+.redes-contacto p {
+    margin: 5px 0;
+    color: var(--gris);
+    font-size: 12px;
+}
+
+.redes-contacto strong {
+    color: var(--dorado);
+}
+
+.mensaje-footer {
+    margin: 16px 0 0;
+    color: var(--naranja);
+    font-size: 11px;
+    line-height: 1.6;
+}
+
+/* ==========================================
+   EFECTOS Y ACCESIBILIDAD
+   ========================================== */
+
+a:focus-visible {
+    outline: 2px solid var(--dorado);
+    outline-offset: 3px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+    html {
+        scroll-behavior: auto;
+    }
+
+    * {
+        transition: none !important;
+    }
+}
+
+/* ==========================================
+   TABLET Y PANTALLAS GRANDES
+   El diseño principal sigue siendo móvil
+   ========================================== */
+
+@media (min-width: 600px) {
+    body {
+        font-size: 15px;
+    }
+
+    main,
+    .pie-pagina {
+        max-width: 760px;
+        margin-right: auto;
+        margin-left: auto;
+    }
+
+    .imagen-portada {
+        max-height: 300px;
+    }
+
+    .menu {
+        padding-right: 22px;
+        padding-left: 22px;
+    }
+
+    .imagen-categoria {
+        height: 190px;
+    }
+
+    .grid-opciones-almuerzo {
+        grid-template-columns: 1fr 1fr;
+        column-gap: 14px;
+    }
+
+    .grid-opciones-almuerzo p:nth-last-child(-n+2) {
+        border-bottom: 1px solid #35251A;
+    }
 }
