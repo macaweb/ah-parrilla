@@ -530,3 +530,25 @@ a {
     font-weight: 900;
     letter-spacing: 0.5px;
 }
+.banner-destacado {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 4px;
+    margin-bottom: 12px;
+}
+
+.titulo-con-estrellas {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+}
+
+.estrellas-arriba,
+.estrellas-abajo,
+.estrella {
+    color: var(--naranja);
+    font-size: 14px;
+    letter-spacing: 3px;
+}
