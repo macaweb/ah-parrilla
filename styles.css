@@ -579,3 +579,85 @@ a:focus-visible {
         border-bottom: 1px solid #35251A;
     }
 }
+
+
+/* ==========================================
+   AJUSTE VISUAL — TARJETAS DE PLATOS
+   ========================================== */
+
+/* Tarjetas individuales */
+.lista-platos .plato-listado {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 12px;
+    min-height: 54px;
+    padding: 12px;
+    border: 1px solid #49301F;
+    border-left: 3px solid var(--naranja);
+    border-radius: 8px;
+    background: linear-gradient(135deg, #1B120C, #100C09);
+    box-shadow: 0 2px 7px rgba(0, 0, 0, 0.2);
+}
+
+.lista-platos .plato-listado h3 {
+    margin: 0;
+    color: var(--blanco);
+    font-size: 14px;
+    line-height: 1.4;
+}
+
+.lista-platos .plato-listado p {
+    margin: 5px 0 0;
+    color: var(--gris);
+    font-size: 12px;
+    line-height: 1.45;
+}
+
+.lista-platos .plato-listado > strong {
+    color: var(--dorado);
+    font-size: 15px;
+    font-weight: 800;
+    white-space: nowrap;
+}
+
+/* Listas simples, como las sopas */
+.lista-simple {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    border-top: none;
+}
+
+.lista-simple li {
+    padding: 12px;
+    border: 1px solid #49301F;
+    border-left: 3px solid var(--naranja);
+    border-radius: 8px;
+    background: linear-gradient(135deg, #1B120C, #100C09);
+}
+
+/* Opciones de almuerzo */
+.grid-opciones-almuerzo p {
+    border: 1px solid #49301F;
+    border-radius: 7px;
+    background: var(--fondo-tarjeta);
+    padding: 11px 10px;
+    line-height: 1.4;
+}
+
+.grid-opciones-almuerzo p::before {
+    color: var(--dorado);
+}
+
+/* Separación más equilibrada entre categorías */
+.categoria-menu {
+    margin-bottom: 28px;
+}
+
+/* La portada ya no necesita espacio para el botón */
+.portada {
+    gap: 0;
+    padding-bottom: 12px;
+}
+
