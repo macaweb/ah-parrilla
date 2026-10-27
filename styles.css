@@ -4,12 +4,13 @@
    ========================================== */
 
 :root {
-    --fondo: #0B0806;
-    --fondo-tarjeta: #17100B;
-    --naranja: #F58220;
-    --dorado: #D99A32;
-    --blanco: #F5F0E8;
-    --gris: #BDB4AA;
+    --fondo: #0B0807;
+    --fondo-tarjeta: #121212;
+    --naranja: #D35400;
+    --dorado: #E5A93B;
+    --blanco: #FFFFFF;
+    --gris: #D0D0D0;
+    --verde: #27AE60;
     --borde: #59351D;
 }
 
@@ -61,6 +62,7 @@ a {
 }
 
 .icono-fuego {
+    color: var(--naranja);
     font-size: 27px;
 }
 
@@ -77,7 +79,7 @@ a {
 }
 
 .marca-texto small {
-    color: var(--gris);
+    color: var(--blanco);
     font-size: 11px;
 }
 
@@ -126,11 +128,12 @@ a {
     border: 1px solid var(--dorado);
     border-radius: 5px;
     background: var(--naranja);
-    color: #160C04;
+    color: var(--blanco);
     font-size: 13px;
     font-weight: 900;
     letter-spacing: 1px;
     text-align: center;
+    transition: transform 0.2s ease, background 0.2s ease;
 }
 
 .boton-carta:active {
@@ -166,7 +169,7 @@ a {
 
 .introduccion {
     margin-bottom: 22px;
-    color: var(--gris);
+    color: var(--blanco);
     font-size: 13px;
     text-align: center;
 }
@@ -206,11 +209,13 @@ a {
     font-size: 12px;
     font-weight: bold;
     white-space: nowrap;
+    transition: background 0.2s ease, color 0.2s ease;
 }
 
+.categorias a:hover,
 .categorias a:active {
     background: var(--naranja);
-    color: var(--fondo);
+    color: var(--blanco);
 }
 
 /* CATEGORÍAS DE PRODUCTOS */
@@ -230,13 +235,31 @@ a {
     line-height: 1.4;
 }
 
+/* Descripciones de las categorías */
+
 .descripcion-categoria {
     margin: 9px 0 17px;
-    color: var(--gris);
+    color: var(--blanco);
     font-size: 13px;
 }
 
-/* TARJETAS: UNA COLUMNA EN CELULAR */
+/* IMÁGENES DE DESAYUNOS, ALMUERZOS Y PLATOS FUERTES */
+
+.imagen-categoria {
+    display: block;
+    width: 100%;
+    max-width: 100%;
+    aspect-ratio: 4 / 3;
+    height: auto;
+    margin: 16px 0;
+    object-fit: cover;
+    object-position: center;
+    border: 1px solid var(--borde);
+    border-radius: 8px;
+    background: var(--fondo-tarjeta);
+}
+
+/* TARJETAS DE PRODUCTOS */
 
 .productos {
     display: grid;
@@ -268,6 +291,8 @@ a {
     background: var(--fondo-tarjeta);
 }
 
+/* NOMBRES DE LOS PRODUCTOS */
+
 .producto-nombre {
     margin-bottom: 5px;
     color: var(--blanco);
@@ -275,11 +300,15 @@ a {
     font-weight: bold;
 }
 
+/* DESCRIPCIONES DE LOS PRODUCTOS */
+
 .producto-descripcion {
     margin-bottom: 10px;
-    color: var(--gris);
+    color: var(--blanco);
     font-size: 13px;
 }
+
+/* PRECIOS INDIVIDUALES */
 
 .producto-precio {
     color: var(--dorado);
@@ -287,12 +316,90 @@ a {
     font-weight: 900;
 }
 
+/* LISTAS DE PLATOS Y PRECIOS GENERALES */
+
+.lista-platos {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    margin-top: 16px;
+}
+
+.plato-listado {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    gap: 12px;
+    padding: 12px;
+    border: 1px solid var(--borde);
+    border-radius: 7px;
+    background: var(--fondo-tarjeta);
+}
+
+.plato-listado strong {
+    color: var(--blanco);
+    font-size: 14px;
+    font-weight: 700;
+}
+
+.plato-listado p {
+    margin-top: 4px;
+    color: var(--blanco);
+    font-size: 12px;
+}
+
+.plato-listado .precio,
+.plato-listado .producto-precio {
+    flex: 0 0 auto;
+    color: var(--dorado);
+    font-size: 16px;
+    font-weight: 900;
+    white-space: nowrap;
+}
+
+/* PRECIOS GENERALES DE CATEGORÍAS
+   Ejemplo: TODOS: $20.000 */
+
+.precio-categoria {
+    margin: 12px 0;
+    color: var(--naranja);
+    font-size: 18px;
+    font-weight: 900;
+    letter-spacing: 0.4px;
+}
+
+/* NOTAS DE LA CARTA */
+
+.nota-menu {
+    margin-top: 14px;
+    color: var(--blanco);
+    font-size: 12px;
+    line-height: 1.6;
+}
+
+/* CATEGORÍA DE JUGOS NATURALES */
+
+#jugos > h2 {
+    color: var(--verde);
+    border-left-color: var(--verde);
+}
+
+#jugos .producto-precio,
+#jugos .precio,
+#jugos .precio-categoria {
+    color: var(--verde);
+}
+
+#jugos .producto {
+    border-color: #205D39;
+}
+
 /* PIE DE PÁGINA */
 
 .pie-pagina {
     padding: 28px 16px;
     border-top: 1px solid var(--borde);
-    background: #080604;
+    background: var(--fondo);
     text-align: center;
 }
 
@@ -305,7 +412,7 @@ a {
 
 .pie-pagina p {
     margin-bottom: 12px;
-    color: var(--gris);
+    color: var(--blanco);
     font-size: 13px;
 }
 
@@ -344,21 +451,20 @@ a {
         flex-wrap: wrap;
         overflow: visible;
     }
+
+    .categoria-menu > h2 {
+        font-size: 26px;
+    }
 }
 
+/* PANTALLAS GRANDES */
 
-/* IMÁGENES DE DESAYUNOS, ALMUERZOS Y PLATOS FUERTES */
+@media (min-width: 1100px) {
+    .menu {
+        max-width: 1150px;
+    }
 
-.imagen-categoria {
-    display: block;
-    width: 100%;
-    max-width: 100%;
-    aspect-ratio: 4 / 3;
-    height: auto;
-    margin: 16px 0;
-    object-fit: cover;
-    object-position: center;
-    border: 1px solid #59351D;
-    border-radius: 8px;
-    background: #17100B;
+    .imagen-portada {
+        max-height: 520px;
+    }
 }
