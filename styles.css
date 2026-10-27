@@ -1,0 +1,364 @@
+
+/* ==========================================
+   AH PARRILLA — DISEÑO MOBILE FIRST
+   ========================================== */
+
+:root {
+    --fondo: #0B0806;
+    --fondo-tarjeta: #17100B;
+    --naranja: #F58220;
+    --dorado: #D99A32;
+    --blanco: #F5F0E8;
+    --gris: #BDB4AA;
+    --borde: #59351D;
+}
+
+/* REINICIO GENERAL */
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+html {
+    background: var(--fondo);
+    scroll-behavior: smooth;
+    scroll-padding-top: 130px;
+}
+
+body {
+    width: 100%;
+    min-height: 100vh;
+    overflow-x: hidden;
+    background: var(--fondo);
+    color: var(--blanco);
+    font-family: Arial, Helvetica, sans-serif;
+    line-height: 1.6;
+}
+
+a {
+    color: inherit;
+    text-decoration: none;
+}
+
+/* ENCABEZADO */
+
+.encabezado {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 62px;
+    padding: 10px 16px;
+    background: var(--fondo);
+    border-bottom: 1px solid var(--borde);
+}
+
+.marca {
+    display: flex;
+    align-items: center;
+    gap: 9px;
+}
+
+.icono-fuego {
+    font-size: 27px;
+}
+
+.marca-texto {
+    display: flex;
+    flex-direction: column;
+    line-height: 1.2;
+}
+
+.marca-texto strong {
+    color: var(--dorado);
+    font-size: 19px;
+    letter-spacing: 2px;
+}
+
+.marca-texto small {
+    color: var(--gris);
+    font-size: 11px;
+}
+
+/* PORTADA CON TU IMAGEN */
+
+.portada {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+    width: 100%;
+    min-height: auto;
+    padding: 0 0 28px;
+    overflow: hidden;
+    background: var(--fondo);
+    text-align: center;
+}
+
+.portada::before {
+    content: none;
+}
+
+.portada-contenido {
+    display: none;
+}
+
+.imagen-portada {
+    display: block;
+    width: 100%;
+    height: auto;
+    max-height: 360px;
+    object-fit: contain;
+    background: var(--fondo);
+}
+
+/* BOTÓN DE ACCESO A LA CARTA */
+
+.boton-carta {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    min-height: 48px;
+    margin: 0 16px;
+    padding: 12px 24px;
+    border: 1px solid var(--dorado);
+    border-radius: 5px;
+    background: var(--naranja);
+    color: #160C04;
+    font-size: 13px;
+    font-weight: 900;
+    letter-spacing: 1px;
+    text-align: center;
+}
+
+.boton-carta:active {
+    transform: scale(0.98);
+}
+
+/* SECCIÓN DEL MENÚ */
+
+.menu {
+    width: 100%;
+    padding: 28px 15px 40px;
+    background: var(--fondo);
+}
+
+.titulo-seccion {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    margin-bottom: 10px;
+}
+
+.titulo-seccion h2 {
+    color: var(--dorado);
+    font-size: 22px;
+    letter-spacing: 1.5px;
+    text-align: center;
+}
+
+.adorno {
+    color: var(--naranja);
+}
+
+.introduccion {
+    margin-bottom: 22px;
+    color: var(--gris);
+    font-size: 13px;
+    text-align: center;
+}
+
+/* CATEGORÍAS NAVEGABLES */
+
+.categorias {
+    position: sticky;
+    top: 0;
+    z-index: 10;
+    display: flex;
+    gap: 8px;
+    margin: 0 -15px 32px;
+    padding: 12px 15px;
+    overflow-x: auto;
+    background: var(--fondo);
+    border-top: 1px solid var(--borde);
+    border-bottom: 1px solid var(--borde);
+    scrollbar-width: none;
+    -webkit-overflow-scrolling: touch;
+}
+
+.categorias::-webkit-scrollbar {
+    display: none;
+}
+
+.categorias a {
+    flex: 0 0 auto;
+    display: flex;
+    align-items: center;
+    min-height: 40px;
+    padding: 8px 14px;
+    border: 1px solid var(--borde);
+    border-radius: 22px;
+    background: var(--fondo-tarjeta);
+    color: var(--blanco);
+    font-size: 12px;
+    font-weight: bold;
+    white-space: nowrap;
+}
+
+.categorias a:active {
+    background: var(--naranja);
+    color: var(--fondo);
+}
+
+/* CATEGORÍAS DE PRODUCTOS */
+
+.categoria-menu {
+    margin-bottom: 38px;
+    padding-top: 12px;
+    scroll-margin-top: 125px;
+    background: var(--fondo);
+}
+
+.categoria-menu > h2 {
+    padding-left: 12px;
+    border-left: 4px solid var(--naranja);
+    color: var(--dorado);
+    font-size: 23px;
+    line-height: 1.4;
+}
+
+.descripcion-categoria {
+    margin: 9px 0 17px;
+    color: var(--gris);
+    font-size: 13px;
+}
+
+/* TARJETAS: UNA COLUMNA EN CELULAR */
+
+.productos {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr);
+    gap: 17px;
+    background: var(--fondo);
+}
+
+.producto {
+    display: flex;
+    flex-direction: column;
+    min-width: 0;
+    overflow: hidden;
+    border: 1px solid var(--borde);
+    border-radius: 9px;
+    background: var(--fondo-tarjeta);
+}
+
+.producto-imagen {
+    display: block;
+    width: 100%;
+    aspect-ratio: 4 / 3;
+    object-fit: cover;
+    background: var(--fondo-tarjeta);
+}
+
+.producto-contenido {
+    padding: 14px;
+    background: var(--fondo-tarjeta);
+}
+
+.producto-nombre {
+    margin-bottom: 5px;
+    color: var(--blanco);
+    font-size: 17px;
+    font-weight: bold;
+}
+
+.producto-descripcion {
+    margin-bottom: 10px;
+    color: var(--gris);
+    font-size: 13px;
+}
+
+.producto-precio {
+    color: var(--dorado);
+    font-size: 20px;
+    font-weight: 900;
+}
+
+/* PIE DE PÁGINA */
+
+.pie-pagina {
+    padding: 28px 16px;
+    border-top: 1px solid var(--borde);
+    background: #080604;
+    text-align: center;
+}
+
+.pie-pagina h2 {
+    margin-bottom: 6px;
+    color: var(--dorado);
+    font-size: 22px;
+    letter-spacing: 2px;
+}
+
+.pie-pagina p {
+    margin-bottom: 12px;
+    color: var(--gris);
+    font-size: 13px;
+}
+
+.pie-pagina > span {
+    color: var(--naranja);
+    font-size: 10px;
+    font-weight: bold;
+    letter-spacing: 1.5px;
+}
+
+/* TABLETAS Y COMPUTADORES */
+
+@media (min-width: 700px) {
+    .encabezado {
+        justify-content: flex-start;
+        padding-right: 30px;
+        padding-left: 30px;
+    }
+
+    .imagen-portada {
+        max-height: 480px;
+    }
+
+    .menu {
+        max-width: 1000px;
+        margin: 0 auto;
+        padding: 40px 25px;
+    }
+
+    .productos {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+
+    .categorias {
+        justify-content: center;
+        flex-wrap: wrap;
+        overflow: visible;
+    }
+}
+
+
+/* IMÁGENES DE DESAYUNOS, ALMUERZOS Y PLATOS FUERTES */
+
+.imagen-categoria {
+    display: block;
+    width: 100%;
+    max-width: 100%;
+    aspect-ratio: 4 / 3;
+    height: auto;
+    margin: 16px 0;
+    object-fit: cover;
+    object-position: center;
+    border: 1px solid #59351D;
+    border-radius: 8px;
+    background: #17100B;
+}
