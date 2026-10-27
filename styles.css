@@ -468,3 +468,65 @@ a {
         max-height: 520px;
     }
 }
+
+/* ==========================================
+   ESTILOS PARA EL ESPECIAL DEL DÍA
+   ========================================== */
+
+.especial-dia {
+    margin-bottom: 38px;
+    padding: 16px;
+    border: 2px solid var(--dorado);
+    border-radius: 12px;
+    background: var(--fondo-tarjeta);
+    text-align: center;
+}
+
+.banner-destacado {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    margin-bottom: 14px;
+}
+
+.banner-destacado h2 {
+    color: var(--dorado);
+    font-size: 20px;
+    letter-spacing: 1.5px;
+}
+
+.banner-destacado .estrella {
+    color: var(--naranja);
+    font-size: 18px;
+}
+
+.card-especial {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.imagen-especial {
+    display: block;
+    width: 100%;
+    max-width: 100%;
+    aspect-ratio: 16 / 9;
+    object-fit: cover;
+    border-radius: 8px;
+    border: 1px solid var(--borde);
+}
+
+.detalle-especial {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 8px;
+}
+
+.precio-destacado {
+    color: var(--dorado);
+    font-size: 24px;
+    font-weight: 900;
+    letter-spacing: 0.5px;
+}
