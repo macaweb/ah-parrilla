@@ -287,14 +287,14 @@ strong {
 
 .imagen-categoria {
     width: 100%;
-    height: 145px;
+    height: auto;
+    aspect-ratio: 4 / 3;
     margin: 12px 0;
     border: 1px solid var(--borde);
     border-radius: 7px;
-    object-fit: cover;
+    object-fit: contain;
     object-position: center;
 }
-
 /* ==========================================
    LISTADO DE PLATOS
    ========================================== */
@@ -566,7 +566,7 @@ a:focus-visible {
     }
 
     .imagen-categoria {
-        height: 190px;
+         height: auto;
     }
 
     .grid-opciones-almuerzo {
