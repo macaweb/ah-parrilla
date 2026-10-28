@@ -659,3 +659,68 @@ a:focus-visible {
     gap: 0;
     padding-bottom: 12px;
 }
+
+
+/* UNIFICAR CAJONES DE PLATOS */
+
+.lista-platos {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.plato-listado {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 12px;
+    min-height: 52px;
+    padding: 12px 14px;
+    border: 1px solid var(--borde);
+    border-radius: 7px;
+    background: var(--fondo-tarjeta);
+}
+
+.plato-listado h3 {
+    color: var(--blanco);
+    font-size: 14px;
+    font-weight: 700;
+    line-height: 1.5;
+}
+
+.plato-listado strong {
+    flex-shrink: 0;
+    color: var(--dorado);
+    font-size: 16px;
+    font-weight: 900;
+}
+
+.header-precio-categoria {
+    margin: 14px 0;
+}
+
+.etiqueta-precio {
+    color: var(--naranja);
+    font-size: 18px;
+    font-weight: 900;
+}
+
+.bloque-acompanantes {
+    margin-top: 18px;
+    padding: 14px;
+    border: 1px solid var(--borde);
+    border-radius: 7px;
+    background: var(--fondo-tarjeta);
+}
+
+.bloque-acompanantes h4 {
+    margin-bottom: 6px;
+    color: var(--dorado);
+    font-size: 13px;
+}
+
+.bloque-acompanantes p,
+.bloque-acompanantes small {
+    color: var(--blanco);
+    font-size: 12px;
+}
