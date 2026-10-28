@@ -794,37 +794,32 @@ a:focus-visible {
     text-shadow: 0 0 5px rgba(229, 169, 59, 0.25);
 }
 
-/* Interacción de las categorías del menú */
-.categoria-menu {
+
+/* Efectos solo para los botones de navegación */
+.categorias a {
     transition: background-color 0.2s ease,
                 color 0.2s ease,
-                border-color 0.2s ease,
-                transform 0.2s ease;
-    -webkit-tap-highlight-color: transparent;
+                border-color 0.2s ease;
 }
 
-/* Al pasar el cursor */
-.categoria-menu:hover {
+/* Al pasar el mouse */
+.categorias a:hover {
     background-color: var(--naranja);
-    color: #FFFFFF;
+    color: var(--blanco);
     border-color: var(--dorado);
-    transform: translateY(-2px);
 }
 
-/* Al presionar con el dedo */
-.categoria-menu:active {
+/* Al presionar el botón */
+.categorias a:active {
     background-color: var(--naranja);
-    color: #FFFFFF;
+    color: var(--blanco);
     border-color: var(--dorado);
-    transform: scale(0.96);
 }
 
-/* Cuando se selecciona una categoría */
-.categoria-menu:focus-visible {
-    background-color: var(--naranja);
-    color: #FFFFFF;
-    border-color: var(--dorado);
+/* Al navegar con teclado */
+.categorias a:focus-visible {
     outline: 2px solid var(--dorado);
-    outline-offset: 2px;
+    outline-offset: 3px;
 }
+
 
