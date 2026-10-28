@@ -823,3 +823,21 @@ a:focus-visible {
 }
 
 
+/* Mensaje final del restaurante */
+.mensaje-final {
+    margin: 0;
+    color: var(--naranja);
+    font-size: 12px;
+    line-height: 1.6;
+    text-align: center;
+}
+
+.gracias-final {
+    margin-top: 18px;
+    color: var(--dorado);
+    font-size: 14px;
+    font-weight: 800;
+}
+
+
+
