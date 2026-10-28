@@ -785,3 +785,12 @@ a:focus-visible {
     outline-offset: 4px;
 }
 
+
+/* Corazones dorados AH Parrilla */
+.corazon-dorado {
+    color: #E5A93B;
+    font-size: 1.15em;
+    margin: 0 3px;
+    text-shadow: 0 0 5px rgba(229, 169, 59, 0.25);
+}
+
