@@ -795,28 +795,38 @@ a:focus-visible {
 }
 
 
-/* Efectos solo para los botones de navegación */
+
+/* Interacción de los botones de navegación */
 .categorias a {
     transition: background-color 0.2s ease,
                 color 0.2s ease,
                 border-color 0.2s ease;
+    -webkit-tap-highlight-color: transparent;
 }
 
-/* Al pasar el mouse */
-.categorias a:hover {
-    background-color: var(--naranja);
-    color: var(--blanco);
-    border-color: var(--dorado);
+/* Efecto al pasar el mouse en computadores */
+@media (hover: hover) {
+    .categorias a:hover {
+        background-color: var(--naranja);
+        color: var(--blanco);
+        border-color: var(--dorado);
+    }
 }
 
-/* Al presionar el botón */
+/* Efecto al tocar con el dedo en celulares */
 .categorias a:active {
     background-color: var(--naranja);
     color: var(--blanco);
     border-color: var(--dorado);
 }
 
-/* Al navegar con teclado */
+/* Mantener resaltado mientras el enlace tiene el foco */
+.categorias a:focus {
+    background-color: var(--naranja);
+    color: var(--blanco);
+    border-color: var(--dorado);
+}
+
 .categorias a:focus-visible {
     outline: 2px solid var(--dorado);
     outline-offset: 3px;
