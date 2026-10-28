@@ -850,4 +850,9 @@ a:focus-visible {
 }
 
 
-
+/* Categoría seleccionada */
+.categorias a.seleccionada {
+    background-color: var(--naranja);
+    color: var(--blanco);
+    border-color: var(--dorado);
+}
