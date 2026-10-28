@@ -724,3 +724,57 @@ a:focus-visible {
     color: var(--blanco);
     font-size: 12px;
 }
+
+
+/* ==============================
+   ENLACES DEL PIE DE PÁGINA
+   ============================== */
+
+.pie-pagina a {
+    text-decoration: none;
+}
+
+.enlace-instagram,
+.enlace-whatsapp {
+    display: inline-flex;
+    align-items: center;
+    gap: 7px;
+    font-weight: 700;
+    transition: color 0.2s ease;
+}
+
+.enlace-instagram {
+    color: var(--dorado);
+}
+
+.icono-instagram {
+    width: 20px;
+    height: 20px;
+    color: currentColor;
+    flex-shrink: 0;
+}
+
+.enlace-instagram:hover {
+    color: var(--naranja);
+}
+
+.enlace-whatsapp {
+    color: #25D366;
+}
+
+.icono-whatsapp {
+    width: 21px;
+    height: 21px;
+    color: currentColor;
+    flex-shrink: 0;
+}
+
+.enlace-whatsapp:hover {
+    color: #2ECC71;
+}
+
+.pie-pagina a:focus-visible {
+    outline: 2px solid var(--dorado);
+    outline-offset: 4px;
+}
+
