@@ -1560,3 +1560,50 @@ a:focus-visible {
     font-weight: 500;
     text-shadow: 0 1px 3px rgba(0, 0, 0, .65);
 }
+
+
+/* Titulos de categorias sin estrellas laterales; se conservan los adornos principales */
+.categoria-menu > h2::before,
+.categoria-menu > h2::after {
+    content: none;
+    display: none;
+}
+
+/* Jugos: opciones de preparacion blancas, firmes y con tipografia elegante */
+.opciones-precios-jugos .tarjeta-precio span {
+    color: #fff8ed;
+    font-family: Georgia, "Times New Roman", serif;
+    font-size: 14px;
+    font-weight: 900;
+    letter-spacing: 1.1px;
+    text-shadow: 0 1px 2px rgba(0, 0, 0, .65);
+}
+
+/* Sabores separados en etiquetas para una lectura mas ordenada */
+.lista-sabores {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 8px;
+    margin-top: 10px;
+}
+
+.lista-sabores span {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 7px 11px;
+    border: 1px solid rgba(239, 169, 65, .42);
+    border-radius: 999px;
+    background: linear-gradient(145deg, rgba(255, 177, 61, .13), rgba(20, 13, 8, .92));
+    color: #fff3df;
+    font-family: Georgia, "Times New Roman", serif;
+    font-size: 14px;
+    font-weight: 700;
+    letter-spacing: .15px;
+    box-shadow: inset 0 1px 0 rgba(255, 235, 195, .08);
+}
+
+.sabores-jugos p {
+    margin: 0;
+}
