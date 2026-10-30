@@ -1,10 +1,15 @@
-// Resaltar la categoría que se toca en el menú
-document.querySelectorAll('.categorias a').forEach(enlace => {
-    enlace.addEventListener('click', function () {
-        document.querySelectorAll('.categorias a').forEach(item => {
-            item.classList.remove('seleccionada');
+// Resaltar la categoría seleccionada en el menú.
+// El estado visual permanece mientras la persona navega por la página.
+document.addEventListener('DOMContentLoaded', () => {
+    const enlaces = document.querySelectorAll('.categorias a');
+    enlaces.forEach(enlace => {
+        enlace.addEventListener('click', () => {
+            enlaces.forEach(item => {
+                item.classList.remove('seleccionada');
+                item.removeAttribute('aria-current');
+            });
+            enlace.classList.add('seleccionada');
+            enlace.setAttribute('aria-current', 'location');
         });
-
-        this.classList.add('seleccionada');
     });
 });
