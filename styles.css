@@ -919,3 +919,167 @@ a:focus-visible {
 .linea-precio { flex: 1; max-width: 62px; height: 1px; background: linear-gradient(90deg, transparent, rgba(229,169,59,.7)); }
 .linea-precio:last-child { transform: scaleX(-1); }
 .precio-destacado { font-size: clamp(2.35rem, 8vw, 3.1rem); }
+
+
+/* ESPECIAL DEL DIA: protagonismo sin fotografia */
+.especial-dia {
+    position: relative;
+    margin: 24px 0 34px;
+    padding: 22px 16px 24px;
+    overflow: hidden;
+    border: 1px solid rgba(255, 177, 58, .75);
+    border-radius: 18px;
+    background:
+        radial-gradient(ellipse at 50% 0%, rgba(255, 111, 0, .24), transparent 58%),
+        linear-gradient(145deg, #211207 0%, #100d0a 48%, #241307 100%);
+    box-shadow: 0 0 0 1px rgba(255, 116, 0, .12), 0 12px 34px rgba(0, 0, 0, .35), 0 0 26px rgba(255, 111, 0, .12);
+}
+
+.especial-dia::before,
+.especial-dia::after {
+    position: absolute;
+    left: 12%;
+    right: 12%;
+    height: 1px;
+    content: "";
+    background: linear-gradient(90deg, transparent, #f6bd54, #ff7100, #f6bd54, transparent);
+    opacity: .8;
+    pointer-events: none;
+}
+.especial-dia::before { top: 0; }
+.especial-dia::after { bottom: 0; }
+
+.banner-destacado {
+    gap: 7px;
+    margin-bottom: 14px;
+}
+
+.adorno-especial {
+    display: flex;
+    width: min(270px, 88%);
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    color: #ffc65b;
+}
+
+.linea-adorno {
+    flex: 1;
+    height: 1px;
+    background: linear-gradient(90deg, transparent, #d99a35);
+}
+.linea-adorno:last-child { transform: scaleX(-1); }
+
+.brillo-grande {
+    color: #ff8a16;
+    font-size: 20px;
+    text-shadow: 0 0 12px rgba(255, 128, 0, .65);
+}
+.brillo-pequeno {
+    color: #ffe0a0;
+    font-size: 14px;
+}
+
+.sobretitulo-especial {
+    margin: 2px 0 0;
+    color: #ffb23f;
+    font-size: 11px;
+    font-weight: 900;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+}
+
+.banner-destacado h2 {
+    margin: 0;
+    color: #fff2d5;
+    font-size: clamp(20px, 5vw, 27px);
+    font-weight: 900;
+    letter-spacing: 2px;
+    text-align: center;
+    text-shadow: 0 2px 15px rgba(255, 126, 0, .25);
+}
+
+.separador-dorado {
+    display: flex;
+    width: 100%;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    color: #ff8b19;
+}
+.separador-dorado::before,
+.separador-dorado::after {
+    width: 54px;
+    height: 1px;
+    content: "";
+    background: linear-gradient(90deg, transparent, #e9ad4d);
+}
+.separador-dorado::after { transform: scaleX(-1); }
+.separador-dorado span { text-shadow: 0 0 10px rgba(255, 139, 25, .7); }
+
+.card-especial {
+    position: relative;
+    padding: 22px 12px 18px;
+    border: 1px solid rgba(255, 173, 52, .42);
+    border-radius: 13px;
+    background: linear-gradient(130deg, rgba(255, 119, 0, .13), rgba(0, 0, 0, .14) 48%, rgba(255, 193, 77, .08));
+    box-shadow: inset 0 0 28px rgba(255, 122, 0, .06);
+}
+
+.detalle-especial {
+    width: 100%;
+    padding: 0;
+}
+
+.nombre-especial {
+    margin: 0 0 18px;
+    color: #fff0cf;
+    font-size: clamp(32px, 8vw, 48px);
+    font-weight: 900;
+    line-height: 1.1;
+    letter-spacing: .3px;
+    text-transform: capitalize;
+    text-shadow: 0 3px 0 #6f3108, 0 0 18px rgba(255, 142, 22, .3);
+}
+
+.precio-linea-especial {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 12px;
+    margin-top: 8px;
+}
+
+.linea-precio {
+    width: min(18%, 72px);
+    height: 1px;
+    background: linear-gradient(90deg, transparent, #e3ad4f);
+}
+.linea-precio:last-child { transform: scaleX(-1); }
+
+.precio-destacado {
+    display: inline-block;
+    padding: 8px 20px;
+    border: 1px solid #ffc65b;
+    border-radius: 999px;
+    background: linear-gradient(110deg, #f47708, #ffad22 52%, #d65a00);
+    color: #1a0d03;
+    font-size: clamp(25px, 6vw, 32px);
+    font-weight: 950;
+    letter-spacing: .4px;
+    line-height: 1.1;
+    box-shadow: 0 4px 18px rgba(255, 112, 0, .22), inset 0 1px 0 rgba(255,255,255,.25);
+}
+
+@media (min-width: 700px) {
+    .especial-dia { padding: 28px 30px 30px; }
+    .card-especial { padding: 30px 20px 25px; }
+}
+@media (max-width: 380px) {
+    .especial-dia { padding: 18px 10px 20px; }
+    .sobretitulo-especial { letter-spacing: 2px; }
+    .banner-destacado h2 { letter-spacing: 1px; }
+    .nombre-especial { margin-bottom: 14px; }
+    .precio-linea-especial { gap: 7px; }
+    .precio-destacado { padding: 8px 15px; }
+}
