@@ -1277,3 +1277,82 @@ a:focus-visible {
     .titulo-seccion h2 { letter-spacing: 1.2px; }
     .opcion-del-dia { padding: 13px 11px; gap: 11px; }
 }
+
+
+/* Navegacion de categorias: botones mas pulidos y tactiles */
+.categorias {
+    gap: 9px;
+    padding-top: 12px;
+    padding-bottom: 12px;
+    border-top-color: rgba(226, 164, 68, .28);
+    border-bottom-color: rgba(226, 164, 68, .45);
+}
+
+.categorias a {
+    min-height: 40px;
+    padding: 8px 15px;
+    border: 1px solid rgba(220, 163, 75, .45);
+    border-radius: 999px;
+    background: linear-gradient(180deg, #302012 0%, #17100a 100%);
+    color: #f8e5c4;
+    font-size: 12px;
+    font-weight: 800;
+    letter-spacing: .2px;
+    box-shadow: inset 0 1px 0 rgba(255, 236, 196, .1), 0 3px 8px rgba(0, 0, 0, .22);
+    transition: border-color .18s ease, background .18s ease, color .18s ease, box-shadow .18s ease;
+}
+
+.categorias a:hover,
+.categorias a:focus-visible {
+    border-color: #ffb13d;
+    background: linear-gradient(180deg, #f6a52c 0%, #d76508 100%);
+    color: #1a0e04;
+    outline: none;
+    box-shadow: 0 0 0 2px rgba(255, 177, 61, .15), 0 4px 12px rgba(255, 119, 0, .18);
+}
+
+.categorias a:active {
+    transform: translateY(1px);
+    border-color: #ffb13d;
+    background: linear-gradient(180deg, #f6a52c 0%, #d76508 100%);
+    color: #1a0e04;
+}
+
+.opcion-del-dia {
+    display: grid;
+    grid-template-columns: 48px minmax(0, 1fr);
+    align-items: center;
+    justify-items: stretch;
+    text-align: left;
+}
+
+.opcion-del-dia > div {
+    grid-column: 2;
+    width: 100%;
+    min-width: 0;
+    text-align: left;
+}
+
+.icono-del-dia {
+    grid-column: 1;
+    grid-row: 1;
+    justify-self: center;
+    font-family: "Apple Color Emoji", "Segoe UI Emoji", "Noto Color Emoji", sans-serif;
+    line-height: 1;
+}
+
+.etiqueta-del-dia {
+    display: block;
+    width: 100%;
+    text-align: left;
+}
+
+.opcion-del-dia h3 {
+    width: 100%;
+    text-align: left;
+}
+
+@media (max-width: 380px) {
+    .categorias { gap: 7px; }
+    .categorias a { padding-left: 12px; padding-right: 12px; }
+}
