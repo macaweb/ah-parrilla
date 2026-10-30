@@ -893,3 +893,29 @@ a:focus-visible {
 .pie-pagina .mensaje-final { color: #f4e7d5; line-height: 1.7; }
 .pie-pagina .gracias-final { color: #e5a93b; font-weight: 700; }
 @media (prefers-reduced-motion: reduce) { .boton-especial { transition: none; } }
+
+
+/* Especial del día: ornamentación elegante y nombre del plato */
+.especial-dia { padding: clamp(1.25rem, 4vw, 2.2rem) 1rem; }
+.banner-destacado { gap: .45rem; margin-bottom: 1.15rem; }
+.adorno-especial { display: flex; align-items: center; justify-content: center; gap: .55rem; width: min(100%, 260px); color: var(--dorado); margin: 0 auto .2rem; }
+.linea-adorno { display: block; flex: 1; height: 1px; background: linear-gradient(90deg, transparent, rgba(229,169,59,.75)); }
+.linea-adorno:last-child { transform: scaleX(-1); }
+.brillo-grande { font-size: 1.15rem; line-height: 1; text-shadow: 0 0 13px rgba(229,169,59,.38); }
+.brillo-pequeno { color: #f5d99a; font-size: .8rem; transform: translateY(-.45rem); }
+.sobretitulo-especial { margin: .1rem 0 0; color: #e9b957; font-size: .68rem; font-weight: 800; letter-spacing: .24em; }
+.banner-destacado h2 { margin: 0; color: #fff1d3; font-size: clamp(1.15rem, 4vw, 1.45rem); font-weight: 900; letter-spacing: .09em; }
+.separador-dorado { display: flex; align-items: center; justify-content: center; width: min(100%, 210px); color: var(--dorado); font-size: .7rem; margin-top: .1rem; }
+.separador-dorado::before, .separador-dorado::after { content: ""; height: 1px; flex: 1; background: linear-gradient(90deg, transparent, rgba(229,169,59,.55)); }
+.separador-dorado::after { transform: scaleX(-1); }
+.separador-dorado span { padding: 0 .65rem; }
+.card-especial { max-width: 560px; padding: clamp(1.2rem, 4vw, 1.8rem); }
+.detalle-especial { width: 100%; gap: .85rem; }
+.nombre-especial { margin: 0; color: #fff0ce; font-size: clamp(1.6rem, 6vw, 2.15rem); font-weight: 900; line-height: 1.1; text-transform: capitalize; }
+.texto-especial { max-width: 39ch; font-size: .98rem; line-height: 1.75; }
+.acompanamientos-especial { display: flex; flex-wrap: wrap; justify-content: center; gap: .5rem; }
+.acompanamientos-especial span { padding: .45rem .7rem; border: 1px solid rgba(229,169,59,.27); border-radius: 999px; color: #f2dfbf; background: rgba(229,169,59,.07); font-size: .76rem; font-weight: 600; }
+.precio-linea-especial { display: flex; align-items: center; justify-content: center; gap: .85rem; width: 100%; margin-top: .35rem; }
+.linea-precio { flex: 1; max-width: 62px; height: 1px; background: linear-gradient(90deg, transparent, rgba(229,169,59,.7)); }
+.linea-precio:last-child { transform: scaleX(-1); }
+.precio-destacado { font-size: clamp(2.35rem, 8vw, 3.1rem); }
