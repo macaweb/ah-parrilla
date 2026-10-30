@@ -1607,3 +1607,12 @@ a:focus-visible {
 .sabores-jugos p {
     margin: 0;
 }
+
+
+/* Especial del dia: el nombre del plato debe tener presencia similar al precio */
+.nombre-especial {
+    font-size: clamp(25px, 6vw, 32px);
+    font-weight: 950;
+    line-height: 1.15;
+    letter-spacing: .2px;
+}
