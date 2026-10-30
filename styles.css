@@ -1497,3 +1497,58 @@ a:focus-visible {
         font-size: 27px;
     }
 }
+
+
+/* Jugos: sabores y opciones de preparacion mas visibles */
+.opciones-precios-jugos .tarjeta-precio {
+    border-color: rgba(239, 169, 65, .68);
+    background: linear-gradient(145deg, #35200e, #17100a 78%);
+    box-shadow: inset 0 1px 0 rgba(255, 221, 164, .1), 0 3px 9px rgba(0, 0, 0, .2);
+}
+
+.opciones-precios-jugos .tarjeta-precio span {
+    color: #ffbd55;
+    font-size: 13px;
+    font-weight: 900;
+    letter-spacing: .8px;
+    text-shadow: 0 1px 3px rgba(0, 0, 0, .6);
+}
+
+.opciones-precios-jugos .tarjeta-precio strong {
+    color: #ffd17a;
+    font-size: 19px;
+    font-weight: 950;
+}
+
+.sabores-jugos {
+    padding: 13px 14px;
+    border: 1px solid rgba(239, 169, 65, .58);
+    border-radius: 9px;
+    background:
+        radial-gradient(ellipse at 0% 50%, rgba(255, 124, 12, .16), transparent 68%),
+        linear-gradient(110deg, #2c1a0b, #17100a 78%);
+    box-shadow: inset 0 1px 0 rgba(255, 221, 164, .08), inset 4px 0 0 #e87912;
+}
+
+.sabores-jugos h4 {
+    margin: 0 0 7px;
+    color: #ffbd55;
+    font-size: 14px;
+    font-weight: 950;
+    letter-spacing: 1px;
+    text-shadow: 0 1px 4px rgba(0, 0, 0, .55);
+}
+
+.sabores-jugos p {
+    color: #fff0d2;
+    font-size: clamp(15px, 3.8vw, 17px);
+    font-weight: 800;
+    line-height: 1.8;
+    letter-spacing: .15px;
+    text-shadow: 0 1px 3px rgba(0, 0, 0, .6);
+}
+
+.categoria-menu > h2.sin-adorno::before,
+.categoria-menu > h2.sin-adorno::after {
+    content: none;
+}
