@@ -1942,38 +1942,25 @@ a:focus-visible {
 }
 
 
-/* Flecha visual para indicar que las tarjetas de contacto se pueden abrir */
+/* Flechas discretas para indicar que las tarjetas de contacto son clicables */
 .pie-pagina a.boton-contacto::after {
     content: "↗";
     display: inline-flex;
-    flex: 0 0 34px;
+    flex: 0 0 18px;
     align-items: center;
     justify-content: center;
-    width: 34px;
-    height: 34px;
+    width: 18px;
+    height: 18px;
     margin-left: auto;
-    border: 1px solid rgba(255, 198, 106, .48);
-    border-radius: 50%;
-    background: rgba(255, 177, 61, .08);
-    color: #ffc66a;
-    font-size: 21px;
-    font-weight: 700;
+    color: rgba(255, 198, 106, .82);
+    font-size: 16px;
+    font-weight: 400;
     line-height: 1;
-    transition: transform .18s ease, background .18s ease, border-color .18s ease;
+    transition: transform .18s ease, color .18s ease;
 }
 
 .pie-pagina a.boton-contacto:hover::after,
 .pie-pagina a.boton-contacto:focus-visible::after {
-    transform: translate(2px, -2px);
-    border-color: #ffc66a;
-    background: rgba(255, 177, 61, .18);
-}
-
-@media (max-width: 360px) {
-    .pie-pagina a.boton-contacto::after {
-        flex-basis: 30px;
-        width: 30px;
-        height: 30px;
-        font-size: 19px;
-    }
+    transform: translate(1px, -1px);
+    color: #ffc66a;
 }
