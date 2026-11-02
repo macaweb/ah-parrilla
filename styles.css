@@ -1940,3 +1940,40 @@ a:focus-visible {
     .pie-pagina a.boton-contacto { gap: 11px !important; padding: 12px !important; }
     .pie-pagina a.boton-contacto .texto-contacto strong { font-size: 14px !important; }
 }
+
+
+/* Flecha visual para indicar que las tarjetas de contacto se pueden abrir */
+.pie-pagina a.boton-contacto::after {
+    content: "↗";
+    display: inline-flex;
+    flex: 0 0 34px;
+    align-items: center;
+    justify-content: center;
+    width: 34px;
+    height: 34px;
+    margin-left: auto;
+    border: 1px solid rgba(255, 198, 106, .48);
+    border-radius: 50%;
+    background: rgba(255, 177, 61, .08);
+    color: #ffc66a;
+    font-size: 21px;
+    font-weight: 700;
+    line-height: 1;
+    transition: transform .18s ease, background .18s ease, border-color .18s ease;
+}
+
+.pie-pagina a.boton-contacto:hover::after,
+.pie-pagina a.boton-contacto:focus-visible::after {
+    transform: translate(2px, -2px);
+    border-color: #ffc66a;
+    background: rgba(255, 177, 61, .18);
+}
+
+@media (max-width: 360px) {
+    .pie-pagina a.boton-contacto::after {
+        flex-basis: 30px;
+        width: 30px;
+        height: 30px;
+        font-size: 19px;
+    }
+}
