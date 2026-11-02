@@ -1658,66 +1658,33 @@ a:focus-visible {
     filter: drop-shadow(0 0 4px rgba(193, 53, 132, .45));
 }
 
-/* Boton de pedidos por DiDi Food: respeta la identidad de AH Parrilla */
-.contenedor-boton-didi {
-    display: flex;
-    justify-content: center;
-    width: 100%;
-    margin: 18px auto 24px;
-    padding: 0 16px;
-    box-sizing: border-box;
-}
-
-.boton-didi-food {
+/* Enlace de DiDi Food en el pie, junto a WhatsApp e Instagram */
+.enlace-didi {
     display: inline-flex;
     align-items: center;
     justify-content: center;
-    gap: 10px;
-    width: min(100%, 340px);
-    min-height: 50px;
-    padding: 12px 20px;
-    box-sizing: border-box;
-    border: 1px solid #f1a33c;
-    border-radius: 999px;
-    background: linear-gradient(135deg, #f6a623, #df4c16);
-    color: #170b05;
+    gap: 9px;
+    flex-wrap: wrap;
+    color: var(--dorado);
     font-weight: 800;
-    text-align: center;
     text-decoration: none;
-    box-shadow: 0 5px 18px rgba(223, 76, 22, .25);
-    transition: transform .2s ease, filter .2s ease, box-shadow .2s ease;
+    transition: color .2s ease, transform .2s ease;
 }
-
-.didi-marca {
-    font-size: 1.05em;
+.icono-didi {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-width: 35px;
+    height: 27px;
+    padding: 0 6px;
+    border-radius: 7px;
+    background: #f6a623;
+    color: #1b1008;
+    font-size: 14px;
     font-weight: 950;
     letter-spacing: -.5px;
 }
-
-.flecha-didi {
-    font-size: 1.15em;
-    line-height: 1;
-}
-
-.boton-didi-food:hover {
-    transform: translateY(-2px);
-    filter: brightness(1.06);
-    box-shadow: 0 7px 22px rgba(223, 76, 22, .34);
-}
-
-.boton-didi-food:focus-visible {
-    outline: 3px solid #fff2d8;
-    outline-offset: 4px;
-}
-
-@media (max-width: 480px) {
-    .boton-didi-food {
-        width: 100%;
-        max-width: 320px;
-        font-size: 15px;
-    }
-}
-
-@media (prefers-reduced-motion: reduce) {
-    .boton-didi-food { transition: none; }
-}
+.enlace-didi:hover { color: #f6a623; transform: translateY(-1px); }
+.enlace-didi:focus-visible { outline: 2px solid #fff2d8; outline-offset: 4px; border-radius: 4px; }
+.contacto-didi { display: flex; align-items: center; justify-content: center; gap: 8px; flex-wrap: wrap; }
+@media (prefers-reduced-motion: reduce) { .enlace-didi { transition: none; } }
