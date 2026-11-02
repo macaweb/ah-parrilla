@@ -1848,3 +1848,95 @@ a:focus-visible {
         transition: none;
     }
 }
+
+
+/* Refuerzo de tarjetas de contacto: evita que el pie las muestre como texto corrido */
+.pie-pagina .contactos-accion {
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: stretch !important;
+    gap: 12px !important;
+    width: 100% !important;
+    max-width: 440px !important;
+    margin: 24px auto !important;
+    padding: 0 12px !important;
+}
+
+.pie-pagina a.boton-contacto {
+    display: flex !important;
+    flex-direction: row !important;
+    align-items: center !important;
+    justify-content: flex-start !important;
+    gap: 14px !important;
+    width: 100% !important;
+    min-height: 74px !important;
+    margin: 0 !important;
+    padding: 14px 16px !important;
+    border: 1px solid rgba(229, 169, 59, .72) !important;
+    border-left-width: 4px !important;
+    border-radius: 12px !important;
+    background: linear-gradient(115deg, #2a1b0d, #17100b 75%) !important;
+    color: #fff8ed !important;
+    text-align: left !important;
+    box-shadow: inset 0 1px 0 rgba(255, 235, 195, .08), 0 4px 12px rgba(0, 0, 0, .28) !important;
+    text-decoration: none !important;
+    white-space: normal !important;
+}
+
+.pie-pagina a.boton-contacto.boton-instagram { border-left-color: #e1306c !important; }
+.pie-pagina a.boton-contacto.boton-whatsapp { border-left-color: #25d366 !important; }
+.pie-pagina a.boton-contacto.boton-didi { border-left-color: #f0780b !important; }
+
+.pie-pagina a.boton-contacto .texto-contacto {
+    display: flex !important;
+    flex: 1 1 auto !important;
+    flex-direction: column !important;
+    align-items: flex-start !important;
+    gap: 3px !important;
+    min-width: 0 !important;
+    text-align: left !important;
+}
+
+.pie-pagina a.boton-contacto .texto-contacto strong {
+    display: block !important;
+    color: #fff2d8 !important;
+    font-size: 15px !important;
+    line-height: 1.3 !important;
+}
+
+.pie-pagina a.boton-contacto .texto-contacto small {
+    display: block !important;
+    color: #d9c6ab !important;
+    font-size: 12px !important;
+    line-height: 1.4 !important;
+}
+
+.pie-pagina a.boton-contacto .icono-instagram,
+.pie-pagina a.boton-contacto .icono-whatsapp {
+    display: block !important;
+    flex: 0 0 29px !important;
+    width: 29px !important;
+    height: 29px !important;
+}
+
+.pie-pagina a.boton-contacto .logo-didi {
+    display: block !important;
+    flex: 0 0 76px !important;
+    width: 76px !important;
+    max-height: 25px !important;
+    height: auto !important;
+    object-fit: contain !important;
+}
+
+.pie-pagina a.boton-contacto:hover,
+.pie-pagina a.boton-contacto:focus-visible {
+    border-color: #ffc66a !important;
+    background: linear-gradient(115deg, #40260f, #21150b 75%) !important;
+    outline: 2px solid rgba(255, 198, 106, .45) !important;
+    outline-offset: 2px !important;
+}
+
+@media (max-width: 360px) {
+    .pie-pagina a.boton-contacto { gap: 11px !important; padding: 12px !important; }
+    .pie-pagina a.boton-contacto .texto-contacto strong { font-size: 14px !important; }
+}
