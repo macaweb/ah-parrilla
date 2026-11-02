@@ -1942,25 +1942,23 @@ a:focus-visible {
 }
 
 
-/* Flechas discretas para indicar que las tarjetas de contacto son clicables */
+/* Indicador minimalista para enlaces de contacto */
 .pie-pagina a.boton-contacto::after {
-    content: "↗";
-    display: inline-flex;
-    flex: 0 0 18px;
-    align-items: center;
-    justify-content: center;
-    width: 18px;
-    height: 18px;
+    content: "›";
+    display: inline-block;
+    flex: 0 0 auto;
     margin-left: auto;
-    color: rgba(255, 198, 106, .82);
-    font-size: 16px;
-    font-weight: 400;
+    padding-left: 10px;
+    color: rgba(255, 198, 106, .78);
+    font-family: Arial, sans-serif;
+    font-size: 23px;
+    font-weight: 300;
     line-height: 1;
     transition: transform .18s ease, color .18s ease;
 }
 
 .pie-pagina a.boton-contacto:hover::after,
 .pie-pagina a.boton-contacto:focus-visible::after {
-    transform: translate(1px, -1px);
+    transform: translateX(2px);
     color: #ffc66a;
 }
