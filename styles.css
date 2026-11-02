@@ -1672,17 +1672,33 @@ a:focus-visible {
 }
 .icono-didi {
     display: inline-flex;
+    flex: 0 0 43px;
+    width: 43px;
+    height: 43px;
+    flex-direction: column;
     align-items: center;
     justify-content: center;
-    min-width: 35px;
-    height: 27px;
-    padding: 0 6px;
-    border-radius: 7px;
-    background: #f6a623;
+    gap: 0;
+    border-radius: 9px;
+    background: linear-gradient(145deg, #ffb62e 0%, #f28b16 100%);
     color: #1b1008;
-    font-size: 14px;
+    box-shadow: inset 0 1px 0 rgba(255, 255, 255, .35), 0 3px 8px rgba(0, 0, 0, .28);
+    line-height: 1;
+}
+.marca-didi-d {
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 24px;
     font-weight: 950;
-    letter-spacing: -.5px;
+    letter-spacing: -1.5px;
+    line-height: .9;
+}
+.marca-didi-food {
+    margin-top: 3px;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 7px;
+    font-weight: 950;
+    letter-spacing: 1.1px;
+    line-height: 1;
 }
 .enlace-didi:hover { color: #f6a623; transform: translateY(-1px); }
 .enlace-didi:focus-visible { outline: 2px solid #fff2d8; outline-offset: 4px; border-radius: 4px; }
