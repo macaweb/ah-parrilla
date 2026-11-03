@@ -1962,3 +1962,43 @@ a:focus-visible {
     transform: translateX(2px);
     color: #ffc66a;
 }
+
+
+/* Listas del especial: productos en líneas separadas con puntos sutiles */
+.lista-opciones-dia {
+    display: grid;
+    gap: 5px;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+
+.lista-opciones-dia li {
+    position: relative;
+    padding-left: 13px;
+    color: #fff0d2;
+    font-size: 16px;
+    font-weight: 800;
+    line-height: 1.4;
+    overflow-wrap: anywhere;
+}
+
+.lista-opciones-dia li::before {
+    position: absolute;
+    top: .62em;
+    left: 0;
+    width: 5px;
+    height: 5px;
+    border-radius: 50%;
+    background: #e6a644;
+    box-shadow: 0 0 7px rgba(255, 166, 45, .45);
+    content: "";
+}
+
+/* El nombre del plato comparte el mismo recuadro del título */
+.card-especial .banner-destacado {
+    margin-bottom: 12px;
+}
+.card-especial .nombre-especial {
+    margin: 0;
+}
