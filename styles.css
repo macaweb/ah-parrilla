@@ -2154,3 +2154,66 @@ a:focus-visible {
 .selector-jugo-pedido select { min-width:0; width:100%; min-height:39px; padding:7px; border:1px solid #76502c; border-radius:6px; background:#100b07; color:#fff0d2; }
 .selector-jugo-pedido .boton-agregar { grid-column:1/-1; justify-self:center; width:100%; }
 .formulario-pedido[hidden] { display:none; }
+
+
+/* Navegación lateral compacta y accesos flotantes */
+.boton-menu-lateral {
+    position: fixed; top: 16px; left: 15px; z-index: 1200;
+    display: flex; flex-direction: column; justify-content: center; gap: 5px;
+    width: 46px; height: 46px; padding: 11px;
+    border: 1px solid rgba(229,169,59,.75); border-radius: 10px;
+    background: rgba(20,13,8,.94); box-shadow: 0 4px 15px rgba(0,0,0,.35);
+    cursor: pointer; backdrop-filter: blur(8px);
+}
+.boton-menu-lateral span { display:block; width:100%; height:2px; border-radius:2px; background:#f0b64e; }
+.fondo-menu-lateral {
+    position:fixed; inset:0; z-index:1190; display:flex;
+    background:rgba(0,0,0,.68); backdrop-filter:blur(3px);
+}
+.fondo-menu-lateral[hidden] { display:none !important; }
+.panel-menu-lateral {
+    display:flex; flex-direction:column; gap:2px;
+    width:min(82vw,330px); height:100%; padding:0 17px 25px;
+    overflow-y:auto; background:linear-gradient(160deg,#21150c,#0e0906 72%);
+    border-right:1px solid rgba(229,169,59,.55);
+    box-shadow:12px 0 35px rgba(0,0,0,.45);
+}
+.cabecera-menu-lateral {
+    display:flex; align-items:center; justify-content:space-between;
+    min-height:75px; margin-bottom:10px; border-bottom:1px solid #59351d;
+    color:#f0b64e; font-size:14px; font-weight:900; letter-spacing:2px;
+}
+.cabecera-menu-lateral button {
+    width:36px; height:36px; border:1px solid #76502c; border-radius:50%;
+    background:#2b1a0c; color:#ffd17a; font-size:25px; cursor:pointer;
+}
+.panel-menu-lateral > a {
+    display:flex; align-items:center; min-height:48px; padding:10px 12px;
+    border-bottom:1px solid rgba(118,80,44,.25); border-radius:7px;
+    color:#fff0d2; font-size:15px; font-weight:700;
+    transition:background .15s ease,color .15s ease;
+}
+.panel-menu-lateral > a::before {
+    content:""; width:6px; height:6px; margin-right:12px;
+    border-radius:50%; background:#e5a93b;
+}
+.panel-menu-lateral > a:active,
+.panel-menu-lateral > a:focus-visible {
+    outline:none; background:#3a2614; color:#ffd17a;
+}
+.whatsapp-flotante-ah {
+    position:fixed; right:17px; bottom:max(18px,env(safe-area-inset-bottom));
+    z-index:1100; display:grid; place-items:center;
+    width:58px; height:58px; border:2px solid rgba(255,255,255,.85);
+    border-radius:50%; background:#25d366; color:white;
+    box-shadow:0 5px 18px rgba(0,0,0,.42); transition:transform .18s ease;
+}
+.whatsapp-flotante-ah svg { width:31px; height:31px; }
+.whatsapp-flotante-ah:active { transform:scale(.93); }
+@media (min-width:800px) {
+    .boton-menu-lateral { top:22px; left:22px; }
+    .whatsapp-flotante-ah { right:25px; bottom:25px; }
+}
+@media (prefers-reduced-motion:reduce) {
+    .panel-menu-lateral > a,.whatsapp-flotante-ah { transition:none; }
+}
