@@ -321,8 +321,10 @@
 
     <!-- CARRITO DE PEDIDOS -->
     <button class="carrito-flotante" id="abrir-carrito" type="button" aria-label="Abrir carrito de pedidos" hidden>
-        <span class="carrito-icono" aria-hidden="true">🛒</span>
-        <span>Mi pedido</span>
+        <svg class="carrito-icono" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+            <path d="M3 4h2l2.1 10.1a2 2 0 0 0 2 1.6h8.8a2 2 0 0 0 1.9-1.4L22 8H6" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+            <circle cx="10" cy="20" r="1.4" fill="currentColor"/><circle cx="18" cy="20" r="1.4" fill="currentColor"/>
+        </svg>
         <span class="carrito-contador" id="carrito-contador">0</span>
     </button>
 
