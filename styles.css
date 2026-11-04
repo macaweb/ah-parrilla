@@ -2321,3 +2321,17 @@ a:focus-visible {
 @media (max-width: 799px) {
     .portada { padding-top: 70px; }
 }
+
+
+/* Separar el botón de navegación de la imagen de portada para que no tape el nombre AH Parrilla */
+.portada {
+    padding-top: 0 !important;
+}
+.imagen-portada {
+    margin-top: 82px !important;
+}
+@media (max-width: 799px) {
+    .imagen-portada {
+        margin-top: 74px !important;
+    }
+}
