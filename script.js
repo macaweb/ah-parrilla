@@ -54,6 +54,22 @@ document.addEventListener('DOMContentLoaded', () => {
     const formulario = document.getElementById('formulario-pedido');
     const formatoPrecio = valor => '$' + valor.toLocaleString('es-CO');
 
+    // Publica en la categoría Sopas las opciones concretas del día para compra individual.
+    const listaSopasCategoria = document.querySelector('#sopas .lista-platos');
+    const opcionesDiariasSopaCrema = [...document.querySelectorAll('.especial-dia .opcion-del-dia:not(.opcion-jugos-del-dia) .lista-opciones-dia li')];
+    if (listaSopasCategoria) {
+        opcionesDiariasSopaCrema.forEach(opcion => {
+            const nombre = opcion.textContent.trim();
+            if (!nombre) return;
+            const articulo = document.createElement('article');
+            articulo.className = 'plato-listado';
+            const titulo = document.createElement('h3');
+            titulo.textContent = nombre;
+            articulo.appendChild(titulo);
+            listaSopasCategoria.appendChild(articulo);
+        });
+    }
+
     // Añade botones solo donde el menú ya publica un precio.
     document.querySelectorAll('.categoria-menu .lista-platos .plato-listado').forEach(plato => {
         const titulo = plato.querySelector('h3')?.textContent.trim();
@@ -143,7 +159,7 @@ document.addEventListener('DOMContentLoaded', () => {
             if (!jugoEspecial.value) { jugoEspecial.focus(); return; }
             const plato = bloqueEspecial.querySelector('.nombre-especial')?.textContent.trim() || 'Plato del día';
             const nombreMenu = 'Menú especial: ' + plato + ' + ' + acompanamiento.value + ' + ' + jugoEspecial.value;
-            agregar(nombreMenu, 20000);
+            agregar(nombreMenu, 19000);
         });
     }
 
