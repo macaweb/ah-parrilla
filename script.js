@@ -127,6 +127,7 @@ document.addEventListener('DOMContentLoaded', () => {
         const cantidad = productos.reduce((s, p) => s + p.cantidad, 0);
         const total = productos.reduce((s, p) => s + p.precio * p.cantidad, 0);
         contadorEl.textContent = cantidad;
+        botonCarrito.setAttribute('aria-label', 'Abrir carrito de pedidos. ' + cantidad + (cantidad === 1 ? ' producto' : ' productos'));
         totalEl.textContent = formatoPrecio(total);
         vacioEl.hidden = productos.length > 0;
         itemsEl.replaceChildren();
