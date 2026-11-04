@@ -2231,3 +2231,45 @@ a:focus-visible {
 @media (min-width:600px) {
     .carrito-flotante { left:24px !important; right:auto !important; bottom:24px !important; }
 }
+
+
+/* Ajuste final: carrito compacto, solo icono y contador */
+.carrito-flotante {
+    width: 56px !important;
+    height: 56px !important;
+    min-height: 56px !important;
+    padding: 0 !important;
+    display: grid !important;
+    place-items: center !important;
+    border: 1px solid rgba(255,209,122,.9) !important;
+    border-radius: 50% !important;
+    background: linear-gradient(145deg,#2a1b0d,#100b07) !important;
+    color: #ffd17a !important;
+    box-shadow: 0 5px 18px rgba(0,0,0,.48), inset 0 1px rgba(255,255,255,.08) !important;
+}
+.carrito-icono {
+    display: block;
+    width: 27px;
+    height: 27px;
+}
+.carrito-contador {
+    position: absolute;
+    top: -5px;
+    right: -5px;
+    min-width: 22px;
+    height: 22px;
+    padding: 0 5px;
+    border: 2px solid #100b07;
+    background: #e5a93b;
+    color: #1b1008;
+    font-size: 11px;
+    font-weight: 900;
+}
+.carrito-flotante:active { transform: scale(.94); }
+@media (max-width:380px) {
+    .carrito-flotante {
+        width: 52px !important;
+        height: 52px !important;
+        min-height: 52px !important;
+    }
+}
