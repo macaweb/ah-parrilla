@@ -2335,3 +2335,13 @@ a:focus-visible {
         margin-top: 74px !important;
     }
 }
+
+
+/* Precio del plato especial debajo de su nombre */
+.card-especial .precio-nombre-especial {
+    margin: 8px 0 0;
+    color: #ffd17a;
+    font-size: clamp(20px, 4.5vw, 25px);
+    font-weight: 900;
+    text-align: center;
+}
