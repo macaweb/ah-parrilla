@@ -61,6 +61,7 @@ document.addEventListener('DOMContentLoaded', () => {
         if (!titulo || !seccion) return;
         let precio = Number((plato.querySelector('strong')?.textContent || '').replace(/[^0-9]/g, ''));
         if (!precio && seccion.id === 'almuerzos') precio = 20000;
+        if (seccion.id === 'sopas' && /^(sopa del día|crema del día)$/i.test(titulo)) return;
         if (!precio && seccion.id === 'sopas') precio = 8000;
         if (!precio) return;
         const boton = document.createElement('button');
@@ -114,6 +115,36 @@ document.addEventListener('DOMContentLoaded', () => {
         });
         opciones.append(labelSabor, saborSelect, labelTipo, tipoSelect, botonJugo);
         jugos.appendChild(opciones);
+    }
+
+    // El especial incluye una sopa o crema y un jugo, sin cobros adicionales.
+    const bloqueEspecial = document.querySelector('.especial-dia');
+    if (bloqueEspecial) {
+        const acompanamiento = document.getElementById('acompanamiento-especial');
+        const jugoEspecial = document.getElementById('jugo-especial');
+        const opcionesAcompanamiento = [
+            ...bloqueEspecial.querySelectorAll('.opcion-del-dia:not(.opcion-jugos-del-dia) .lista-opciones-dia li')
+        ];
+        const opcionesJugo = [...bloqueEspecial.querySelectorAll('.opcion-jugos-del-dia .lista-opciones-dia li')];
+        opcionesAcompanamiento.forEach(item => {
+            const opcion = document.createElement('option');
+            opcion.value = item.textContent.trim();
+            opcion.textContent = item.textContent.trim();
+            acompanamiento.appendChild(opcion);
+        });
+        opcionesJugo.forEach(item => {
+            const opcion = document.createElement('option');
+            opcion.value = item.textContent.trim();
+            opcion.textContent = item.textContent.trim();
+            jugoEspecial.appendChild(opcion);
+        });
+        document.getElementById('agregar-menu-especial').addEventListener('click', () => {
+            if (!acompanamiento.value) { acompanamiento.focus(); return; }
+            if (!jugoEspecial.value) { jugoEspecial.focus(); return; }
+            const plato = bloqueEspecial.querySelector('.nombre-especial')?.textContent.trim() || 'Plato del día';
+            const nombreMenu = 'Menú especial: ' + plato + ' + ' + acompanamiento.value + ' + ' + jugoEspecial.value;
+            agregar(nombreMenu, 20000);
+        });
     }
 
     function agregar(nombre, precio) {
