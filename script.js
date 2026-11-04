@@ -48,17 +48,41 @@ document.addEventListener('DOMContentLoaded', () => {
     if (jugos) {
         const opciones = document.createElement('div');
         opciones.className = 'selector-jugo-pedido';
-        opciones.innerHTML = '<label for="sabor-jugo">Sabor</label><select id="sabor-jugo">' +
-            sabores.map(s => '<option></option>').join('') + '</select><label for="tipo-jugo">Preparación</label><select id="tipo-jugo"><option value="6000">En agua · $6.000</option><option value="9000">En leche · $9.000</option></select><button type="button" class="boton-agregar">Agregar jugo +</button>';
-        const saborSelect = opciones.querySelector('#sabor-jugo');
-        sabores.forEach(s => { const option = document.createElement('option'); option.value = s; option.textContent = s; saborSelect.appendChild(option); });
-        opciones.querySelector('select option').remove();
-        opciones.querySelector('button').addEventListener('click', () => {
-            const sabor = saborSelect.value;
-            if (!sabor) { saborSelect.focus(); return; }
-            const tipo = opciones.querySelector('#tipo-jugo');
-            agregar('Jugo de ' + sabor + ' (' + tipo.options[tipo.selectedIndex].text.split(' · ')[0] + ')', Number(tipo.value));
+        const labelSabor = document.createElement('label');
+        labelSabor.htmlFor = 'sabor-jugo';
+        labelSabor.textContent = 'Sabor';
+        const saborSelect = document.createElement('select');
+        saborSelect.id = 'sabor-jugo';
+        const placeholder = document.createElement('option');
+        placeholder.value = '';
+        placeholder.textContent = 'Elige un sabor';
+        saborSelect.appendChild(placeholder);
+        sabores.forEach(s => {
+            const option = document.createElement('option');
+            option.value = s;
+            option.textContent = s;
+            saborSelect.appendChild(option);
         });
+        const labelTipo = document.createElement('label');
+        labelTipo.htmlFor = 'tipo-jugo';
+        labelTipo.textContent = 'Preparación';
+        const tipoSelect = document.createElement('select');
+        tipoSelect.id = 'tipo-jugo';
+        [['6000','En agua · $6.000'],['9000','En leche · $9.000']].forEach(([value,texto]) => {
+            const option = document.createElement('option');
+            option.value = value;
+            option.textContent = texto;
+            tipoSelect.appendChild(option);
+        });
+        const botonJugo = document.createElement('button');
+        botonJugo.type = 'button';
+        botonJugo.className = 'boton-agregar';
+        botonJugo.textContent = 'Agregar jugo +';
+        botonJugo.addEventListener('click', () => {
+            if (!saborSelect.value) { saborSelect.focus(); return; }
+            agregar('Jugo de ' + saborSelect.value + ' (' + (tipoSelect.value === '6000' ? 'en agua' : 'en leche') + ')', Number(tipoSelect.value));
+        });
+        opciones.append(labelSabor, saborSelect, labelTipo, tipoSelect, botonJugo);
         jugos.appendChild(opciones);
     }
 
