@@ -6,7 +6,7 @@
     <meta name="theme-color" content="#0B0806">
     <meta name="description" content="Conoce la carta de AH Parrilla: desayunos, almuerzos, platos a la parrilla, sopas, jugos y bebidas.">
     <title>AH Parrilla | Nuestra carta</title>
-    <link rel="stylesheet" href="styles.css?v=contactos-4">
+    <link rel="stylesheet" href="styles.css?v=pedidos-1">
 </head>
 
 <body>
@@ -287,6 +287,37 @@
             </section>
 
             
+
+    <!-- CARRITO DE PEDIDOS -->
+    <button class="carrito-flotante" id="abrir-carrito" type="button" aria-label="Abrir carrito de pedidos" hidden>
+        <span class="carrito-icono" aria-hidden="true">🛒</span>
+        <span>Mi pedido</span>
+        <span class="carrito-contador" id="carrito-contador">0</span>
+    </button>
+
+    <div class="carrito-fondo" id="carrito-fondo" hidden>
+        <section class="panel-carrito" role="dialog" aria-modal="true" aria-labelledby="titulo-carrito">
+            <header class="encabezado-carrito">
+                <div><span class="sobrelinea-carrito">AH PARRILLA</span><h2 id="titulo-carrito">Tu pedido</h2></div>
+                <button class="cerrar-carrito" id="cerrar-carrito" type="button" aria-label="Cerrar carrito">×</button>
+            </header>
+            <div class="contenido-carrito">
+                <div id="carrito-vacio" class="carrito-vacio">Aún no has agregado productos.<br>Explora nuestra carta y elige tus favoritos.</div>
+                <div id="carrito-items" class="carrito-items"></div>
+                <div class="total-carrito"><span>Total del pedido</span><strong id="carrito-total">$0</strong></div>
+                <form id="formulario-pedido" class="formulario-pedido">
+                    <h3>Datos para la entrega</h3>
+                    <label>Nombre<input name="nombre" autocomplete="name" required placeholder="Tu nombre"></label>
+                    <label>Teléfono<input name="telefono" type="tel" autocomplete="tel" required placeholder="Tu número de contacto"></label>
+                    <label>Dirección de entrega<input name="direccion" autocomplete="street-address" required placeholder="Dirección completa"></label>
+                    <label>Indicaciones adicionales <span>(opcional)</span><textarea name="observaciones" rows="2" placeholder="Apartamento, indicaciones o comentarios"></textarea></label>
+                    <button class="enviar-pedido" type="submit">Enviar pedido por WhatsApp <span aria-hidden="true">›</span></button>
+                    <p class="nota-pedido">Revisarás el pedido en WhatsApp antes de enviarlo.</p>
+                </form>
+            </div>
+        </section>
+    </div>
+
     <!-- PIE DE PÁGINA -->
     
 <footer class="pie-pagina">
