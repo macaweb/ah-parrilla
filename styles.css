@@ -2008,3 +2008,149 @@ a:focus-visible {
 .card-especial .nombre-especial {
     font-size: clamp(23px, 5.5vw, 30px);
 }
+
+
+/* ==========================================
+   PEDIDOS Y CARRITO — AH PARRILLA
+   ========================================== */
+.boton-agregar {
+    display: inline-flex;
+    flex: 0 0 auto;
+    align-items: center;
+    justify-content: center;
+    gap: 5px;
+    min-height: 36px;
+    padding: 7px 12px;
+    border: 1px solid #e5a93b;
+    border-radius: 7px;
+    background: linear-gradient(135deg, #e5a93b, #c96b12);
+    color: #1b1008;
+    font-size: 12px;
+    font-weight: 900;
+    cursor: pointer;
+    transition: transform .16s ease, filter .16s ease;
+}
+.boton-agregar:active { transform: scale(.96); filter: brightness(.92); }
+.plato-listado { flex-wrap: wrap; }
+.plato-listado .boton-agregar { margin-left: auto; }
+.carrito-flotante {
+    position: fixed;
+    right: 16px;
+    bottom: max(18px, env(safe-area-inset-bottom));
+    z-index: 500;
+    display: inline-flex;
+    align-items: center;
+    gap: 9px;
+    min-height: 52px;
+    padding: 0 17px;
+    border: 1px solid #ffd17a;
+    border-radius: 999px;
+    background: linear-gradient(135deg, #f0b64e, #d35400);
+    color: #1b1008;
+    font-size: 14px;
+    font-weight: 900;
+    box-shadow: 0 8px 25px rgba(0,0,0,.48), inset 0 1px rgba(255,255,255,.25);
+    cursor: pointer;
+}
+.carrito-flotante[hidden], .carrito-fondo[hidden] { display: none !important; }
+.carrito-icono { font-size: 18px; }
+.carrito-contador {
+    display: inline-grid;
+    place-items: center;
+    min-width: 23px;
+    height: 23px;
+    padding: 0 5px;
+    border-radius: 50%;
+    background: #211307;
+    color: #ffd17a;
+    font-size: 12px;
+}
+.carrito-fondo {
+    position: fixed;
+    inset: 0;
+    z-index: 1000;
+    display: flex;
+    justify-content: flex-end;
+    background: rgba(0,0,0,.72);
+    backdrop-filter: blur(3px);
+}
+.panel-carrito {
+    display: flex;
+    flex-direction: column;
+    width: min(100%, 460px);
+    height: 100%;
+    max-height: 100dvh;
+    border-left: 1px solid rgba(229,169,59,.45);
+    background: #100b07;
+    color: #fff8ed;
+    box-shadow: -12px 0 35px rgba(0,0,0,.4);
+}
+.encabezado-carrito {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 20px 20px 15px;
+    border-bottom: 1px solid #59351d;
+    background: linear-gradient(120deg,#2a1b0d,#120c07);
+}
+.sobrelinea-carrito { color: #e5a93b; font-size: 10px; font-weight: 900; letter-spacing: 2px; }
+.encabezado-carrito h2 { margin: 3px 0 0; color: #fff0d2; font-size: 23px; }
+.cerrar-carrito {
+    width: 39px; height: 39px; border: 1px solid #76502c; border-radius: 50%;
+    background: #21150c; color: #ffd17a; font-size: 27px; line-height: 1; cursor: pointer;
+}
+.contenido-carrito { flex: 1; overflow-y: auto; padding: 17px 18px 28px; }
+.carrito-vacio { padding: 24px 12px; border: 1px dashed #76502c; border-radius: 10px; color: #d9c6ab; text-align: center; line-height: 1.7; }
+.carrito-items { display: grid; gap: 10px; }
+.item-carrito {
+    display: grid; grid-template-columns: minmax(0,1fr) auto; gap: 8px;
+    padding: 12px; border: 1px solid #49301f; border-radius: 9px;
+    background: linear-gradient(135deg,#21150c,#15100b);
+}
+.item-carrito h4 { margin: 0 0 4px; color: #fff0d2; font-size: 14px; }
+.item-carrito small { color: #d9c6ab; }
+.item-carrito strong { color: #ffd17a; white-space: nowrap; }
+.controles-cantidad { display: flex; align-items: center; gap: 9px; margin-top: 9px; }
+.controles-cantidad button {
+    width: 29px; height: 29px; border: 1px solid #b97927; border-radius: 6px;
+    background: #2b1a0c; color: #ffd17a; font-size: 18px; font-weight: 800; cursor: pointer;
+}
+.quitar-item { margin-left: 5px; border: 0 !important; background: transparent !important; color: #ff9b83 !important; font-size: 12px !important; text-decoration: underline; }
+.total-carrito {
+    display: flex; justify-content: space-between; gap: 12px; margin: 16px 0 22px;
+    padding: 15px 2px; border-top: 1px solid #76502c; border-bottom: 1px solid #76502c;
+    color: #fff0d2; font-weight: 800;
+}
+.total-carrito strong { color: #ffd17a; font-size: 21px; }
+.formulario-pedido { display: grid; gap: 12px; }
+.formulario-pedido h3 { margin: 0 0 2px; color: #ffd17a; font-size: 17px; }
+.formulario-pedido label { display: grid; gap: 5px; color: #f6e5cc; font-size: 12px; font-weight: 700; }
+.formulario-pedido label span { display: inline; color: #bda98f; font-weight: 400; }
+.formulario-pedido input, .formulario-pedido textarea {
+    width: 100%; min-height: 43px; padding: 10px 11px; border: 1px solid #654326;
+    border-radius: 7px; outline: none; background: #1a120c; color: #fff8ed;
+    font: inherit; font-size: 14px;
+}
+.formulario-pedido textarea { resize: vertical; }
+.formulario-pedido input:focus, .formulario-pedido textarea:focus { border-color: #e5a93b; box-shadow: 0 0 0 2px rgba(229,169,59,.12); }
+.enviar-pedido {
+    display: flex; align-items: center; justify-content: center; gap: 10px;
+    min-height: 49px; margin-top: 5px; padding: 11px 15px; border: 1px solid #75d69a;
+    border-radius: 8px; background: linear-gradient(135deg,#2ebc68,#168447);
+    color: white; font-size: 14px; font-weight: 900; cursor: pointer;
+}
+.enviar-pedido:active { transform: scale(.985); }
+.nota-pedido { margin: 0; color: #bda98f; font-size: 11px; text-align: center; }
+@media (min-width: 600px) {
+    .carrito-flotante { right: max(24px, calc((100vw - 760px)/2)); bottom: 24px; }
+}
+@media (max-width: 380px) {
+    .carrito-flotante { right: 11px; bottom: 12px; min-height: 48px; padding: 0 13px; }
+    .panel-carrito { width: 100%; }
+}
+
+.selector-jugo-pedido { display:grid; grid-template-columns:1fr 1fr; gap:8px; margin-top:12px; padding:12px; border:1px solid #654326; border-radius:9px; background:#1b120b; }
+.selector-jugo-pedido label { align-self:end; color:#ffd17a; font-size:12px; font-weight:800; }
+.selector-jugo-pedido select { min-width:0; width:100%; min-height:39px; padding:7px; border:1px solid #76502c; border-radius:6px; background:#100b07; color:#fff0d2; }
+.selector-jugo-pedido .boton-agregar { grid-column:1/-1; justify-self:center; width:100%; }
+.formulario-pedido[hidden] { display:none; }
