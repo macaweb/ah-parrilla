@@ -2273,3 +2273,51 @@ a:focus-visible {
         min-height: 52px !important;
     }
 }
+
+
+/* Menú especial: elecciones incluidas en el precio único */
+.pedido-especial {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 9px;
+    max-width: 560px;
+    margin: 18px auto 4px;
+    padding: 17px;
+    border: 1px solid rgba(229,169,59,.65);
+    border-radius: 12px;
+    background: linear-gradient(145deg,#24170d,#120c08);
+    box-shadow: 0 7px 20px rgba(0,0,0,.22);
+}
+.texto-pedido-especial {
+    margin: 0 0 3px;
+    color: #fff0d2;
+    font-size: 14px;
+    text-align: center;
+}
+.pedido-especial label {
+    color: #ffd17a;
+    font-size: 12px;
+    font-weight: 800;
+}
+.pedido-especial select {
+    width: 100%;
+    min-height: 43px;
+    padding: 9px 11px;
+    border: 1px solid #76502c;
+    border-radius: 7px;
+    background: #100b07;
+    color: #fff0d2;
+    font: inherit;
+}
+.boton-menu-especial {
+    width: 100%;
+    min-height: 45px;
+    margin-top: 5px;
+    font-size: 13px;
+}
+@media (min-width: 800px) {
+    .portada { padding-top: 78px; }
+}
+@media (max-width: 799px) {
+    .portada { padding-top: 70px; }
+}
