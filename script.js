@@ -13,6 +13,36 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     });
 
+    // Menú lateral: abre, cierra y navega a cada sección.
+    const botonMenu = document.getElementById('abrir-menu-lateral');
+    const fondoMenu = document.getElementById('fondo-menu-lateral');
+    const cerrarMenu = document.getElementById('cerrar-menu-lateral');
+    function abrirMenu() {
+        fondoMenu.hidden = false;
+        botonMenu.setAttribute('aria-expanded', 'true');
+        document.body.style.overflow = 'hidden';
+        cerrarMenu.focus();
+    }
+    function cerrarMenuLateral() {
+        fondoMenu.hidden = true;
+        botonMenu.setAttribute('aria-expanded', 'false');
+        document.body.style.overflow = '';
+        botonMenu.focus();
+    }
+    botonMenu.addEventListener('click', abrirMenu);
+    cerrarMenu.addEventListener('click', cerrarMenuLateral);
+    fondoMenu.addEventListener('click', e => {
+        if (e.target === fondoMenu) cerrarMenuLateral();
+    });
+    fondoMenu.querySelectorAll('a').forEach(enlace => enlace.addEventListener('click', () => {
+        fondoMenu.hidden = true;
+        botonMenu.setAttribute('aria-expanded', 'false');
+        document.body.style.overflow = '';
+    }));
+    document.addEventListener('keydown', e => {
+        if (e.key === 'Escape' && !fondoMenu.hidden) cerrarMenuLateral();
+    });
+
     const numeroWhatsApp = '573018259210';
     const carrito = new Map();
     const botonCarrito = document.getElementById('abrir-carrito');
@@ -25,7 +55,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const formatoPrecio = valor => '$' + valor.toLocaleString('es-CO');
 
     // Añade botones solo donde el menú ya publica un precio.
-    document.querySelectorAll('.categoria-menu .plato-listado').forEach(plato => {
+    document.querySelectorAll('.categoria-menu .lista-platos .plato-listado').forEach(plato => {
         const titulo = plato.querySelector('h3')?.textContent.trim();
         const seccion = plato.closest('.categoria-menu');
         if (!titulo || !seccion) return;
