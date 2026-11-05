@@ -288,6 +288,7 @@ document.addEventListener('DOMContentLoaded', () => {
             'Nombre: ' + datos.get('nombre'),
             'Teléfono: ' + datos.get('telefono'),
             'Dirección: ' + datos.get('direccion'),
+            'Método de pago: ' + datos.get('metodo_pago'),
             'Indicaciones: ' + (datos.get('observaciones') || 'Ninguna')
         ];
         window.open('https://wa.me/' + numeroWhatsApp + '?text=' + encodeURIComponent(lineas.join('\n')), '_blank', 'noopener');
