@@ -2680,7 +2680,8 @@ a:focus-visible {
 }
 .lista-sabores .boton-sabor-jugo.seleccionado,
 .opciones-preparacion-jugo .opcion-preparacion-jugo.seleccionada {
-    border-color: #e5a93b;
-    background: linear-gradient(135deg, #e5a93b, #c96b12);
-    color: #1b1008;
+    border-color: var(--dorado);
+    background: linear-gradient(135deg, #D35400, #B94A00);
+    color: #fff;
+    box-shadow: 0 0 0 2px rgba(229, 169, 59, .2), 0 5px 14px rgba(0, 0, 0, .28);
 }
