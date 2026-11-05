@@ -2345,3 +2345,12 @@ a:focus-visible {
     font-weight: 900;
     text-align: center;
 }
+
+
+/* Evitar que el botón de menú se cruce con el nombre de AH Parrilla en móvil */
+@media (max-width: 799px) {
+    .boton-menu-lateral {
+        left: 72px;
+        right: auto;
+    }
+}
