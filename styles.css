@@ -2601,3 +2601,22 @@ a:focus-visible {
     width: 100%;
     margin: 5px 0 0;
 }
+
+
+/* Resaltar el almuerzo elegido con el mismo naranja de la navegación */
+#almuerzos .plato-listado.almuerzo-elegido {
+    border: 1px solid var(--dorado);
+    border-left: 4px solid var(--dorado);
+    background: linear-gradient(135deg, #D35400, #B94A00);
+    color: var(--blanco);
+    box-shadow: 0 0 0 2px rgba(229, 169, 59, .2), 0 5px 14px rgba(0, 0, 0, .28);
+}
+
+#almuerzos .plato-listado.almuerzo-elegido h3 {
+    color: var(--blanco);
+}
+
+#almuerzos .plato-listado.almuerzo-seleccionable:focus-visible {
+    outline: 2px solid var(--dorado);
+    outline-offset: 3px;
+}
