@@ -2488,15 +2488,16 @@ a:focus-visible {
 /* Selector de método de pago en los datos de entrega */
 .formulario-pedido select[name="metodo_pago"] {
     width: 100%;
-    min-height: 43px;
-    padding: 10px 11px;
-    border: 1px solid #654326;
-    border-radius: 7px;
+    min-height: 52px;
+    padding: 13px 12px;
+    border: 1px solid #8a6034;
+    border-radius: 8px;
     outline: none;
     background: #1a120c;
-    color: #fff8ed;
+    color: #fff0d2;
     font: inherit;
-    font-size: 14px;
+    font-size: 15px;
+    font-weight: 600;
     color-scheme: dark;
 }
 .formulario-pedido select[name="metodo_pago"]:focus {
