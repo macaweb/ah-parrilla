@@ -2479,3 +2479,8 @@ a:focus-visible {
     .lista-sabores .boton-sabor-jugo,
     .opciones-preparacion-jugo .opcion-preparacion-jugo { transition: none; }
 }
+
+/* Carrito: dejar libre el espacio ocupado por el botón de tres rayitas */
+.encabezado-carrito {
+    padding-left: 76px;
+}
