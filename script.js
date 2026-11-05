@@ -37,7 +37,23 @@ document.addEventListener('DOMContentLoaded', () => {
     fondoMenu.addEventListener('click', e => {
         if (e.target === fondoMenu) cerrarMenuLateral();
     });
-    fondoMenu.querySelectorAll('a').forEach(enlace => enlace.addEventListener('click', () => {
+    const enlacesMenuLateral = [...fondoMenu.querySelectorAll('.panel-menu-lateral > a')];
+    const marcarEnlaceMenu = enlaceElegido => {
+        enlacesMenuLateral.forEach(enlace => {
+            const activo = enlace === enlaceElegido;
+            enlace.classList.toggle('seleccionada', activo);
+            if (activo) enlace.setAttribute('aria-current', 'location');
+            else enlace.removeAttribute('aria-current');
+        });
+    };
+    enlacesMenuLateral.forEach(enlace => enlace.addEventListener('click', () => {
+        marcarEnlaceMenu(enlace);
+        const enlaceCategoria = [...enlaces].find(item => item.getAttribute('href') === enlace.getAttribute('href'));
+        if (enlaceCategoria) {
+            enlaces.forEach(item => { item.classList.remove('seleccionada'); item.removeAttribute('aria-current'); });
+            enlaceCategoria.classList.add('seleccionada');
+            enlaceCategoria.setAttribute('aria-current', 'location');
+        }
         fondoMenu.hidden = true;
         botonWhatsappFlotante.hidden = false;
         botonMenu.setAttribute('aria-expanded', 'false');
@@ -149,7 +165,6 @@ document.addEventListener('DOMContentLoaded', () => {
                     item.setAttribute('aria-pressed', String(activo));
                 });
                 almuerzoElegido = { titulo, precio };
-                avisoAlmuerzo.textContent = 'Plato seleccionado: ' + titulo;
             };
             plato.addEventListener('click', seleccionarPlato);
             plato.addEventListener('keydown', evento => {
@@ -171,10 +186,6 @@ document.addEventListener('DOMContentLoaded', () => {
     let almuerzoElegido = null;
     const seccionAlmuerzos = document.getElementById('almuerzos');
     const listaAlmuerzos = seccionAlmuerzos?.querySelector('.lista-platos');
-    const avisoAlmuerzo = document.createElement('p');
-    avisoAlmuerzo.className = 'aviso-almuerzo-elegido';
-    avisoAlmuerzo.setAttribute('aria-live', 'polite');
-    avisoAlmuerzo.textContent = 'Primero selecciona uno de los almuerzos de arriba.';
     if (seccionAlmuerzos && listaAlmuerzos) {
         const selectorAlmuerzos = document.createElement('div');
         selectorAlmuerzos.className = 'selector-almuerzos';
@@ -231,7 +242,6 @@ document.addEventListener('DOMContentLoaded', () => {
         botonAgregarAlmuerzo.textContent = 'Agregar +';
         botonAgregarAlmuerzo.addEventListener('click', () => {
             if (!almuerzoElegido) {
-                avisoAlmuerzo.textContent = 'Primero selecciona uno de los almuerzos de arriba.';
                 listaAlmuerzos.querySelector('.almuerzo-seleccionable')?.focus();
                 return;
             }
@@ -247,7 +257,7 @@ document.addEventListener('DOMContentLoaded', () => {
             agregar(nombrePedido, almuerzoElegido.precio, 2000, 'almuerzos');
             confirmarAgregado(botonAgregarAlmuerzo);
         });
-        selectorAlmuerzos.append(tituloSelector, textoSelector, avisoAlmuerzo, grupoSopas, selectSopas, grupoJugos, selectJugos, botonAgregarAlmuerzo);
+        selectorAlmuerzos.append(tituloSelector, textoSelector, grupoSopas, selectSopas, grupoJugos, selectJugos, botonAgregarAlmuerzo);
         // Un solo bloque de opciones, inmediatamente después de la lista de platos.
         listaAlmuerzos.insertAdjacentElement('afterend', selectorAlmuerzos);
         // Limpia cualquier control antiguo que pudiera haber quedado dentro de las tarjetas.
