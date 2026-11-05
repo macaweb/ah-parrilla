@@ -2685,3 +2685,59 @@ a:focus-visible {
     color: #fff;
     box-shadow: 0 0 0 2px rgba(229, 169, 59, .2), 0 5px 14px rgba(0, 0, 0, .28);
 }
+
+
+/* Botones compactos de agregar en productos individuales (sin afectar menú especial ni almuerzos) */
+.categoria-menu:not(#almuerzos) .lista-platos .plato-listado {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) minmax(76px, 92px) 42px;
+    align-items: center;
+    column-gap: 10px;
+}
+.categoria-menu:not(#almuerzos) .lista-platos .plato-listado > div,
+.categoria-menu:not(#almuerzos) .lista-platos .plato-listado > h3 {
+    grid-column: 1;
+    min-width: 0;
+}
+.categoria-menu:not(#almuerzos) .lista-platos .plato-listado > strong {
+    grid-column: 2;
+    justify-self: end;
+    width: 100%;
+    text-align: right;
+    white-space: nowrap;
+}
+.categoria-menu:not(#almuerzos) .lista-platos .plato-listado > .boton-agregar-icono {
+    grid-column: 3;
+    justify-self: end;
+}
+.boton-agregar.boton-agregar-icono {
+    width: 42px;
+    min-width: 42px;
+    height: 42px;
+    min-height: 42px;
+    padding: 0;
+    border: 1px solid #e5a93b;
+    border-radius: 9px;
+    background: linear-gradient(135deg, #e5a93b, #c96b12);
+    color: #1b1008;
+    font-size: 27px;
+    font-weight: 800;
+    line-height: 1;
+    box-shadow: 0 3px 9px rgba(211,84,0,.2);
+}
+.boton-agregar.boton-agregar-icono.confirmacion-agregado {
+    font-size: 22px;
+}
+@media (max-width: 380px) {
+    .categoria-menu:not(#almuerzos) .lista-platos .plato-listado {
+        grid-template-columns: minmax(0, 1fr) 76px 40px;
+        column-gap: 7px;
+        padding: 10px;
+    }
+    .boton-agregar.boton-agregar-icono {
+        width: 40px;
+        min-width: 40px;
+        height: 40px;
+        min-height: 40px;
+    }
+}
