@@ -1,4 +1,4 @@
-const CACHE_NAME = 'ah-parrilla-offline-v3';
+const CACHE_NAME = 'ah-parrilla-offline-v4';
 const ARCHIVOS_ESENCIALES = ['./','./index.html','./styles.css','./script.js','./portada-ah-parrilla.png','./imagenes/desayunos.png','./imagenes/almuerzos.png','./imagenes/platos_fuertes.png','./imagenes/sopas.jpg','./imagenes/jugos.jpg','./imagenes/bebidas.jpg'];
 self.addEventListener('install', event => {
   event.waitUntil((async () => {
@@ -31,6 +31,16 @@ self.addEventListener('fetch', event => {
     return;
   }
   event.respondWith((async () => {
+    const esCodigo = url.pathname.endsWith('.js') || url.pathname.endsWith('.css');
+    if (esCodigo) {
+      try {
+        const respuesta = await fetch(solicitud, { cache: 'no-cache' });
+        if (respuesta.ok) { const cache = await caches.open(CACHE_NAME); await cache.put(solicitud, respuesta.clone()); }
+        return respuesta;
+      } catch (error) {
+        return (await caches.match(solicitud, { ignoreSearch: true })) || Response.error();
+      }
+    }
     const guardada = await caches.match(solicitud, { ignoreSearch: true });
     if (guardada) return guardada;
     try {
