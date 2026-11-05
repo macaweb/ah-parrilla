@@ -138,74 +138,120 @@ document.addEventListener('DOMContentLoaded', () => {
         const costoRecipiente = seccion.id === 'sopas' ? 1000 : ['desayunos', 'almuerzos', 'platos-fuertes'].includes(seccion.id) ? 2000 : 0;
 
         if (seccion.id === 'almuerzos') {
-            const selector = document.createElement('div');
-            selector.className = 'selector-jugo-pedido';
-            const etiquetaAcompanamiento = document.createElement('label');
-            etiquetaAcompanamiento.textContent = 'Sopa o crema (obligatoria)';
-            const selectAcompanamiento = document.createElement('select');
-            selectAcompanamiento.setAttribute('aria-label', 'Selecciona la sopa o crema para ' + titulo);
-            const placeholderAcompanamiento = document.createElement('option');
-            placeholderAcompanamiento.value = '';
-            placeholderAcompanamiento.textContent = 'Elige una opción';
-            selectAcompanamiento.appendChild(placeholderAcompanamiento);
-
-            const etiquetaJugo = document.createElement('label');
-            etiquetaJugo.textContent = 'Jugo (obligatorio)';
-            const selectJugo = document.createElement('select');
-            selectJugo.setAttribute('aria-label', 'Selecciona el jugo para ' + titulo);
-            const placeholderJugo = document.createElement('option');
-            placeholderJugo.value = '';
-            placeholderJugo.textContent = 'Elige un jugo';
-            selectJugo.appendChild(placeholderJugo);
-
-            const especial = document.querySelector('.especial-dia');
-            especial?.querySelectorAll('.opcion-del-dia:not(.opcion-jugos-del-dia) .lista-opciones-dia li').forEach(item => {
-                const valor = item.textContent.trim();
-                if (!valor) return;
-                const opcion = document.createElement('option');
-                opcion.value = valor;
-                opcion.textContent = valor;
-                selectAcompanamiento.appendChild(opcion);
-            });
-            especial?.querySelectorAll('.opcion-jugos-del-dia .lista-opciones-dia li').forEach(item => {
-                const valor = item.textContent.trim();
-                if (!valor) return;
-                const opcion = document.createElement('option');
-                opcion.value = valor;
-                opcion.textContent = valor;
-                selectJugo.appendChild(opcion);
-            });
-
-            selector.append(etiquetaAcompanamiento, selectAcompanamiento, etiquetaJugo, selectJugo);
-            plato.appendChild(selector);
-
-            boton.addEventListener('click', () => {
-                if (!selectAcompanamiento.value) {
-                    selectAcompanamiento.focus();
-                    selectAcompanamiento.setCustomValidity('Selecciona una sopa o crema para continuar.');
-                    selectAcompanamiento.reportValidity();
-                    selectAcompanamiento.setCustomValidity('');
-                    return;
+            plato.classList.add('almuerzo-seleccionable');
+            plato.tabIndex = 0;
+            plato.setAttribute('role', 'button');
+            plato.setAttribute('aria-pressed', 'false');
+            plato.setAttribute('aria-label', 'Seleccionar almuerzo: ' + titulo);
+            const seleccionarPlato = () => {
+                document.querySelectorAll('#almuerzos .almuerzo-seleccionable').forEach(item => {
+                    const activo = item === plato;
+                    item.classList.toggle('almuerzo-elegido', activo);
+                    item.setAttribute('aria-pressed', String(activo));
+                });
+                almuerzoElegido = { titulo, precio };
+                avisoAlmuerzo.textContent = 'Plato seleccionado: ' + titulo;
+            };
+            plato.addEventListener('click', seleccionarPlato);
+            plato.addEventListener('keydown', evento => {
+                if (evento.key === 'Enter' || evento.key === ' ') {
+                    evento.preventDefault();
+                    seleccionarPlato();
                 }
-                if (!selectJugo.value) {
-                    selectJugo.focus();
-                    selectJugo.setCustomValidity('Selecciona un jugo para continuar.');
-                    selectJugo.reportValidity();
-                    selectJugo.setCustomValidity('');
-                    return;
-                }
-                const nombrePedido = titulo + ' + ' + selectAcompanamiento.value + ' + ' + selectJugo.value;
-                agregar(nombrePedido, precio, 2000, seccion.id);
-                confirmarAgregado(boton);
             });
         } else {
             boton.addEventListener('click', () => {
                 agregar(titulo, precio, costoRecipiente, seccion.id);
                 confirmarAgregado(boton);
             });
+            plato.appendChild(boton);
         }
-        plato.appendChild(boton);
     });
+
+    // Selector único al final de la sección: primero se elige un plato y luego sus acompañantes.
+    let almuerzoElegido = null;
+    const seccionAlmuerzos = document.getElementById('almuerzos');
+    const listaAlmuerzos = seccionAlmuerzos?.querySelector('.lista-platos');
+    const avisoAlmuerzo = document.createElement('p');
+    avisoAlmuerzo.className = 'aviso-almuerzo-elegido';
+    avisoAlmuerzo.setAttribute('aria-live', 'polite');
+    avisoAlmuerzo.textContent = 'Primero selecciona uno de los almuerzos de arriba.';
+    if (seccionAlmuerzos && listaAlmuerzos) {
+        const selectorAlmuerzos = document.createElement('div');
+        selectorAlmuerzos.className = 'selector-almuerzos';
+        const tituloSelector = document.createElement('h3');
+        tituloSelector.textContent = 'Escoge tus acompañantes para el almuerzo';
+        const textoSelector = document.createElement('p');
+        textoSelector.textContent = 'Selecciona una sopa o crema y un jugo. Ambas opciones son obligatorias.';
+        const grupoSopas = document.createElement('label');
+        grupoSopas.textContent = 'Sopas y cremas';
+        const selectSopas = document.createElement('select');
+        selectSopas.setAttribute('aria-label', 'Selecciona una sopa o crema para el almuerzo');
+        const grupoJugos = document.createElement('label');
+        grupoJugos.textContent = 'Jugos';
+        const selectJugos = document.createElement('select');
+        selectJugos.setAttribute('aria-label', 'Selecciona un jugo para el almuerzo');
+
+        const agregarPlaceholder = (select, texto) => {
+            const opcion = document.createElement('option');
+            opcion.value = '';
+            opcion.textContent = texto;
+            select.appendChild(opcion);
+        };
+        agregarPlaceholder(selectSopas, 'Elige una sopa o crema');
+        agregarPlaceholder(selectJugos, 'Elige un jugo');
+
+        const especialDelDia = document.querySelector('.especial-dia');
+        const opcionesSopas = especialDelDia
+            ? [...especialDelDia.querySelectorAll('.opcion-del-dia:not(.opcion-jugos-del-dia) .lista-opciones-dia li')]
+            : [...document.querySelectorAll('#sopas .lista-platos h3')];
+        const opcionesJugos = especialDelDia
+            ? [...especialDelDia.querySelectorAll('.opcion-jugos-del-dia .lista-opciones-dia li')]
+            : [...document.querySelectorAll('.lista-sabores span')];
+
+        opcionesSopas.forEach(item => {
+            const valor = item.textContent.trim();
+            if (!valor) return;
+            const opcion = document.createElement('option');
+            opcion.value = valor;
+            opcion.textContent = valor;
+            selectSopas.appendChild(opcion);
+        });
+        opcionesJugos.forEach(item => {
+            const valor = item.textContent.trim();
+            if (!valor) return;
+            const opcion = document.createElement('option');
+            opcion.value = valor;
+            opcion.textContent = valor;
+            selectJugos.appendChild(opcion);
+        });
+
+        const botonAgregarAlmuerzo = document.createElement('button');
+        botonAgregarAlmuerzo.type = 'button';
+        botonAgregarAlmuerzo.className = 'boton-agregar boton-agregar-almuerzo';
+        botonAgregarAlmuerzo.textContent = 'Agregar almuerzo +';
+        botonAgregarAlmuerzo.addEventListener('click', () => {
+            if (!almuerzoElegido) {
+                avisoAlmuerzo.textContent = 'Primero selecciona uno de los almuerzos de arriba.';
+                listaAlmuerzos.querySelector('.almuerzo-seleccionable')?.focus();
+                return;
+            }
+            if (!selectSopas.value) {
+                selectSopas.focus();
+                return;
+            }
+            if (!selectJugos.value) {
+                selectJugos.focus();
+                return;
+            }
+            const nombrePedido = almuerzoElegido.titulo + ' + ' + selectSopas.value + ' + ' + selectJugos.value;
+            agregar(nombrePedido, almuerzoElegido.precio, 2000, 'almuerzos');
+            confirmarAgregado(botonAgregarAlmuerzo);
+        });
+        selectorAlmuerzos.append(tituloSelector, textoSelector, avisoAlmuerzo, grupoSopas, selectSopas, grupoJugos, selectJugos, botonAgregarAlmuerzo);
+        const notaAcompanantes = seccionAlmuerzos.querySelector('.bloque-acompanantes');
+        seccionAlmuerzos.insertBefore(selectorAlmuerzos, notaAcompanantes || null);
+    }
 
     // Los sabores se seleccionan directamente desde sus etiquetas.
     const sabores = [...document.querySelectorAll('.lista-sabores span')];
