@@ -136,10 +136,74 @@ document.addEventListener('DOMContentLoaded', () => {
         boton.textContent = 'Agregar +';
         boton.setAttribute('aria-label', 'Agregar ' + titulo + ' al pedido');
         const costoRecipiente = seccion.id === 'sopas' ? 1000 : ['desayunos', 'almuerzos', 'platos-fuertes'].includes(seccion.id) ? 2000 : 0;
-        boton.addEventListener('click', () => {
-            agregar(titulo, precio, costoRecipiente, seccion.id);
-            confirmarAgregado(boton);
-        });
+
+        if (seccion.id === 'almuerzos') {
+            const selector = document.createElement('div');
+            selector.className = 'selector-jugo-pedido';
+            const etiquetaAcompanamiento = document.createElement('label');
+            etiquetaAcompanamiento.textContent = 'Sopa o crema (obligatoria)';
+            const selectAcompanamiento = document.createElement('select');
+            selectAcompanamiento.setAttribute('aria-label', 'Selecciona la sopa o crema para ' + titulo);
+            const placeholderAcompanamiento = document.createElement('option');
+            placeholderAcompanamiento.value = '';
+            placeholderAcompanamiento.textContent = 'Elige una opción';
+            selectAcompanamiento.appendChild(placeholderAcompanamiento);
+
+            const etiquetaJugo = document.createElement('label');
+            etiquetaJugo.textContent = 'Jugo (obligatorio)';
+            const selectJugo = document.createElement('select');
+            selectJugo.setAttribute('aria-label', 'Selecciona el jugo para ' + titulo);
+            const placeholderJugo = document.createElement('option');
+            placeholderJugo.value = '';
+            placeholderJugo.textContent = 'Elige un jugo';
+            selectJugo.appendChild(placeholderJugo);
+
+            const especial = document.querySelector('.especial-dia');
+            especial?.querySelectorAll('.opcion-del-dia:not(.opcion-jugos-del-dia) .lista-opciones-dia li').forEach(item => {
+                const valor = item.textContent.trim();
+                if (!valor) return;
+                const opcion = document.createElement('option');
+                opcion.value = valor;
+                opcion.textContent = valor;
+                selectAcompanamiento.appendChild(opcion);
+            });
+            especial?.querySelectorAll('.opcion-jugos-del-dia .lista-opciones-dia li').forEach(item => {
+                const valor = item.textContent.trim();
+                if (!valor) return;
+                const opcion = document.createElement('option');
+                opcion.value = valor;
+                opcion.textContent = valor;
+                selectJugo.appendChild(opcion);
+            });
+
+            selector.append(etiquetaAcompanamiento, selectAcompanamiento, etiquetaJugo, selectJugo);
+            plato.appendChild(selector);
+
+            boton.addEventListener('click', () => {
+                if (!selectAcompanamiento.value) {
+                    selectAcompanamiento.focus();
+                    selectAcompanamiento.setCustomValidity('Selecciona una sopa o crema para continuar.');
+                    selectAcompanamiento.reportValidity();
+                    selectAcompanamiento.setCustomValidity('');
+                    return;
+                }
+                if (!selectJugo.value) {
+                    selectJugo.focus();
+                    selectJugo.setCustomValidity('Selecciona un jugo para continuar.');
+                    selectJugo.reportValidity();
+                    selectJugo.setCustomValidity('');
+                    return;
+                }
+                const nombrePedido = titulo + ' + ' + selectAcompanamiento.value + ' + ' + selectJugo.value;
+                agregar(nombrePedido, precio, 2000, seccion.id);
+                confirmarAgregado(boton);
+            });
+        } else {
+            boton.addEventListener('click', () => {
+                agregar(titulo, precio, costoRecipiente, seccion.id);
+                confirmarAgregado(boton);
+            });
+        }
         plato.appendChild(boton);
     });
 
@@ -245,7 +309,7 @@ document.addEventListener('DOMContentLoaded', () => {
             if (!jugoEspecial.value) { jugoEspecial.focus(); return; }
             const plato = bloqueEspecial.querySelector('.nombre-especial')?.textContent.trim() || 'Plato del día';
             const nombreMenu = 'Menú especial: ' + plato + ' + ' + acompanamiento.value + ' + ' + jugoEspecial.value;
-            agregar(nombreMenu, 19000, 3000, 'especiales');
+            agregar(nombreMenu, 19000, 2000, 'especiales');
             confirmarAgregado(document.getElementById('agregar-menu-especial'));
         });
     }
