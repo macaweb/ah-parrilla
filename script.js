@@ -129,8 +129,8 @@ document.addEventListener('DOMContentLoaded', () => {
         if (!precio) return;
         const boton = document.createElement('button');
         boton.type = 'button';
-        boton.className = 'boton-agregar';
-        boton.textContent = 'Agregar +';
+        boton.className = 'boton-agregar boton-agregar-icono';
+        boton.textContent = '+';
         boton.setAttribute('aria-label', 'Agregar ' + titulo + ' al pedido');
         const costoRecipiente = seccion.id === 'sopas' ? 1000 : ['desayunos', 'almuerzos', 'platos-fuertes'].includes(seccion.id) ? 2000 : 0;
 
@@ -364,14 +364,15 @@ document.addEventListener('DOMContentLoaded', () => {
     function confirmarAgregado(boton) {
         const textoOriginal = boton.dataset.textoOriginal || boton.textContent;
         boton.dataset.textoOriginal = textoOriginal;
-        boton.textContent = '✓ ¡Agregado al carrito!';
+        const esBotonIcono = boton.classList.contains('boton-agregar-icono');
+        boton.textContent = esBotonIcono ? '✓' : '✓ ¡Agregado al carrito!';
         boton.classList.remove('confirmacion-agregado');
         void boton.offsetWidth;
         boton.classList.add('confirmacion-agregado');
         boton.setAttribute('aria-live', 'polite');
         if (boton._restaurarTexto) clearTimeout(boton._restaurarTexto);
         boton._restaurarTexto = setTimeout(() => {
-            boton.textContent = textoOriginal;
+            boton.textContent = esBotonIcono ? '+' : textoOriginal;
             boton.classList.remove('confirmacion-agregado');
         }, 1400);
     }
