@@ -96,49 +96,80 @@ document.addEventListener('DOMContentLoaded', () => {
         plato.appendChild(boton);
     });
 
-    // Los jugos se agregan con sabor y preparación elegidos.
-    const sabores = [...document.querySelectorAll('.lista-sabores span')].map(el => el.textContent.trim());
+    // Los sabores se seleccionan directamente desde sus etiquetas.
+    const sabores = [...document.querySelectorAll('.lista-sabores span')];
     const jugos = document.querySelector('.sabores-jugos');
     if (jugos) {
-        const opciones = document.createElement('div');
-        opciones.className = 'selector-jugo-pedido';
-        const labelSabor = document.createElement('label');
-        labelSabor.htmlFor = 'sabor-jugo';
-        labelSabor.textContent = 'Sabor';
-        const saborSelect = document.createElement('select');
-        saborSelect.id = 'sabor-jugo';
-        const placeholder = document.createElement('option');
-        placeholder.value = '';
-        placeholder.textContent = 'Elige un sabor';
-        saborSelect.appendChild(placeholder);
-        sabores.forEach(s => {
-            const option = document.createElement('option');
-            option.value = s;
-            option.textContent = s;
-            saborSelect.appendChild(option);
+        let saborElegido = '';
+        let preparacionElegida = '';
+        const listaSabores = jugos.querySelector('.lista-sabores');
+        const selector = document.createElement('div');
+        selector.className = 'selector-preparacion-jugo';
+        selector.setAttribute('aria-label', 'Elige cómo quieres tu jugo');
+
+        const tituloPreparacion = document.createElement('h4');
+        tituloPreparacion.className = 'titulo-preparacion-jugo';
+        tituloPreparacion.textContent = 'PREPARACIÓN:';
+
+        const opcionesPreparacion = document.createElement('div');
+        opcionesPreparacion.className = 'opciones-preparacion-jugo';
+        [['6000','En agua · $6.000'],['9000','En leche · $9.000']].forEach(([value, texto]) => {
+            const opcion = document.createElement('button');
+            opcion.type = 'button';
+            opcion.className = 'opcion-preparacion-jugo';
+            opcion.textContent = texto;
+            opcion.setAttribute('aria-pressed', 'false');
+            opcion.addEventListener('click', () => {
+                preparacionElegida = value;
+                opcionesPreparacion.querySelectorAll('button').forEach(b => {
+                    const activa = b === opcion;
+                    b.classList.toggle('seleccionada', activa);
+                    b.setAttribute('aria-pressed', String(activa));
+                });
+                opcionesPreparacion.classList.remove('falta-seleccion');
+            });
+            opcionesPreparacion.appendChild(opcion);
         });
-        const labelTipo = document.createElement('label');
-        labelTipo.htmlFor = 'tipo-jugo';
-        labelTipo.textContent = 'Preparación';
-        const tipoSelect = document.createElement('select');
-        tipoSelect.id = 'tipo-jugo';
-        [['6000','En agua · $6.000'],['9000','En leche · $9.000']].forEach(([value,texto]) => {
-            const option = document.createElement('option');
-            option.value = value;
-            option.textContent = texto;
-            tipoSelect.appendChild(option);
+
+        sabores.forEach(etiqueta => {
+            const sabor = etiqueta.textContent.trim();
+            const botonSabor = document.createElement('button');
+            botonSabor.type = 'button';
+            botonSabor.className = 'boton-sabor-jugo';
+            botonSabor.textContent = sabor;
+            botonSabor.setAttribute('aria-pressed', 'false');
+            botonSabor.addEventListener('click', () => {
+                saborElegido = sabor;
+                listaSabores.querySelectorAll('button').forEach(b => {
+                    const activo = b === botonSabor;
+                    b.classList.toggle('seleccionado', activo);
+                    b.setAttribute('aria-pressed', String(activo));
+                });
+                listaSabores.classList.remove('falta-seleccion');
+            });
+            etiqueta.replaceWith(botonSabor);
         });
+
         const botonJugo = document.createElement('button');
         botonJugo.type = 'button';
-        botonJugo.className = 'boton-agregar';
+        botonJugo.className = 'boton-agregar boton-agregar-jugo';
         botonJugo.textContent = 'Agregar jugo +';
         botonJugo.addEventListener('click', () => {
-            if (!saborSelect.value) { saborSelect.focus(); return; }
-            agregar('Jugo de ' + saborSelect.value + ' (' + (tipoSelect.value === '6000' ? 'en agua' : 'en leche') + ')', Number(tipoSelect.value));
+            if (!saborElegido) {
+                listaSabores.querySelector('button')?.focus();
+                listaSabores.classList.add('falta-seleccion');
+                return;
+            }
+            if (!preparacionElegida) {
+                opcionesPreparacion.querySelector('button')?.focus();
+                opcionesPreparacion.classList.add('falta-seleccion');
+                return;
+            }
+            agregar('Jugo de ' + saborElegido + ' (' + (preparacionElegida === '6000' ? 'en agua' : 'en leche') + ')', Number(preparacionElegida));
             confirmarAgregado(botonJugo);
         });
-        opciones.append(labelSabor, saborSelect, labelTipo, tipoSelect, botonJugo);
-        jugos.appendChild(opciones);
+        selector.append(tituloPreparacion, opcionesPreparacion, botonJugo);
+        jugos.appendChild(selector);
     }
 
     // El especial incluye una sopa o crema y un jugo, sin cobros adicionales.
