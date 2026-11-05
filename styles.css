@@ -2620,3 +2620,17 @@ a:focus-visible {
     outline: 2px solid var(--dorado);
     outline-offset: 3px;
 }
+
+/* Restaurar y mantener visibles los botones de categorías bajo la introducción */
+.menu > .categorias {
+    display: flex !important;
+    visibility: visible !important;
+    opacity: 1 !important;
+    position: relative;
+    width: 100%;
+    flex-wrap: nowrap;
+}
+.menu > .categorias > a {
+    display: inline-flex !important;
+    visibility: visible !important;
+}
