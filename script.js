@@ -262,8 +262,8 @@ document.addEventListener('DOMContentLoaded', () => {
         if (p.cantidad <= 0) carrito.delete(nombre);
         renderizar();
     }
-    function abrir() { fondo.hidden = false; botonWhatsappFlotante.hidden = true; document.body.style.overflow = 'hidden'; document.getElementById('cerrar-carrito').focus(); }
-    function cerrar() { fondo.hidden = true; botonWhatsappFlotante.hidden = false; document.body.style.overflow = ''; botonCarrito.focus(); }
+    function abrir() { fondo.hidden = false; botonCarrito.hidden = true; botonWhatsappFlotante.hidden = true; document.body.style.overflow = 'hidden'; document.getElementById('cerrar-carrito').focus(); }
+    function cerrar() { fondo.hidden = true; botonCarrito.hidden = carrito.size === 0; botonWhatsappFlotante.hidden = false; document.body.style.overflow = ''; if (!botonCarrito.hidden) botonCarrito.focus(); }
     botonCarrito.addEventListener('click', abrir);
     document.getElementById('cerrar-carrito').addEventListener('click', cerrar);
     fondo.addEventListener('click', e => { if (e.target === fondo) cerrar(); });
