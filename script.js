@@ -348,7 +348,7 @@ document.addEventListener('DOMContentLoaded', () => {
         const botonJugo = document.createElement('button');
         botonJugo.type = 'button';
         botonJugo.className = 'boton-agregar boton-agregar-jugo';
-        botonJugo.textContent = 'Agregar jugo +';
+        botonJugo.textContent = 'Agregar';
         botonJugo.addEventListener('click', () => {
             if (!saborElegido) {
                 listaSabores.querySelector('button')?.focus();
