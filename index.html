@@ -6,7 +6,7 @@
     <meta name="theme-color" content="#0B0806">
     <meta name="description" content="Conoce la carta de AH Parrilla: desayunos, almuerzos, platos a la parrilla, sopas, jugos y bebidas.">
     <title>AH Parrilla | Nuestra carta</title>
-    <link rel="stylesheet" href="styles.css?v=metodo-pago-grande-1">
+    <link rel="stylesheet" href="styles.css?v=pedido-uniforme-2">
 </head>
 
 <body>
@@ -346,6 +346,7 @@
                 <div id="carrito-vacio" class="carrito-vacio">Aún no has agregado productos.<br>Explora nuestra carta y elige tus favoritos.</div>
                 <div id="carrito-items" class="carrito-items"></div>
                 <div class="detalle-costo-recipient"><span>Recipientes</span><strong id="total-recipientes">$0</strong></div>
+                <div class="detalle-comision-tarjeta" id="detalle-comision-tarjeta" hidden><span>Comisión tarjeta (5%)</span><strong id="valor-comision-tarjeta">$0</strong></div>
                 <div class="total-carrito"><span>Total del pedido</span><strong id="carrito-total">$0</strong></div>
                 <form id="formulario-pedido" class="formulario-pedido">
                     <h3>Datos para la entrega</h3>
@@ -353,7 +354,7 @@
                     <label>Teléfono<input name="telefono" type="tel" autocomplete="tel" required placeholder="Tu número de contacto"></label>
                     <label>Dirección de entrega<input name="direccion" autocomplete="street-address" required placeholder="Dirección completa"></label>
                     <label>Barrio<input name="barrio" autocomplete="address-level3" required placeholder="Nombre del barrio"></label>
-                    <label>Método de pago<select name="metodo_pago" required><option value="" selected disabled>Selecciona cómo deseas pagar</option><option value="QR">QR</option><option value="Llaves Bre-B">Llaves Bre-B</option><option value="Bancolombia">Bancolombia</option><option value="Link de pago">Link de pago</option></select></label>
+                    <label>Método de pago<select name="metodo_pago" required><option value="" selected disabled>Selecciona cómo deseas pagar</option><option value="QR">QR</option><option value="Llaves Bre-B">Llaves Bre-B</option><option value="Bancolombia">Bancolombia</option><option value="Tarjeta de crédito">Tarjeta de crédito (5% de comisión)</option></select></label>
                     <label>Indicaciones adicionales <span>(opcional)</span><textarea name="observaciones" rows="2" placeholder="Apartamento, indicaciones o comentarios"></textarea></label>
                     <button class="enviar-pedido" type="submit">Enviar pedido por WhatsApp <span aria-hidden="true">›</span></button>
                     <p class="nota-domicilio">El valor del domicilio varía según la zona.</p>
@@ -430,6 +431,6 @@
 
 </footer>
 
-    <script src="script.js?v=carrito-reforzado-1"></script>
+    <script src="script.js?v=pedido-uniforme-2"></script>
 </body>
 </html>
