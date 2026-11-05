@@ -2365,3 +2365,53 @@ a:focus-visible {
 .cabecera-menu-lateral > span {
     margin-left: 50px;
 }
+
+
+/* Confirmación visible al agregar productos al carrito */
+.boton-agregar {
+    transition: transform .2s ease, filter .2s ease, box-shadow .2s ease, background .2s ease;
+    -webkit-tap-highlight-color: transparent;
+}
+.boton-agregar:active {
+    transform: translateY(-2px) scale(.97);
+    filter: brightness(1.12);
+}
+.boton-agregar.confirmacion-agregado {
+    background: linear-gradient(135deg, #4caf70, #237a45) !important;
+    border-color: #8be0a7 !important;
+    color: #fff !important;
+    box-shadow: 0 0 0 3px rgba(91, 207, 131, .2), 0 5px 14px rgba(0,0,0,.25);
+    animation: pulso-agregado .38s ease;
+}
+@keyframes pulso-agregado {
+    0% { transform: translateY(0) scale(1); }
+    55% { transform: translateY(-5px) scale(1.035); }
+    100% { transform: translateY(0) scale(1); }
+}
+.detalle-costo-recipient {
+    display: flex;
+    justify-content: space-between;
+    gap: 10px;
+    margin-top: 16px;
+    color: #d9c6ab;
+    font-size: 13px;
+}
+.detalle-costo-recipient strong {
+    color: #ffd17a;
+    white-space: nowrap;
+}
+.total-carrito { margin-top: 8px; }
+.nota-domicilio {
+    margin: -3px 0 0;
+    padding: 9px 11px;
+    border: 1px solid rgba(229,169,59,.35);
+    border-radius: 7px;
+    background: rgba(229,169,59,.08);
+    color: #f0d4a7;
+    font-size: 12px;
+    line-height: 1.5;
+    text-align: center;
+}
+@media (prefers-reduced-motion: reduce) {
+    .boton-agregar, .boton-agregar.confirmacion-agregado { animation: none; transition: none; }
+}
