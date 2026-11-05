@@ -56,7 +56,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // Publica en la categoría Sopas las opciones concretas del día para compra individual.
     const listaSopasCategoria = document.querySelector('#sopas .lista-platos');
-    const opcionesDiariasSopaCrema = [...document.querySelectorAll('.especial-dia .opcion-del-dia:not(.opcion-jugos-del-dia) .lista-opciones-dia li')];
+    const opcionesDiariasSopaCrema = [...document.querySelectorAll('.especial-dia .opcion-del-dia:not(.opcion-jugos-del-dia) .lista-opciones-dia')].filter(grupo => grupo.querySelectorAll('li').length > 1).flatMap(grupo => [...grupo.querySelectorAll('li')]);
     if (listaSopasCategoria) {
         opcionesDiariasSopaCrema.forEach(opcion => {
             const nombre = opcion.textContent.trim();
