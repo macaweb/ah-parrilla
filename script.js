@@ -109,7 +109,7 @@ document.addEventListener('DOMContentLoaded', () => {
         boton.setAttribute('aria-label', 'Agregar ' + titulo + ' al pedido');
         const costoRecipiente = seccion.id === 'sopas' ? 1000 : ['desayunos', 'almuerzos', 'platos-fuertes'].includes(seccion.id) ? 2000 : 0;
         boton.addEventListener('click', () => {
-            agregar(titulo, precio, costoRecipiente);
+            agregar(titulo, precio, costoRecipiente, seccion.id);
             confirmarAgregado(boton);
         });
         plato.appendChild(boton);
@@ -184,7 +184,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 opcionesPreparacion.classList.add('falta-seleccion');
                 return;
             }
-            agregar('Jugo de ' + saborElegido + ' (' + (preparacionElegida === '6000' ? 'en agua' : 'en leche') + ')', Number(preparacionElegida), 0);
+            agregar('Jugo de ' + saborElegido + ' (' + (preparacionElegida === '6000' ? 'en agua' : 'en leche') + ')', Number(preparacionElegida), 0, 'jugos');
             confirmarAgregado(botonJugo);
         });
         selector.append(tituloPreparacion, opcionesPreparacion, botonJugo);
@@ -217,7 +217,7 @@ document.addEventListener('DOMContentLoaded', () => {
             if (!jugoEspecial.value) { jugoEspecial.focus(); return; }
             const plato = bloqueEspecial.querySelector('.nombre-especial')?.textContent.trim() || 'Plato del día';
             const nombreMenu = 'Menú especial: ' + plato + ' + ' + acompanamiento.value + ' + ' + jugoEspecial.value;
-            agregar(nombreMenu, 19000, 3000);
+            agregar(nombreMenu, 19000, 3000, 'especiales');
             confirmarAgregado(document.getElementById('agregar-menu-especial'));
         });
     }
@@ -237,9 +237,9 @@ document.addEventListener('DOMContentLoaded', () => {
         }, 1400);
     }
 
-    function agregar(nombre, precio, recipiente = 0) {
+    function agregar(nombre, precio, recipiente = 0, categoria = 'productos') {
         const existente = carrito.get(nombre);
-        carrito.set(nombre, { nombre, precio, recipiente, cantidad: (existente?.cantidad || 0) + 1 });
+        carrito.set(nombre, { nombre, precio, recipiente, categoria, cantidad: (existente?.cantidad || 0) + 1 });
         renderizar();
         botonCarrito.hidden = false;
     }
@@ -308,7 +308,37 @@ document.addEventListener('DOMContentLoaded', () => {
         const lineas = [
             '*NUEVO PEDIDO — AH PARRILLA*',
             '',
-            ...productos.map(p => '• ' + p.cantidad + ' × ' + p.nombre + ' — ' + formatoPrecio(p.precio * p.cantidad)),
+            ...productos.map(p => {
+                const cantidad = p.cantidad;
+                const nombre = p.nombre;
+                let detalle;
+                switch (p.categoria) {
+                    case 'almuerzos':
+                        detalle = cantidad + (cantidad === 1 ? ' almuerzo de ' : ' almuerzos de ') + nombre;
+                        break;
+                    case 'desayunos':
+                        detalle = cantidad + (cantidad === 1 ? ' desayuno: ' : ' desayunos: ') + nombre;
+                        break;
+                    case 'platos-fuertes':
+                        detalle = cantidad + (cantidad === 1 ? ' plato fuerte: ' : ' platos fuertes: ') + nombre;
+                        break;
+                    case 'sopas':
+                        detalle = cantidad + (cantidad === 1 ? ' unidad de ' : ' unidades de ') + nombre;
+                        break;
+                    case 'jugos':
+                        detalle = cantidad + (cantidad === 1 ? ' jugo: ' : ' jugos: ') + nombre;
+                        break;
+                    case 'especiales':
+                        detalle = cantidad + (cantidad === 1 ? ' menú especial: ' : ' menús especiales: ') + nombre.replace(/^Menú especial:\\s*/i, '');
+                        break;
+                    case 'bebidas':
+                        detalle = cantidad + (cantidad === 1 ? ' bebida: ' : ' bebidas: ') + nombre;
+                        break;
+                    default:
+                        detalle = cantidad + (cantidad === 1 ? ' unidad de ' : ' unidades de ') + nombre;
+                }
+                return '• *' + detalle + '* — ' + formatoPrecio(p.precio * cantidad);
+            }),
             '',
             'Recipientes: ' + formatoPrecio(totalRecipientes),
             '*TOTAL: ' + formatoPrecio(total) + '*',
@@ -317,6 +347,7 @@ document.addEventListener('DOMContentLoaded', () => {
             'Nombre: ' + datos.get('nombre'),
             'Teléfono: ' + datos.get('telefono'),
             'Dirección: ' + datos.get('direccion'),
+            'Barrio: ' + datos.get('barrio'),
             'Método de pago: ' + datos.get('metodo_pago'),
             'Indicaciones: ' + (datos.get('observaciones') || 'Ninguna')
         ];
