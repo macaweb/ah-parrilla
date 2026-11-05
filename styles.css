@@ -2837,3 +2837,18 @@ a:focus-visible {
     content: none !important;
     display: none !important;
 }
+
+/* Selectores de sopa/crema y jugo más compactos que el botón de agregar.
+   No modifica el selector del método de pago. */
+.selector-almuerzos select,
+.pedido-especial select {
+    min-height: 40px;
+    padding: 7px 40px 7px 12px;
+    font-size: 14px;
+}
+
+.selector-almuerzos .boton-agregar,
+.pedido-especial .boton-menu-especial {
+    min-height: 48px;
+}
+
