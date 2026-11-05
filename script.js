@@ -89,8 +89,9 @@ document.addEventListener('DOMContentLoaded', () => {
         boton.className = 'boton-agregar';
         boton.textContent = 'Agregar +';
         boton.setAttribute('aria-label', 'Agregar ' + titulo + ' al pedido');
+        const costoRecipiente = seccion.id === 'sopas' ? 1000 : ['desayunos', 'almuerzos', 'platos-fuertes'].includes(seccion.id) ? 2000 : 0;
         boton.addEventListener('click', () => {
-            agregar(titulo, precio);
+            agregar(titulo, precio, costoRecipiente);
             confirmarAgregado(boton);
         });
         plato.appendChild(boton);
@@ -165,7 +166,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 opcionesPreparacion.classList.add('falta-seleccion');
                 return;
             }
-            agregar('Jugo de ' + saborElegido + ' (' + (preparacionElegida === '6000' ? 'en agua' : 'en leche') + ')', Number(preparacionElegida));
+            agregar('Jugo de ' + saborElegido + ' (' + (preparacionElegida === '6000' ? 'en agua' : 'en leche') + ')', Number(preparacionElegida), 0);
             confirmarAgregado(botonJugo);
         });
         selector.append(tituloPreparacion, opcionesPreparacion, botonJugo);
@@ -198,7 +199,7 @@ document.addEventListener('DOMContentLoaded', () => {
             if (!jugoEspecial.value) { jugoEspecial.focus(); return; }
             const plato = bloqueEspecial.querySelector('.nombre-especial')?.textContent.trim() || 'Plato del día';
             const nombreMenu = 'Menú especial: ' + plato + ' + ' + acompanamiento.value + ' + ' + jugoEspecial.value;
-            agregar(nombreMenu, 19000);
+            agregar(nombreMenu, 19000, 3000);
             confirmarAgregado(document.getElementById('agregar-menu-especial'));
         });
     }
@@ -218,9 +219,9 @@ document.addEventListener('DOMContentLoaded', () => {
         }, 1400);
     }
 
-    function agregar(nombre, precio) {
+    function agregar(nombre, precio, recipiente = 0) {
         const existente = carrito.get(nombre);
-        carrito.set(nombre, { nombre, precio, cantidad: (existente?.cantidad || 0) + 1 });
+        carrito.set(nombre, { nombre, precio, recipiente, cantidad: (existente?.cantidad || 0) + 1 });
         renderizar();
         botonCarrito.hidden = false;
     }
@@ -228,7 +229,10 @@ document.addEventListener('DOMContentLoaded', () => {
         const productos = [...carrito.values()];
         const cantidad = productos.reduce((s, p) => s + p.cantidad, 0);
         const subtotal = productos.reduce((s, p) => s + p.precio * p.cantidad, 0);
-        const total = cantidad > 0 ? subtotal + 2000 : 0;
+        const totalRecipientes = productos.reduce((s, p) => s + p.recipiente * p.cantidad, 0);
+        const total = subtotal + totalRecipientes;
+        const detalleRecipientes = document.getElementById('total-recipientes');
+        if (detalleRecipientes) detalleRecipientes.textContent = formatoPrecio(totalRecipientes);
         contadorEl.textContent = cantidad;
         botonCarrito.setAttribute('aria-label', 'Abrir carrito de pedidos. ' + cantidad + (cantidad === 1 ? ' producto' : ' productos'));
         totalEl.textContent = formatoPrecio(total);
@@ -275,13 +279,14 @@ document.addEventListener('DOMContentLoaded', () => {
         const datos = new FormData(formulario);
         const productos = [...carrito.values()];
         const subtotal = productos.reduce((s, p) => s + p.precio * p.cantidad, 0);
-        const total = subtotal + 2000;
+        const totalRecipientes = productos.reduce((s, p) => s + p.recipiente * p.cantidad, 0);
+        const total = subtotal + totalRecipientes;
         const lineas = [
             '*NUEVO PEDIDO — AH PARRILLA*',
             '',
             ...productos.map(p => '• ' + p.cantidad + ' × ' + p.nombre + ' — ' + formatoPrecio(p.precio * p.cantidad)),
             '',
-            'Recipiente obligatorio: ' + formatoPrecio(2000),
+            'Recipientes: ' + formatoPrecio(totalRecipientes),
             '*TOTAL: ' + formatoPrecio(total) + '*',
             '',
             '*DATOS DE ENTREGA*',
