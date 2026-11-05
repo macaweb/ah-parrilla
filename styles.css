@@ -2637,8 +2637,14 @@ a:focus-visible {
     visibility: visible !important;
     opacity: 1 !important;
     position: relative;
-    width: 100%;
+    width: auto;
+    max-width: none;
+    min-width: 0;
     flex-wrap: nowrap;
+    align-items: center;
+    overflow-x: auto;
+    overflow-y: hidden;
+    box-sizing: border-box;
 }
 .menu > .categorias > a {
     display: inline-flex !important;
