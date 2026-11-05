@@ -51,21 +51,46 @@ document.addEventListener('DOMContentLoaded', () => {
     const CLAVE_CARRITO = 'ahParrilla_carrito_v1';
     const carrito = new Map();
 
-    // Recupera el pedido guardado para que no se pierda al actualizar o volver a cargar la página.
-    try {
-        const carritoGuardado = JSON.parse(localStorage.getItem(CLAVE_CARRITO) || '[]');
-        if (Array.isArray(carritoGuardado)) {
-            carritoGuardado.forEach(producto => {
-                if (producto && typeof producto.nombre === 'string' &&
-                    Number.isFinite(producto.precio) && Number.isFinite(producto.recipiente) &&
-                    Number.isInteger(producto.cantidad) && producto.cantidad > 0) {
-                    carrito.set(producto.nombre, producto);
+    // Recupera el pedido guardado y acepta también registros de versiones anteriores.
+    function recuperarCarrito() {
+        try {
+            const guardado = localStorage.getItem(CLAVE_CARRITO);
+            if (!guardado) return;
+            const productos = JSON.parse(guardado);
+            if (!Array.isArray(productos)) return;
+            productos.forEach(producto => {
+                if (!producto || typeof producto.nombre !== 'string' || !producto.nombre.trim()) return;
+                const precio = Number(producto.precio);
+                const recipiente = Number(producto.recipiente ?? 0);
+                const cantidad = Number(producto.cantidad);
+                if (Number.isFinite(precio) && precio >= 0 &&
+                    Number.isFinite(recipiente) && recipiente >= 0 &&
+                    Number.isInteger(cantidad) && cantidad > 0) {
+                    carrito.set(producto.nombre, {
+                        nombre: producto.nombre,
+                        precio,
+                        recipiente,
+                        categoria: producto.categoria || '',
+                        cantidad
+                    });
                 }
             });
+        } catch (error) {
+            console.warn('No se pudo recuperar el carrito guardado.', error);
         }
-    } catch (error) {
-        console.warn('No se pudo recuperar el carrito guardado.', error);
     }
+
+    function guardarCarrito() {
+        try {
+            localStorage.setItem(CLAVE_CARRITO, JSON.stringify([...carrito.values()]));
+            return true;
+        } catch (error) {
+            console.warn('El navegador no permitió guardar el carrito.', error);
+            return false;
+        }
+    }
+
+    recuperarCarrito();
 
     const botonCarrito = document.getElementById('abrir-carrito');
     const fondo = document.getElementById('carrito-fondo');
@@ -245,12 +270,8 @@ document.addEventListener('DOMContentLoaded', () => {
     }
     function renderizar() {
         const productos = [...carrito.values()];
-        // Guarda cada cambio del pedido en este dispositivo.
-        try {
-            localStorage.setItem(CLAVE_CARRITO, JSON.stringify(productos));
-        } catch (error) {
-            console.warn('No se pudo guardar el carrito en este dispositivo.', error);
-        }
+        // Guarda inmediatamente cada cambio del pedido en este dispositivo.
+        guardarCarrito();
         const cantidad = productos.reduce((s, p) => s + p.cantidad, 0);
         const subtotal = productos.reduce((s, p) => s + p.precio * p.cantidad, 0);
         const totalRecipientes = productos.reduce((s, p) => s + p.recipiente * p.cantidad, 0);
