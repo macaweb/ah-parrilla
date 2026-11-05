@@ -2634,3 +2634,43 @@ a:focus-visible {
     display: inline-flex !important;
     visibility: visible !important;
 }
+
+/* Unificar el aspecto de los controles de selección con el método de pago.
+   Se conservan las alturas, paddings y anchos definidos en cada sección. */
+.selector-almuerzos select,
+.selector-jugo-pedido select,
+.pedido-especial select,
+.opciones-precios-jugos select {
+    border: 1px solid #8a6034;
+    border-radius: 8px;
+    outline: none;
+    background: #1a120c;
+    color: #fff0d2;
+    font-family: inherit;
+    font-weight: 600;
+    color-scheme: dark;
+}
+.selector-almuerzos select:focus,
+.selector-jugo-pedido select:focus,
+.pedido-especial select:focus,
+.opciones-precios-jugos select:focus {
+    border-color: #e5a93b;
+    box-shadow: 0 0 0 2px rgba(229,169,59,.12);
+}
+
+/* Las opciones tipo botón (sabor y preparación) comparten el mismo acabado,
+   sin modificar su tamaño ni el resaltado de la opción elegida. */
+.lista-sabores .boton-sabor-jugo,
+.opciones-preparacion-jugo .opcion-preparacion-jugo {
+    border: 1px solid #8a6034;
+    border-radius: 8px;
+    background: #1a120c;
+    color: #fff0d2;
+    font-weight: 600;
+}
+.lista-sabores .boton-sabor-jugo.seleccionado,
+.opciones-preparacion-jugo .opcion-preparacion-jugo.seleccionada {
+    border-color: #e5a93b;
+    background: linear-gradient(135deg, #e5a93b, #c96b12);
+    color: #1b1008;
+}
