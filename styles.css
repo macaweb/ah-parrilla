@@ -2208,6 +2208,8 @@ a:focus-visible {
     border-radius:50%; background:#25d366; color:white;
     box-shadow:0 5px 18px rgba(0,0,0,.42); transition:transform .18s ease;
 }
+
+.whatsapp-flotante-ah[hidden] { display: none !important; }
 .whatsapp-flotante-ah svg { width:31px; height:31px; }
 .whatsapp-flotante-ah:active { transform:scale(.93); }
 @media (min-width:800px) {
