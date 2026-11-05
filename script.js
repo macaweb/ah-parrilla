@@ -225,7 +225,7 @@ document.addEventListener('DOMContentLoaded', () => {
         const selectSopas = document.createElement('select');
         selectSopas.setAttribute('aria-label', 'Selecciona una sopa o crema para el almuerzo');
         const grupoJugos = document.createElement('label');
-        grupoJugos.textContent = 'Jugo (obligatorio)';
+        grupoJugos.textContent = 'Jugos (obligatorio)';
         const selectJugos = document.createElement('select');
         selectJugos.setAttribute('aria-label', 'Selecciona un jugo para el almuerzo');
 
@@ -235,8 +235,8 @@ document.addEventListener('DOMContentLoaded', () => {
             opcion.textContent = texto;
             select.appendChild(opcion);
         };
-        agregarPlaceholder(selectSopas, 'Elige una sopa o crema');
-        agregarPlaceholder(selectJugos, 'Elige un jugo');
+        agregarPlaceholder(selectSopas, 'Selecciona una opción');
+        agregarPlaceholder(selectJugos, 'Selecciona una opción');
 
         const especialDelDia = document.querySelector('.especial-dia');
         const opcionesSopas = especialDelDia
