@@ -312,7 +312,11 @@ document.addEventListener('DOMContentLoaded', () => {
                 const cantidad = p.cantidad;
                 const nombre = p.nombre;
                 let detalle;
-                switch (p.categoria) {
+                const categoria = p.categoria || (nombre.startsWith('Menú especial:') ? 'especiales' :
+                    [...document.querySelectorAll('.categoria-menu')].find(seccion =>
+                        [...seccion.querySelectorAll('.plato-listado h3')].some(titulo => titulo.textContent.trim() === nombre)
+                    )?.id || 'productos');
+                switch (categoria) {
                     case 'almuerzos':
                         detalle = cantidad + (cantidad === 1 ? ' almuerzo de ' : ' almuerzos de ') + nombre;
                         break;
@@ -329,7 +333,7 @@ document.addEventListener('DOMContentLoaded', () => {
                         detalle = cantidad + (cantidad === 1 ? ' jugo: ' : ' jugos: ') + nombre;
                         break;
                     case 'especiales':
-                        detalle = cantidad + (cantidad === 1 ? ' menú especial: ' : ' menús especiales: ') + nombre.replace(/^Menú especial:\\s*/i, '');
+                        detalle = cantidad + (cantidad === 1 ? ' menú especial: ' : ' menús especiales: ') + nombre.replace(/^Menú especial:\s*/i, '');
                         break;
                     case 'bebidas':
                         detalle = cantidad + (cantidad === 1 ? ' bebida: ' : ' bebidas: ') + nombre;
