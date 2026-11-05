@@ -46,19 +46,46 @@ document.addEventListener('DOMContentLoaded', () => {
             else enlace.removeAttribute('aria-current');
         });
     };
-    enlacesMenuLateral.forEach(enlace => enlace.addEventListener('click', () => {
-        marcarEnlaceMenu(enlace);
-        const enlaceCategoria = [...enlaces].find(item => item.getAttribute('href') === enlace.getAttribute('href'));
-        if (enlaceCategoria) {
-            enlaces.forEach(item => { item.classList.remove('seleccionada'); item.removeAttribute('aria-current'); });
-            enlaceCategoria.classList.add('seleccionada');
-            enlaceCategoria.setAttribute('aria-current', 'location');
-        }
-        fondoMenu.hidden = true;
-        botonWhatsappFlotante.hidden = false;
-        botonMenu.setAttribute('aria-expanded', 'false');
-        document.body.style.overflow = '';
-    }));
+    enlacesMenuLateral.forEach(enlace => {
+        // Resalta en el mismo instante en que comienza el toque, sin esperar al click.
+        enlace.addEventListener('pointerdown', () => marcarEnlaceMenu(enlace));
+        enlace.addEventListener('click', () => {
+            marcarEnlaceMenu(enlace);
+            const enlaceCategoria = [...enlaces].find(item => item.getAttribute('href') === enlace.getAttribute('href'));
+            if (enlaceCategoria) {
+                enlaces.forEach(item => { item.classList.remove('seleccionada'); item.removeAttribute('aria-current'); });
+                enlaceCategoria.classList.add('seleccionada');
+                enlaceCategoria.setAttribute('aria-current', 'location');
+            }
+            fondoMenu.hidden = true;
+            botonWhatsappFlotante.hidden = false;
+            botonMenu.setAttribute('aria-expanded', 'false');
+            document.body.style.overflow = '';
+        });
+    });
+
+    // Mantiene marcada la categoría que está visible y retira el estado al salir de ella.
+    if ('IntersectionObserver' in window) {
+        const seccionesMenu = enlacesMenuLateral
+            .map(enlace => document.querySelector(enlace.getAttribute('href')))
+            .filter(Boolean);
+        const observadorSecciones = new IntersectionObserver(registros => {
+            const visibles = registros
+                .filter(registro => registro.isIntersecting)
+                .sort((a, b) => b.intersectionRatio - a.intersectionRatio);
+            if (visibles.length) {
+                const idVisible = '#' + visibles[0].target.id;
+                const enlaceVisible = enlacesMenuLateral.find(enlace => enlace.getAttribute('href') === idVisible);
+                if (enlaceVisible) marcarEnlaceMenu(enlaceVisible);
+            } else if (!seccionesMenu.some(seccion => {
+                const rect = seccion.getBoundingClientRect();
+                return rect.top < window.innerHeight * 0.45 && rect.bottom > window.innerHeight * 0.2;
+            })) {
+                marcarEnlaceMenu(null);
+            }
+        }, { rootMargin: '-18% 0px -62% 0px', threshold: [0, 0.1, 0.25, 0.5, 0.75] });
+        seccionesMenu.forEach(seccion => observadorSecciones.observe(seccion));
+    }
     document.addEventListener('keydown', e => {
         if (e.key === 'Escape' && !fondoMenu.hidden) cerrarMenuLateral();
     });
