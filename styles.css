@@ -2504,3 +2504,38 @@ a:focus-visible {
     border-color: #e5a93b;
     box-shadow: 0 0 0 2px rgba(229,169,59,.12);
 }
+
+
+/* Formulario de entrega: todos los campos, incluido método de pago, con medidas iguales */
+.formulario-pedido input,
+.formulario-pedido select,
+.formulario-pedido textarea {
+    width: 100%;
+    min-height: 43px;
+    padding: 10px 11px;
+    border: 1px solid #654326;
+    border-radius: 7px;
+    outline: none;
+    background: #1a120c;
+    color: #fff8ed;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 14px;
+    font-weight: 400;
+    color-scheme: dark;
+}
+.formulario-pedido input:focus,
+.formulario-pedido select:focus,
+.formulario-pedido textarea:focus {
+    border-color: #e5a93b;
+    box-shadow: 0 0 0 2px rgba(229,169,59,.12);
+}
+.detalle-comision-tarjeta {
+    display: flex;
+    justify-content: space-between;
+    gap: 10px;
+    margin-top: 8px;
+    color: #f0d4a7;
+    font-size: 13px;
+}
+.detalle-comision-tarjeta[hidden] { display: none !important; }
+.detalle-comision-tarjeta strong { color: #ffd17a; white-space: nowrap; }
