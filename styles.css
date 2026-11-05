@@ -2204,13 +2204,13 @@ a:focus-visible {
 .whatsapp-flotante-ah {
     position:fixed; right:17px; bottom:max(18px,env(safe-area-inset-bottom));
     z-index:1100; display:grid; place-items:center;
-    width:58px; height:58px; border:2px solid rgba(255,255,255,.85);
+    width:52px; height:52px; border:2px solid rgba(255,255,255,.85);
     border-radius:50%; background:#25d366; color:white;
     box-shadow:0 5px 18px rgba(0,0,0,.42); transition:transform .18s ease;
 }
 
 .whatsapp-flotante-ah[hidden] { display: none !important; }
-.whatsapp-flotante-ah svg { width:31px; height:31px; }
+.whatsapp-flotante-ah svg { width:27px; height:27px; }
 .whatsapp-flotante-ah:active { transform:scale(.93); }
 @media (min-width:800px) {
     .boton-menu-lateral { top:22px; left:22px; }
