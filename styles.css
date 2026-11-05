@@ -2354,3 +2354,12 @@ a:focus-visible {
         right: auto;
     }
 }
+
+
+/* Menú lateral: conservar las tres rayitas a la izquierda y separar el nombre AH PARRILLA */
+.boton-menu-lateral {
+    left: 15px !important;
+}
+.cabecera-menu-lateral > span {
+    margin-left: 50px;
+}
