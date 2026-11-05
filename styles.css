@@ -2741,3 +2741,16 @@ a:focus-visible {
         min-height: 40px;
     }
 }
+
+
+/* Estado seleccionado del menú lateral: conserva el resaltado al volver a abrirlo */
+.panel-menu-lateral > a.seleccionada {
+    border: 1px solid var(--dorado);
+    background: linear-gradient(135deg, #D35400, #B94A00);
+    color: #fff;
+    box-shadow: 0 0 0 2px rgba(229,169,59,.18), 0 4px 12px rgba(0,0,0,.24);
+}
+.panel-menu-lateral > a.seleccionada::before {
+    background: #fff;
+    box-shadow: 0 0 0 3px rgba(255,255,255,.18);
+}
