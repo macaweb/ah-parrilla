@@ -81,7 +81,7 @@ document.addEventListener('DOMContentLoaded', () => {
         if (!titulo || !seccion) return;
         let precio = Number((plato.querySelector('strong')?.textContent || '').replace(/[^0-9]/g, ''));
         if (!precio && seccion.id === 'almuerzos') precio = 20000;
-        if (seccion.id === 'sopas' && /^(sopa del día|crema del día)$/i.test(titulo)) return;
+
         if (!precio && seccion.id === 'sopas') precio = 8000;
         if (!precio) return;
         const boton = document.createElement('button');
