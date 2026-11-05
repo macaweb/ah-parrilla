@@ -48,7 +48,25 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 
     const numeroWhatsApp = '573018259210';
+    const CLAVE_CARRITO = 'ahParrilla_carrito_v1';
     const carrito = new Map();
+
+    // Recupera el pedido guardado para que no se pierda al actualizar o volver a cargar la página.
+    try {
+        const carritoGuardado = JSON.parse(localStorage.getItem(CLAVE_CARRITO) || '[]');
+        if (Array.isArray(carritoGuardado)) {
+            carritoGuardado.forEach(producto => {
+                if (producto && typeof producto.nombre === 'string' &&
+                    Number.isFinite(producto.precio) && Number.isFinite(producto.recipiente) &&
+                    Number.isInteger(producto.cantidad) && producto.cantidad > 0) {
+                    carrito.set(producto.nombre, producto);
+                }
+            });
+        }
+    } catch (error) {
+        console.warn('No se pudo recuperar el carrito guardado.', error);
+    }
+
     const botonCarrito = document.getElementById('abrir-carrito');
     const fondo = document.getElementById('carrito-fondo');
     const itemsEl = document.getElementById('carrito-items');
@@ -227,6 +245,12 @@ document.addEventListener('DOMContentLoaded', () => {
     }
     function renderizar() {
         const productos = [...carrito.values()];
+        // Guarda cada cambio del pedido en este dispositivo.
+        try {
+            localStorage.setItem(CLAVE_CARRITO, JSON.stringify(productos));
+        } catch (error) {
+            console.warn('No se pudo guardar el carrito en este dispositivo.', error);
+        }
         const cantidad = productos.reduce((s, p) => s + p.cantidad, 0);
         const subtotal = productos.reduce((s, p) => s + p.precio * p.cantidad, 0);
         const totalRecipientes = productos.reduce((s, p) => s + p.recipiente * p.cantidad, 0);
@@ -298,4 +322,7 @@ document.addEventListener('DOMContentLoaded', () => {
         ];
         window.open('https://wa.me/' + numeroWhatsApp + '?text=' + encodeURIComponent(lineas.join('\n')), '_blank', 'noopener');
     });
+
+    // Muestra inmediatamente los productos recuperados al cargar la página.
+    renderizar();
 });
