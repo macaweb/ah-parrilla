@@ -2539,3 +2539,65 @@ a:focus-visible {
 }
 .detalle-comision-tarjeta[hidden] { display: none !important; }
 .detalle-comision-tarjeta strong { color: #ffd17a; white-space: nowrap; }
+
+
+/* Selector de acompañantes agrupado al final de la sección de almuerzos */
+.selector-almuerzos {
+    display: grid;
+    gap: 9px;
+    margin: 18px 0 14px;
+    padding: 16px;
+    border: 1px solid rgba(229,169,59,.55);
+    border-radius: 10px;
+    background: linear-gradient(145deg,#24170d,#120c08);
+}
+.selector-almuerzos h3 {
+    margin: 0;
+    color: #ffd17a;
+    font-size: 16px;
+    text-align: center;
+}
+.selector-almuerzos > p {
+    margin: 0;
+    color: #f1dfc7;
+    font-size: 12px;
+    line-height: 1.45;
+    text-align: center;
+}
+.selector-almuerzos label {
+    margin-top: 3px;
+    color: #ffd17a;
+    font-size: 12px;
+    font-weight: 800;
+}
+.selector-almuerzos select {
+    width: 100%;
+    min-height: 43px;
+    padding: 10px 11px;
+    border: 1px solid #76502c;
+    border-radius: 7px;
+    background: #100b07;
+    color: #fff0d2;
+    font: 400 14px Arial, Helvetica, sans-serif;
+}
+.aviso-almuerzo-elegido {
+    margin: 0;
+    color: #d7b987;
+    font-size: 12px;
+    text-align: center;
+}
+.almuerzo-seleccionable {
+    cursor: pointer;
+    transition: border-color .18s ease, background .18s ease;
+}
+.almuerzo-seleccionable:focus-visible,
+.almuerzo-seleccionable.almuerzo-elegido {
+    outline: none;
+    border-color: #e5a93b;
+    background: #382512;
+    box-shadow: 0 0 0 2px rgba(229,169,59,.18);
+}
+.selector-almuerzos .boton-agregar-almuerzo {
+    width: 100%;
+    margin: 5px 0 0;
+}
