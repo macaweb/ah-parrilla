@@ -99,6 +99,9 @@ document.addEventListener('DOMContentLoaded', () => {
     const contadorEl = document.getElementById('carrito-contador');
     const totalEl = document.getElementById('carrito-total');
     const formulario = document.getElementById('formulario-pedido');
+    const metodoPago = formulario.elements.metodo_pago;
+    const detalleComisionTarjeta = document.getElementById('detalle-comision-tarjeta');
+    const valorComisionTarjeta = document.getElementById('valor-comision-tarjeta');
     const formatoPrecio = valor => '$' + valor.toLocaleString('es-CO');
 
     // Publica en la categoría Sopas las opciones concretas del día para compra individual.
@@ -275,9 +278,13 @@ document.addEventListener('DOMContentLoaded', () => {
         const cantidad = productos.reduce((s, p) => s + p.cantidad, 0);
         const subtotal = productos.reduce((s, p) => s + p.precio * p.cantidad, 0);
         const totalRecipientes = productos.reduce((s, p) => s + p.recipiente * p.cantidad, 0);
-        const total = subtotal + totalRecipientes;
+        const totalBase = subtotal + totalRecipientes;
+        const comisionTarjeta = metodoPago.value === 'Tarjeta de crédito' ? Math.round(totalBase * 0.05) : 0;
+        const total = totalBase + comisionTarjeta;
         const detalleRecipientes = document.getElementById('total-recipientes');
         if (detalleRecipientes) detalleRecipientes.textContent = formatoPrecio(totalRecipientes);
+        if (detalleComisionTarjeta) detalleComisionTarjeta.hidden = comisionTarjeta === 0;
+        if (valorComisionTarjeta) valorComisionTarjeta.textContent = formatoPrecio(comisionTarjeta);
         contadorEl.textContent = cantidad;
         botonCarrito.setAttribute('aria-label', 'Abrir carrito de pedidos. ' + cantidad + (cantidad === 1 ? ' producto' : ' productos'));
         totalEl.textContent = formatoPrecio(total);
@@ -302,7 +309,8 @@ document.addEventListener('DOMContentLoaded', () => {
             controles.append(menos, numero, mas, quitar);
             info.append(controles); item.append(info, subtotal); itemsEl.append(item);
         });
-        botonCarrito.hidden = cantidad === 0;
+        // El acceso flotante solo se muestra fuera del panel "Tu pedido".
+        botonCarrito.hidden = cantidad === 0 || !fondo.hidden;
         formulario.hidden = cantidad === 0;
     }
     function cambiar(nombre, delta) {
@@ -313,6 +321,7 @@ document.addEventListener('DOMContentLoaded', () => {
     }
     function abrir() { fondo.hidden = false; botonCarrito.hidden = true; botonWhatsappFlotante.hidden = true; document.body.style.overflow = 'hidden'; document.getElementById('cerrar-carrito').focus(); }
     function cerrar() { fondo.hidden = true; botonCarrito.hidden = carrito.size === 0; botonWhatsappFlotante.hidden = false; document.body.style.overflow = ''; if (!botonCarrito.hidden) botonCarrito.focus(); }
+    metodoPago.addEventListener('change', renderizar);
     botonCarrito.addEventListener('click', abrir);
     document.getElementById('cerrar-carrito').addEventListener('click', cerrar);
     fondo.addEventListener('click', e => { if (e.target === fondo) cerrar(); });
@@ -325,7 +334,9 @@ document.addEventListener('DOMContentLoaded', () => {
         const productos = [...carrito.values()];
         const subtotal = productos.reduce((s, p) => s + p.precio * p.cantidad, 0);
         const totalRecipientes = productos.reduce((s, p) => s + p.recipiente * p.cantidad, 0);
-        const total = subtotal + totalRecipientes;
+        const totalBase = subtotal + totalRecipientes;
+        const comisionTarjeta = datos.get('metodo_pago') === 'Tarjeta de crédito' ? Math.round(totalBase * 0.05) : 0;
+        const total = totalBase + comisionTarjeta;
         const lineas = [
             '*NUEVO PEDIDO — AH PARRILLA*',
             '',
@@ -366,6 +377,7 @@ document.addEventListener('DOMContentLoaded', () => {
             }),
             '',
             'Recipientes: ' + formatoPrecio(totalRecipientes),
+            ...(comisionTarjeta > 0 ? ['Comisión tarjeta de crédito (5%): ' + formatoPrecio(comisionTarjeta)] : []),
             '*TOTAL: ' + formatoPrecio(total) + '*',
             '',
             '*DATOS DE ENTREGA*',
@@ -381,4 +393,13 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // Muestra inmediatamente los productos recuperados al cargar la página.
     renderizar();
+
+    // Prepara una copia local de la página y sus recursos para poder abrirla sin internet.
+    if ('serviceWorker' in navigator) {
+        window.addEventListener('load', () => {
+            navigator.serviceWorker.register('./sw.js').catch(error => {
+                console.warn('No se pudo activar el modo sin conexión.', error);
+            });
+        });
+    }
 });
