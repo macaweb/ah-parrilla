@@ -2484,3 +2484,22 @@ a:focus-visible {
 .encabezado-carrito {
     padding-left: 76px;
 }
+
+/* Selector de método de pago en los datos de entrega */
+.formulario-pedido select[name="metodo_pago"] {
+    width: 100%;
+    min-height: 43px;
+    padding: 10px 11px;
+    border: 1px solid #654326;
+    border-radius: 7px;
+    outline: none;
+    background: #1a120c;
+    color: #fff8ed;
+    font: inherit;
+    font-size: 14px;
+    color-scheme: dark;
+}
+.formulario-pedido select[name="metodo_pago"]:focus {
+    border-color: #e5a93b;
+    box-shadow: 0 0 0 2px rgba(229,169,59,.12);
+}
