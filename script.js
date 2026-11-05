@@ -17,14 +17,17 @@ document.addEventListener('DOMContentLoaded', () => {
     const botonMenu = document.getElementById('abrir-menu-lateral');
     const fondoMenu = document.getElementById('fondo-menu-lateral');
     const cerrarMenu = document.getElementById('cerrar-menu-lateral');
+    const botonWhatsappFlotante = document.querySelector('.whatsapp-flotante-ah');
     function abrirMenu() {
         fondoMenu.hidden = false;
+        botonWhatsappFlotante.hidden = true;
         botonMenu.setAttribute('aria-expanded', 'true');
         document.body.style.overflow = 'hidden';
         cerrarMenu.focus();
     }
     function cerrarMenuLateral() {
         fondoMenu.hidden = true;
+        botonWhatsappFlotante.hidden = false;
         botonMenu.setAttribute('aria-expanded', 'false');
         document.body.style.overflow = '';
         botonMenu.focus();
@@ -36,6 +39,7 @@ document.addEventListener('DOMContentLoaded', () => {
     });
     fondoMenu.querySelectorAll('a').forEach(enlace => enlace.addEventListener('click', () => {
         fondoMenu.hidden = true;
+        botonWhatsappFlotante.hidden = false;
         botonMenu.setAttribute('aria-expanded', 'false');
         document.body.style.overflow = '';
     }));
@@ -206,8 +210,8 @@ document.addEventListener('DOMContentLoaded', () => {
         if (p.cantidad <= 0) carrito.delete(nombre);
         renderizar();
     }
-    function abrir() { fondo.hidden = false; document.body.style.overflow = 'hidden'; document.getElementById('cerrar-carrito').focus(); }
-    function cerrar() { fondo.hidden = true; document.body.style.overflow = ''; botonCarrito.focus(); }
+    function abrir() { fondo.hidden = false; botonWhatsappFlotante.hidden = true; document.body.style.overflow = 'hidden'; document.getElementById('cerrar-carrito').focus(); }
+    function cerrar() { fondo.hidden = true; botonWhatsappFlotante.hidden = false; document.body.style.overflow = ''; botonCarrito.focus(); }
     botonCarrito.addEventListener('click', abrir);
     document.getElementById('cerrar-carrito').addEventListener('click', cerrar);
     fondo.addEventListener('click', e => { if (e.target === fondo) cerrar(); });
