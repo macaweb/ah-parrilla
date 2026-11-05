@@ -2770,3 +2770,64 @@ a:focus-visible {
     background: #fff;
     box-shadow: 0 0 0 3px rgba(255,255,255,.18);
 }
+
+
+/* SELECTORES UNIFICADOS — AH PARRILLA */
+.selector-almuerzos select,
+.pedido-especial select,
+.formulario-pedido select,
+.selector-jugo-pedido select,
+.opciones-precios-jugos select {
+    width: 100%;
+    min-height: 48px;
+    padding: 11px 44px 11px 14px;
+    border: 1px solid rgba(229, 169, 59, .68);
+    border-radius: 11px;
+    appearance: none;
+    -webkit-appearance: none;
+    background-color: #21150c;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='18' height='18' viewBox='0 0 24 24' fill='none' stroke='%23ffc66a' stroke-width='2.5' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='m6 9 6 6 6-6'/%3E%3C/svg%3E");
+    background-repeat: no-repeat;
+    background-position: right 14px center;
+    color: #fff0d2;
+    font: 600 15px Arial, Helvetica, sans-serif;
+    box-shadow: inset 0 1px 0 rgba(255, 235, 195, .08), 0 3px 10px rgba(0, 0, 0, .2);
+    transition: border-color .2s ease, box-shadow .2s ease, background-color .2s ease;
+    color-scheme: dark;
+}
+.selector-almuerzos select:focus,
+.pedido-especial select:focus,
+.formulario-pedido select:focus,
+.selector-jugo-pedido select:focus,
+.opciones-precios-jugos select:focus {
+    border-color: #ffc66a;
+    outline: none;
+    background-color: #2b1a0d;
+    box-shadow: 0 0 0 3px rgba(229, 169, 59, .2), 0 5px 14px rgba(0, 0, 0, .25);
+}
+.selector-almuerzos select option,
+.pedido-especial select option,
+.formulario-pedido select option,
+.selector-jugo-pedido select option,
+.opciones-precios-jugos select option {
+    background: #21150c;
+    color: #fff0d2;
+}
+
+/* Los botones de sabor y preparación usan el mismo acabado que los selectores. */
+.lista-sabores .boton-sabor-jugo,
+.opciones-preparacion-jugo .opcion-preparacion-jugo {
+    min-height: 44px;
+    border-radius: 10px;
+    transition: border-color .18s ease, background .18s ease, box-shadow .18s ease, transform .18s ease;
+}
+.lista-sabores .boton-sabor-jugo:active,
+.opciones-preparacion-jugo .opcion-preparacion-jugo:active {
+    transform: scale(.97);
+}
+
+/* Menú lateral: quitar los puntos decorativos delante de las categorías. */
+.panel-menu-lateral > a::before {
+    content: none !important;
+    display: none !important;
+}
