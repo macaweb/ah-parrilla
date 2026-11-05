@@ -2339,13 +2339,23 @@ a:focus-visible {
 }
 
 
-/* Precio del plato especial debajo de su nombre */
+/* Precio del especial: destacado y fácil de identificar */
 .card-especial .precio-nombre-especial {
-    margin: 8px 0 0;
-    color: #ffd17a;
-    font-size: clamp(20px, 4.5vw, 25px);
-    font-weight: 900;
-    text-align: center;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    margin: 10px 0 0;
+    padding: 9px 22px;
+    border: 1px solid rgba(255, 190, 78, .9);
+    border-radius: 999px;
+    color: #241306;
+    background: linear-gradient(135deg, #ffe29a, #f1a52e);
+    font-size: clamp(25px, 6vw, 31px);
+    font-weight: 950;
+    line-height: 1;
+    letter-spacing: .2px;
+    text-shadow: 0 1px rgba(255,255,255,.25);
+    box-shadow: 0 5px 18px rgba(229, 150, 35, .28), inset 0 1px rgba(255,255,255,.4);
 }
 
 
