@@ -1,4 +1,4 @@
-const CACHE_NAME = 'ah-parrilla-offline-v1';
+const CACHE_NAME = 'ah-parrilla-offline-v2';
 const ARCHIVOS_ESENCIALES = ['./','./index.html','./styles.css','./script.js','./portada-ah-parrilla.png','./imagenes/desayunos.png','./imagenes/almuerzos.png','./imagenes/platos_fuertes.png','./imagenes/sopas.jpg','./imagenes/jugos.jpg','./imagenes/bebidas.jpg'];
 self.addEventListener('install', event => {
   event.waitUntil((async () => {
