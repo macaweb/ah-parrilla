@@ -89,7 +89,10 @@ document.addEventListener('DOMContentLoaded', () => {
         boton.className = 'boton-agregar';
         boton.textContent = 'Agregar +';
         boton.setAttribute('aria-label', 'Agregar ' + titulo + ' al pedido');
-        boton.addEventListener('click', () => agregar(titulo, precio));
+        boton.addEventListener('click', () => {
+            agregar(titulo, precio);
+            confirmarAgregado(boton);
+        });
         plato.appendChild(boton);
     });
 
@@ -132,6 +135,7 @@ document.addEventListener('DOMContentLoaded', () => {
         botonJugo.addEventListener('click', () => {
             if (!saborSelect.value) { saborSelect.focus(); return; }
             agregar('Jugo de ' + saborSelect.value + ' (' + (tipoSelect.value === '6000' ? 'en agua' : 'en leche') + ')', Number(tipoSelect.value));
+            confirmarAgregado(botonJugo);
         });
         opciones.append(labelSabor, saborSelect, labelTipo, tipoSelect, botonJugo);
         jugos.appendChild(opciones);
@@ -164,7 +168,23 @@ document.addEventListener('DOMContentLoaded', () => {
             const plato = bloqueEspecial.querySelector('.nombre-especial')?.textContent.trim() || 'Plato del día';
             const nombreMenu = 'Menú especial: ' + plato + ' + ' + acompanamiento.value + ' + ' + jugoEspecial.value;
             agregar(nombreMenu, 19000);
+            confirmarAgregado(document.getElementById('agregar-menu-especial'));
         });
+    }
+
+    function confirmarAgregado(boton) {
+        const textoOriginal = boton.dataset.textoOriginal || boton.textContent;
+        boton.dataset.textoOriginal = textoOriginal;
+        boton.textContent = '✓ ¡Agregado al carrito!';
+        boton.classList.remove('confirmacion-agregado');
+        void boton.offsetWidth;
+        boton.classList.add('confirmacion-agregado');
+        boton.setAttribute('aria-live', 'polite');
+        if (boton._restaurarTexto) clearTimeout(boton._restaurarTexto);
+        boton._restaurarTexto = setTimeout(() => {
+            boton.textContent = textoOriginal;
+            boton.classList.remove('confirmacion-agregado');
+        }, 1400);
     }
 
     function agregar(nombre, precio) {
@@ -176,7 +196,8 @@ document.addEventListener('DOMContentLoaded', () => {
     function renderizar() {
         const productos = [...carrito.values()];
         const cantidad = productos.reduce((s, p) => s + p.cantidad, 0);
-        const total = productos.reduce((s, p) => s + p.precio * p.cantidad, 0);
+        const subtotal = productos.reduce((s, p) => s + p.precio * p.cantidad, 0);
+        const total = cantidad > 0 ? subtotal + 2000 : 0;
         contadorEl.textContent = cantidad;
         botonCarrito.setAttribute('aria-label', 'Abrir carrito de pedidos. ' + cantidad + (cantidad === 1 ? ' producto' : ' productos'));
         totalEl.textContent = formatoPrecio(total);
@@ -222,12 +243,14 @@ document.addEventListener('DOMContentLoaded', () => {
         if (!carrito.size) return;
         const datos = new FormData(formulario);
         const productos = [...carrito.values()];
-        const total = productos.reduce((s, p) => s + p.precio * p.cantidad, 0);
+        const subtotal = productos.reduce((s, p) => s + p.precio * p.cantidad, 0);
+        const total = subtotal + 2000;
         const lineas = [
             '*NUEVO PEDIDO — AH PARRILLA*',
             '',
             ...productos.map(p => '• ' + p.cantidad + ' × ' + p.nombre + ' — ' + formatoPrecio(p.precio * p.cantidad)),
             '',
+            'Recipiente obligatorio: ' + formatoPrecio(2000),
             '*TOTAL: ' + formatoPrecio(total) + '*',
             '',
             '*DATOS DE ENTREGA*',
