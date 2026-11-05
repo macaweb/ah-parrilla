@@ -138,6 +138,8 @@ document.addEventListener('DOMContentLoaded', () => {
         const costoRecipiente = seccion.id === 'sopas' ? 1000 : ['desayunos', 'almuerzos', 'platos-fuertes'].includes(seccion.id) ? 2000 : 0;
 
         if (seccion.id === 'almuerzos') {
+            // Evita que queden botones u opciones individuales junto a cada plato.
+            plato.querySelectorAll('.boton-agregar, .selector-jugo-pedido, .selector-almuerzo-individual').forEach(elemento => elemento.remove());
             plato.classList.add('almuerzo-seleccionable');
             plato.tabIndex = 0;
             plato.setAttribute('role', 'button');
@@ -249,8 +251,8 @@ document.addEventListener('DOMContentLoaded', () => {
             confirmarAgregado(botonAgregarAlmuerzo);
         });
         selectorAlmuerzos.append(tituloSelector, textoSelector, avisoAlmuerzo, grupoSopas, selectSopas, grupoJugos, selectJugos, botonAgregarAlmuerzo);
-        const notaAcompanantes = seccionAlmuerzos.querySelector('.bloque-acompanantes');
-        seccionAlmuerzos.insertBefore(selectorAlmuerzos, notaAcompanantes || null);
+        // Un solo bloque de opciones, inmediatamente después de la lista de platos.
+        listaAlmuerzos.insertAdjacentElement('afterend', selectorAlmuerzos);
     }
 
     // Los sabores se seleccionan directamente desde sus etiquetas.
