@@ -100,8 +100,6 @@ document.addEventListener('DOMContentLoaded', () => {
     const totalEl = document.getElementById('carrito-total');
     const formulario = document.getElementById('formulario-pedido');
     const metodoPago = formulario.elements.metodo_pago;
-    const detalleComisionTarjeta = document.getElementById('detalle-comision-tarjeta');
-    const valorComisionTarjeta = document.getElementById('valor-comision-tarjeta');
     const formatoPrecio = valor => '$' + valor.toLocaleString('es-CO');
 
     // Publica en la categoría Sopas las opciones concretas del día para compra individual.
@@ -393,12 +391,9 @@ document.addEventListener('DOMContentLoaded', () => {
         const subtotal = productos.reduce((s, p) => s + p.precio * p.cantidad, 0);
         const totalRecipientes = productos.reduce((s, p) => s + p.recipiente * p.cantidad, 0);
         const totalBase = subtotal + totalRecipientes;
-        const comisionTarjeta = metodoPago.value === 'Tarjeta de crédito' ? Math.round(totalBase * 0.05) : 0;
-        const total = totalBase + comisionTarjeta;
+        const total = totalBase;
         const detalleRecipientes = document.getElementById('total-recipientes');
         if (detalleRecipientes) detalleRecipientes.textContent = formatoPrecio(totalRecipientes);
-        if (detalleComisionTarjeta) detalleComisionTarjeta.hidden = comisionTarjeta === 0;
-        if (valorComisionTarjeta) valorComisionTarjeta.textContent = formatoPrecio(comisionTarjeta);
         contadorEl.textContent = cantidad;
         botonCarrito.setAttribute('aria-label', 'Abrir carrito de pedidos. ' + cantidad + (cantidad === 1 ? ' producto' : ' productos'));
         totalEl.textContent = formatoPrecio(total);
@@ -449,8 +444,7 @@ document.addEventListener('DOMContentLoaded', () => {
         const subtotal = productos.reduce((s, p) => s + p.precio * p.cantidad, 0);
         const totalRecipientes = productos.reduce((s, p) => s + p.recipiente * p.cantidad, 0);
         const totalBase = subtotal + totalRecipientes;
-        const comisionTarjeta = datos.get('metodo_pago') === 'Tarjeta de crédito' ? Math.round(totalBase * 0.05) : 0;
-        const total = totalBase + comisionTarjeta;
+        const total = totalBase;
         const lineas = [
             '*NUEVO PEDIDO — AH PARRILLA*',
             '',
@@ -491,7 +485,6 @@ document.addEventListener('DOMContentLoaded', () => {
             }),
             '',
             'Recipientes: ' + formatoPrecio(totalRecipientes),
-            ...(comisionTarjeta > 0 ? ['Comisión tarjeta de crédito (5%): ' + formatoPrecio(comisionTarjeta)] : []),
             '*TOTAL: ' + formatoPrecio(total) + '*',
             '',
             '*DATOS DE ENTREGA*',
