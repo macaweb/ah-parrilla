@@ -99,7 +99,6 @@ document.addEventListener('DOMContentLoaded', () => {
     const contadorEl = document.getElementById('carrito-contador');
     const totalEl = document.getElementById('carrito-total');
     const formulario = document.getElementById('formulario-pedido');
-    const metodoPago = formulario.elements.metodo_pago;
     const formatoPrecio = valor => '$' + valor.toLocaleString('es-CO');
 
     // Publica en la categoría Sopas las opciones concretas del día para compra individual.
@@ -430,7 +429,6 @@ document.addEventListener('DOMContentLoaded', () => {
     }
     function abrir() { fondo.hidden = false; botonCarrito.hidden = true; botonWhatsappFlotante.hidden = true; document.body.style.overflow = 'hidden'; document.getElementById('cerrar-carrito').focus(); }
     function cerrar() { fondo.hidden = true; botonCarrito.hidden = carrito.size === 0; botonWhatsappFlotante.hidden = false; document.body.style.overflow = ''; if (!botonCarrito.hidden) botonCarrito.focus(); }
-    metodoPago.addEventListener('change', renderizar);
     botonCarrito.addEventListener('click', abrir);
     document.getElementById('cerrar-carrito').addEventListener('click', cerrar);
     fondo.addEventListener('click', e => { if (e.target === fondo) cerrar(); });
@@ -492,8 +490,8 @@ document.addEventListener('DOMContentLoaded', () => {
             'Teléfono: ' + datos.get('telefono'),
             'Dirección: ' + datos.get('direccion'),
             'Barrio: ' + datos.get('barrio'),
-            'Método de pago: ' + datos.get('metodo_pago'),
-            'Indicaciones: ' + (datos.get('observaciones') || 'Ninguna')
+            'Indicaciones: ' + (datos.get('observaciones') || 'Ninguna'),
+            'Método de pago: ' + datos.get('metodo_pago')
         ];
         window.open('https://wa.me/' + numeroWhatsApp + '?text=' + encodeURIComponent(lineas.join('\n')), '_blank', 'noopener');
     });
