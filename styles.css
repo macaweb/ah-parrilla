@@ -3165,3 +3165,73 @@ a:focus-visible {
     .pie-pagina .contactos-accion > a.footer-link { gap: 5px !important; font-size: 12px !important; }
     .pie-pagina .contactos-accion .footer-icon { flex-basis: 18px !important; width: 18px !important; height: 18px !important; }
 }
+
+
+/* Enlaces del pie: icono y texto, sin apariencia de botón */
+.pie-pagina .contactos-accion {
+    display: flex !important;
+    flex-flow: row wrap !important;
+    align-items: center !important;
+    justify-content: center !important;
+    gap: 12px 22px !important;
+    width: 100% !important;
+    max-width: 620px !important;
+    margin: 18px auto 14px !important;
+    padding: 0 12px !important;
+}
+.pie-pagina .contactos-accion > a.footer-link {
+    display: inline-flex !important;
+    flex: 0 0 auto !important;
+    align-items: center !important;
+    justify-content: center !important;
+    gap: 7px !important;
+    width: auto !important;
+    min-height: 0 !important;
+    margin: 0 !important;
+    padding: 2px 0 !important;
+    border: 0 !important;
+    border-radius: 0 !important;
+    background: none !important;
+    box-shadow: none !important;
+    color: #e5a93b !important;
+    font-size: 13px !important;
+    font-weight: 600 !important;
+    line-height: 1.5 !important;
+    text-decoration: none !important;
+    white-space: nowrap !important;
+    cursor: pointer !important;
+}
+.pie-pagina .contactos-accion > a.footer-link:hover,
+.pie-pagina .contactos-accion > a.footer-link:focus-visible {
+    background: none !important;
+    color: #fff2d8 !important;
+    text-decoration: underline !important;
+    outline: none !important;
+}
+.pie-pagina .contactos-accion .footer-icon {
+    display: block !important;
+    flex: 0 0 19px !important;
+    width: 19px !important;
+    height: 19px !important;
+}
+@media (max-width: 480px) {
+    .pie-pagina .contactos-accion {
+        gap: 12px 18px !important;
+        max-width: 390px !important;
+    }
+}
+@media (max-width: 360px) {
+    .pie-pagina .contactos-accion {
+        gap: 10px 13px !important;
+        padding: 0 6px !important;
+    }
+    .pie-pagina .contactos-accion > a.footer-link {
+        gap: 5px !important;
+        font-size: 12px !important;
+    }
+    .pie-pagina .contactos-accion .footer-icon {
+        flex-basis: 17px !important;
+        width: 17px !important;
+        height: 17px !important;
+    }
+}
