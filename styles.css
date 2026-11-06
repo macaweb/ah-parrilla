@@ -2921,3 +2921,57 @@ a:focus-visible {
     font-weight: 900;
     line-height: 1;
 }
+
+
+/* Pie de página: enlaces sencillos y dirección clicable */
+.contactos-accion {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 9px;
+    width: 100%;
+    max-width: 440px;
+    margin: 18px auto 14px;
+    padding: 0 12px;
+}
+.contactos-accion a {
+    display: inline;
+    width: auto;
+    min-height: 0;
+    padding: 2px 0;
+    border: 0;
+    border-radius: 0;
+    background: none;
+    color: #e5a93b;
+    font-size: 13px;
+    font-weight: 700;
+    text-decoration: none;
+    box-shadow: none;
+}
+.contactos-accion a:hover,
+.contactos-accion a:focus-visible {
+    color: #fff2d8;
+    text-decoration: underline;
+    outline: none;
+}
+.contactos-accion > span { color: #9f8b75; }
+.direccion-restaurante {
+    margin: 12px auto 20px;
+    color: #cbbba7;
+    font-size: 12px;
+    line-height: 1.7;
+}
+.direccion-restaurante a {
+    color: inherit;
+    text-decoration: none;
+}
+.direccion-restaurante a strong { color: #e5a93b; font-size: 13px; }
+.direccion-restaurante a:hover,
+.direccion-restaurante a:focus-visible {
+    color: #fff2d8;
+    text-decoration: underline;
+    outline: 2px solid #e5a93b;
+    outline-offset: 3px;
+}
