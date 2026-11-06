@@ -355,7 +355,7 @@ document.addEventListener('DOMContentLoaded', () => {
         const botonJugo = document.createElement('button');
         botonJugo.type = 'button';
         botonJugo.className = 'boton-agregar boton-agregar-jugo';
-        botonJugo.textContent = 'Agregar';
+        botonJugo.textContent = 'Agregar +';
         botonJugo.addEventListener('click', () => {
             if (!saborElegido) {
                 listaSabores.querySelector('button')?.focus();
@@ -395,7 +395,7 @@ document.addEventListener('DOMContentLoaded', () => {
             opcion.textContent = item.textContent.trim();
             jugoEspecial.appendChild(opcion);
         });
-        document.getElementById('agregar-menu-especial').textContent = 'Agregar';
+        document.getElementById('agregar-menu-especial').textContent = 'Agregar +';
         document.getElementById('agregar-menu-especial').addEventListener('click', () => {
             if (!acompanamiento.value) { acompanamiento.focus(); return; }
             if (!jugoEspecial.value) { jugoEspecial.focus(); return; }
