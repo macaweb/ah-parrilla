@@ -3022,3 +3022,65 @@ a:focus-visible {
     .contactos-accion .footer-link { font-size: 12px; gap: 4px; }
     .contactos-accion .footer-icon { width: 17px; height: 17px; flex-basis: 17px; }
 }
+
+
+/* Corrección definitiva del pie: enlaces en una sola fila, sin tarjetas */
+.pie-pagina .contactos-accion {
+    display: flex !important;
+    flex-direction: row !important;
+    align-items: center !important;
+    justify-content: center !important;
+    flex-wrap: wrap !important;
+    gap: 9px !important;
+    width: 100% !important;
+    max-width: 440px !important;
+    margin: 18px auto 14px !important;
+    padding: 0 12px !important;
+}
+.pie-pagina .contactos-accion > a.footer-link {
+    display: inline-flex !important;
+    flex: 0 0 auto !important;
+    align-items: center !important;
+    justify-content: center !important;
+    gap: 6px !important;
+    width: auto !important;
+    min-height: 0 !important;
+    margin: 0 !important;
+    padding: 3px 0 !important;
+    border: 0 !important;
+    border-radius: 0 !important;
+    background: transparent !important;
+    color: #e5a93b !important;
+    box-shadow: none !important;
+    font-size: 13px !important;
+    font-weight: 700 !important;
+    line-height: 1.4 !important;
+    text-decoration: none !important;
+}
+.pie-pagina .contactos-accion > a.footer-link:hover,
+.pie-pagina .contactos-accion > a.footer-link:focus-visible {
+    background: transparent !important;
+    color: #fff2d8 !important;
+    text-decoration: underline !important;
+    outline: none !important;
+}
+.pie-pagina .contactos-accion .footer-icon {
+    display: block !important;
+    flex: 0 0 19px !important;
+    width: 19px !important;
+    height: 19px !important;
+    fill: none !important;
+    stroke: currentColor !important;
+    stroke-width: 1.8 !important;
+    stroke-linecap: round !important;
+    stroke-linejoin: round !important;
+}
+.pie-pagina .contactos-accion .footer-instagram .footer-icon { color: #e66a9c !important; }
+.pie-pagina .contactos-accion .footer-whatsapp .footer-icon { color: #35d477 !important; }
+.pie-pagina .contactos-accion .footer-didi .footer-icon { color: #ff8a43 !important; }
+.pie-pagina .contactos-accion > .footer-separator { color: #9f8b75 !important; }
+@media (max-width: 360px) {
+    .pie-pagina .contactos-accion { gap: 7px !important; }
+    .pie-pagina .contactos-accion > a.footer-link { gap: 4px !important; font-size: 12px !important; }
+    .pie-pagina .contactos-accion .footer-icon { width: 17px !important; height: 17px !important; flex-basis: 17px !important; }
+}
