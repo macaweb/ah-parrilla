@@ -3460,3 +3460,13 @@ a:focus-visible {
     .footer-contenido-final .footer-domicilios a.footer-red-link,
     .footer-contenido-final .footer-redes a.footer-red-link { font-size: 12px; }
 }
+
+
+/* Logotipo oficial DiDi Food en el footer */
+.footer-contenido-final .footer-domicilios .footer-didi-logo {
+    display: block;
+    width: 76px;
+    height: auto;
+    flex: 0 0 76px;
+    object-fit: contain;
+}
