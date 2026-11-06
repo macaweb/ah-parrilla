@@ -3084,3 +3084,84 @@ a:focus-visible {
     .pie-pagina .contactos-accion > a.footer-link { gap: 4px !important; font-size: 12px !important; }
     .pie-pagina .contactos-accion .footer-icon { width: 17px !important; height: 17px !important; flex-basis: 17px !important; }
 }
+
+
+/* Pie de página: accesos uniformes y elegantes */
+.pie-pagina .contactos-accion {
+    display: grid !important;
+    grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+    align-items: stretch !important;
+    justify-items: stretch !important;
+    gap: 8px 12px !important;
+    width: min(100%, 430px) !important;
+    max-width: 430px !important;
+    margin: 18px auto 12px !important;
+    padding: 0 12px !important;
+}
+.pie-pagina .contactos-accion > a.footer-link {
+    display: inline-flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    gap: 8px !important;
+    width: 100% !important;
+    min-width: 0 !important;
+    min-height: 42px !important;
+    margin: 0 !important;
+    padding: 8px 6px !important;
+    border: 1px solid rgba(229,169,59,.24) !important;
+    border-radius: 8px !important;
+    background: rgba(255,255,255,.025) !important;
+    color: #f3e5d1 !important;
+    box-shadow: none !important;
+    font-size: 13px !important;
+    font-weight: 700 !important;
+    line-height: 1.25 !important;
+    text-decoration: none !important;
+    white-space: nowrap !important;
+    transition: background .18s ease, border-color .18s ease, color .18s ease !important;
+}
+.pie-pagina .contactos-accion > a.footer-link:hover,
+.pie-pagina .contactos-accion > a.footer-link:focus-visible {
+    border-color: rgba(229,169,59,.75) !important;
+    background: rgba(229,169,59,.09) !important;
+    color: #fff2d8 !important;
+    outline: none !important;
+}
+.pie-pagina .contactos-accion .footer-icon {
+    display: block !important;
+    flex: 0 0 20px !important;
+    width: 20px !important;
+    height: 20px !important;
+    fill: none !important;
+    stroke: currentColor !important;
+    stroke-width: 1.8 !important;
+    stroke-linecap: round !important;
+    stroke-linejoin: round !important;
+}
+.pie-pagina .contactos-accion .footer-whatsapp .footer-icon { color: #35d477 !important; }
+.pie-pagina .contactos-accion .footer-instagram .footer-icon { color: #e66a9c !important; }
+.pie-pagina .contactos-accion .footer-didi .footer-icon { color: #ff7a36 !important; }
+.pie-pagina .contactos-accion .footer-facebook .footer-icon { color: #5795f5 !important; }
+.pie-pagina .contactos-accion .footer-maps .footer-icon { color: #e5a93b !important; }
+.pie-pagina .direccion-restaurante {
+    margin: 0 auto 16px !important;
+    color: #bfae99 !important;
+    font-size: 11px !important;
+    line-height: 1.5 !important;
+    text-align: center !important;
+}
+.pie-pagina .mensaje-final {
+    margin: 10px 0 4px !important;
+    color: #f4e7d5 !important;
+    text-align: center !important;
+}
+.pie-pagina .gracias-final {
+    margin-top: 4px !important;
+    color: #e5a93b !important;
+    font-weight: 700 !important;
+}
+@media (max-width: 360px) {
+    .pie-pagina .contactos-accion { gap: 7px !important; padding: 0 6px !important; }
+    .pie-pagina .contactos-accion > a.footer-link { gap: 5px !important; font-size: 12px !important; }
+    .pie-pagina .contactos-accion .footer-icon { flex-basis: 18px !important; width: 18px !important; height: 18px !important; }
+}
