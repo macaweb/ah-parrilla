@@ -192,6 +192,7 @@ document.addEventListener('DOMContentLoaded', () => {
                     item.setAttribute('aria-pressed', String(activo));
                 });
                 almuerzoElegido = { titulo, precio };
+                avisoPlato.hidden = true;
             };
             plato.addEventListener('click', seleccionarPlato);
             plato.addEventListener('keydown', evento => {
@@ -218,6 +219,11 @@ document.addEventListener('DOMContentLoaded', () => {
         selectorAlmuerzos.className = 'selector-almuerzos';
         const tituloSelector = document.createElement('h3');
         tituloSelector.textContent = 'Completa tu almuerzo';
+        const avisoPlato = document.createElement('p');
+        avisoPlato.className = 'aviso-plato-almuerzo';
+        avisoPlato.textContent = 'Debes seleccionar un plato de almuerzo antes de agregarlo al pedido.';
+        avisoPlato.setAttribute('role', 'alert');
+        avisoPlato.hidden = true;
         const textoSelector = document.createElement('p');
         textoSelector.textContent = 'Después de elegir tu plato de la lista, selecciona los acompañantes:';
         const grupoSopas = document.createElement('label');
@@ -269,6 +275,7 @@ document.addEventListener('DOMContentLoaded', () => {
         botonAgregarAlmuerzo.textContent = 'Agregar +';
         botonAgregarAlmuerzo.addEventListener('click', () => {
             if (!almuerzoElegido) {
+                avisoPlato.hidden = false;
                 listaAlmuerzos.querySelector('.almuerzo-seleccionable')?.focus();
                 return;
             }
@@ -284,7 +291,7 @@ document.addEventListener('DOMContentLoaded', () => {
             agregar(nombrePedido, almuerzoElegido.precio, 2000, 'almuerzos');
             confirmarAgregado(botonAgregarAlmuerzo);
         });
-        selectorAlmuerzos.append(tituloSelector, textoSelector, grupoSopas, selectSopas, grupoJugos, selectJugos, botonAgregarAlmuerzo);
+        selectorAlmuerzos.append(tituloSelector, avisoPlato, textoSelector, grupoSopas, selectSopas, grupoJugos, selectJugos, botonAgregarAlmuerzo);
         // Un solo bloque de opciones, inmediatamente después de la lista de platos.
         listaAlmuerzos.insertAdjacentElement('afterend', selectorAlmuerzos);
         // Limpia cualquier control antiguo que pudiera haber quedado dentro de las tarjetas.
@@ -388,6 +395,7 @@ document.addEventListener('DOMContentLoaded', () => {
             opcion.textContent = item.textContent.trim();
             jugoEspecial.appendChild(opcion);
         });
+        document.getElementById('agregar-menu-especial').textContent = 'Agregar';
         document.getElementById('agregar-menu-especial').addEventListener('click', () => {
             if (!acompanamiento.value) { acompanamiento.focus(); return; }
             if (!jugoEspecial.value) { jugoEspecial.focus(); return; }
