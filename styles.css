@@ -2975,3 +2975,50 @@ a:focus-visible {
     outline: 2px solid #e5a93b;
     outline-offset: 3px;
 }
+
+
+/* Iconos de redes en el pie: enlaces simples, sin apariencia de botones */
+.contactos-accion .footer-link {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 6px;
+    width: auto;
+    min-height: 0;
+    padding: 3px 0;
+    border: 0;
+    border-radius: 0;
+    background: transparent;
+    color: #e5a93b;
+    font-size: 13px;
+    font-weight: 700;
+    text-decoration: none;
+    box-shadow: none;
+    transition: color .18s ease;
+}
+.contactos-accion .footer-link:hover,
+.contactos-accion .footer-link:focus-visible {
+    color: #fff2d8;
+    text-decoration: underline;
+    outline: none;
+}
+.contactos-accion .footer-icon {
+    display: block;
+    width: 19px;
+    height: 19px;
+    flex: 0 0 19px;
+    fill: none;
+    stroke: currentColor;
+    stroke-width: 1.8;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+}
+.contactos-accion .footer-instagram .footer-icon { color: #e66a9c; }
+.contactos-accion .footer-whatsapp .footer-icon { color: #35d477; }
+.contactos-accion .footer-didi .footer-icon { color: #ff8a43; }
+.contactos-accion .footer-separator { color: #9f8b75; }
+@media (max-width: 360px) {
+    .contactos-accion { gap: 7px; }
+    .contactos-accion .footer-link { font-size: 12px; gap: 4px; }
+    .contactos-accion .footer-icon { width: 17px; height: 17px; flex-basis: 17px; }
+}
