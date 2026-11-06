@@ -2893,3 +2893,31 @@ a:focus-visible {
     margin-top: 5px;
     font-size: 14px;
 }
+
+
+/* ADVERTENCIA Y BOTONES DE AGREGAR UNIFICADOS */
+.aviso-plato-almuerzo {
+    border: 1px solid rgba(239, 68, 68, .78);
+    background: rgba(185, 28, 28, .18);
+    color: #ff7777 !important;
+    font-weight: 700;
+    box-shadow: 0 0 0 1px rgba(239, 68, 68, .08);
+}
+
+.selector-almuerzos .boton-agregar-almuerzo,
+.pedido-especial .boton-menu-especial,
+.boton-agregar-jugo {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 7px;
+    width: 100%;
+    min-height: 48px;
+    height: 48px;
+    padding: 12px 16px;
+    margin-top: 5px;
+    border-radius: 9px;
+    font-size: 14px;
+    font-weight: 900;
+    line-height: 1;
+}
