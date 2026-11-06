@@ -3235,3 +3235,109 @@ a:focus-visible {
         height: 17px !important;
     }
 }
+
+
+/* PIE INSTITUCIONAL AH PARRILLA — estructura de footer web, no botones */
+.pie-pagina {
+    width: 100%;
+    margin: 56px 0 0;
+    padding: 42px 22px 18px;
+    background: #100b07;
+    border-top: 1px solid rgba(229,169,59,.3);
+    color: #e9ddcc;
+    text-align: left;
+}
+.footer-contenido {
+    display: grid;
+    grid-template-columns: 1.35fr 1fr 1.25fr 1fr;
+    gap: 30px;
+    width: min(100%, 1080px);
+    margin: 0 auto;
+    padding-bottom: 30px;
+}
+.footer-marca .footer-sobrelinea {
+    margin: 0 0 9px;
+    color: #d69a3a;
+    font-size: 10px;
+    font-weight: 800;
+    letter-spacing: 2.2px;
+}
+.footer-marca h2 {
+    margin: 0;
+    color: #fff4e5;
+    font-family: Georgia, 'Times New Roman', serif;
+    font-size: clamp(25px, 3vw, 34px);
+    letter-spacing: 1.5px;
+}
+.footer-marca h2 span { color: #d99b42; }
+.footer-marca > p:last-child {
+    max-width: 245px;
+    margin: 13px 0 0;
+    color: #c4b29d;
+    font-size: 13px;
+    line-height: 1.7;
+}
+.footer-columna {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 11px;
+}
+.footer-columna h3 {
+    margin: 2px 0 5px;
+    color: #e5ad58;
+    font-size: 13px;
+    font-weight: 800;
+    letter-spacing: .7px;
+}
+.footer-columna a {
+    display: inline;
+    width: fit-content;
+    padding: 0;
+    border: 0;
+    border-radius: 0;
+    background: none;
+    box-shadow: none;
+    color: #d5c8b8;
+    font-size: 13px;
+    font-weight: 400;
+    line-height: 1.65;
+    text-align: left;
+    text-decoration: none;
+    transition: color .18s ease;
+}
+.footer-columna a:hover,
+.footer-columna a:focus-visible {
+    color: #f0b85d;
+    text-decoration: underline;
+    outline: none;
+}
+.footer-pie {
+    display: flex;
+    justify-content: space-between;
+    gap: 12px 24px;
+    width: min(100%, 1080px);
+    margin: 0 auto;
+    padding-top: 16px;
+    border-top: 1px solid rgba(229,169,59,.17);
+    color: #958575;
+    font-size: 11px;
+    line-height: 1.6;
+}
+@media (max-width: 760px) {
+    .pie-pagina { margin-top: 42px; padding: 34px 20px 17px; }
+    .footer-contenido {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 28px 22px;
+        padding-bottom: 25px;
+    }
+    .footer-marca { grid-column: 1 / -1; }
+    .footer-marca > p:last-child { max-width: 100%; }
+}
+@media (max-width: 420px) {
+    .pie-pagina { padding-right: 18px; padding-left: 18px; }
+    .footer-contenido { gap: 25px 16px; }
+    .footer-columna h3 { font-size: 12px; }
+    .footer-columna a { font-size: 12px; }
+    .footer-pie { flex-direction: column; gap: 5px; }
+}
