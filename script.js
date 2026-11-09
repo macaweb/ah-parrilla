@@ -231,7 +231,7 @@ document.addEventListener('DOMContentLoaded', () => {
         const selectSopas = document.createElement('select');
         selectSopas.setAttribute('aria-label', 'Selecciona una sopa o crema para el almuerzo');
         const grupoJugos = document.createElement('label');
-        grupoJugos.textContent = 'Jugos (obligatorio)';
+        grupoJugos.textContent = 'Jugo o bebida (obligatorio)';
         const selectJugos = document.createElement('select');
         selectJugos.setAttribute('aria-label', 'Selecciona un jugo para el almuerzo');
 
