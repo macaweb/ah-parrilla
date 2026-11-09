@@ -5,6 +5,9 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta name="theme-color" content="#100b08">
   <meta name="description" content="Encuentra el menú, pide a domicilio por WhatsApp o DiDi Food y sigue a AH Parrilla en redes sociales.">
+  <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
+  <meta http-equiv="Pragma" content="no-cache">
+  <meta http-equiv="Expires" content="0">
   <title>AH Parrilla | Pide y conéctate</title>
   <style>
     :root{color-scheme:dark;--bg:#100b08;--panel:#1b120c;--gold:#e5a93b;--orange:#d35400;--cream:#fff4df;--muted:#cbbba7;--line:#51351f}
@@ -97,5 +100,23 @@
     </nav>
     <footer>AH PARRILLA · COMIDA CASERA CON SABOR</footer>
   </main>
+
+  <script>
+    // Esta página también limpia registros antiguos que puedan servir una versión guardada.
+    window.addEventListener('load', async () => {
+      try {
+        if ('serviceWorker' in navigator) {
+          const registros = await navigator.serviceWorker.getRegistrations();
+          await Promise.all(registros.map(registro => registro.unregister()));
+        }
+        if ('caches' in window) {
+          const nombres = await caches.keys();
+          await Promise.all(nombres.map(nombre => caches.delete(nombre)));
+        }
+      } catch (error) {
+        console.warn('No fue posible limpiar la caché anterior.', error);
+      }
+    });
+  </script>
 </body>
 </html>
