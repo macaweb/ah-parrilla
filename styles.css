@@ -3531,16 +3531,20 @@ a:focus-visible {
     display: block;
 }
 
-/* Centrado definitivo del aviso de derechos reservados */
-.footer-pie {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    width: 100%;
-    text-align: center;
+/* Centrado reforzado del aviso legal del footer */
+.pie-pagina > .footer-pie {
+    display: grid !important;
+    grid-template-columns: minmax(0, 1fr) !important;
+    justify-items: stretch !important;
+    align-items: center !important;
+    width: min(100%, 1080px) !important;
+    max-width: 1080px !important;
+    margin: 0 auto !important;
+    text-align: center !important;
 }
-.footer-pie span {
-    display: block;
-    width: 100%;
-    text-align: center;
+.pie-pagina > .footer-pie > span {
+    display: block !important;
+    width: 100% !important;
+    margin: 0 auto !important;
+    text-align: center !important;
 }
