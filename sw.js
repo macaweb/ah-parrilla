@@ -1,4 +1,4 @@
-const CACHE_NAME = 'ah-parrilla-offline-v4';
+const CACHE_NAME = 'ah-parrilla-offline-v5';
 const ARCHIVOS_ESENCIALES = ['./','./index.html','./styles.css','./script.js','./portada-ah-parrilla.png','./imagenes/desayunos.png','./imagenes/almuerzos.png','./imagenes/platos_fuertes.png','./imagenes/sopas.jpg','./imagenes/jugos.jpg','./imagenes/bebidas.jpg'];
 self.addEventListener('install', event => {
   event.waitUntil((async () => {
@@ -19,6 +19,8 @@ self.addEventListener('fetch', event => {
   if (solicitud.method !== 'GET') return;
   const url = new URL(solicitud.url);
   if (url.origin !== self.location.origin) return;
+  // La página de enlaces debe servirse directamente, sin la caché de la web principal.
+  if (url.pathname.includes('/enlaces/')) return;
   if (solicitud.mode === 'navigate') {
     event.respondWith((async () => {
       try {
