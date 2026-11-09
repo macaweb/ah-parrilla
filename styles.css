@@ -3530,3 +3530,17 @@ a:focus-visible {
 .footer-pie span {
     display: block;
 }
+
+/* Centrado definitivo del aviso de derechos reservados */
+.footer-pie {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    text-align: center;
+}
+.footer-pie span {
+    display: block;
+    width: 100%;
+    text-align: center;
+}
