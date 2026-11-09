@@ -3492,3 +3492,32 @@ a:focus-visible {
     min-width: 0;
     box-sizing: border-box;
 }
+
+/* El Especial ocupa el mismo ancho útil que una categoría como Almuerzos.
+   Se elimina el límite de ancho de la tarjeta y el padding horizontal interno
+   para que el selector y el botón tengan el mismo espacio disponible. */
+.especial-dia {
+    width: 100%;
+    box-sizing: border-box;
+}
+.especial-dia > .card-especial {
+    width: 100%;
+    max-width: none;
+    box-sizing: border-box;
+    padding-left: 0;
+    padding-right: 0;
+}
+.especial-dia .detalle-especial,
+.especial-dia .selector-especial {
+    width: 100%;
+    max-width: none;
+    min-width: 0;
+    box-sizing: border-box;
+}
+.especial-dia .selector-especial select,
+.especial-dia .selector-especial .boton-agregar-almuerzo {
+    width: 100%;
+    max-width: none;
+    min-width: 0;
+    box-sizing: border-box;
+}
