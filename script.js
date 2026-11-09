@@ -545,18 +545,5 @@ document.addEventListener('DOMContentLoaded', () => {
     // Muestra inmediatamente los productos recuperados al cargar la página.
     renderizar();
 
-    // Mantiene actualizado el Service Worker, especialmente en navegadores móviles.
-    // updateViaCache: 'none' evita que el navegador reutilice una copia HTTP antigua de sw.js.
-    if ('serviceWorker' in navigator) {
-        window.addEventListener('load', async () => {
-            try {
-                const registro = await navigator.serviceWorker.register('./sw.js', {
-                    updateViaCache: 'none'
-                });
-                await registro.update();
-            } catch (error) {
-                console.warn('No se pudo actualizar el modo sin conexión.', error);
-            }
-        });
-    }
+    // El sitio ya no registra Service Worker: GitHub Pages entrega siempre la versión publicada.
 });
