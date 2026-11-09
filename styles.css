@@ -3521,3 +3521,12 @@ a:focus-visible {
     min-width: 0;
     box-sizing: border-box;
 }
+
+/* Centrar el aviso de derechos reservados del pie de página */
+.footer-pie {
+    width: 100%;
+    text-align: center;
+}
+.footer-pie span {
+    display: block;
+}
