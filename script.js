@@ -390,9 +390,13 @@ document.addEventListener('DOMContentLoaded', () => {
             acompanamiento.appendChild(opcion);
         });
         opcionesJugo.forEach(item => {
+            const valorOriginal = item.textContent.trim();
+            const valor = /^(maracuyá|tomate de árbol)$/i.test(valorOriginal)
+                ? 'Jugo de ' + valorOriginal.toLowerCase()
+                : valorOriginal;
             const opcion = document.createElement('option');
-            opcion.value = item.textContent.trim();
-            opcion.textContent = item.textContent.trim();
+            opcion.value = valor;
+            opcion.textContent = valor;
             jugoEspecial.appendChild(opcion);
         });
         document.getElementById('agregar-menu-especial').textContent = 'Agregar +';
