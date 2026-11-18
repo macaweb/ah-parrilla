@@ -415,6 +415,12 @@ document.addEventListener('DOMContentLoaded', () => {
         carrito.set(nombre, { nombre, precio, recipiente, categoria, cantidad: (existente?.cantidad || 0) + 1 });
         renderizar();
         botonCarrito.hidden = false;
+        // Reinicia la animación para que se note cada producto agregado.
+        botonCarrito.classList.remove('animar-carrito');
+        contadorEl.classList.remove('animar-contador');
+        void botonCarrito.offsetWidth;
+        botonCarrito.classList.add('animar-carrito');
+        contadorEl.classList.add('animar-contador');
     }
     function renderizar() {
         const productos = [...carrito.values()];
