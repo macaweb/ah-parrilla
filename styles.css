@@ -3627,3 +3627,45 @@ a:focus-visible {
         transition: none !important;
     }
 }
+
+
+/* Respuesta más visible al interactuar, sin alterar el diseño */
+@media (hover: hover) and (pointer: fine) {
+    .boton-agregar:hover {
+        transform: translateY(-4px) scale(1.035);
+        filter: brightness(1.13);
+        box-shadow: 0 8px 18px rgba(0,0,0,.28), 0 0 0 2px rgba(229,169,59,.12);
+    }
+    .carrito-flotante:hover .carrito-icono {
+        transform: translateY(-2px) rotate(-8deg);
+    }
+}
+.boton-agregar.confirmacion-agregado {
+    animation: agregar-salto .55s cubic-bezier(.2,.8,.25,1);
+}
+@keyframes agregar-salto {
+    0% { transform: scale(1); }
+    32% { transform: translateY(-5px) scale(1.09); }
+    62% { transform: translateY(1px) scale(.97); }
+    100% { transform: translateY(0) scale(1); }
+}
+.carrito-icono {
+    transform-origin: 50% 70%;
+    transition: transform .22s ease;
+}
+.carrito-flotante.animar-carrito .carrito-icono {
+    animation: icono-carrito-balanceo .58s cubic-bezier(.2,.8,.25,1);
+}
+@keyframes icono-carrito-balanceo {
+    0% { transform: translateY(0) rotate(0) scale(1); }
+    28% { transform: translateY(-5px) rotate(-13deg) scale(1.12); }
+    55% { transform: translateY(1px) rotate(9deg) scale(.96); }
+    78% { transform: translateY(-2px) rotate(-4deg); }
+    100% { transform: translateY(0) rotate(0) scale(1); }
+}
+@media (prefers-reduced-motion: reduce) {
+    .boton-agregar.confirmacion-agregado,
+    .carrito-flotante.animar-carrito .carrito-icono {
+        animation: none !important;
+    }
+}
