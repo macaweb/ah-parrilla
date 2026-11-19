@@ -3845,22 +3845,22 @@ a:focus-visible {
     top: 9px;
     right: 9px;
     display: grid;
-    width: 19px;
-    height: 19px;
+    width: 20px;
+    height: 20px;
     place-items: center;
     border: 1px solid #806344;
-    border-radius: 50%;
+    border-radius: 6px;
     background: rgba(10, 7, 4, .35);
     color: transparent;
     transition: background .2s ease, border-color .2s ease, box-shadow .2s ease;
 }
 .marca-entrega svg {
     display: block;
-    width: 13px;
-    height: 13px;
+    width: 16px;
+    height: 16px;
     fill: none;
     stroke: currentColor;
-    stroke-width: 2.4;
+    stroke-width: 3.2;
     stroke-linecap: round;
     stroke-linejoin: round;
 }
