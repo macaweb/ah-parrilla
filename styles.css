@@ -3690,3 +3690,29 @@ a:focus-visible {
         animation: none !important;
     }
 }
+
+
+/* Campos de dirección y barrio solo cuando el pedido es a domicilio */
+.formulario-pedido select {
+    width: 100%;
+    min-height: 43px;
+    padding: 10px 11px;
+    border: 1px solid #654326;
+    border-radius: 7px;
+    outline: none;
+    background: #1a120c;
+    color: #fff8ed;
+    font: inherit;
+    font-size: 14px;
+}
+.formulario-pedido select:focus {
+    border-color: #e5a93b;
+    box-shadow: 0 0 0 2px rgba(229,169,59,.12);
+}
+.campos-domicilio {
+    display: grid;
+    gap: 12px;
+}
+.campos-domicilio[hidden] {
+    display: none !important;
+}
