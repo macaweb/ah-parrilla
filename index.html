@@ -316,13 +316,27 @@
                     <h3>Datos para la entrega</h3>
                     <label>Nombre<input name="nombre" autocomplete="name" required placeholder="Tu nombre"></label>
                     <label>Teléfono<input name="telefono" type="tel" autocomplete="tel" required placeholder="Tu número de contacto"></label>
-                    <label>¿Cómo deseas recibir tu pedido?
-                        <select name="tipo_entrega" required>
-                            <option value="" selected disabled>Selecciona una opción</option>
-                            <option value="Domicilio">Domicilio</option>
-                            <option value="Recoger en el restaurante">Recoger en el restaurante</option>
-                        </select>
-                    </label>
+                    <fieldset class="selector-entrega">
+                        <legend>¿Cómo deseas recibir tu pedido?</legend>
+                        <div class="opciones-entrega">
+                            <label class="opcion-entrega">
+                                <input type="radio" name="tipo_entrega" value="Domicilio" required>
+                                <span class="opcion-entrega-contenido">
+                                    <span class="icono-entrega" aria-hidden="true">⌂</span>
+                                    <span class="texto-entrega"><strong>Domicilio</strong><small>Lo llevamos hasta tu puerta</small></span>
+                                    <span class="marca-entrega" aria-hidden="true">✓</span>
+                                </span>
+                            </label>
+                            <label class="opcion-entrega">
+                                <input type="radio" name="tipo_entrega" value="Recoger en el restaurante" required>
+                                <span class="opcion-entrega-contenido">
+                                    <span class="icono-entrega icono-recoger" aria-hidden="true">↗</span>
+                                    <span class="texto-entrega"><strong>Recoger</strong><small>Pasa por tu pedido al restaurante</small></span>
+                                    <span class="marca-entrega" aria-hidden="true">✓</span>
+                                </span>
+                            </label>
+                        </div>
+                    </fieldset>
                     <div class="campos-domicilio" id="campos-domicilio" hidden>
                         <label>Dirección de entrega<input name="direccion" autocomplete="street-address" placeholder="Dirección completa"></label>
                         <label>Barrio<input name="barrio" autocomplete="address-level3" placeholder="Nombre del barrio"></label>
