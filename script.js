@@ -23,6 +23,7 @@ document.addEventListener('DOMContentLoaded', () => {
         botonWhatsappFlotante.hidden = true;
         botonMenu.setAttribute('aria-expanded', 'true');
         document.body.style.overflow = 'hidden';
+        actualizarCategoriaVisible();
         cerrarMenu.focus();
     }
     function cerrarMenuLateral() {
@@ -72,12 +73,11 @@ document.addEventListener('DOMContentLoaded', () => {
     function actualizarCategoriaVisible() {
         if (!seccionesMenu.length) return;
         const lineaLectura = Math.min(window.innerHeight * 0.32, 260);
-        const seccionActual = seccionesMenu
-            .filter(seccion => {
-                const rect = seccion.getBoundingClientRect();
-                return rect.top <= lineaLectura && rect.bottom > lineaLectura;
-            })
-            .at(-1);
+        const seccionesActivas = seccionesMenu.filter(seccion => {
+            const rect = seccion.getBoundingClientRect();
+            return rect.top <= lineaLectura && rect.bottom > lineaLectura;
+        });
+        const seccionActual = seccionesActivas[seccionesActivas.length - 1];
 
         if (seccionActual) {
             const enlaceActual = enlacesMenuLateral.find(
