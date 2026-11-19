@@ -4144,3 +4144,25 @@ a:focus-visible {
     .panel-menu-lateral > a,
     .icono-menu-lateral { transition: none; }
 }
+
+
+/* Icono flotante de WhatsApp: movimiento suave y continuo */
+.whatsapp-flotante-ah svg {
+    transform-origin: 50% 55%;
+    animation: whatsapp-icono-flotar 2.6s ease-in-out infinite;
+}
+@keyframes whatsapp-icono-flotar {
+    0%, 100% { transform: translateY(0) rotate(0deg) scale(1); }
+    22% { transform: translateY(-3px) rotate(-7deg) scale(1.04); }
+    44% { transform: translateY(0) rotate(5deg) scale(1); }
+    66% { transform: translateY(-2px) rotate(-3deg); }
+    82% { transform: translateY(0) rotate(0deg); }
+}
+@media (hover: hover) and (pointer: fine) {
+    .whatsapp-flotante-ah:hover svg {
+        animation-duration: .7s;
+    }
+}
+@media (prefers-reduced-motion: reduce) {
+    .whatsapp-flotante-ah svg { animation: none !important; }
+}
