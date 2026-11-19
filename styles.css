@@ -2134,10 +2134,34 @@ a:focus-visible {
 .formulario-pedido textarea { resize: vertical; }
 .formulario-pedido input:focus, .formulario-pedido textarea:focus { border-color: #e5a93b; box-shadow: 0 0 0 2px rgba(229,169,59,.12); }
 .enviar-pedido {
-    display: flex; align-items: center; justify-content: center; gap: 10px;
-    min-height: 49px; margin-top: 5px; padding: 11px 15px; border: 1px solid #75d69a;
-    border-radius: 8px; background: linear-gradient(135deg,#2ebc68,#168447);
-    color: white; font-size: 14px; font-weight: 900; cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    width: 100%;
+    min-height: 49px;
+    margin-top: 5px;
+    padding: 11px 15px;
+    border: 1px solid #c9943d;
+    border-radius: 8px;
+    background: linear-gradient(135deg, #382414, #21150c);
+    color: #fff0d2;
+    font-size: 14px;
+    font-weight: 800;
+    letter-spacing: .2px;
+    cursor: pointer;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, .2);
+    transition: background .2s ease, border-color .2s ease, color .2s ease, transform .2s ease, box-shadow .2s ease;
+}
+.enviar-pedido:hover {
+    border-color: #f0c36b;
+    background: linear-gradient(135deg, #76502c, #4a301b);
+    color: #fff8ed;
+    box-shadow: 0 5px 16px rgba(201, 148, 61, .2);
+}
+.enviar-pedido:focus-visible {
+    outline: 2px solid #f0c36b;
+    outline-offset: 3px;
 }
 .enviar-pedido:active { transform: scale(.985); }
 .nota-pedido { margin: 0; color: #bda98f; font-size: 11px; text-align: center; }
