@@ -20,7 +20,7 @@ document.addEventListener('DOMContentLoaded', () => {
         boton.append(texto, flecha);
         const lista = document.createElement('div');
         lista.className = 'selector-visual-lista';
-        lista.role = 'listbox';
+        lista.setAttribute('role', 'listbox');
         lista.hidden = true;
         const cerrar = () => { lista.hidden = true; boton.setAttribute('aria-expanded', 'false'); };
         const pintarOpciones = () => {
@@ -29,7 +29,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 const item = document.createElement('button');
                 item.type = 'button';
                 item.className = 'selector-visual-opcion';
-                item.role = 'option';
+                item.setAttribute('role', 'option');
                 item.textContent = opcion.textContent;
                 item.setAttribute('aria-selected', String(select.value === opcion.value));
                 item.disabled = opcion.disabled;
