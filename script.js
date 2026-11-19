@@ -1,5 +1,85 @@
 // Navegación de categorías y pedidos por WhatsApp.
 document.addEventListener('DOMContentLoaded', () => {
+    // Convierte los select nativos del menú en desplegables visuales personalizados.
+    function mejorarSelector(select, textoInicial = 'Selecciona una opción') {
+        if (!select || select.dataset.personalizado === 'true') return;
+        select.dataset.personalizado = 'true';
+        const envoltura = document.createElement('div');
+        envoltura.className = 'selector-visual';
+        const boton = document.createElement('button');
+        boton.type = 'button';
+        boton.className = 'selector-visual-boton';
+        boton.setAttribute('aria-haspopup', 'listbox');
+        boton.setAttribute('aria-expanded', 'false');
+        const texto = document.createElement('span');
+        texto.textContent = select.options[select.selectedIndex]?.textContent || textoInicial;
+        const flecha = document.createElement('span');
+        flecha.className = 'selector-visual-flecha';
+        flecha.setAttribute('aria-hidden', 'true');
+        flecha.textContent = '⌄';
+        boton.append(texto, flecha);
+        const lista = document.createElement('div');
+        lista.className = 'selector-visual-lista';
+        lista.role = 'listbox';
+        lista.hidden = true;
+        const cerrar = () => { lista.hidden = true; boton.setAttribute('aria-expanded', 'false'); };
+        const pintarOpciones = () => {
+            lista.replaceChildren();
+            [...select.options].forEach((opcion, indice) => {
+                const item = document.createElement('button');
+                item.type = 'button';
+                item.className = 'selector-visual-opcion';
+                item.role = 'option';
+                item.textContent = opcion.textContent;
+                item.setAttribute('aria-selected', String(select.value === opcion.value));
+                item.disabled = opcion.disabled;
+                item.addEventListener('click', () => {
+                    select.value = opcion.value;
+                    texto.textContent = opcion.textContent;
+                    select.dispatchEvent(new Event('change', { bubbles: true }));
+                    lista.querySelectorAll('[role="option"]').forEach(op => op.setAttribute('aria-selected', String(op === item)));
+                    cerrar();
+                    boton.focus();
+                });
+                lista.appendChild(item);
+            });
+        };
+        pintarOpciones();
+        boton.addEventListener('click', () => {
+            const abrir = lista.hidden;
+            document.querySelectorAll('.selector-visual-lista:not([hidden])').forEach(otra => {
+                otra.hidden = true;
+                otra.parentElement.querySelector('.selector-visual-boton')?.setAttribute('aria-expanded', 'false');
+            });
+            lista.hidden = !abrir;
+            boton.setAttribute('aria-expanded', String(abrir));
+            if (abrir) pintarOpciones();
+        });
+        boton.addEventListener('keydown', evento => {
+            if (evento.key === 'Escape') cerrar();
+            if (evento.key === 'ArrowDown' && lista.hidden) {
+                evento.preventDefault();
+                boton.click();
+                lista.querySelector('[role="option"]:not(:disabled)')?.focus();
+            }
+        });
+        lista.addEventListener('keydown', evento => {
+            const opciones = [...lista.querySelectorAll('[role="option"]:not(:disabled)')];
+            const actual = opciones.indexOf(document.activeElement);
+            if (evento.key === 'Escape') { cerrar(); boton.focus(); }
+            if (evento.key === 'ArrowDown') { evento.preventDefault(); opciones[Math.min(actual + 1, opciones.length - 1)]?.focus(); }
+            if (evento.key === 'ArrowUp') { evento.preventDefault(); opciones[Math.max(actual - 1, 0)]?.focus(); }
+        });
+        select.classList.add('selector-nativo-oculto');
+        select.insertAdjacentElement('afterend', envoltura);
+        envoltura.append(boton, lista);
+        document.addEventListener('click', evento => { if (!envoltura.contains(evento.target)) cerrar(); });
+        select.addEventListener('change', () => {
+            texto.textContent = select.options[select.selectedIndex]?.textContent || textoInicial;
+            pintarOpciones();
+        });
+    }
+
     const enlaces = document.querySelectorAll('.categorias a');
     enlaces.forEach(enlace => enlace.addEventListener('click', () => {
         enlaces.forEach(item => { item.classList.remove('seleccionada'); item.removeAttribute('aria-current'); });
@@ -279,7 +359,7 @@ document.addEventListener('DOMContentLoaded', () => {
             agregar(nombrePedido, almuerzoElegido.precio, 2000, 'almuerzos');
             confirmarAgregado(botonAgregarAlmuerzo);
         });
-        selectorAlmuerzos.append(tituloSelector, avisoPlato, textoSelector, grupoSopas, selectSopas, grupoJugos, selectJugos, botonAgregarAlmuerzo);
+        mejorarSelector(selectSopas);\n        mejorarSelector(selectJugos);\n        selectorAlmuerzos.append(tituloSelector, avisoPlato, textoSelector, grupoSopas, selectSopas, grupoJugos, selectJugos, botonAgregarAlmuerzo);
         // Un solo bloque de opciones, inmediatamente después de la lista de platos.
         listaAlmuerzos.insertAdjacentElement('afterend', selectorAlmuerzos);
         // Limpia cualquier control antiguo que pudiera haber quedado dentro de las tarjetas.
@@ -387,7 +467,7 @@ document.addEventListener('DOMContentLoaded', () => {
             opcion.textContent = valor;
             jugoEspecial.appendChild(opcion);
         });
-        document.getElementById('agregar-menu-especial').textContent = 'Agregar +';
+        mejorarSelector(acompanamiento);\n        mejorarSelector(jugoEspecial);\n        document.getElementById('agregar-menu-especial').textContent = 'Agregar +';
         document.getElementById('agregar-menu-especial').addEventListener('click', () => {
             if (!acompanamiento.value) { acompanamiento.focus(); return; }
             if (!jugoEspecial.value) { jugoEspecial.focus(); return; }
