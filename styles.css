@@ -2420,10 +2420,10 @@ a:focus-visible {
     filter: brightness(1.12);
 }
 .boton-agregar.confirmacion-agregado {
-    background: linear-gradient(135deg, #4caf70, #237a45) !important;
-    border-color: #8be0a7 !important;
-    color: #fff !important;
-    box-shadow: 0 0 0 3px rgba(91, 207, 131, .2), 0 5px 14px rgba(0,0,0,.25);
+    background: linear-gradient(135deg, #f2cf83, #d6a348 58%, #bd8535) !important;
+    border-color: #f6d994 !important;
+    color: #28190d !important;
+    box-shadow: 0 0 0 3px rgba(226, 174, 83, .22), 0 5px 14px rgba(0,0,0,.25);
     animation: pulso-agregado .38s ease;
 }
 @keyframes pulso-agregado {
