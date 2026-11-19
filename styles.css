@@ -4166,3 +4166,38 @@ a:focus-visible {
 @media (prefers-reduced-motion: reduce) {
     .whatsapp-flotante-ah svg { animation: none !important; }
 }
+
+
+/* Iconografía unificada de la barra lateral */
+.icono-menu-lateral svg {
+    display: block;
+    width: 19px;
+    height: 19px;
+    fill: none;
+    stroke: currentColor;
+    stroke-width: 1.7;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+}
+.panel-menu-lateral > a .icono-menu-lateral {
+    color: #e9b85f;
+    background: rgba(229,169,59,.075);
+    border-color: rgba(229,169,59,.3);
+}
+.panel-menu-lateral > a.seleccionada .icono-menu-lateral svg,
+.panel-menu-lateral > a[aria-current="location"] .icono-menu-lateral svg {
+    stroke: currentColor;
+}
+/* Al abrir el panel, las tres rayas se ocultan: la X es el único cierre */
+.boton-menu-lateral[aria-expanded="true"] {
+    opacity: 0;
+    visibility: hidden;
+    pointer-events: none;
+    transform: scale(.88);
+}
+.boton-menu-lateral {
+    transition: opacity .18s ease, visibility .18s ease, transform .18s ease;
+}
+@media (prefers-reduced-motion: reduce) {
+    .boton-menu-lateral { transition: none; }
+}
