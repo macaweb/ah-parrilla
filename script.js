@@ -474,13 +474,13 @@ document.addEventListener('DOMContentLoaded', () => {
     fondo.addEventListener('click', e => { if (e.target === fondo) cerrar(); });
     document.addEventListener('keydown', e => { if (e.key === 'Escape' && !fondo.hidden) cerrar(); });
 
-    const tipoEntrega = formulario.elements.tipo_entrega;
+    const opcionesEntrega = formulario.querySelectorAll('input[name="tipo_entrega"]');
     const camposDomicilio = document.getElementById('campos-domicilio');
     const campoDireccion = formulario.elements.direccion;
     const campoBarrio = formulario.elements.barrio;
 
-    tipoEntrega.addEventListener('change', () => {
-        const esDomicilio = tipoEntrega.value === 'Domicilio';
+    opcionesEntrega.forEach(opcion => opcion.addEventListener('change', () => {
+        const esDomicilio = opcion.value === 'Domicilio';
         camposDomicilio.hidden = !esDomicilio;
         campoDireccion.required = esDomicilio;
         campoBarrio.required = esDomicilio;
@@ -488,7 +488,7 @@ document.addEventListener('DOMContentLoaded', () => {
             campoDireccion.value = '';
             campoBarrio.value = '';
         }
-    });
+    }));
 
     formulario.addEventListener('submit', e => {
         e.preventDefault();
