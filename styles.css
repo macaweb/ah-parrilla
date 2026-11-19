@@ -3812,14 +3812,24 @@ a:focus-visible {
     top: 9px;
     right: 9px;
     display: grid;
-    width: 17px;
-    height: 17px;
+    width: 19px;
+    height: 19px;
     place-items: center;
     border: 1px solid #806344;
     border-radius: 50%;
+    background: rgba(10, 7, 4, .35);
     color: transparent;
-    font-size: 10px;
-    transition: background .2s ease, border-color .2s ease, color .2s ease;
+    transition: background .2s ease, border-color .2s ease, box-shadow .2s ease;
+}
+.marca-entrega svg {
+    display: block;
+    width: 13px;
+    height: 13px;
+    fill: none;
+    stroke: currentColor;
+    stroke-width: 2.4;
+    stroke-linecap: round;
+    stroke-linejoin: round;
 }
 .opcion-entrega > input:checked + .opcion-entrega-contenido {
     border-color: #e5a93b;
@@ -3827,9 +3837,10 @@ a:focus-visible {
     box-shadow: 0 0 0 1px rgba(229,169,59,.16),0 5px 14px rgba(0,0,0,.18);
 }
 .opcion-entrega > input:checked + .opcion-entrega-contenido .marca-entrega {
-    border-color: #e5a93b;
+    border-color: #ffd27d;
     background: #e5a93b;
     color: #24170d;
+    box-shadow: 0 0 0 2px rgba(229,169,59,.16), 0 0 10px rgba(229,169,59,.2);
 }
 .opcion-entrega > input:focus-visible + .opcion-entrega-contenido {
     outline: 2px solid #ffd17a;
