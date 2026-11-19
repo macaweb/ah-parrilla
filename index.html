@@ -316,8 +316,17 @@
                     <h3>Datos para la entrega</h3>
                     <label>Nombre<input name="nombre" autocomplete="name" required placeholder="Tu nombre"></label>
                     <label>Teléfono<input name="telefono" type="tel" autocomplete="tel" required placeholder="Tu número de contacto"></label>
-                    <label>Dirección de entrega<input name="direccion" autocomplete="street-address" required placeholder="Dirección completa"></label>
-                    <label>Barrio<input name="barrio" autocomplete="address-level3" required placeholder="Nombre del barrio"></label>
+                    <label>¿Cómo deseas recibir tu pedido?
+                        <select name="tipo_entrega" required>
+                            <option value="" selected disabled>Selecciona una opción</option>
+                            <option value="Domicilio">Domicilio</option>
+                            <option value="Recoger en el restaurante">Recoger en el restaurante</option>
+                        </select>
+                    </label>
+                    <div class="campos-domicilio" id="campos-domicilio" hidden>
+                        <label>Dirección de entrega<input name="direccion" autocomplete="street-address" placeholder="Dirección completa"></label>
+                        <label>Barrio<input name="barrio" autocomplete="address-level3" placeholder="Nombre del barrio"></label>
+                    </div>
                     <label>Indicaciones adicionales <span>(opcional)</span><textarea name="observaciones" rows="2" placeholder="Apartamento, indicaciones o comentarios"></textarea></label>
                     <label>Método de pago<select name="metodo_pago" required><option value="" selected disabled>Selecciona una opción</option><option value="QR">QR</option><option value="Llaves Bre-B">Llaves Bre-B</option><option value="Bancolombia">Bancolombia</option><option value="Tarjeta de crédito">Tarjeta de crédito</option></select></label>
                     <button class="enviar-pedido" type="submit">Enviar pedido por WhatsApp <span aria-hidden="true">›</span></button>
