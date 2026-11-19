@@ -655,7 +655,7 @@ document.addEventListener('DOMContentLoaded', () => {
         const totalBase = subtotal + totalRecipientes;
         const total = totalBase;
         const lineas = [
-            '*NUEVO PEDIDO — AH PARRILLA*',
+            'NUEVO PEDIDO — AH PARRILLA',
             '',
             ...productos.map(p => {
                 const cantidad = p.cantidad;
@@ -690,13 +690,13 @@ document.addEventListener('DOMContentLoaded', () => {
                     default:
                         detalle = cantidad + (cantidad === 1 ? ' unidad de ' : ' unidades de ') + nombre;
                 }
-                return '• *' + detalle + '* — ' + formatoPrecio(p.precio * cantidad);
+                return '• ' + detalle + ' — ' + formatoPrecio(p.precio * cantidad);
             }),
             '',
             'Recipientes: ' + formatoPrecio(totalRecipientes),
-            '*TOTAL: ' + formatoPrecio(total) + '*',
+            'TOTAL: ' + formatoPrecio(total),
             '',
-            '*DATOS DE ENTREGA*',
+            'DATOS DE ENTREGA',
             'Nombre: ' + datos.get('nombre'),
             'Teléfono: ' + datos.get('telefono'),
             'Entrega: ' + datos.get('tipo_entrega'),
