@@ -3999,3 +3999,148 @@ a:focus-visible {
 @media (prefers-reduced-motion: reduce) {
     #cerrar-menu-lateral { transition: none; }
 }
+
+
+/* NAVEGACIÓN LATERAL — identidad cálida y refinada de AH Parrilla */
+.panel-menu-lateral {
+    padding: 0 18px 28px;
+    background:
+        radial-gradient(ellipse at 10% 0%, rgba(229,169,59,.13), transparent 42%),
+        linear-gradient(160deg, #24170e 0%, #130d08 58%, #0c0805 100%);
+}
+.cabecera-menu-lateral {
+    min-height: 91px;
+    margin-bottom: 0;
+    border-bottom: 1px solid rgba(229,169,59,.24);
+}
+.marca-menu-lateral {
+    display: grid;
+    gap: 5px;
+    margin-left: 2px;
+}
+.marca-menu-lateral > span {
+    color: #f5c36a;
+    font-size: 15px;
+    font-weight: 950;
+    letter-spacing: 2.4px;
+}
+.marca-menu-lateral small {
+    color: #bda486;
+    font-size: 9px;
+    font-weight: 700;
+    letter-spacing: 2px;
+}
+.cabecera-menu-lateral button {
+    display: grid;
+    place-items: center;
+    flex: 0 0 38px;
+    width: 38px;
+    height: 38px;
+    border-color: rgba(229,169,59,.4);
+    background: rgba(255,255,255,.035);
+}
+.titulo-navegacion-lateral {
+    margin: 23px 8px 11px;
+    color: #9d8262;
+    font-size: 9px;
+    font-weight: 800;
+    letter-spacing: 1.8px;
+}
+.panel-menu-lateral > a {
+    position: relative;
+    gap: 13px;
+    min-height: 51px;
+    margin: 2px 0;
+    padding: 9px 12px;
+    border: 1px solid transparent;
+    border-radius: 9px;
+    color: #eadbc5;
+    font-size: 14px;
+    font-weight: 650;
+    letter-spacing: .1px;
+    transition: background .22s ease, color .22s ease, border-color .22s ease, transform .22s ease, box-shadow .22s ease;
+}
+.panel-menu-lateral > a::before { display: none; }
+.icono-menu-lateral {
+    display: grid;
+    flex: 0 0 29px;
+    width: 29px;
+    height: 29px;
+    place-items: center;
+    border: 1px solid rgba(229,169,59,.27);
+    border-radius: 8px;
+    background: rgba(229,169,59,.075);
+    color: #e9b85f;
+    font-family: Georgia, serif;
+    font-size: 18px;
+    line-height: 1;
+    transition: background .22s ease, color .22s ease, border-color .22s ease, transform .22s ease;
+}
+.panel-menu-lateral > a.seleccionada,
+.panel-menu-lateral > a[aria-current="location"] {
+    border-color: rgba(229,169,59,.32);
+    background: linear-gradient(100deg, rgba(229,169,59,.19), rgba(229,169,59,.045));
+    color: #ffd98f;
+    box-shadow: inset 3px 0 0 #e5a93b, 0 5px 15px rgba(0,0,0,.12);
+}
+.panel-menu-lateral > a.seleccionada .icono-menu-lateral,
+.panel-menu-lateral > a[aria-current="location"] .icono-menu-lateral {
+    border-color: rgba(255,209,122,.65);
+    background: linear-gradient(145deg, #e5a93b, #b96b1c);
+    color: #211307;
+    transform: scale(1.04);
+}
+.panel-menu-lateral > a:active {
+    transform: scale(.985);
+    background: rgba(229,169,59,.16);
+    color: #ffd98f;
+}
+.panel-menu-lateral > a:focus-visible {
+    outline: 2px solid #ffd17a;
+    outline-offset: 2px;
+}
+.separador-menu-lateral {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin: 17px 8px 10px;
+    color: #b98945;
+    font-size: 11px;
+}
+.separador-menu-lateral::before,
+.separador-menu-lateral::after {
+    content: "";
+    flex: 1;
+    height: 1px;
+    background: linear-gradient(90deg, transparent, rgba(229,169,59,.35));
+}
+.separador-menu-lateral::after {
+    background: linear-gradient(90deg, rgba(229,169,59,.35), transparent);
+}
+.panel-menu-lateral > a.enlace-contacto-lateral {
+    min-height: 46px;
+    border-color: rgba(229,169,59,.16);
+    background: rgba(255,255,255,.025);
+}
+.pie-menu-lateral {
+    margin: auto 8px 0;
+    padding-top: 26px;
+    color: #8f785e;
+    font-family: Georgia, serif;
+    font-size: 12px;
+    font-style: italic;
+    letter-spacing: .3px;
+    text-align: center;
+}
+@media (hover: hover) and (pointer: fine) {
+    .panel-menu-lateral > a:hover {
+        border-color: rgba(229,169,59,.25);
+        background: rgba(229,169,59,.09);
+        color: #ffdda0;
+        transform: translateX(3px);
+    }
+}
+@media (prefers-reduced-motion: reduce) {
+    .panel-menu-lateral > a,
+    .icono-menu-lateral { transition: none; }
+}
