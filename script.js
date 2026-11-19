@@ -605,6 +605,8 @@ document.addEventListener('DOMContentLoaded', () => {
     const camposDomicilio = document.getElementById('campos-domicilio');
     const campoDireccion = formulario.elements.direccion;
     const campoBarrio = formulario.elements.barrio;
+    const campoObservaciones = formulario.elements.observaciones;
+    const labelObservaciones = document.getElementById('label-observaciones');
 
     opcionesEntrega.forEach(opcion => opcion.addEventListener('change', () => {
         const esDomicilio = opcion.value === 'Domicilio';
@@ -615,6 +617,13 @@ document.addEventListener('DOMContentLoaded', () => {
             campoDireccion.value = '';
             campoBarrio.value = '';
         }
+
+        labelObservaciones.firstChild.textContent = esDomicilio
+            ? 'Indicaciones adicionales '
+            : 'Hora de recogida específica, indicaciones o comentarios ';
+        campoObservaciones.placeholder = esDomicilio
+            ? 'Apartamento, indicaciones o comentarios'
+            : 'Indica la hora de recogida y cualquier comentario';
     }));
 
     formulario.addEventListener('submit', e => {
