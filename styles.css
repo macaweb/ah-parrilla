@@ -4428,3 +4428,28 @@ a:focus-visible {
         transition: none;
     }
 }
+
+
+/* Botón de envío: respuesta táctil visible y prioritaria */
+#fondo-carrito .enviar-pedido {
+    position: relative;
+    transform: translateZ(0);
+    transition: transform .16s ease, background .16s ease, border-color .16s ease, color .16s ease, box-shadow .16s ease !important;
+    -webkit-tap-highlight-color: transparent;
+    touch-action: manipulation;
+}
+#fondo-carrito .enviar-pedido:active,
+#fondo-carrito .enviar-pedido:focus-visible {
+    transform: scale(1.045) !important;
+    border-color: #ffe0a0 !important;
+    background: linear-gradient(135deg, #ffc66b, #f29a38 58%, #dc7925) !important;
+    color: #28170a !important;
+    box-shadow: 0 0 0 4px rgba(242,154,56,.28), 0 5px 18px rgba(230,132,37,.52) !important;
+    outline: none;
+}
+@media (hover: hover) and (pointer: fine) {
+    #fondo-carrito .enviar-pedido:hover {
+        border-color: #e9b75f;
+        filter: brightness(1.08);
+    }
+}
