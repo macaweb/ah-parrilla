@@ -3975,3 +3975,27 @@ a:focus-visible {
         transition: none;
     }
 }
+
+
+/* Cierre del menú lateral: respuesta táctil suave */
+#cerrar-menu-lateral {
+    display: grid;
+    place-items: center;
+    line-height: 1;
+    transition: transform .22s ease, background .22s ease, border-color .22s ease, box-shadow .22s ease, color .22s ease;
+    -webkit-tap-highlight-color: transparent;
+}
+#cerrar-menu-lateral:active {
+    transform: rotate(90deg) scale(.88);
+    background: linear-gradient(135deg, #e5a93b, #b96b1c);
+    border-color: #ffd17a;
+    color: #1b1008;
+    box-shadow: 0 0 0 4px rgba(229,169,59,.16), 0 0 16px rgba(229,169,59,.32);
+}
+#cerrar-menu-lateral:focus-visible {
+    outline: 2px solid #ffd17a;
+    outline-offset: 3px;
+}
+@media (prefers-reduced-motion: reduce) {
+    #cerrar-menu-lateral { transition: none; }
+}
