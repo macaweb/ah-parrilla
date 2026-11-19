@@ -268,11 +268,11 @@ document.addEventListener('DOMContentLoaded', () => {
                 return;
             }
             if (!selectSopas.value) {
-                selectSopas.focus();
+                enfocarSelector(selectSopas);
                 return;
             }
             if (!selectJugos.value) {
-                selectJugos.focus();
+                enfocarSelector(selectJugos);
                 return;
             }
             const nombrePedido = almuerzoElegido.titulo + ' + ' + selectSopas.value + ' + ' + selectJugos.value;
@@ -362,6 +362,122 @@ document.addEventListener('DOMContentLoaded', () => {
         jugos.appendChild(selector);
     }
 
+    // Menús desplegables personalizados: conserva el valor en el select original.
+    function enfocarSelector(select) {
+        const control = select.closest('.selector-personalizado')?.querySelector('.selector-personalizado-control');
+        if (control) control.focus();
+        else select.focus();
+    }
+
+    function personalizarDesplegable(select) {
+        if (!select || select.dataset.personalizado === 'true') return;
+        select.dataset.personalizado = 'true';
+
+        const contenedor = document.createElement('div');
+        contenedor.className = 'selector-personalizado';
+        select.parentNode.insertBefore(contenedor, select);
+        contenedor.appendChild(select);
+
+        select.classList.add('selector-personalizado-nativo');
+        select.tabIndex = -1;
+        select.setAttribute('aria-hidden', 'true');
+
+        const control = document.createElement('button');
+        control.type = 'button';
+        control.className = 'selector-personalizado-control';
+        control.setAttribute('aria-haspopup', 'listbox');
+        control.setAttribute('aria-expanded', 'false');
+        control.setAttribute('aria-label', select.getAttribute('aria-label') || 'Abrir opciones');
+
+        const flecha = document.createElement('span');
+        flecha.className = 'selector-personalizado-flecha';
+        flecha.setAttribute('aria-hidden', 'true');
+        flecha.textContent = '⌄';
+        const texto = document.createElement('span');
+        texto.className = 'selector-personalizado-texto';
+        control.append(texto, flecha);
+
+        const lista = document.createElement('div');
+        lista.className = 'selector-personalizado-lista';
+        lista.setAttribute('role', 'listbox');
+        lista.hidden = true;
+        contenedor.append(control, lista);
+
+        const actualizarTexto = () => {
+            const opcion = select.options[select.selectedIndex];
+            texto.textContent = opcion ? opcion.textContent : 'Selecciona una opción';
+            lista.querySelectorAll('[role="option"]').forEach((item, indice) => {
+                item.setAttribute('aria-selected', String(select.options[indice]?.value === select.value));
+            });
+        };
+
+        const cerrar = (devolverFoco = false) => {
+            lista.hidden = true;
+            contenedor.classList.remove('selector-personalizado-abierto');
+            control.setAttribute('aria-expanded', 'false');
+            if (devolverFoco) control.focus();
+        };
+
+        const abrir = () => {
+            document.querySelectorAll('.selector-personalizado-abierto').forEach(abierto => {
+                if (abierto !== contenedor) {
+                    abierto.classList.remove('selector-personalizado-abierto');
+                    abierto.querySelector('.selector-personalizado-lista').hidden = true;
+                    abierto.querySelector('.selector-personalizado-control').setAttribute('aria-expanded', 'false');
+                }
+            });
+            lista.hidden = false;
+            contenedor.classList.add('selector-personalizado-abierto');
+            control.setAttribute('aria-expanded', 'true');
+        };
+
+        [...select.options].forEach((opcion, indice) => {
+            const item = document.createElement('button');
+            item.type = 'button';
+            item.className = 'selector-personalizado-opcion';
+            item.textContent = opcion.textContent;
+            item.setAttribute('role', 'option');
+            item.setAttribute('aria-selected', String(opcion.value === select.value));
+            item.disabled = opcion.disabled || opcion.value === '';
+            item.addEventListener('click', () => {
+                select.value = opcion.value;
+                select.dispatchEvent(new Event('change', { bubbles: true }));
+                actualizarTexto();
+                cerrar(true);
+            });
+            lista.appendChild(item);
+        });
+
+        control.addEventListener('click', () => {
+            if (lista.hidden) abrir();
+            else cerrar();
+        });
+        control.addEventListener('keydown', evento => {
+            if (evento.key === 'ArrowDown' || evento.key === 'Enter' || evento.key === ' ') {
+                evento.preventDefault();
+                abrir();
+                lista.querySelector('.selector-personalizado-opcion:not(:disabled)')?.focus();
+            }
+        });
+        lista.addEventListener('keydown', evento => {
+            const opciones = [...lista.querySelectorAll('.selector-personalizado-opcion:not(:disabled)')];
+            const actual = opciones.indexOf(document.activeElement);
+            if (evento.key === 'Escape') {
+                evento.preventDefault();
+                cerrar(true);
+            } else if (evento.key === 'ArrowDown' || evento.key === 'ArrowUp') {
+                evento.preventDefault();
+                const direccion = evento.key === 'ArrowDown' ? 1 : -1;
+                opciones[(actual + direccion + opciones.length) % opciones.length]?.focus();
+            } else if (evento.key === 'Home' || evento.key === 'End') {
+                evento.preventDefault();
+                (evento.key === 'Home' ? opciones[0] : opciones[opciones.length - 1])?.focus();
+            }
+        });
+        select.addEventListener('change', actualizarTexto);
+        actualizarTexto();
+    }
+
     // El especial incluye una sopa o crema y un jugo, sin cobros adicionales.
     const bloqueEspecial = document.querySelector('.especial-dia');
     if (bloqueEspecial) {
@@ -389,14 +505,18 @@ document.addEventListener('DOMContentLoaded', () => {
         });
         document.getElementById('agregar-menu-especial').textContent = 'Agregar +';
         document.getElementById('agregar-menu-especial').addEventListener('click', () => {
-            if (!acompanamiento.value) { acompanamiento.focus(); return; }
-            if (!jugoEspecial.value) { jugoEspecial.focus(); return; }
+            if (!acompanamiento.value) { enfocarSelector(acompanamiento); return; }
+            if (!jugoEspecial.value) { enfocarSelector(jugoEspecial); return; }
             const plato = bloqueEspecial.querySelector('.nombre-especial')?.textContent.trim() || 'Plato del día';
             const nombreMenu = 'Menú especial: ' + plato + ' + ' + acompanamiento.value + ' + ' + jugoEspecial.value;
             agregar(nombreMenu, 19000, 2000, 'especiales');
             confirmarAgregado(document.getElementById('agregar-menu-especial'));
         });
     }
+
+    // Solo se personaliza la lista que se despliega; el texto y el tamaño del control se conservan.
+    document.querySelectorAll('.selector-especial select, #almuerzos .selector-almuerzos select')
+        .forEach(personalizarDesplegable);
 
     function confirmarAgregado(boton) {
         const textoOriginal = boton.dataset.textoOriginal || boton.textContent;
