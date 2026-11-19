@@ -64,28 +64,32 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     });
 
-    // Mantiene marcada la categoría que está visible y retira el estado al salir de ella.
-    if ('IntersectionObserver' in window) {
-        const seccionesMenu = enlacesMenuLateral
-            .map(enlace => document.querySelector(enlace.getAttribute('href')))
-            .filter(Boolean);
-        const observadorSecciones = new IntersectionObserver(registros => {
-            const visibles = registros
-                .filter(registro => registro.isIntersecting)
-                .sort((a, b) => b.intersectionRatio - a.intersectionRatio);
-            if (visibles.length) {
-                const idVisible = '#' + visibles[0].target.id;
-                const enlaceVisible = enlacesMenuLateral.find(enlace => enlace.getAttribute('href') === idVisible);
-                if (enlaceVisible) marcarEnlaceMenu(enlaceVisible);
-            } else if (!seccionesMenu.some(seccion => {
+    // Mantiene sincronizada la categoría activa con la sección que está viendo la persona.
+    const seccionesMenu = enlacesMenuLateral
+        .map(enlace => document.querySelector(enlace.getAttribute('href')))
+        .filter(Boolean);
+
+    function actualizarCategoriaVisible() {
+        if (!seccionesMenu.length) return;
+        const lineaLectura = Math.min(window.innerHeight * 0.32, 260);
+        const seccionActual = seccionesMenu
+            .filter(seccion => {
                 const rect = seccion.getBoundingClientRect();
-                return rect.top < window.innerHeight * 0.45 && rect.bottom > window.innerHeight * 0.2;
-            })) {
-                marcarEnlaceMenu(null);
-            }
-        }, { rootMargin: '-18% 0px -62% 0px', threshold: [0, 0.1, 0.25, 0.5, 0.75] });
-        seccionesMenu.forEach(seccion => observadorSecciones.observe(seccion));
+                return rect.top <= lineaLectura && rect.bottom > lineaLectura;
+            })
+            .at(-1);
+
+        if (seccionActual) {
+            const enlaceActual = enlacesMenuLateral.find(
+                enlace => enlace.getAttribute('href') === '#' + seccionActual.id
+            );
+            if (enlaceActual) marcarEnlaceMenu(enlaceActual);
+        }
     }
+
+    // Al abrir la barra, conserva la categoría correspondiente a la posición actual.
+    window.addEventListener('scroll', actualizarCategoriaVisible, { passive: true });
+    window.addEventListener('resize', actualizarCategoriaVisible);
     document.addEventListener('keydown', e => {
         if (e.key === 'Escape' && !fondoMenu.hidden) cerrarMenuLateral();
     });
