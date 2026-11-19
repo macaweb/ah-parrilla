@@ -3718,7 +3718,7 @@ a:focus-visible {
 }
 
 
-/* Selector visual de modalidad de entrega */
+/* Selector de modalidad: tarjetas legibles y con iconos claros */
 .selector-entrega {
     min-width: 0;
     margin: 2px 0 0;
@@ -3726,15 +3726,15 @@ a:focus-visible {
     border: 0;
 }
 .selector-entrega legend {
-    margin-bottom: 9px;
+    margin-bottom: 10px;
     color: #f6e5cc;
-    font-size: 12px;
+    font-size: 13px;
     font-weight: 700;
 }
 .opciones-entrega {
     display: grid;
     grid-template-columns: repeat(2, minmax(0, 1fr));
-    gap: 9px;
+    gap: 10px;
 }
 .opcion-entrega {
     position: relative;
@@ -3753,51 +3753,67 @@ a:focus-visible {
     position: relative;
     display: flex;
     align-items: center;
-    gap: 9px;
-    min-height: 76px;
-    padding: 12px 10px;
+    gap: 10px;
+    box-sizing: border-box;
+    width: 100%;
+    min-width: 0;
+    min-height: 86px;
+    padding: 12px 30px 12px 11px;
     border: 1px solid #654a31;
-    border-radius: 10px;
-    background: linear-gradient(145deg, #21160e, #17100b);
+    border-radius: 11px;
+    background: linear-gradient(145deg,#21160e,#17100b);
     color: #f6e5cc;
     transition: border-color .2s ease, background .2s ease, box-shadow .2s ease, transform .2s ease;
 }
 .icono-entrega {
     display: grid;
-    flex: 0 0 34px;
-    width: 34px;
-    height: 34px;
+    flex: 0 0 38px;
+    width: 38px;
+    height: 38px;
     place-items: center;
-    border: 1px solid rgba(229,169,59,.35);
-    border-radius: 9px;
+    border: 1px solid rgba(229,169,59,.4);
+    border-radius: 10px;
     background: rgba(229,169,59,.1);
     color: #ffd17a;
-    font-size: 22px;
-    line-height: 1;
 }
-.icono-recoger { font-size: 21px; }
+.icono-entrega svg {
+    display: block;
+    width: 23px;
+    height: 23px;
+    fill: none;
+    stroke: currentColor;
+    stroke-width: 1.7;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+}
 .texto-entrega {
     display: grid;
+    flex: 1 1 auto;
     min-width: 0;
     gap: 4px;
+    overflow-wrap: anywhere;
 }
 .texto-entrega strong {
     color: #fff1d9;
-    font-size: 12px;
+    font-size: 13px;
     font-weight: 800;
+    line-height: 1.25;
 }
 .texto-entrega small {
+    display: block;
     color: #bda98f;
     font-size: 10px;
     font-weight: 400;
-    line-height: 1.35;
+    line-height: 1.4;
+    white-space: normal;
 }
 .marca-entrega {
+    position: absolute;
+    top: 9px;
+    right: 9px;
     display: grid;
-    flex: 0 0 17px;
     width: 17px;
     height: 17px;
-    margin-left: auto;
     place-items: center;
     border: 1px solid #806344;
     border-radius: 50%;
@@ -3807,8 +3823,8 @@ a:focus-visible {
 }
 .opcion-entrega > input:checked + .opcion-entrega-contenido {
     border-color: #e5a93b;
-    background: linear-gradient(145deg, rgba(229,169,59,.19), #21160e);
-    box-shadow: 0 0 0 1px rgba(229,169,59,.16), 0 5px 14px rgba(0,0,0,.18);
+    background: linear-gradient(145deg,rgba(229,169,59,.19),#21160e);
+    box-shadow: 0 0 0 1px rgba(229,169,59,.16),0 5px 14px rgba(0,0,0,.18);
 }
 .opcion-entrega > input:checked + .opcion-entrega-contenido .marca-entrega {
     border-color: #e5a93b;
@@ -3819,15 +3835,23 @@ a:focus-visible {
     outline: 2px solid #ffd17a;
     outline-offset: 3px;
 }
-@media (hover: hover) and (pointer: fine) {
+@media (hover:hover) and (pointer:fine) {
     .opcion-entrega:hover .opcion-entrega-contenido {
         border-color: #b58a50;
         transform: translateY(-1px);
     }
 }
-@media (max-width: 360px) {
+@media (max-width:420px) {
+    .opciones-entrega { gap: 8px; }
+    .opcion-entrega-contenido { gap: 7px; min-height: 88px; padding: 11px 25px 11px 8px; }
+    .icono-entrega { flex-basis: 32px; width: 32px; height: 32px; }
+    .icono-entrega svg { width: 20px; height: 20px; }
+    .texto-entrega strong { font-size: 12px; }
+    .texto-entrega small { font-size: 9px; }
+}
+@media (max-width:340px) {
     .opciones-entrega { grid-template-columns: 1fr; }
-    .opcion-entrega-contenido { min-height: 66px; }
+    .opcion-entrega-contenido { min-height: 72px; padding-left: 12px; }
 }
 
 
