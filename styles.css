@@ -2165,10 +2165,10 @@ a:focus-visible {
 }
 .enviar-pedido:active {
     transform: scale(.975);
-    border-color: #ffd27d;
-    background: linear-gradient(135deg, #f0c36b, #c9943d);
-    color: #21150c;
-    box-shadow: 0 0 0 3px rgba(229,169,59,.2), 0 2px 9px rgba(201,148,61,.32);
+    border-color: #ffe0a0;
+    background: linear-gradient(135deg, #ffc66b, #f29a38 58%, #dc7925);
+    color: #28170a;
+    box-shadow: 0 0 0 4px rgba(242,154,56,.25), 0 3px 16px rgba(230,132,37,.48);
 }
 @media (hover: none) {
     .enviar-pedido { -webkit-tap-highlight-color: transparent; }
