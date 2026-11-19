@@ -433,8 +433,14 @@ document.addEventListener('DOMContentLoaded', () => {
         };
 
         [...select.options].forEach((opcion, indice) => {
-            // El texto inicial orienta dentro del selector cerrado, pero no es una opción del menú.
-            if (opcion.value === '') return;
+            // Los textos de ayuda nunca deben aparecer dentro de la lista desplegada.
+            const textoOpcion = opcion.textContent.trim().toLocaleLowerCase('es');
+            if (
+                opcion.disabled ||
+                opcion.value.trim() === '' ||
+                textoOpcion === 'selecciona una opción' ||
+                textoOpcion === 'seleccione una opción'
+            ) return;
             const item = document.createElement('button');
             item.type = 'button';
             item.className = 'selector-personalizado-opcion';
