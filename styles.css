@@ -2163,7 +2163,16 @@ a:focus-visible {
     outline: 2px solid #f0c36b;
     outline-offset: 3px;
 }
-.enviar-pedido:active { transform: scale(.985); }
+.enviar-pedido:active {
+    transform: scale(.975);
+    border-color: #ffd27d;
+    background: linear-gradient(135deg, #f0c36b, #c9943d);
+    color: #21150c;
+    box-shadow: 0 0 0 3px rgba(229,169,59,.2), 0 2px 9px rgba(201,148,61,.32);
+}
+@media (hover: none) {
+    .enviar-pedido { -webkit-tap-highlight-color: transparent; }
+}
 .nota-pedido { margin: 0; color: #bda98f; font-size: 11px; text-align: center; }
 @media (min-width: 600px) {
     .carrito-flotante { right: max(24px, calc((100vw - 760px)/2)); bottom: 24px; }
