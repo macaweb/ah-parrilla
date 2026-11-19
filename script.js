@@ -453,6 +453,14 @@ document.addEventListener('DOMContentLoaded', () => {
                 select.value = opcion.value;
                 select.dispatchEvent(new Event('change', { bubbles: true }));
                 actualizarTexto();
+                // Confirma visualmente la elección con un breve pulso dorado.
+                control.classList.remove('selector-personalizado-confirmado');
+                void control.offsetWidth;
+                control.classList.add('selector-personalizado-confirmado');
+                if (control._temporizadorConfirmacion) clearTimeout(control._temporizadorConfirmacion);
+                control._temporizadorConfirmacion = setTimeout(() => {
+                    control.classList.remove('selector-personalizado-confirmado');
+                }, 650);
                 cerrar(true);
             });
             lista.appendChild(item);
