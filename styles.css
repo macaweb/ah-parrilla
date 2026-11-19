@@ -4227,96 +4227,16 @@ a:focus-visible {
 }
 
 
-/* Desplegables personalizados para acompañamientos de almuerzos y especial del día */
-.selector-nativo-oculto {
-    position: absolute !important;
-    width: 1px !important;
-    height: 1px !important;
-    padding: 0 !important;
-    margin: -1px !important;
-    overflow: hidden !important;
-    clip: rect(0, 0, 0, 0) !important;
-    white-space: nowrap !important;
-    border: 0 !important;
-}
-.selector-visual { position: relative; width: 100%; min-width: 0; }
-.selector-visual-boton {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    gap: 12px;
-    width: 100%;
-    min-height: 49px;
-    padding: 11px 15px;
-    border: 1px solid rgba(229,169,59,.72);
-    border-radius: 11px;
-    background: linear-gradient(145deg,#302012,#1b120b);
+
+
+/* Opciones desplegadas de los selectores: paleta AH Parrilla */
+.selector-almuerzos select option,
+.selector-especial select option {
+    background: #21150c;
     color: #fff0d2;
-    font-family: inherit;\n    font-size: 14px;\n    font-weight: 600;\n    line-height: 1.35;
-    text-align: left;
-    cursor: pointer;
-    box-shadow: inset 0 1px 0 rgba(255,235,195,.08), 0 4px 12px rgba(0,0,0,.22);
-    transition: border-color .2s ease, background .2s ease, box-shadow .2s ease;
-    -webkit-tap-highlight-color: transparent;
 }
-.selector-visual-boton:focus-visible,
-.selector-visual-boton[aria-expanded="true"] {
-    outline: none;
-    border-color: #ffd27d;
-    background: #382512;
-    box-shadow: 0 0 0 3px rgba(229,169,59,.18), 0 6px 16px rgba(0,0,0,.25);
-}
-.selector-visual-flecha {
-    flex: 0 0 auto;
-    color: #ffc66a;
-    font-size: 22px;
-    line-height: 1;
-    transition: transform .2s ease;
-}
-.selector-visual-boton[aria-expanded="true"] .selector-visual-flecha { transform: rotate(180deg); }
-.selector-visual-lista {
-    position: absolute;
-    z-index: 30;
-    top: calc(100% + 7px);
-    left: 0;
-    right: 0;
-    display: grid;
-    gap: 4px;
-    max-height: 220px;
-    padding: 7px;
-    overflow-y: auto;
-    border: 1px solid rgba(229,169,59,.65);
-    border-radius: 12px;
-    background: #1b120b;
-    box-shadow: 0 12px 28px rgba(0,0,0,.48);
-}
-.selector-visual-lista[hidden] { display: none !important; }
-.selector-visual-opcion {
-    width: 100%;
-    min-height: 41px;
-    padding: 9px 11px;
-    border: 1px solid transparent;
-    border-radius: 8px;
-    background: transparent;
-    color: #f8e8cc;
-    font-family: inherit;\n    font-size: 14px;\n    font-weight: 500;\n    line-height: 1.35;
-    text-align: left;
-    cursor: pointer;
-    transition: background .16s ease, color .16s ease, border-color .16s ease;
-}
-.selector-visual-opcion:hover,
-.selector-visual-opcion:focus-visible {
-    outline: none;
-    border-color: rgba(229,169,59,.42);
-    background: #382512;
-    color: #ffd27d;
-}
-.selector-visual-opcion[aria-selected="true"] {
-    border-color: rgba(229,169,59,.38);
-    background: linear-gradient(100deg,rgba(229,169,59,.2),rgba(229,169,59,.07));
-    color: #ffd27d;
-    font-weight: 700;
-}
-@media (prefers-reduced-motion: reduce) {
-    .selector-visual-boton, .selector-visual-flecha, .selector-visual-opcion { transition: none; }
+.selector-almuerzos select option:checked,
+.selector-especial select option:checked {
+    background: #76502c;
+    color: #fff8ed;
 }
