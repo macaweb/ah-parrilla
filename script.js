@@ -432,6 +432,8 @@ document.addEventListener('DOMContentLoaded', () => {
         };
 
         [...select.options].forEach((opcion, indice) => {
+            // El texto inicial orienta dentro del selector cerrado, pero no es una opción del menú.
+            if (opcion.value === '' && opcion.disabled) return;
             const item = document.createElement('button');
             item.type = 'button';
             item.className = 'selector-personalizado-opcion';
