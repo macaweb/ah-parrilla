@@ -227,6 +227,7 @@ document.addEventListener('DOMContentLoaded', () => {
             const opcion = document.createElement('option');
             opcion.value = '';
             opcion.textContent = texto;
+            opcion.disabled = true;
             select.appendChild(opcion);
         };
         agregarPlaceholder(selectSopas, 'Selecciona una opción');
@@ -406,8 +407,8 @@ document.addEventListener('DOMContentLoaded', () => {
         const actualizarTexto = () => {
             const opcion = select.options[select.selectedIndex];
             texto.textContent = opcion ? opcion.textContent : 'Selecciona una opción';
-            lista.querySelectorAll('[role="option"]').forEach((item, indice) => {
-                item.setAttribute('aria-selected', String(select.options[indice]?.value === select.value));
+            lista.querySelectorAll('[role="option"]').forEach(item => {
+                item.setAttribute('aria-selected', String(item.dataset.value === select.value));
             });
         };
 
@@ -433,11 +434,12 @@ document.addEventListener('DOMContentLoaded', () => {
 
         [...select.options].forEach((opcion, indice) => {
             // El texto inicial orienta dentro del selector cerrado, pero no es una opción del menú.
-            if (opcion.value === '' && opcion.disabled) return;
+            if (opcion.value === '') return;
             const item = document.createElement('button');
             item.type = 'button';
             item.className = 'selector-personalizado-opcion';
             item.textContent = opcion.textContent;
+            item.dataset.value = opcion.value;
             item.setAttribute('role', 'option');
             item.setAttribute('aria-selected', String(opcion.value === select.value));
             item.disabled = opcion.disabled || opcion.value === '';
