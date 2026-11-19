@@ -518,7 +518,7 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     // Solo se personaliza la lista que se despliega; el texto y el tamaño del control se conservan.
-    document.querySelectorAll('.selector-especial select, #almuerzos .selector-almuerzos select')
+    document.querySelectorAll('.selector-especial select, #almuerzos .selector-almuerzos select, .formulario-pedido select[name="metodo_pago"]')
         .forEach(personalizarDesplegable);
 
     function confirmarAgregado(boton) {
