@@ -3919,3 +3919,65 @@ a:focus-visible {
         animation: none !important;
     }
 }
+
+
+/* PORTADA CON MOVIMIENTO Y PROFUNDIDAD */
+.portada {
+    position: relative;
+    isolation: isolate;
+    overflow: visible;
+}
+
+.portada::before {
+    content: "";
+    position: absolute;
+    z-index: -1;
+    width: min(82%, 620px);
+    height: 58%;
+    top: 24%;
+    left: 9%;
+    background: radial-gradient(ellipse, rgba(190, 76, 22, .25) 0%, rgba(190, 76, 22, .10) 48%, transparent 76%);
+    filter: blur(28px);
+    pointer-events: none;
+}
+
+.imagen-portada {
+    position: relative;
+    display: block;
+    width: min(96%, 1080px);
+    max-height: 340px;
+    margin-right: auto;
+    margin-left: auto;
+    border-radius: 15px;
+    filter: drop-shadow(0 16px 22px rgba(0, 0, 0, .34));
+    transform-origin: center;
+    animation: portada-flotante 7s ease-in-out infinite;
+    will-change: transform, filter;
+}
+
+@keyframes portada-flotante {
+    0%, 100% {
+        transform: translateY(0) rotate(-.65deg) scale(1);
+        filter: drop-shadow(0 14px 19px rgba(0, 0, 0, .30));
+    }
+    50% {
+        transform: translateY(-7px) rotate(.45deg) scale(1.012);
+        filter: drop-shadow(0 20px 25px rgba(0, 0, 0, .38));
+    }
+}
+
+@media (hover: hover) and (prefers-reduced-motion: no-preference) {
+    .imagen-portada:hover {
+        animation-play-state: paused;
+        transform: translateY(-3px) rotate(0deg) scale(1.025);
+        transition: transform .45s ease, filter .45s ease;
+        filter: drop-shadow(0 22px 28px rgba(0, 0, 0, .42));
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .imagen-portada {
+        animation: none;
+        transform: rotate(-.5deg);
+    }
+}
