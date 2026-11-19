@@ -4240,3 +4240,133 @@ a:focus-visible {
     background: #76502c;
     color: #fff8ed;
 }
+
+
+/* Lista desplegable personalizada: el control conserva su aspecto y solo cambia el panel de opciones */
+.selector-personalizado {
+    position: relative;
+    width: 100%;
+    z-index: 2;
+}
+.selector-personalizado-abierto {
+    z-index: 30;
+}
+.selector-personalizado-nativo {
+    position: absolute !important;
+    width: 1px !important;
+    height: 1px !important;
+    min-height: 1px !important;
+    padding: 0 !important;
+    margin: -1px !important;
+    overflow: hidden !important;
+    clip: rect(0, 0, 0, 0) !important;
+    white-space: nowrap !important;
+    border: 0 !important;
+    opacity: 0 !important;
+    pointer-events: none !important;
+}
+.selector-personalizado-control {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 12px;
+    box-sizing: border-box;
+    width: 100%;
+    min-height: 48px;
+    padding: 11px 15px;
+    border: 1px solid rgba(229, 169, 59, .72);
+    border-radius: 11px;
+    background: linear-gradient(145deg, rgba(255,255,255,.045), rgba(255,255,255,0)), #21150c;
+    color: #fff3dc;
+    font: 700 14px Arial, Helvetica, sans-serif;
+    letter-spacing: .15px;
+    text-align: left;
+    box-shadow: inset 0 1px 0 rgba(255, 235, 195, .08), 0 4px 12px rgba(0,0,0,.24);
+    cursor: pointer;
+    transition: border-color .2s ease, background-color .2s ease, box-shadow .2s ease;
+}
+.selector-personalizado-control:hover,
+.selector-personalizado-abierto .selector-personalizado-control {
+    border-color: #ffc66a;
+    background-color: #2b1a0d;
+}
+.selector-personalizado-control:focus-visible {
+    outline: none;
+    border-color: #ffd27d;
+    box-shadow: 0 0 0 3px rgba(229,169,59,.2), 0 7px 18px rgba(0,0,0,.3);
+}
+.selector-personalizado-texto {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+.selector-personalizado-flecha {
+    flex: 0 0 auto;
+    color: #ffc66a;
+    font-size: 22px;
+    line-height: .8;
+    transition: transform .2s ease;
+}
+.selector-personalizado-abierto .selector-personalizado-flecha {
+    transform: rotate(180deg);
+}
+.selector-personalizado-lista {
+    position: absolute;
+    top: calc(100% + 7px);
+    left: 0;
+    right: 0;
+    z-index: 50;
+    display: grid;
+    gap: 4px;
+    max-height: 238px;
+    padding: 7px;
+    overflow-y: auto;
+    overscroll-behavior: contain;
+    border: 1px solid rgba(229,169,59,.58);
+    border-radius: 12px;
+    background:
+        radial-gradient(ellipse at 8% 0%, rgba(229,169,59,.12), transparent 45%),
+        linear-gradient(160deg, #2a1b10, #160e08);
+    box-shadow: 0 14px 32px rgba(0,0,0,.48), inset 0 1px 0 rgba(255,235,195,.06);
+}
+.selector-personalizado-lista[hidden] {
+    display: none !important;
+}
+.selector-personalizado-opcion {
+    display: block;
+    width: 100%;
+    min-height: 39px;
+    padding: 9px 11px;
+    border: 1px solid transparent;
+    border-radius: 8px;
+    background: transparent;
+    color: #f5e5cc;
+    font: 600 13px Arial, Helvetica, sans-serif;
+    text-align: left;
+    cursor: pointer;
+    transition: background .16s ease, color .16s ease, border-color .16s ease;
+}
+.selector-personalizado-opcion[aria-selected="true"] {
+    border-color: rgba(229,169,59,.4);
+    background: linear-gradient(100deg, rgba(229,169,59,.2), rgba(229,169,59,.07));
+    color: #ffd27d;
+}
+.selector-personalizado-opcion:hover:not(:disabled),
+.selector-personalizado-opcion:focus-visible {
+    outline: none;
+    border-color: rgba(255,198,106,.62);
+    background: linear-gradient(100deg, rgba(229,169,59,.25), rgba(229,169,59,.1));
+    color: #fff2d8;
+}
+.selector-personalizado-opcion:disabled {
+    color: #9c866c;
+    cursor: default;
+    opacity: .72;
+}
+@media (prefers-reduced-motion: reduce) {
+    .selector-personalizado-control,
+    .selector-personalizado-flecha,
+    .selector-personalizado-opcion {
+        transition: none;
+    }
+}
