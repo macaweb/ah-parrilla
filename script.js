@@ -474,9 +474,26 @@ document.addEventListener('DOMContentLoaded', () => {
     fondo.addEventListener('click', e => { if (e.target === fondo) cerrar(); });
     document.addEventListener('keydown', e => { if (e.key === 'Escape' && !fondo.hidden) cerrar(); });
 
+    const tipoEntrega = formulario.elements.tipo_entrega;
+    const camposDomicilio = document.getElementById('campos-domicilio');
+    const campoDireccion = formulario.elements.direccion;
+    const campoBarrio = formulario.elements.barrio;
+
+    tipoEntrega.addEventListener('change', () => {
+        const esDomicilio = tipoEntrega.value === 'Domicilio';
+        camposDomicilio.hidden = !esDomicilio;
+        campoDireccion.required = esDomicilio;
+        campoBarrio.required = esDomicilio;
+        if (!esDomicilio) {
+            campoDireccion.value = '';
+            campoBarrio.value = '';
+        }
+    });
+
     formulario.addEventListener('submit', e => {
         e.preventDefault();
         if (!carrito.size) return;
+        if (!formulario.reportValidity()) return;
         const datos = new FormData(formulario);
         const productos = [...carrito.values()];
         const subtotal = productos.reduce((s, p) => s + p.precio * p.cantidad, 0);
@@ -528,8 +545,11 @@ document.addEventListener('DOMContentLoaded', () => {
             '*DATOS DE ENTREGA*',
             'Nombre: ' + datos.get('nombre'),
             'Teléfono: ' + datos.get('telefono'),
-            'Dirección: ' + datos.get('direccion'),
-            'Barrio: ' + datos.get('barrio'),
+            'Entrega: ' + datos.get('tipo_entrega'),
+            ...(datos.get('tipo_entrega') === 'Domicilio' ? [
+                'Dirección: ' + datos.get('direccion'),
+                'Barrio: ' + datos.get('barrio')
+            ] : []),
             'Indicaciones: ' + (datos.get('observaciones') || 'Ninguna'),
             'Método de pago: ' + datos.get('metodo_pago')
         ];
