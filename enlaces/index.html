@@ -18,12 +18,12 @@
     body::after{opacity:.42;background-image:radial-gradient(circle,rgba(255,181,77,.8) 0 1px,transparent 2px),radial-gradient(circle,rgba(211,84,0,.75) 0 1.5px,transparent 2.5px),radial-gradient(circle,rgba(255,220,151,.55) 0 1px,transparent 2px);background-size:137px 173px,211px 239px,283px 197px;background-position:10px 20px,80px 110px,150px 40px;animation:emberDrift 22s linear infinite}
     .page{width:min(100%,460px);margin:auto;position:relative;z-index:1}
     /* Fuego orgánico en varias capas, con textura turbulenta y profundidad visual. */
-    .fire-backdrop{position:fixed;inset:auto 0 0;height:min(58vh,500px);z-index:0;pointer-events:none;overflow:hidden;opacity:.96;perspective:700px;mask-image:linear-gradient(to top,#000 0%,rgba(0,0,0,.96) 57%,transparent 100%);-webkit-mask-image:linear-gradient(to top,#000 0%,rgba(0,0,0,.96) 57%,transparent 100%)}
-    .fire-backdrop svg{position:absolute;inset:0;width:100%;height:100%;overflow:visible}
-    .fire-backdrop .fire-far{opacity:.5;filter:url(#fireWarpSoft);transform-origin:50% 100%;animation:fireDepth 3.8s ease-in-out infinite alternate}
-    .fire-backdrop .fire-mid{opacity:.78;filter:url(#fireWarp);transform-origin:50% 100%;animation:fireDepth 2.7s ease-in-out infinite alternate-reverse}
-    .fire-backdrop .fire-near{opacity:.94;filter:url(#fireWarp);transform-origin:50% 100%;animation:fireDepth 2.1s ease-in-out infinite alternate}
-    .fire-backdrop .fire-core{opacity:.82;filter:blur(7px);mix-blend-mode:screen;animation:corePulse 1.8s ease-in-out infinite alternate}
+    .fire-backdrop{position:fixed;inset:auto 0 0;height:min(54vh,460px);z-index:0;pointer-events:none;overflow:hidden;opacity:.7;perspective:700px;mask-image:linear-gradient(to top,#000 0%,rgba(0,0,0,.96) 57%,transparent 100%);-webkit-mask-image:linear-gradient(to top,#000 0%,rgba(0,0,0,.96) 57%,transparent 100%)}
+    .fire-backdrop svg{position:absolute;inset:0;width:100%;height:100%;overflow:visible;filter:blur(15px) saturate(1.15)}
+    .fire-backdrop .fire-far{opacity:.34;filter:url(#fireWarpSoft);transform-origin:50% 100%;animation:fireDepth 3.8s ease-in-out infinite alternate}
+    .fire-backdrop .fire-mid{opacity:.48;filter:url(#fireWarp);transform-origin:50% 100%;animation:fireDepth 2.7s ease-in-out infinite alternate-reverse}
+    .fire-backdrop .fire-near{opacity:.58;filter:url(#fireWarp);transform-origin:50% 100%;animation:fireDepth 2.1s ease-in-out infinite alternate}
+    .fire-backdrop .fire-core{opacity:.48;filter:blur(18px);mix-blend-mode:screen;animation:corePulse 1.8s ease-in-out infinite alternate}
     .brand{text-align:center;margin-bottom:24px}
     .brand-mark{width:76px;height:76px;margin:0 auto 13px;border:1px solid rgba(229,169,59,.65);border-radius:50%;display:grid;place-items:center;background:linear-gradient(145deg,#38200e,#120c08);box-shadow:0 0 35px rgba(211,84,0,.2);animation:brandPulse 3.8s ease-in-out infinite}
     .brand-mark svg{width:43px;height:43px}
