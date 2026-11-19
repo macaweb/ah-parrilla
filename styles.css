@@ -3829,3 +3829,93 @@ a:focus-visible {
     .opciones-entrega { grid-template-columns: 1fr; }
     .opcion-entrega-contenido { min-height: 66px; }
 }
+
+
+/* ENLACES CON BRASA Y MOVIMIENTO — efecto sutil inspirado en el fuego de la parrilla */
+.footer-contenido-final .footer-columna a.footer-red-link,
+.footer-contenido-final .footer-visitanos a.footer-direccion {
+    position: relative;
+    isolation: isolate;
+    overflow: hidden;
+    padding: 7px 10px;
+    margin: -7px -10px;
+    border-radius: 9px;
+    transform-origin: center;
+    animation: enlace-brasa-flotar 4.2s ease-in-out infinite;
+    transition: color .25s ease, filter .25s ease, text-shadow .25s ease;
+}
+.footer-contenido-final .footer-columna a.footer-red-link::before,
+.footer-contenido-final .footer-visitanos a.footer-direccion::before {
+    content: "";
+    position: absolute;
+    z-index: -1;
+    inset: 0;
+    border-radius: inherit;
+    opacity: .22;
+    background:
+        radial-gradient(ellipse at 18% 110%, rgba(255,91,16,.62), transparent 48%),
+        radial-gradient(ellipse at 82% 115%, rgba(255,174,45,.48), transparent 44%),
+        linear-gradient(110deg, rgba(120,38,8,.12), rgba(255,145,25,.09), rgba(120,38,8,.12));
+    background-size: 180% 180%;
+    animation: brasa-resplandor 3.1s ease-in-out infinite alternate;
+    pointer-events: none;
+}
+.footer-contenido-final .footer-columna a.footer-red-link::after,
+.footer-contenido-final .footer-visitanos a.footer-direccion::after {
+    content: "";
+    position: absolute;
+    z-index: -1;
+    left: 12%;
+    right: 12%;
+    bottom: 2px;
+    height: 1px;
+    opacity: .48;
+    background: linear-gradient(90deg, transparent, #ff8b28, #ffd078, #ff6a1a, transparent);
+    box-shadow: 0 0 7px rgba(255,119,28,.7);
+    transform: scaleX(.62);
+    transform-origin: center;
+    animation: linea-brasa 2.8s ease-in-out infinite;
+    pointer-events: none;
+}
+.footer-contenido-final .footer-columna a.footer-red-link:nth-of-type(2),
+.footer-contenido-final .footer-visitanos a.footer-direccion {
+    animation-delay: .55s;
+}
+.footer-contenido-final .footer-columna a.footer-red-link:nth-of-type(3) {
+    animation-delay: 1.05s;
+}
+.footer-contenido-final .footer-columna a.footer-red-link:hover,
+.footer-contenido-final .footer-visitanos a.footer-direccion:hover,
+.footer-contenido-final .footer-columna a.footer-red-link:focus-visible,
+.footer-contenido-final .footer-visitanos a.footer-direccion:focus-visible {
+    color: #fff0d5;
+    filter: brightness(1.13);
+    text-shadow: 0 0 9px rgba(255,153,52,.42);
+}
+.footer-contenido-final .footer-columna a.footer-red-link > *,
+.footer-contenido-final .footer-visitanos a.footer-direccion > * {
+    position: relative;
+    z-index: 1;
+}
+@keyframes enlace-brasa-flotar {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-2px); }
+}
+@keyframes brasa-resplandor {
+    0% { opacity: .13; background-position: 0% 50%; }
+    100% { opacity: .38; background-position: 100% 50%; }
+}
+@keyframes linea-brasa {
+    0%, 100% { opacity: .25; transform: scaleX(.45); }
+    50% { opacity: .72; transform: scaleX(1); }
+}
+@media (prefers-reduced-motion: reduce) {
+    .footer-contenido-final .footer-columna a.footer-red-link,
+    .footer-contenido-final .footer-visitanos a.footer-direccion,
+    .footer-contenido-final .footer-columna a.footer-red-link::before,
+    .footer-contenido-final .footer-visitanos a.footer-direccion::before,
+    .footer-contenido-final .footer-columna a.footer-red-link::after,
+    .footer-contenido-final .footer-visitanos a.footer-direccion::after {
+        animation: none !important;
+    }
+}
