@@ -16,7 +16,14 @@
     body::before,body::after{content:"";position:fixed;inset:-25%;z-index:-1;pointer-events:none}
     body::before{background:radial-gradient(circle at 18% 28%,rgba(211,84,0,.16),transparent 22%),radial-gradient(circle at 82% 64%,rgba(229,169,59,.12),transparent 24%);animation:ambientGlow 9s ease-in-out infinite alternate}
     body::after{opacity:.42;background-image:radial-gradient(circle,rgba(255,181,77,.8) 0 1px,transparent 2px),radial-gradient(circle,rgba(211,84,0,.75) 0 1.5px,transparent 2.5px),radial-gradient(circle,rgba(255,220,151,.55) 0 1px,transparent 2px);background-size:137px 173px,211px 239px,283px 197px;background-position:10px 20px,80px 110px,150px 40px;animation:emberDrift 22s linear infinite}
-    .page{width:min(100%,460px);margin:auto;position:relative}
+    .page{width:min(100%,460px);margin:auto;position:relative;z-index:1}
+    /* Llamas decorativas al fondo: visibles, suaves y detrás del contenido. */
+    .fire-backdrop{position:fixed;inset:auto 0 0;height:min(46vh,390px);z-index:0;pointer-events:none;overflow:hidden;opacity:.82;mask-image:linear-gradient(to top,#000 0%,rgba(0,0,0,.92) 45%,transparent 100%);-webkit-mask-image:linear-gradient(to top,#000 0%,rgba(0,0,0,.92) 45%,transparent 100%)}
+    .fire-backdrop::before,.fire-backdrop::after{content:"";position:absolute;left:-12%;bottom:-48%;width:124%;height:125%;border-radius:48% 52% 0 0 / 22% 24% 0 0;filter:blur(17px);transform-origin:50% 100%}
+    .fire-backdrop::before{background:radial-gradient(ellipse at 50% 82%,rgba(255,220,112,.9) 0 5%,rgba(255,125,24,.8) 17%,rgba(207,55,5,.55) 34%,transparent 67%);animation:fireGlow 3.2s ease-in-out infinite alternate}
+    .fire-backdrop::after{bottom:-57%;background:radial-gradient(ellipse at 25% 68%,rgba(255,145,35,.78) 0 5%,transparent 35%),radial-gradient(ellipse at 72% 63%,rgba(255,95,12,.7) 0 6%,transparent 37%),radial-gradient(ellipse at 50% 74%,rgba(255,190,66,.65) 0 7%,transparent 39%);filter:blur(9px);animation:flameFlicker 1.7s ease-in-out infinite alternate}
+    .flame{position:absolute;bottom:-8%;width:19%;height:76%;border-radius:55% 45% 48% 52% / 68% 72% 28% 32%;background:linear-gradient(to top,rgba(255,72,5,.08),rgba(255,105,12,.52) 38%,rgba(255,190,64,.6) 68%,rgba(255,225,140,.08));filter:blur(13px);transform-origin:50% 100%;mix-blend-mode:screen;animation:flameDance 2.4s ease-in-out infinite alternate}
+    .flame.one{left:7%;height:62%;width:16%;animation-delay:-.8s}.flame.two{left:28%;height:82%;width:21%;animation-delay:-1.6s}.flame.three{right:25%;height:72%;width:18%;animation-delay:-.3s}.flame.four{right:4%;height:58%;width:17%;animation-delay:-1.2s}
     .brand{text-align:center;margin-bottom:24px}
     .brand-mark{width:76px;height:76px;margin:0 auto 13px;border:1px solid rgba(229,169,59,.65);border-radius:50%;display:grid;place-items:center;background:linear-gradient(145deg,#38200e,#120c08);box-shadow:0 0 35px rgba(211,84,0,.2);animation:brandPulse 3.8s ease-in-out infinite}
     .brand-mark svg{width:43px;height:43px}
@@ -50,6 +57,9 @@
     .socials .icon svg{width:21px;height:21px}
     .socials .copy strong{font-size:13px}
     footer{margin-top:25px;text-align:center;color:#9f8b75;font-size:11px;letter-spacing:.4px}
+    @keyframes fireGlow{from{transform:scaleX(.94) scaleY(.96);opacity:.65}to{transform:scaleX(1.08) scaleY(1.08);opacity:1}}
+    @keyframes flameFlicker{0%{transform:translateX(-2%) scaleY(.92);opacity:.65}50%{transform:translateX(2%) scaleY(1.06);opacity:.95}100%{transform:translateX(-1%) scaleY(.97);opacity:.78}}
+    @keyframes flameDance{0%{transform:skewX(-8deg) scaleY(.86);opacity:.48}35%{transform:skewX(5deg) scaleY(1.08);opacity:.8}70%{transform:skewX(-4deg) scaleY(.94);opacity:.62}100%{transform:skewX(7deg) scaleY(1.12);opacity:.88}}
     @keyframes ambientGlow{from{transform:translate3d(-2%,0,0) scale(1)}to{transform:translate3d(2%,2%,0) scale(1.08)}}
     @keyframes emberDrift{from{transform:translate3d(0,3%,0)}to{transform:translate3d(-2%,-5%,0)}}
     @keyframes brandPulse{0%,100%{box-shadow:0 0 24px rgba(211,84,0,.16),inset 0 0 12px rgba(229,169,59,.04)}50%{box-shadow:0 0 42px rgba(211,84,0,.34),inset 0 0 18px rgba(229,169,59,.12)}}
@@ -59,6 +69,7 @@
   </style>
 </head>
 <body>
+  <div class="fire-backdrop" aria-hidden="true"><span class="flame one"></span><span class="flame two"></span><span class="flame three"></span><span class="flame four"></span></div>
   <main class="page">
     <header class="brand">
       <div class="brand-mark" aria-hidden="true">
