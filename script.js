@@ -459,6 +459,9 @@ document.addEventListener('DOMContentLoaded', () => {
                 lista.querySelector('.selector-personalizado-opcion:not(:disabled)')?.focus();
             }
         });
+        document.addEventListener('click', evento => {
+            if (!contenedor.contains(evento.target)) cerrar();
+        });
         lista.addEventListener('keydown', evento => {
             const opciones = [...lista.querySelectorAll('.selector-personalizado-opcion:not(:disabled)')];
             const actual = opciones.indexOf(document.activeElement);
