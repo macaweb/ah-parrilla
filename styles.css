@@ -4453,3 +4453,100 @@ a:focus-visible {
         filter: brightness(1.08);
     }
 }
+
+
+/* Entradas suaves al recorrer el menú */
+.imagen-categoria.elemento-con-entrada {
+    opacity: 0;
+    filter: blur(7px);
+    transform: translateY(18px) scale(.985);
+    transition: opacity .75s ease, filter .75s ease, transform .75s cubic-bezier(.2,.75,.25,1);
+}
+.imagen-categoria.elemento-con-entrada.elemento-visible {
+    opacity: 1;
+    filter: blur(0);
+    transform: translateY(0) scale(1);
+}
+.lista-platos .plato-listado.elemento-con-entrada,
+.lista-sabores span.elemento-con-entrada {
+    opacity: 0;
+    transform: translateY(15px);
+    transition: opacity .48s ease, transform .48s cubic-bezier(.2,.75,.25,1);
+}
+.lista-platos .plato-listado.elemento-visible,
+.lista-sabores span.elemento-visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+.lista-platos .plato-listado:nth-child(2),
+.lista-sabores span:nth-child(2) { transition-delay: .055s; }
+.lista-platos .plato-listado:nth-child(3),
+.lista-sabores span:nth-child(3) { transition-delay: .11s; }
+.lista-platos .plato-listado:nth-child(4),
+.lista-sabores span:nth-child(4) { transition-delay: .165s; }
+.lista-platos .plato-listado:nth-child(5),
+.lista-sabores span:nth-child(5) { transition-delay: .22s; }
+.lista-platos .plato-listado:nth-child(n+6),
+.lista-sabores span:nth-child(n+6) { transition-delay: .26s; }
+
+/* Menú lateral: apertura y salida fluidas */
+.fondo-menu-lateral:not([hidden]) {
+    animation: fondo-menu-entra .28s ease both;
+}
+.panel-menu-lateral {
+    transform: translateX(-24px);
+    opacity: .75;
+    animation: panel-menu-entra .38s cubic-bezier(.2,.8,.2,1) both;
+}
+.panel-menu-lateral > a {
+    opacity: 0;
+    transform: translateX(-10px);
+    animation: enlace-menu-entra .32s ease both;
+}
+.panel-menu-lateral > a:nth-of-type(1) { animation-delay: .045s; }
+.panel-menu-lateral > a:nth-of-type(2) { animation-delay: .075s; }
+.panel-menu-lateral > a:nth-of-type(3) { animation-delay: .105s; }
+.panel-menu-lateral > a:nth-of-type(4) { animation-delay: .135s; }
+.panel-menu-lateral > a:nth-of-type(5) { animation-delay: .165s; }
+.panel-menu-lateral > a:nth-of-type(6) { animation-delay: .195s; }
+.panel-menu-lateral > a:nth-of-type(7) { animation-delay: .225s; }
+.fondo-menu-lateral.menu-cerrando {
+    animation: fondo-menu-sale .3s ease both;
+}
+.fondo-menu-lateral.menu-cerrando .panel-menu-lateral {
+    animation: panel-menu-sale .3s cubic-bezier(.4,0,.8,.2) both;
+}
+.fondo-menu-lateral.menu-cerrando .panel-menu-lateral > a {
+    animation: none;
+    opacity: 1;
+}
+@keyframes fondo-menu-entra { from { opacity: 0; } to { opacity: 1; } }
+@keyframes panel-menu-entra { from { opacity: .7; transform: translateX(-28px); } to { opacity: 1; transform: translateX(0); } }
+@keyframes enlace-menu-entra { from { opacity: 0; transform: translateX(-10px); } to { opacity: 1; transform: translateX(0); } }
+@keyframes fondo-menu-sale { to { opacity: 0; } }
+@keyframes panel-menu-sale { to { opacity: .65; transform: translateX(-32px); } }
+.boton-menu-lateral {
+    transition: transform .22s ease, border-color .22s ease, box-shadow .22s ease;
+}
+.boton-menu-lateral:active {
+    transform: scale(.92);
+    border-color: #ffe0a0;
+    box-shadow: 0 0 0 4px rgba(229,169,59,.18);
+}
+@media (prefers-reduced-motion: reduce) {
+    .imagen-categoria.elemento-con-entrada,
+    .lista-platos .plato-listado.elemento-con-entrada,
+    .lista-sabores span.elemento-con-entrada,
+    .fondo-menu-lateral:not([hidden]),
+    .panel-menu-lateral,
+    .panel-menu-lateral > a,
+    .fondo-menu-lateral.menu-cerrando,
+    .fondo-menu-lateral.menu-cerrando .panel-menu-lateral,
+    .boton-menu-lateral {
+        animation: none !important;
+        transition: none !important;
+        opacity: 1 !important;
+        filter: none !important;
+        transform: none !important;
+    }
+}
