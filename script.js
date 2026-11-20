@@ -19,6 +19,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const cerrarMenu = document.getElementById('cerrar-menu-lateral');
     const botonWhatsappFlotante = document.querySelector('.whatsapp-flotante-ah');
     function abrirMenu() {
+        fondoMenu.classList.remove('menu-cerrando');
         fondoMenu.hidden = false;
         botonWhatsappFlotante.hidden = true;
         botonMenu.setAttribute('aria-expanded', 'true');
@@ -26,12 +27,22 @@ document.addEventListener('DOMContentLoaded', () => {
         actualizarCategoriaVisible();
         cerrarMenu.focus();
     }
-    function cerrarMenuLateral() {
-        fondoMenu.hidden = true;
-        botonWhatsappFlotante.hidden = false;
+    function cerrarMenuLateral(devolverFoco = true) {
+        if (fondoMenu.hidden || fondoMenu.classList.contains('menu-cerrando')) return;
+        fondoMenu.classList.add('menu-cerrando');
         botonMenu.setAttribute('aria-expanded', 'false');
         document.body.style.overflow = '';
-        botonMenu.focus();
+        botonWhatsappFlotante.hidden = false;
+        if (devolverFoco) botonMenu.focus();
+        const finalizarCierre = evento => {
+            if (evento && evento.target !== fondoMenu) return;
+            fondoMenu.hidden = true;
+            fondoMenu.classList.remove('menu-cerrando');
+            fondoMenu.removeEventListener('animationend', finalizarCierre);
+        };
+        fondoMenu.addEventListener('animationend', finalizarCierre);
+        // Respaldo para navegadores que no disparen animationend.
+        window.setTimeout(finalizarCierre, 360);
     }
     botonMenu.addEventListener('click', abrirMenu);
     cerrarMenu.addEventListener('click', cerrarMenuLateral);
@@ -58,12 +69,29 @@ document.addEventListener('DOMContentLoaded', () => {
                 enlaceCategoria.classList.add('seleccionada');
                 enlaceCategoria.setAttribute('aria-current', 'location');
             }
-            fondoMenu.hidden = true;
-            botonWhatsappFlotante.hidden = false;
-            botonMenu.setAttribute('aria-expanded', 'false');
-            document.body.style.overflow = '';
+            cerrarMenuLateral(false);
         });
     });
+
+    // Aparición progresiva de fotos, platos y sabores al entrar en pantalla.
+    const elementosConEntrada = document.querySelectorAll(
+        '.imagen-categoria, .lista-platos .plato-listado, .lista-sabores span'
+    );
+    if ('IntersectionObserver' in window) {
+        const observadorEntrada = new IntersectionObserver((entradas, observador) => {
+            entradas.forEach(entrada => {
+                if (!entrada.isIntersecting) return;
+                entrada.target.classList.add('elemento-visible');
+                observador.unobserve(entrada.target);
+            });
+        }, { threshold: 0.12, rootMargin: '0px 0px -35px 0px' });
+        elementosConEntrada.forEach(elemento => {
+            elemento.classList.add('elemento-con-entrada');
+            observadorEntrada.observe(elemento);
+        });
+    } else {
+        elementosConEntrada.forEach(elemento => elemento.classList.add('elemento-visible'));
+    }
 
     // Mantiene sincronizada la categoría activa con la sección que está viendo la persona.
     const seccionesMenu = enlacesMenuLateral
