@@ -228,6 +228,7 @@ document.addEventListener('DOMContentLoaded', () => {
             opcion.value = '';
             opcion.textContent = texto;
             opcion.disabled = true;
+            opcion.selected = true;
             select.appendChild(opcion);
         };
         agregarPlaceholder(selectSopas, 'Selecciona una opción');
