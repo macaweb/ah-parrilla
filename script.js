@@ -18,7 +18,19 @@ document.addEventListener('DOMContentLoaded', () => {
     const fondoMenu = document.getElementById('fondo-menu-lateral');
     const cerrarMenu = document.getElementById('cerrar-menu-lateral');
     const botonWhatsappFlotante = document.querySelector('.whatsapp-flotante-ah');
+    let temporizadorCierreMenu = null;
+    let finalizarCierreMenu = null;
+
     function abrirMenu() {
+        // Cancela cualquier cierre anterior si el usuario vuelve a abrir enseguida.
+        if (temporizadorCierreMenu !== null) {
+            window.clearTimeout(temporizadorCierreMenu);
+            temporizadorCierreMenu = null;
+        }
+        if (finalizarCierreMenu) {
+            fondoMenu.removeEventListener('animationend', finalizarCierreMenu);
+            finalizarCierreMenu = null;
+        }
         fondoMenu.classList.remove('menu-cerrando');
         fondoMenu.hidden = false;
         botonWhatsappFlotante.hidden = true;
@@ -34,15 +46,23 @@ document.addEventListener('DOMContentLoaded', () => {
         document.body.style.overflow = '';
         botonWhatsappFlotante.hidden = false;
         if (devolverFoco) botonMenu.focus();
-        const finalizarCierre = evento => {
+
+        finalizarCierreMenu = evento => {
             if (evento && evento.target !== fondoMenu) return;
+            // Un cierre viejo nunca debe ocultar el menú si ya se volvió a abrir.
+            if (!fondoMenu.classList.contains('menu-cerrando')) return;
             fondoMenu.hidden = true;
             fondoMenu.classList.remove('menu-cerrando');
-            fondoMenu.removeEventListener('animationend', finalizarCierre);
+            fondoMenu.removeEventListener('animationend', finalizarCierreMenu);
+            finalizarCierreMenu = null;
+            if (temporizadorCierreMenu !== null) {
+                window.clearTimeout(temporizadorCierreMenu);
+                temporizadorCierreMenu = null;
+            }
         };
-        fondoMenu.addEventListener('animationend', finalizarCierre);
+        fondoMenu.addEventListener('animationend', finalizarCierreMenu);
         // Respaldo para navegadores que no disparen animationend.
-        window.setTimeout(finalizarCierre, 360);
+        temporizadorCierreMenu = window.setTimeout(() => finalizarCierreMenu(), 360);
     }
     botonMenu.addEventListener('click', abrirMenu);
     cerrarMenu.addEventListener('click', cerrarMenuLateral);
