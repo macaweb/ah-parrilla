@@ -213,39 +213,16 @@ document.addEventListener('DOMContentLoaded', () => {
         boton.setAttribute('aria-label', 'Agregar ' + titulo + ' al pedido');
         const costoRecipiente = seccion.id === 'sopas' ? 1000 : ['desayunos', 'almuerzos', 'platos-fuertes'].includes(seccion.id) ? 2000 : 0;
 
-        if (seccion.id === 'almuerzos') {
-            // Evita que queden botones u opciones individuales junto a cada plato.
-            plato.querySelectorAll('.boton-agregar, .selector-jugo-pedido, .selector-almuerzo-individual').forEach(elemento => elemento.remove());
-            plato.classList.add('almuerzo-seleccionable');
-            plato.tabIndex = 0;
-            plato.setAttribute('role', 'button');
-            plato.setAttribute('aria-pressed', 'false');
-            plato.setAttribute('aria-label', 'Seleccionar almuerzo: ' + titulo);
-            const seleccionarPlato = () => {
-                document.querySelectorAll('#almuerzos .almuerzo-seleccionable').forEach(item => {
-                    const activo = item === plato;
-                    item.classList.toggle('almuerzo-elegido', activo);
-                    item.setAttribute('aria-pressed', String(activo));
-                });
-                almuerzoElegido = { titulo, precio };
-                avisoPlato.hidden = true;
-            };
-            plato.addEventListener('click', seleccionarPlato);
-            plato.addEventListener('keydown', evento => {
-                if (evento.key === 'Enter' || evento.key === ' ') {
-                    evento.preventDefault();
-                    seleccionarPlato();
-                }
-            });
-        } else {
-            boton.addEventListener('click', () => {
-                agregar(titulo, precio, costoRecipiente, seccion.id);
-                confirmarAgregado(boton);
-            });
-            plato.appendChild(boton);
-        }
+        // Los almuerzos quedan disponibles para agregar individualmente mientras
+        // los selectores de acompañamientos están comentados temporalmente.
+        boton.addEventListener('click', () => {
+            agregar(titulo, precio, costoRecipiente, seccion.id);
+            confirmarAgregado(boton);
+        });
+        plato.appendChild(boton);
     });
 
+    /* INICIO: SELECTORES DE ALMUERZO COMENTADOS TEMPORALMENTE
     // Selector único al final de la sección: primero se elige un plato y luego sus acompañantes.
     let almuerzoElegido = null;
     const seccionAlmuerzos = document.getElementById('almuerzos');
@@ -335,6 +312,8 @@ document.addEventListener('DOMContentLoaded', () => {
         // Limpia cualquier control antiguo que pudiera haber quedado dentro de las tarjetas.
         listaAlmuerzos.querySelectorAll('.boton-agregar, .selector-jugo-pedido, .selector-almuerzo-individual, select').forEach(elemento => elemento.remove());
     }
+
+    FIN: SELECTORES DE ALMUERZO COMENTADOS TEMPORALMENTE */
 
     // Los sabores se seleccionan directamente desde sus etiquetas.
     const sabores = [...document.querySelectorAll('.lista-sabores span')];
