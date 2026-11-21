@@ -196,25 +196,47 @@ document.addEventListener('DOMContentLoaded', () => {
     const formulario = document.getElementById('formulario-pedido');
     const formatoPrecio = valor => '$' + valor.toLocaleString('es-CO');
 
-    // Añade botones solo donde el menú ya publica un precio.
+    // Los almuerzos se eligen primero; el pedido se agrega con sus acompañamientos.
+    let almuerzoElegido = null;
     document.querySelectorAll('.categoria-menu .lista-platos .plato-listado').forEach(plato => {
         const titulo = plato.querySelector('h3')?.textContent.trim();
         const seccion = plato.closest('.categoria-menu');
         if (!titulo || !seccion) return;
         let precio = Number((plato.querySelector('strong')?.textContent || '').replace(/[^0-9]/g, ''));
         if (!precio && seccion.id === 'almuerzos') precio = 20000;
-
         if (!precio && seccion.id === 'sopas') precio = 8000;
         if (!precio) return;
+
+        if (seccion.id === 'almuerzos') {
+            plato.classList.add('almuerzo-seleccionable');
+            plato.setAttribute('role', 'button');
+            plato.setAttribute('tabindex', '0');
+            plato.setAttribute('aria-label', 'Seleccionar almuerzo: ' + titulo);
+            const seleccionarAlmuerzo = () => {
+                almuerzoElegido = { titulo, precio, elemento: plato };
+                seccion.querySelectorAll('.plato-listado.almuerzo-seleccionable').forEach(item => {
+                    item.classList.toggle('almuerzo-elegido', item === plato);
+                    item.setAttribute('aria-pressed', item === plato ? 'true' : 'false');
+                });
+                const aviso = seccion.querySelector('.aviso-plato-almuerzo');
+                if (aviso) aviso.hidden = true;
+            };
+            plato.addEventListener('click', seleccionarAlmuerzo);
+            plato.addEventListener('keydown', evento => {
+                if (evento.key === 'Enter' || evento.key === ' ') {
+                    evento.preventDefault();
+                    seleccionarAlmuerzo();
+                }
+            });
+            return;
+        }
+
         const boton = document.createElement('button');
         boton.type = 'button';
         boton.className = 'boton-agregar boton-agregar-icono';
         boton.textContent = '+';
         boton.setAttribute('aria-label', 'Agregar ' + titulo + ' al pedido');
-        const costoRecipiente = seccion.id === 'sopas' ? 1000 : ['desayunos', 'almuerzos', 'platos-fuertes'].includes(seccion.id) ? 2000 : 0;
-
-        // Los almuerzos quedan disponibles para agregar individualmente mientras
-        // los selectores de acompañamientos están comentados temporalmente.
+        const costoRecipiente = seccion.id === 'sopas' ? 1000 : ['desayunos', 'platos-fuertes'].includes(seccion.id) ? 2000 : 0;
         boton.addEventListener('click', () => {
             agregar(titulo, precio, costoRecipiente, seccion.id);
             confirmarAgregado(boton);
@@ -222,9 +244,8 @@ document.addEventListener('DOMContentLoaded', () => {
         plato.appendChild(boton);
     });
 
-    /* INICIO: SELECTORES DE ALMUERZO COMENTADOS TEMPORALMENTE
+    // SELECTORES DE ALMUERZO REACTIVADOS
     // Selector único al final de la sección: primero se elige un plato y luego sus acompañantes.
-    let almuerzoElegido = null;
     const seccionAlmuerzos = document.getElementById('almuerzos');
     const listaAlmuerzos = seccionAlmuerzos?.querySelector('.lista-platos');
     if (seccionAlmuerzos && listaAlmuerzos) {
@@ -313,7 +334,6 @@ document.addEventListener('DOMContentLoaded', () => {
         listaAlmuerzos.querySelectorAll('.boton-agregar, .selector-jugo-pedido, .selector-almuerzo-individual, select').forEach(elemento => elemento.remove());
     }
 
-    FIN: SELECTORES DE ALMUERZO COMENTADOS TEMPORALMENTE */
 
     // Los sabores se seleccionan directamente desde sus etiquetas.
     const sabores = [...document.querySelectorAll('.lista-sabores span')];
