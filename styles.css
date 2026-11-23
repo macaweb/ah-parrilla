@@ -4568,3 +4568,12 @@ a:focus-visible {
 @media (prefers-reduced-motion: reduce) {
     .lista-sabores .boton-sabor-jugo { animation: none !important; }
 }
+
+
+/* Evitar que el desplegable del Especial quede cortado por el borde de la sección */
+.especial-dia {
+    overflow: visible;
+}
+.especial-dia .selector-personalizado-abierto {
+    z-index: 100;
+}
