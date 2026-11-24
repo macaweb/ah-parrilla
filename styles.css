@@ -4404,7 +4404,18 @@ a:focus-visible {
     color: #ffffff;
 }
 .selector-personalizado-control.selector-personalizado-confirmado {
+    border-color: #ffb45c !important;
+    background: linear-gradient(110deg, #d35400, #a83e00) !important;
+    color: #ffffff !important;
+    box-shadow: 0 0 0 3px rgba(211,84,0,.2), 0 5px 15px rgba(0,0,0,.3) !important;
     animation: selector-eleccion-confirmada .58s ease;
+}
+.selector-personalizado-opcion.selector-personalizado-eleccion-inmediata {
+    border-color: #ffb45c !important;
+    background: linear-gradient(110deg, #d35400, #a83e00) !important;
+    color: #ffffff !important;
+    transform: scale(1.035);
+    box-shadow: inset 3px 0 0 #ffc078, 0 3px 10px rgba(211,84,0,.3);
 }
 @keyframes selector-eleccion-confirmada {
     0% { transform: scale(1); border-color: #8a6034; }
