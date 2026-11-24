@@ -19,11 +19,7 @@
     .page{width:min(100%,460px);margin:auto;position:relative;z-index:1}
     /* Fuego orgánico en varias capas, con textura turbulenta y profundidad visual. */
     .fire-backdrop{position:fixed;inset:auto 0 0;height:min(54vh,460px);z-index:0;pointer-events:none;overflow:hidden;opacity:.7;perspective:700px;mask-image:linear-gradient(to top,#000 0%,rgba(0,0,0,.96) 57%,transparent 100%);-webkit-mask-image:linear-gradient(to top,#000 0%,rgba(0,0,0,.96) 57%,transparent 100%)}
-    .fire-backdrop svg{position:absolute;inset:0;width:100%;height:100%;overflow:visible;filter:blur(15px) saturate(1.15)}
-    .fire-backdrop .fire-far{opacity:.34;filter:url(#fireWarpSoft);transform-origin:50% 100%;animation:fireDepth 3.8s ease-in-out infinite alternate}
-    .fire-backdrop .fire-mid{opacity:.48;filter:url(#fireWarp);transform-origin:50% 100%;animation:fireDepth 2.7s ease-in-out infinite alternate-reverse}
-    .fire-backdrop .fire-near{opacity:.58;filter:url(#fireWarp);transform-origin:50% 100%;animation:fireDepth 2.1s ease-in-out infinite alternate}
-    .fire-backdrop .fire-core{opacity:.48;filter:blur(18px);mix-blend-mode:screen;animation:corePulse 1.8s ease-in-out infinite alternate}
+    .fire-backdrop video{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center bottom;filter:saturate(1.15) contrast(1.08)}
     .brand{text-align:center;margin-bottom:24px}
     .brand-mark{width:76px;height:76px;margin:0 auto 13px;border:1px solid rgba(229,169,59,.65);border-radius:50%;display:grid;place-items:center;background:linear-gradient(145deg,#38200e,#120c08);box-shadow:0 0 35px rgba(211,84,0,.2);animation:brandPulse 3.8s ease-in-out infinite}
     .brand-mark svg{width:43px;height:43px}
@@ -76,56 +72,12 @@
     <svg viewBox="0 0 1200 520" preserveAspectRatio="xMidYMax slice" xmlns="http://www.w3.org/2000/svg">
       <defs>
         <linearGradient id="fireOuter" x1="0" y1="1" x2="0" y2="0"><stop offset="0" stop-color="#8d1604"/><stop offset=".28" stop-color="#f04408"/><stop offset=".58" stop-color="#ff8a12"/><stop offset=".82" stop-color="#ffd15a"/><stop offset="1" stop-color="#fff2b2" stop-opacity=".12"/></linearGradient>
-        <linearGradient id="fireInner" x1="0" y1="1" x2=".1" y2="0"><stop offset="0" stop-color="#ff4b08"/><stop offset=".48" stop-color="#ffb52e"/><stop offset=".82" stop-color="#fff0a0"/><stop offset="1" stop-color="#fffde0" stop-opacity=".1"/></linearGradient>
-        <radialGradient id="fireBed"><stop offset="0" stop-color="#fff3a5" stop-opacity=".95"/><stop offset=".22" stop-color="#ff9b19" stop-opacity=".8"/><stop offset=".62" stop-color="#f04408" stop-opacity=".38"/><stop offset="1" stop-color="#f04408" stop-opacity="0"/></radialGradient>
-        <filter id="fireWarp" x="-25%" y="-30%" width="150%" height="160%">
-          <feTurbulence type="fractalNoise" baseFrequency=".012 .035" numOctaves="2" seed="8" result="noise"><animate attributeName="baseFrequency" values=".012 .035;.018 .052;.01 .03;.012 .035" dur="5s" repeatCount="indefinite"/></feTurbulence>
-          <feDisplacementMap in="SourceGraphic" in2="noise" scale="30" xChannelSelector="R" yChannelSelector="G" result="warped"/>
-          <feGaussianBlur in="warped" stdDeviation="1.2"/>
-        </filter>
-        <filter id="fireWarpSoft" x="-25%" y="-30%" width="150%" height="160%">
-          <feTurbulence type="fractalNoise" baseFrequency=".009 .026" numOctaves="2" seed="4" result="noise"><animate attributeName="baseFrequency" values=".009 .026;.014 .04;.009 .026" dur="7s" repeatCount="indefinite"/></feTurbulence>
-          <feDisplacementMap in="SourceGraphic" in2="noise" scale="22" xChannelSelector="R" yChannelSelector="G"/>
-          <feGaussianBlur stdDeviation="3"/>
-        </filter>
-      </defs>
-      <ellipse class="fire-core" cx="600" cy="505" rx="620" ry="145" fill="url(#fireBed)"/>
-      <g class="fire-far" fill="url(#fireOuter)">
-        <path d="M0 520 C45 445 20 365 92 300 C78 378 133 391 124 452 C184 384 166 279 235 210 C216 311 275 350 258 427 C325 371 302 280 365 245 C348 341 414 371 392 455 C460 390 452 300 516 250 C498 348 557 379 542 455 C625 389 604 282 678 205 C658 326 728 361 706 451 C787 379 765 295 831 241 C811 343 881 385 858 458 C931 394 922 292 988 220 C968 333 1038 377 1017 454 C1090 397 1080 324 1148 270 C1124 365 1190 410 1200 520Z"/>
-      </g>
-      <g class="fire-mid" fill="url(#fireOuter)">
-        <path d="M0 520 C76 463 57 396 121 338 C104 420 177 427 164 489 C232 421 208 329 275 267 C258 367 325 408 302 486 C382 414 361 326 427 278 C406 381 479 416 455 493 C540 421 514 322 586 256 C565 365 643 405 618 491 C700 420 679 330 746 278 C727 378 799 420 776 493 C856 421 833 331 901 270 C880 377 957 414 933 493 C1015 420 993 344 1060 296 C1041 392 1115 430 1093 493 C1140 458 1168 425 1200 399 V520Z"/>
-      </g>
-      <g class="fire-near" fill="url(#fireInner)">
-        <path d="M0 520 C42 485 44 439 83 397 C78 456 127 469 116 520Z"/>
-        <path d="M105 520 C160 468 137 408 202 349 C183 436 255 457 236 520Z"/>
-        <path d="M250 520 C300 468 278 408 343 351 C327 435 394 463 375 520Z"/>
-        <path d="M390 520 C450 467 423 391 495 326 C475 426 550 456 529 520Z"/>
-        <path d="M545 520 C598 468 579 402 644 344 C626 438 698 464 679 520Z"/>
-        <path d="M695 520 C752 467 731 396 798 333 C779 432 851 461 830 520Z"/>
-        <path d="M850 520 C908 470 882 405 950 350 C930 438 1005 466 984 520Z"/>
-        <path d="M1000 520 C1056 475 1036 418 1094 367 C1078 445 1141 470 1124 520Z"/>
-        <path d="M1120 520 C1160 488 1155 448 1200 414 V520Z"/>
-      </g>
-      <g class="fire-core" fill="#fff2b1">
-        <path d="M175 520 C195 490 184 463 211 441 C204 479 236 488 228 520Z"/>
-        <path d="M462 520 C485 483 470 451 505 420 C493 466 535 485 524 520Z"/>
-        <path d="M760 520 C782 487 770 458 800 430 C790 472 824 488 816 520Z"/>
-        <path d="M1030 520 C1050 491 1041 466 1067 441 C1058 478 1088 491 1080 520Z"/>
-      </g>
-    </svg>
+        <linearGradient id="fireInner" x1="0" y1="1" x2=".1" y2="0"><stop offset="  <div class="fire-backdrop" aria-hidden="true">
+    <video autoplay muted loop playsinline preload="metadata">
+      <source src="ah-parrilla-fuego.mp4" type="video/mp4">
+    </video>
   </div>
-  <main class="page">
-    <header class="brand">
-      <div class="brand-mark" aria-hidden="true">
-        <svg viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
-          <path d="M24 5c2 7-4 8-1 14 2-3 5-5 5-10 7 7 10 13 7 21-2 6-7 10-13 10S11 35 10 28c-1-6 2-11 7-16 0 6 1 8 3 10 3-5 1-10 4-17Z" stroke="#E5A93B" stroke-width="2" stroke-linejoin="round"/>
-          <path d="M24 25c3 4 4 6 2 10-1 2-3 3-5 2-4-2-3-7 3-12Z" fill="#D35400"/>
-        </svg>
-      </div>
-      <p class="eyebrow">EL SABOR DE CASA</p>
-      <h1>AH PARRILLA</h1>
-      <p class="tagline">¡Elige cómo disfrutar nuestros sabores!</p>
+  <main class="page">="tagline">¡Elige cómo disfrutar nuestros sabores!</p>
     </header>
 
     <nav class="links" aria-label="Pedidos y menú">
