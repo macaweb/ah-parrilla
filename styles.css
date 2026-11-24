@@ -4592,3 +4592,25 @@ a:focus-visible {
     color: #ffffff !important;
     box-shadow: 0 0 0 3px rgba(69, 166, 107, .2), 0 5px 14px rgba(0,0,0,.24) !important;
 }
+
+/* Redes sociales: nombre de la plataforma y cuenta, igual que en la página de enlaces */
+.footer-contenido-final .footer-redes a.footer-red-link .footer-red-copy {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    line-height: 1.25;
+    gap: 2px;
+}
+.footer-contenido-final .footer-redes .footer-red-copy strong {
+    color: #f3e7d6;
+    font-size: 13px;
+    font-weight: 700;
+}
+.footer-contenido-final .footer-redes .footer-red-copy small {
+    color: #c4ad96;
+    font-size: 11px;
+    line-height: 1.3;
+}
+.footer-contenido-final .footer-redes a.footer-red-link:hover .footer-red-copy small {
+    color: #fff2d8;
+}
