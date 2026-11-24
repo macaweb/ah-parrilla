@@ -33,6 +33,19 @@ document.addEventListener('DOMContentLoaded', () => {
         }
         fondoMenu.classList.remove('menu-cerrando');
         fondoMenu.hidden = false;
+
+        // Reinicia las animaciones de entrada para que los enlaces sigan visibles
+        // cada vez que se vuelve a abrir el menú lateral.
+        const panelMenu = fondoMenu.querySelector('.panel-menu-lateral');
+        const enlacesVisiblesMenu = [...fondoMenu.querySelectorAll('.panel-menu-lateral > a')];
+        [panelMenu, ...enlacesVisiblesMenu].filter(Boolean).forEach(elemento => {
+            elemento.style.animation = 'none';
+        });
+        void fondoMenu.offsetWidth;
+        [panelMenu, ...enlacesVisiblesMenu].filter(Boolean).forEach(elemento => {
+            elemento.style.removeProperty('animation');
+        });
+
         botonWhatsappFlotante.hidden = true;
         botonMenu.setAttribute('aria-expanded', 'true');
         document.body.style.overflow = 'hidden';
