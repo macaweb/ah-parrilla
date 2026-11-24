@@ -4577,3 +4577,11 @@ a:focus-visible {
 .especial-dia .selector-personalizado-abierto {
     z-index: 100;
 }
+
+/* Confirmación al agregar: verde para distinguir el plato añadido */
+.boton-agregar.confirmacion-agregado {
+    background: linear-gradient(135deg, #45a66b, #267548) !important;
+    border-color: #91d6a8 !important;
+    color: #ffffff !important;
+    box-shadow: 0 0 0 3px rgba(69, 166, 107, .2), 0 5px 14px rgba(0,0,0,.24) !important;
+}
