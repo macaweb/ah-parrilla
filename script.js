@@ -511,18 +511,26 @@ document.addEventListener('DOMContentLoaded', () => {
             item.setAttribute('aria-selected', String(opcion.value === select.value));
             item.disabled = opcion.disabled || opcion.value === '';
             item.addEventListener('click', () => {
+                // Resalta la opción inmediatamente, antes de cerrar el desplegable.
+                lista.querySelectorAll('.selector-personalizado-opcion').forEach(opcionLista => {
+                    opcionLista.setAttribute('aria-selected', String(opcionLista === item));
+                });
+                item.classList.add('selector-personalizado-eleccion-inmediata');
                 select.value = opcion.value;
                 select.dispatchEvent(new Event('change', { bubbles: true }));
                 actualizarTexto();
-                // Confirma visualmente la elección con un breve pulso dorado.
+
                 control.classList.remove('selector-personalizado-confirmado');
                 void control.offsetWidth;
                 control.classList.add('selector-personalizado-confirmado');
                 if (control._temporizadorConfirmacion) clearTimeout(control._temporizadorConfirmacion);
                 control._temporizadorConfirmacion = setTimeout(() => {
                     control.classList.remove('selector-personalizado-confirmado');
-                }, 650);
-                cerrar(true);
+                }, 850);
+
+                // Deja visible el naranja un instante para que se perciba el toque.
+                if (item._temporizadorCierre) clearTimeout(item._temporizadorCierre);
+                item._temporizadorCierre = setTimeout(() => cerrar(true), 220);
             });
             lista.appendChild(item);
         });
