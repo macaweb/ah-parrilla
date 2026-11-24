@@ -26,7 +26,7 @@
     .eyebrow{margin:0 0 5px;color:var(--gold);font-size:11px;font-weight:800;letter-spacing:3px}
     h1{margin:0;color:var(--cream);font-family:Georgia,"Times New Roman",serif;font-size:30px;font-weight:700;letter-spacing:1.5px}
     .tagline{margin:9px 0 0;color:var(--muted);font-size:14px;line-height:1.5}
-    .links{display:grid;gap:12px}.links + .links{margin-top:12px}
+    .links{display:grid;gap:12px}.links + .links{margin-top:12px}.links[aria-label="Pedidos y menú"] .menu{margin-bottom:4px}
     .link{position:relative;isolation:isolate;overflow:hidden;min-height:76px;padding:14px 16px;display:flex;align-items:center;gap:14px;border:1px solid var(--line);border-radius:13px;background:linear-gradient(115deg,rgba(48,30,17,.98),rgba(25,17,12,.98));color:var(--cream);text-decoration:none;box-shadow:0 8px 20px rgba(0,0,0,.18);transition:transform .3s ease,border-color .3s ease,background .3s ease,box-shadow .3s ease;animation:linkFloat 6s ease-in-out infinite}
     .link::before{content:"";position:absolute;inset:-30% auto -30% -55%;width:38%;z-index:-1;background:linear-gradient(100deg,transparent,rgba(255,210,132,.17),transparent);transform:skewX(-18deg);animation:linkShine 7s ease-in-out infinite}
     .link::after{content:"";position:absolute;inset:auto 12% 0;height:1px;background:linear-gradient(90deg,transparent,rgba(229,169,59,.8),transparent);opacity:.55;z-index:-1}
