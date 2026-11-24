@@ -3479,8 +3479,8 @@ a:focus-visible {
 .footer-domicilios .footer-didi .footer-social-icon { color: #ff8a43; }
 .footer-redes .footer-instagram .footer-social-icon { color: #e66a9c; }
 .footer-redes .footer-facebook .footer-social-icon { color: #5795f5; }
-.footer-contactanos .footer-didi .icon { display: inline-grid; flex: 0 0 44px; width: 44px; height: 44px; place-items: center; border: 1px solid rgba(229,169,59,.2); border-radius: 11px; background: #100b08; }
-.footer-contactanos .footer-didi .didi-wordmark { color: #ff7d41; font-size: 11px; font-weight: 900; letter-spacing: -.9px; white-space: nowrap; text-shadow: 0 0 10px rgba(255,125,65,.18); }
+.footer-domicilios .footer-didi .footer-didi-icon { display: inline-grid; flex: 0 0 44px; width: 44px; height: 44px; place-items: center; border: 1px solid rgba(229,169,59,.2); border-radius: 11px; background: #100b08; }
+.footer-domicilios .footer-didi .didi-wordmark { color: #ff7d41; font-size: 11px; font-weight: 900; letter-spacing: -.9px; white-space: nowrap; text-shadow: 0 0 10px rgba(255,125,65,.18); }
 .footer-didi-icon { display: inline-grid; flex: 0 0 44px; width: 44px; height: 44px; place-items: center; border: 1px solid rgba(229,169,59,.2); border-radius: 11px; background: #100b08; }
 .footer-didi-wordmark { color: #ff7d41; font-size: 11px; font-weight: 900; letter-spacing: -.9px; white-space: nowrap; text-shadow: 0 0 10px rgba(255,125,65,.18); }
 @media (max-width: 760px) {
