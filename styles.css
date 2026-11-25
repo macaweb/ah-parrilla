@@ -4614,3 +4614,70 @@ a:focus-visible {
 .footer-contenido-final .footer-redes a.footer-red-link:hover .footer-red-copy small {
     color: #fff2d8;
 }
+
+
+/* Bienvenida destacada de la carta */
+.bienvenida-carta {
+    position: relative;
+    isolation: isolate;
+    max-width: 760px;
+    margin: 4px auto 25px;
+    padding: 25px 18px 22px;
+    text-align: center;
+    animation: bienvenidaCarta 0.8s ease both;
+}
+.bienvenida-carta::before {
+    content: "";
+    position: absolute;
+    z-index: -1;
+    inset: 0;
+    border-top: 1px solid rgba(205,157,76,.48);
+    border-bottom: 1px solid rgba(205,157,76,.25);
+    background: linear-gradient(110deg, transparent, rgba(205,157,76,.075), transparent);
+}
+.bienvenida-carta::after {
+    content: "";
+    position: absolute;
+    top: -2px;
+    left: 50%;
+    width: 54px;
+    height: 3px;
+    transform: translateX(-50%);
+    border-radius: 4px;
+    background: var(--dorado);
+}
+.bienvenida-etiqueta {
+    display: inline-block;
+    margin-bottom: 9px;
+    color: var(--naranja);
+    font-size: 10px;
+    font-weight: 800;
+    letter-spacing: 3px;
+}
+.bienvenida-carta h2 {
+    margin: 0;
+    color: var(--dorado);
+    font-size: clamp(25px,5vw,36px);
+    line-height: 1.15;
+    font-weight: 800;
+    letter-spacing: .2px;
+    text-wrap: balance;
+}
+.bienvenida-carta p {
+    max-width: 470px;
+    margin: 10px auto 0;
+    color: var(--gris);
+    font-size: 14px;
+    line-height: 1.6;
+}
+@keyframes bienvenidaCarta {
+    from { opacity: 0; transform: translateY(14px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+@media (max-width:480px) {
+    .bienvenida-carta { margin: 2px auto 20px; padding: 21px 12px 19px; }
+    .bienvenida-carta p { font-size: 13px; }
+}
+@media (prefers-reduced-motion:reduce) {
+    .bienvenida-carta { animation: none; }
+}
