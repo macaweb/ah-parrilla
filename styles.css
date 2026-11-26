@@ -5627,3 +5627,105 @@ a:focus-visible {
     }
 }
 
+/* AH Parrilla — método de pago con el mismo diseño de Especial y Almuerzos */
+.formulario-pedido .selector-personalizado {
+    width: 100%;
+}
+.formulario-pedido .selector-personalizado-control {
+    min-height: 44px;
+    padding: 9px 13px;
+    border: 1px solid rgba(229, 169, 59, .72);
+    border-radius: 11px;
+    background: linear-gradient(145deg, rgba(255,255,255,.045), rgba(255,255,255,0)), #21150c;
+    color: #fff3dc;
+    font-size: 13px;
+    font-weight: 600;
+}
+.formulario-pedido .selector-personalizado-control:hover,
+.formulario-pedido .selector-personalizado-abierto .selector-personalizado-control {
+    border-color: #ffc66a;
+    background: #2b1a0d;
+}
+.formulario-pedido .selector-personalizado-control:focus-visible {
+    outline: none;
+    border-color: #ffd27d;
+    box-shadow: 0 0 0 3px rgba(229,169,59,.2), 0 7px 18px rgba(0,0,0,.3);
+}
+.formulario-pedido .selector-personalizado-texto {
+    font-size: 12px;
+    line-height: 1.35;
+    font-weight: 500;
+}
+.formulario-pedido .selector-personalizado-flecha {
+    color: #ffc66a;
+}
+.formulario-pedido .selector-personalizado-lista {
+    gap: 0;
+    padding: 6px;
+    border: 1px solid #e8ddce;
+    border-radius: 12px;
+    background: #fbf8f2;
+    box-shadow: 0 14px 30px rgba(0,0,0,.28), inset 0 1px 0 rgba(255,255,255,.9);
+}
+.formulario-pedido .selector-personalizado-opcion {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 12px;
+    min-height: 39px;
+    padding: 10px 12px;
+    border: 0;
+    border-bottom: 1px solid #eee5d9;
+    border-radius: 0;
+    background: transparent;
+    color: #59432f;
+    font-size: 12px;
+    font-weight: 500;
+    text-align: left;
+    transform: none;
+    box-shadow: none;
+}
+.formulario-pedido .selector-personalizado-opcion:last-child {
+    border-bottom: 0;
+}
+.formulario-pedido .selector-personalizado-opcion[aria-selected="true"] {
+    border-radius: 7px;
+    background: #f0e6d8 !important;
+    color: #63452d !important;
+    transform: none;
+    box-shadow: inset 3px 0 0 #a98760 !important;
+}
+.formulario-pedido .selector-personalizado-opcion[aria-selected="true"]::after {
+    content: "✓";
+    flex: 0 0 auto;
+    color: #8b6845;
+    font-size: 13px;
+    font-weight: 700;
+}
+.formulario-pedido .selector-personalizado-opcion:hover:not(:disabled),
+.formulario-pedido .selector-personalizado-opcion:focus-visible {
+    outline: none;
+    border-radius: 7px;
+    background: #f5eee4;
+    color: #503b29;
+}
+.formulario-pedido .selector-personalizado-opcion:active:not(:disabled) {
+    border-color: #e3d5c2;
+    background: #f0e6d8;
+    color: #63452d;
+    transform: none;
+}
+.formulario-pedido .selector-personalizado-control.selector-personalizado-confirmado {
+    border-color: rgba(229,169,59,.72) !important;
+    background: linear-gradient(145deg, rgba(255,255,255,.045), rgba(255,255,255,0)), #21150c !important;
+    color: #fff3dc !important;
+    box-shadow: inset 0 1px 0 rgba(255,235,195,.08), 0 4px 12px rgba(0,0,0,.24) !important;
+    animation: none !important;
+}
+@media (max-width: 600px) {
+    .formulario-pedido .selector-personalizado-opcion {
+        min-height: 40px;
+        padding: 10px 11px;
+    }
+}
+
