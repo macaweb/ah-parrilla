@@ -328,9 +328,9 @@ document.addEventListener('DOMContentLoaded', () => {
         const textoSelector = document.createElement('p');
         textoSelector.textContent = 'Después de elegir tu plato de la lista, selecciona los acompañantes:';
         const grupoSopas = document.createElement('div');
-        grupoSopas.className = 'grupo-opciones-contenedor';
+        grupoSopas.className = 'grupo-opciones-contenedor grupo-sopas-acompanamiento';
         const grupoBebidas = document.createElement('div');
-        grupoBebidas.className = 'grupo-opciones-contenedor';
+        grupoBebidas.className = 'grupo-opciones-contenedor grupo-bebidas-acompanamiento';
         const selectorSopas = crearGrupoOpciones(grupoSopas, 'Sopa o crema (obligatoria)', opcionesSopasEspecial);
         const selectorBebidas = crearGrupoOpciones(grupoBebidas, 'Jugo o bebida (obligatorio)', opcionesBebidasEspecial);
 
