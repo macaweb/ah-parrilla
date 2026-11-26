@@ -6490,3 +6490,48 @@ a:focus-visible {
     .opcion-pedido-boton { min-height: 41px; padding: 9px 7px; font-size: 12px; }
     .opciones-botones-pedido .opcion-frijoles { width: 62%; }
 }
+
+
+/* AH Parrilla — jerarquía de color para completar el especial */
+.selector-especial > h3 {
+    color: #f0d19a;
+    font-size: clamp(18px, 2.2vw, 21px);
+    font-weight: 900;
+    letter-spacing: .35px;
+    text-shadow: 0 2px 12px rgba(216, 189, 141, .16);
+}
+.selector-especial > p {
+    color: #f0e6d8;
+    font-size: 13px;
+    line-height: 1.6;
+    max-width: 470px;
+    margin: 0 auto 18px;
+}
+#opciones-sopa-especial .grupo-opciones-pedido h4 {
+    display: inline-block;
+    color: #c9d9bd;
+    font-size: 12px;
+    font-weight: 900;
+    letter-spacing: .9px;
+    padding: 6px 11px;
+    margin-bottom: 11px;
+    border: 1px solid rgba(174, 201, 157, .32);
+    border-radius: 7px;
+    background: rgba(133, 165, 117, .12);
+}
+#opciones-bebida-especial .grupo-opciones-pedido h4 {
+    display: inline-block;
+    color: #e8c99e;
+    font-size: 12px;
+    font-weight: 900;
+    letter-spacing: .9px;
+    padding: 6px 11px;
+    margin-bottom: 11px;
+    border: 1px solid rgba(232, 201, 158, .34);
+    border-radius: 7px;
+    background: rgba(190, 145, 88, .13);
+}
+#opciones-sopa-especial,
+#opciones-bebida-especial {
+    margin-top: 14px;
+}
