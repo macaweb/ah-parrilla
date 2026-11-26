@@ -257,8 +257,65 @@ document.addEventListener('DOMContentLoaded', () => {
         plato.appendChild(boton);
     });
 
-    // SELECTORES DE ALMUERZO REACTIVADOS
-    // Selector único al final de la sección: primero se elige un plato y luego sus acompañantes.
+    // Selectores visuales por botones para almuerzos y especial del día.
+    const crearGrupoOpciones = (contenedor, titulo, valores) => {
+        const grupo = document.createElement('div');
+        grupo.className = 'grupo-opciones-pedido';
+        const encabezado = document.createElement('h4');
+        encabezado.textContent = titulo;
+        const botones = document.createElement('div');
+        botones.className = 'opciones-botones-pedido';
+        botones.setAttribute('role', 'group');
+        botones.setAttribute('aria-label', titulo);
+        let elegido = '';
+
+        // Fríjoles siempre ocupa el botón inferior centrado.
+        const ordenados = [...valores].sort((a, b) => {
+            const esFrijolesA = /fr[ií]joles/i.test(a);
+            const esFrijolesB = /fr[ií]joles/i.test(b);
+            return Number(esFrijolesA) - Number(esFrijolesB);
+        });
+
+        ordenados.forEach(valor => {
+            const opcion = document.createElement('button');
+            opcion.type = 'button';
+            opcion.className = 'opcion-pedido-boton';
+            opcion.textContent = valor;
+            opcion.setAttribute('aria-pressed', 'false');
+            if (/fr[ií]joles/i.test(valor)) opcion.classList.add('opcion-frijoles');
+            opcion.addEventListener('click', () => {
+                elegido = valor;
+                botones.querySelectorAll('.opcion-pedido-boton').forEach(boton => {
+                    const activa = boton === opcion;
+                    boton.classList.toggle('seleccionada', activa);
+                    boton.setAttribute('aria-pressed', String(activa));
+                });
+                botones.classList.remove('falta-seleccion');
+            });
+            botones.appendChild(opcion);
+        });
+
+        grupo.append(encabezado, botones);
+        contenedor.appendChild(grupo);
+        return {
+            elemento: grupo,
+            get valor() { return elegido; },
+            enfocar() {
+                botones.classList.add('falta-seleccion');
+                botones.querySelector('.opcion-pedido-boton')?.focus();
+            }
+        };
+    };
+
+    const especialDelDia = document.querySelector('.especial-dia');
+    const opcionesSopasEspecial = especialDelDia
+        ? [...especialDelDia.querySelectorAll('.opcion-del-dia:not(.opcion-jugos-del-dia) .lista-opciones-dia li')].map(item => item.textContent.trim()).filter(Boolean)
+        : [];
+    const opcionesBebidasEspecial = especialDelDia
+        ? [...especialDelDia.querySelectorAll('.opcion-jugos-del-dia .lista-opciones-dia li')].map(item => item.textContent.trim()).filter(Boolean)
+        : [];
+
+    // ALMUERZOS: primero se elige el plato y luego sus dos acompañamientos.
     const seccionAlmuerzos = document.getElementById('almuerzos');
     const listaAlmuerzos = seccionAlmuerzos?.querySelector('.lista-platos');
     if (seccionAlmuerzos && listaAlmuerzos) {
@@ -273,50 +330,12 @@ document.addEventListener('DOMContentLoaded', () => {
         avisoPlato.hidden = true;
         const textoSelector = document.createElement('p');
         textoSelector.textContent = 'Después de elegir tu plato de la lista, selecciona los acompañantes:';
-        const grupoSopas = document.createElement('label');
-        grupoSopas.textContent = 'Sopa o crema (obligatoria)';
-        const selectSopas = document.createElement('select');
-        selectSopas.setAttribute('aria-label', 'Selecciona una sopa o crema para el almuerzo');
-        const grupoJugos = document.createElement('label');
-        grupoJugos.textContent = 'Jugo o bebida (obligatorio)';
-        const selectJugos = document.createElement('select');
-        selectJugos.setAttribute('aria-label', 'Selecciona un jugo para el almuerzo');
-
-        const agregarPlaceholder = (select, texto) => {
-            const opcion = document.createElement('option');
-            opcion.value = '';
-            opcion.textContent = texto;
-            opcion.disabled = true;
-            opcion.selected = true;
-            select.appendChild(opcion);
-        };
-        agregarPlaceholder(selectSopas, 'Selecciona una opción');
-        agregarPlaceholder(selectJugos, 'Selecciona una opción');
-
-        const especialDelDia = document.querySelector('.especial-dia');
-        const opcionesSopas = especialDelDia
-            ? [...especialDelDia.querySelectorAll('.opcion-del-dia:not(.opcion-jugos-del-dia) .lista-opciones-dia li')]
-            : [...document.querySelectorAll('#sopas .lista-platos h3')];
-        const opcionesJugos = especialDelDia
-            ? [...especialDelDia.querySelectorAll('.opcion-jugos-del-dia .lista-opciones-dia li')]
-            : [...document.querySelectorAll('.lista-sabores span')];
-
-        opcionesSopas.forEach(item => {
-            const valor = item.textContent.trim();
-            if (!valor) return;
-            const opcion = document.createElement('option');
-            opcion.value = valor;
-            opcion.textContent = valor;
-            selectSopas.appendChild(opcion);
-        });
-        opcionesJugos.forEach(item => {
-            const valor = item.textContent.trim();
-            if (!valor) return;
-            const opcion = document.createElement('option');
-            opcion.value = valor;
-            opcion.textContent = valor;
-            selectJugos.appendChild(opcion);
-        });
+        const grupoSopas = document.createElement('div');
+        grupoSopas.className = 'grupo-opciones-contenedor';
+        const grupoBebidas = document.createElement('div');
+        grupoBebidas.className = 'grupo-opciones-contenedor';
+        const selectorSopas = crearGrupoOpciones(grupoSopas, 'Sopa o crema (obligatoria)', opcionesSopasEspecial);
+        const selectorBebidas = crearGrupoOpciones(grupoBebidas, 'Jugo o bebida (obligatorio)', opcionesBebidasEspecial);
 
         const botonAgregarAlmuerzo = document.createElement('button');
         botonAgregarAlmuerzo.type = 'button';
@@ -328,25 +347,22 @@ document.addEventListener('DOMContentLoaded', () => {
                 listaAlmuerzos.querySelector('.almuerzo-seleccionable')?.focus();
                 return;
             }
-            if (!selectSopas.value) {
-                enfocarSelector(selectSopas);
+            if (!selectorSopas.valor) {
+                selectorSopas.enfocar();
                 return;
             }
-            if (!selectJugos.value) {
-                enfocarSelector(selectJugos);
+            if (!selectorBebidas.valor) {
+                selectorBebidas.enfocar();
                 return;
             }
-            const nombrePedido = almuerzoElegido.titulo + ' + ' + selectSopas.value + ' + ' + selectJugos.value;
+            const nombrePedido = almuerzoElegido.titulo + ' + ' + selectorSopas.valor + ' + ' + selectorBebidas.valor;
             agregar(nombrePedido, almuerzoElegido.precio, 2000, 'almuerzos');
             confirmarAgregado(botonAgregarAlmuerzo);
         });
-        selectorAlmuerzos.append(tituloSelector, avisoPlato, textoSelector, grupoSopas, selectSopas, grupoJugos, selectJugos, botonAgregarAlmuerzo);
-        // Un solo bloque de opciones, inmediatamente después de la lista de platos.
+        selectorAlmuerzos.append(tituloSelector, avisoPlato, textoSelector, grupoSopas, grupoBebidas, botonAgregarAlmuerzo);
         listaAlmuerzos.insertAdjacentElement('afterend', selectorAlmuerzos);
-        // Limpia cualquier control antiguo que pudiera haber quedado dentro de las tarjetas.
         listaAlmuerzos.querySelectorAll('.boton-agregar, .selector-jugo-pedido, .selector-almuerzo-individual, select').forEach(elemento => elemento.remove());
     }
-
 
     // Los sabores se seleccionan directamente desde sus etiquetas.
     const sabores = [...document.querySelectorAll('.lista-sabores span')];
@@ -609,39 +625,22 @@ document.addEventListener('DOMContentLoaded', () => {
         actualizarTexto();
     }
 
-    // El especial incluye una sopa o crema y un jugo, sin cobros adicionales.
+    // El especial requiere una sopa o crema y una bebida, sin cobros adicionales.
     const bloqueEspecial = document.querySelector('.especial-dia');
     if (bloqueEspecial) {
-        const acompanamiento = document.getElementById('acompanamiento-especial');
-        const jugoEspecial = document.getElementById('jugo-especial');
-        const opcionesAcompanamiento = [
-            ...bloqueEspecial.querySelectorAll('.opcion-del-dia:not(.opcion-jugos-del-dia) .lista-opciones-dia li')
-        ];
-        const opcionesJugo = [...bloqueEspecial.querySelectorAll('.opcion-jugos-del-dia .lista-opciones-dia li')];
-        opcionesAcompanamiento.forEach(item => {
-            const opcion = document.createElement('option');
-            opcion.value = item.textContent.trim();
-            opcion.textContent = item.textContent.trim();
-            acompanamiento.appendChild(opcion);
-        });
-        opcionesJugo.forEach(item => {
-            const valorOriginal = item.textContent.trim();
-            const valor = /^(maracuyá|tomate de árbol)$/i.test(valorOriginal)
-                ? 'Jugo de ' + valorOriginal.toLowerCase()
-                : valorOriginal;
-            const opcion = document.createElement('option');
-            opcion.value = valor;
-            opcion.textContent = valor;
-            jugoEspecial.appendChild(opcion);
-        });
-        document.getElementById('agregar-menu-especial').textContent = 'Agregar +';
-        document.getElementById('agregar-menu-especial').addEventListener('click', () => {
-            if (!acompanamiento.value) { enfocarSelector(acompanamiento); return; }
-            if (!jugoEspecial.value) { enfocarSelector(jugoEspecial); return; }
+        const contenedorSopas = document.getElementById('opciones-sopa-especial');
+        const contenedorBebidas = document.getElementById('opciones-bebida-especial');
+        const selectorSopas = crearGrupoOpciones(contenedorSopas, 'Sopa o crema (obligatoria)', opcionesSopasEspecial);
+        const selectorBebidas = crearGrupoOpciones(contenedorBebidas, 'Jugo o bebida (obligatorio)', opcionesBebidasEspecial);
+        const botonAgregarEspecial = document.getElementById('agregar-menu-especial');
+        botonAgregarEspecial.textContent = 'Agregar +';
+        botonAgregarEspecial.addEventListener('click', () => {
+            if (!selectorSopas.valor) { selectorSopas.enfocar(); return; }
+            if (!selectorBebidas.valor) { selectorBebidas.enfocar(); return; }
             const plato = bloqueEspecial.querySelector('.nombre-especial')?.textContent.trim() || 'Plato del día';
-            const nombreMenu = 'Menú especial: ' + plato + ' + ' + acompanamiento.value + ' + ' + jugoEspecial.value;
+            const nombreMenu = 'Menú especial: ' + plato + ' + ' + selectorSopas.valor + ' + ' + selectorBebidas.valor;
             agregar(nombreMenu, 19000, 2000, 'especiales');
-            confirmarAgregado(document.getElementById('agregar-menu-especial'));
+            confirmarAgregado(botonAgregarEspecial);
         });
     }
 
