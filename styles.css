@@ -6380,3 +6380,110 @@ a:focus-visible {
     color: #382817;
     box-shadow: 0 0 0 2px rgba(201, 157, 93, .16), 0 3px 10px rgba(0, 0, 0, .18);
 }
+
+
+/* Selectores en botones para Especial del día y Almuerzos */
+.grupo-opciones-contenedor {
+    width: 100%;
+    margin: 12px 0 15px;
+}
+.grupo-opciones-pedido {
+    width: 100%;
+}
+.grupo-opciones-pedido h4 {
+    margin: 0 0 10px;
+    color: #ead9b8;
+    font-size: 12px;
+    font-weight: 850;
+    letter-spacing: .8px;
+    text-align: left;
+}
+.opciones-botones-pedido {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 9px;
+    width: 100%;
+}
+.opcion-pedido-boton {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 43px;
+    padding: 10px 12px;
+    border: 1px solid rgba(216, 189, 141, .42);
+    border-radius: 10px;
+    color: #f2e7d5;
+    background: linear-gradient(145deg, rgba(255,255,255,.075), rgba(255,255,255,.025));
+    font: inherit;
+    font-size: 13px;
+    font-weight: 650;
+    line-height: 1.25;
+    text-align: center;
+    cursor: pointer;
+    transition: color .2s ease, background .2s ease, border-color .2s ease, box-shadow .2s ease, transform .2s ease;
+    -webkit-tap-highlight-color: transparent;
+}
+.opcion-pedido-boton:hover {
+    border-color: rgba(216, 189, 141, .8);
+    transform: translateY(-1px);
+}
+.opcion-pedido-boton:focus-visible {
+    outline: 2px solid #ead9b8;
+    outline-offset: 3px;
+}
+.opcion-pedido-boton.seleccionada {
+    border-color: #dfc18d;
+    color: #332719;
+    background: linear-gradient(135deg, #ead9b8, #d4bd91);
+    box-shadow: 0 0 0 2px rgba(223, 193, 141, .14), 0 4px 12px rgba(0,0,0,.2);
+    font-weight: 850;
+}
+.opciones-botones-pedido .opcion-frijoles {
+    grid-column: 1 / -1;
+    justify-self: center;
+    width: min(50%, 220px);
+}
+.opciones-botones-pedido.falta-seleccion .opcion-pedido-boton {
+    border-color: rgba(216, 189, 141, .72);
+}
+.opciones-botones-pedido.falta-seleccion {
+    animation: selector-pedido-aviso .35s ease;
+}
+@keyframes selector-pedido-aviso {
+    0%, 100% { transform: translateX(0); }
+    25% { transform: translateX(-3px); }
+    75% { transform: translateX(3px); }
+}
+.selector-almuerzos {
+    width: min(100%, 620px);
+    margin: 24px auto 0;
+    padding: clamp(16px, 3vw, 22px);
+    border: 1px solid rgba(216, 189, 141, .28);
+    border-radius: 16px;
+    background: linear-gradient(145deg, rgba(255,255,255,.045), rgba(216,189,141,.035));
+}
+.selector-almuerzos > h3,
+.selector-especial > h3 {
+    margin: 0 0 8px;
+    color: #ead9b8;
+}
+.selector-almuerzos > p,
+.selector-especial > p {
+    line-height: 1.55;
+}
+.selector-especial .grupo-opciones-pedido h4 {
+    text-align: center;
+}
+.selector-especial .opciones-botones-pedido {
+    max-width: 440px;
+    margin: 0 auto;
+}
+.selector-especial .boton-agregar-almuerzo,
+.selector-almuerzos .boton-agregar-almuerzo {
+    margin-top: 8px;
+}
+@media (max-width: 380px) {
+    .opciones-botones-pedido { gap: 7px; }
+    .opcion-pedido-boton { min-height: 41px; padding: 9px 7px; font-size: 12px; }
+    .opciones-botones-pedido .opcion-frijoles { width: 62%; }
+}
