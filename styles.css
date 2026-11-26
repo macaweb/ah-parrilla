@@ -5755,3 +5755,22 @@ a:focus-visible {
     color: #fffbea !important;
     box-shadow: 0 0 0 4px rgba(126, 164, 86, .28), 0 5px 18px rgba(54, 91, 43, .48) !important;
 }
+
+
+/* AH Parrilla — ordenar nombre y precio del plato especial */
+.especial-dia .datos-especial {
+    gap: 6px;
+}
+.especial-dia .datos-especial .nombre-especial {
+    margin: 0;
+    line-height: 1.16;
+    max-width: 100%;
+}
+.especial-dia .datos-especial .precio-nombre-especial {
+    margin: 4px 0 0;
+    padding: 9px 19px;
+    font-size: clamp(24px, 5vw, 29px);
+    line-height: 1;
+    letter-spacing: .2px;
+    box-shadow: 0 5px 15px rgba(229, 150, 35, .24), inset 0 1px rgba(255,255,255,.55);
+}
