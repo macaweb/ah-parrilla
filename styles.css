@@ -5177,3 +5177,108 @@ a:focus-visible {
         padding-bottom: 7px;
     }
 }
+
+
+/* AH Parrilla — nueva composición unificada para sopas y bebidas */
+.especial-dia .opciones-del-dia {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: clamp(18px, 3vw, 30px);
+    width: 100%;
+    margin: 16px 0 12px;
+}
+
+.especial-dia .opcion-del-dia,
+.especial-dia .opcion-jugos-del-dia {
+    min-width: 0;
+    padding: 14px 4px 13px;
+    border: 0;
+    border-top: 1px solid rgba(239, 185, 103, .58);
+    border-bottom: 1px solid rgba(239, 185, 103, .2);
+    border-radius: 0;
+    background: transparent;
+    box-shadow: none;
+    text-align: center;
+}
+
+.especial-dia .etiqueta-del-dia {
+    display: block;
+    margin: 0 0 13px;
+    color: #efb967;
+    font-family: Georgia, "Times New Roman", serif;
+    font-size: 13px;
+    font-weight: 600;
+    letter-spacing: .14em;
+    line-height: 1.4;
+}
+
+.especial-dia .lista-opciones-dia {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+    gap: 7px 0;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+
+.especial-dia .lista-opciones-dia li {
+    display: inline-flex;
+    align-items: center;
+    padding: 2px 9px;
+    border: 0;
+    border-radius: 0;
+    color: #fff0d8;
+    background: transparent;
+    font-family: Georgia, "Times New Roman", serif;
+    font-size: 14px;
+    font-weight: 400;
+    line-height: 1.45;
+    white-space: normal;
+}
+
+.especial-dia .lista-opciones-dia li::before {
+    display: none;
+}
+
+.especial-dia .lista-opciones-dia li:not(:last-child)::after {
+    content: "✦";
+    margin-left: 17px;
+    color: #d99b47;
+    font-family: Arial, sans-serif;
+    font-size: 8px;
+}
+
+@media (max-width: 600px) {
+    .especial-dia .opciones-del-dia {
+        grid-template-columns: 1fr;
+        gap: 12px;
+        margin: 13px 0 10px;
+    }
+
+    .especial-dia .opcion-del-dia,
+    .especial-dia .opcion-jugos-del-dia {
+        padding: 12px 5px 11px;
+    }
+
+    .especial-dia .etiqueta-del-dia {
+        margin-bottom: 9px;
+        font-size: 12px;
+        letter-spacing: .13em;
+    }
+
+    .especial-dia .lista-opciones-dia {
+        gap: 5px 0;
+    }
+
+    .especial-dia .lista-opciones-dia li {
+        padding: 2px 8px;
+        font-size: 13px;
+    }
+
+    .especial-dia .lista-opciones-dia li:not(:last-child)::after {
+        margin-left: 13px;
+        font-size: 7px;
+    }
+}
