@@ -6332,3 +6332,17 @@ a:focus-visible {
     font-weight: inherit;
     letter-spacing: .5px;
 }
+
+/* Restaurar exactamente la familia tipográfica anterior en los títulos de jugos */
+#jugos .sabores-jugos h4 {
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 14px;
+    font-weight: 950;
+    letter-spacing: 1px;
+}
+#jugos .titulo-preparacion-jugo {
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 13px;
+    font-weight: 400;
+    letter-spacing: .5px;
+}
