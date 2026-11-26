@@ -5988,3 +5988,26 @@ a:focus-visible {
         opacity: 1 !important;
     }
 }
+
+
+/* AH Parrilla — feedback visible al tocar la X del menú lateral */
+#cerrar-menu-lateral {
+    transform: scale(1);
+    transform-origin: center;
+    transition:
+        transform .2s cubic-bezier(.2,.8,.25,1),
+        background .2s ease,
+        border-color .2s ease,
+        box-shadow .2s ease,
+        color .2s ease;
+}
+#cerrar-menu-lateral:active {
+    transform: rotate(90deg) scale(1.2);
+    background: linear-gradient(135deg, #ffd477, #e5a93b 58%, #bd741f);
+    border-color: #ffe2a3;
+    color: #241507;
+    box-shadow: 0 0 0 5px rgba(229,169,59,.2), 0 0 20px rgba(229,169,59,.48);
+}
+@media (prefers-reduced-motion: reduce) {
+    #cerrar-menu-lateral { transition: none; }
+}
