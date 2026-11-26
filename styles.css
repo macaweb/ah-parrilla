@@ -5519,3 +5519,18 @@ a:focus-visible {
         font-size: 12px;
     }
 }
+
+/* AH Parrilla — mejorar legibilidad del texto dentro de los selectores */
+.especial-dia .selector-personalizado-control .selector-personalizado-texto,
+#almuerzos .selector-personalizado-control .selector-personalizado-texto {
+    font-size: 15px;
+    line-height: 1.35;
+    font-weight: 500;
+}
+
+@media (max-width: 600px) {
+    .especial-dia .selector-personalizado-control .selector-personalizado-texto,
+    #almuerzos .selector-personalizado-control .selector-personalizado-texto {
+        font-size: 15px;
+    }
+}
