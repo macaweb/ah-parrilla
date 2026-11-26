@@ -4903,3 +4903,26 @@ a:focus-visible {
         height: 116px;
     }
 }
+
+
+/* Ajuste visible de proporcion: foto mas ancha, altura y seccion conservadas */
+.especial-dia .presentacion-especial {
+    grid-template-columns: minmax(0, 1.3fr) minmax(0, .7fr) !important;
+    align-items: center;
+}
+
+.especial-dia .foto-especial {
+    width: 100%;
+    height: clamp(116px, 18vw, 164px);
+    object-fit: cover;
+}
+
+@media (max-width: 600px) {
+    .especial-dia .presentacion-especial {
+        grid-template-columns: minmax(0, 1.2fr) minmax(0, .8fr) !important;
+    }
+
+    .especial-dia .foto-especial {
+        height: 116px;
+    }
+}
