@@ -4649,7 +4649,8 @@ a:focus-visible {
 .bienvenida-etiqueta {
     display: inline-block;
     margin-bottom: 9px;
-    color: var(--naranja);
+    color: #D8BD8D;
+    text-shadow: 0 1px 5px rgba(216, 189, 141, .22);
     font-size: 10px;
     font-weight: 800;
     letter-spacing: 3px;
