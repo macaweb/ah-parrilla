@@ -4967,3 +4967,9 @@ a:focus-visible {
         height: 170px;
     }
 }
+
+
+/* Mantener el nombre del especial con mayusculas y minusculas naturales */
+.especial-dia .card-especial .nombre-especial {
+    text-transform: none;
+}
