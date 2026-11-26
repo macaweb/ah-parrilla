@@ -5857,3 +5857,68 @@ a:focus-visible {
 .especial-dia .eyebrow-especial {
     font-style: normal;
 }
+
+
+/* AH Parrilla — entrada cinematográfica del Especial del día al cargar */
+@keyframes entrada-especial-dia {
+    0% {
+        opacity: 0;
+        transform: translateY(30px) scale(.975);
+        filter: blur(5px);
+    }
+    65% {
+        opacity: 1;
+        transform: translateY(-3px) scale(1.006);
+        filter: blur(0);
+    }
+    100% {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+        filter: blur(0);
+    }
+}
+@keyframes entrada-especial-contenido {
+    from {
+        opacity: 0;
+        transform: translateY(15px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+.especial-dia {
+    animation: entrada-especial-dia .85s cubic-bezier(.2,.75,.25,1) both;
+    transform-origin: center top;
+    will-change: transform, opacity;
+}
+.especial-dia .banner-destacado {
+    animation: entrada-especial-contenido .65s ease-out .16s both;
+}
+.especial-dia .presentacion-especial {
+    animation: entrada-especial-contenido .72s cubic-bezier(.2,.7,.25,1) .28s both;
+}
+.especial-dia .opciones-del-dia {
+    animation: entrada-especial-contenido .68s ease-out .42s both;
+}
+.especial-dia .opcion-del-dia,
+.especial-dia .opcion-jugos-del-dia {
+    animation: entrada-especial-contenido .55s ease-out both;
+}
+.especial-dia .opcion-del-dia:nth-child(1),
+.especial-dia .opcion-jugos-del-dia:nth-child(1) { animation-delay: .48s; }
+.especial-dia .opcion-del-dia:nth-child(2),
+.especial-dia .opcion-jugos-del-dia:nth-child(2) { animation-delay: .56s; }
+@media (prefers-reduced-motion: reduce) {
+    .especial-dia,
+    .especial-dia .banner-destacado,
+    .especial-dia .presentacion-especial,
+    .especial-dia .opciones-del-dia,
+    .especial-dia .opcion-del-dia,
+    .especial-dia .opcion-jugos-del-dia {
+        animation: none !important;
+        filter: none !important;
+        transform: none !important;
+        opacity: 1 !important;
+    }
+}
