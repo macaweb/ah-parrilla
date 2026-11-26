@@ -514,8 +514,8 @@ document.addEventListener('DOMContentLoaded', () => {
                 // Resalta la opción inmediatamente, antes de cerrar el desplegable.
                 lista.querySelectorAll('.selector-personalizado-opcion').forEach(opcionLista => {
                     opcionLista.setAttribute('aria-selected', String(opcionLista === item));
+                    opcionLista.classList.remove('selector-personalizado-eleccion-inmediata');
                 });
-                item.classList.add('selector-personalizado-eleccion-inmediata');
                 select.value = opcion.value;
                 select.dispatchEvent(new Event('change', { bubbles: true }));
                 actualizarTexto();
@@ -528,7 +528,7 @@ document.addEventListener('DOMContentLoaded', () => {
                     control.classList.remove('selector-personalizado-confirmado');
                 }, 850);
 
-                // Deja visible el naranja un instante para que se perciba el toque.
+                // Mantiene la opción elegida visible brevemente antes de cerrar la lista.
                 if (item._temporizadorCierre) clearTimeout(item._temporizadorCierre);
                 item._temporizadorCierre = setTimeout(() => cerrar(true), 220);
             });
