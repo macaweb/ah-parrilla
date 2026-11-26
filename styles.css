@@ -6068,3 +6068,41 @@ a:focus-visible {
         font-size: 18px;
     }
 }
+
+
+/* AH Parrilla — listas equilibradas para evitar huecos en el Especial del día */
+.especial-dia .opciones-del-dia {
+    align-items: stretch;
+    gap: 14px;
+}
+.especial-dia .opcion-del-dia .lista-opciones-dia,
+.especial-dia .opcion-jugos-del-dia .lista-opciones-dia {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    align-content: start;
+    column-gap: 12px;
+    row-gap: 0;
+}
+.especial-dia .opcion-del-dia .lista-opciones-dia li,
+.especial-dia .opcion-jugos-del-dia .lista-opciones-dia li {
+    min-width: 0;
+}
+.especial-dia .opcion-del-dia:not(.opcion-jugos-del-dia) .lista-opciones-dia li:last-child {
+    grid-column: 1 / -1;
+    justify-self: center;
+    width: max-content;
+    max-width: 100%;
+}
+@media (max-width: 600px) {
+    .especial-dia .opcion-del-dia .lista-opciones-dia,
+    .especial-dia .opcion-jugos-del-dia .lista-opciones-dia {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        column-gap: 10px;
+    }
+}
+@media (max-width: 360px) {
+    .especial-dia .opcion-del-dia .lista-opciones-dia,
+    .especial-dia .opcion-jugos-del-dia .lista-opciones-dia {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+}
