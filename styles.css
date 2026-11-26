@@ -6441,7 +6441,10 @@ a:focus-visible {
 .opciones-botones-pedido .opcion-frijoles {
     grid-column: 1 / -1;
     justify-self: center;
+    place-self: center;
     width: min(50%, 220px);
+    margin-inline: auto;
+    text-align: center;
 }
 .opciones-botones-pedido.falta-seleccion .opcion-pedido-boton {
     border-color: rgba(216, 189, 141, .72);
