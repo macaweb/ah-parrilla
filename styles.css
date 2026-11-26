@@ -4989,3 +4989,76 @@ a:focus-visible {
 .especial-dia .presentacion-especial {
     align-items: center;
 }
+
+
+/* AH Parrilla — encabezado renovado del especial del día */
+.especial-dia .card-especial {
+    border-color: rgba(255, 183, 79, .34);
+    background:
+        linear-gradient(155deg, rgba(255, 255, 255, .035), transparent 38%),
+        linear-gradient(135deg, rgba(255, 133, 25, .075), rgba(0, 0, 0, .12) 55%, rgba(255, 191, 91, .045));
+    box-shadow: inset 0 1px rgba(255, 255, 255, .045), 0 10px 28px rgba(0, 0, 0, .14);
+}
+
+.especial-dia .banner-destacado {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 9px;
+    margin: 0 0 22px;
+    text-align: center;
+}
+
+.especial-dia .eyebrow-especial {
+    display: inline-block;
+    color: #f4a43b;
+    font-size: 10px;
+    font-weight: 850;
+    letter-spacing: .22em;
+    line-height: 1.4;
+    text-transform: uppercase;
+}
+
+.especial-dia .banner-destacado h2 {
+    margin: 0;
+    color: #fff2d9;
+    font-size: clamp(21px, 4.2vw, 29px);
+    font-weight: 850;
+    letter-spacing: .13em;
+    line-height: 1.2;
+    text-shadow: 0 2px 14px rgba(255, 133, 25, .16);
+}
+
+.especial-dia .subrayado-especial {
+    display: block;
+    width: 58px;
+    height: 3px;
+    margin-top: 2px;
+    border-radius: 999px;
+    background: linear-gradient(90deg, #d97716, #ffc36a, #d97716);
+    box-shadow: 0 0 12px rgba(255, 154, 49, .22);
+}
+
+.especial-dia .leyenda-plato-especial {
+    color: #f2a13a;
+    font-size: 10px;
+    letter-spacing: .2em;
+}
+
+@media (max-width: 600px) {
+    .especial-dia .banner-destacado {
+        gap: 8px;
+        margin-bottom: 18px;
+    }
+
+    .especial-dia .eyebrow-especial {
+        font-size: 9px;
+        letter-spacing: .17em;
+    }
+
+    .especial-dia .banner-destacado h2 {
+        font-size: clamp(19px, 5.2vw, 24px);
+        letter-spacing: .1em;
+    }
+}
