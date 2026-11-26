@@ -5774,3 +5774,43 @@ a:focus-visible {
     letter-spacing: .2px;
     box-shadow: 0 5px 15px rgba(229, 150, 35, .24), inset 0 1px rgba(255,255,255,.55);
 }
+
+
+/* AH Parrilla — jerarquia elegante del plato y sus opciones (solo bloque especial) */
+.especial-dia .datos-especial {
+    gap: 7px;
+}
+.especial-dia .datos-especial .nombre-especial {
+    margin: 0;
+    color: #f7e8ce;
+    font-family: Georgia, "Times New Roman", serif;
+    font-size: clamp(21px, 4.8vw, 27px);
+    font-weight: 600;
+    line-height: 1.18;
+    letter-spacing: .15px;
+    text-shadow: 0 1px 8px rgba(0, 0, 0, .28);
+}
+.especial-dia .datos-especial .precio-nombre-especial {
+    margin: 3px 0 0;
+    padding: 9px 20px;
+    font-size: clamp(26px, 5.4vw, 31px);
+    font-weight: 950;
+    letter-spacing: .15px;
+    box-shadow: 0 5px 16px rgba(229, 150, 35, .25), inset 0 1px rgba(255,255,255,.58);
+}
+.especial-dia .etiqueta-del-dia {
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 11px;
+    font-weight: 750;
+    letter-spacing: .13em;
+    color: #e9bd78;
+    line-height: 1.35;
+}
+.especial-dia .etiqueta-del-dia::before,
+.especial-dia .etiqueta-del-dia::after {
+    width: 21px;
+    background: linear-gradient(90deg, transparent, rgba(229, 169, 59, .62));
+}
+.especial-dia .etiqueta-del-dia::after {
+    transform: scaleX(-1);
+}
