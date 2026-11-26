@@ -473,10 +473,24 @@ document.addEventListener('DOMContentLoaded', () => {
             });
         };
 
+        const esMetodoPago = select.name === 'metodo_pago';
+        const limpiarPosicionFlotante = () => {
+            if (!esMetodoPago) return;
+            lista.style.position = '';
+            lista.style.left = '';
+            lista.style.right = '';
+            lista.style.top = '';
+            lista.style.bottom = '';
+            lista.style.width = '';
+            lista.style.maxHeight = '';
+            lista.style.overflowY = '';
+        };
+
         const cerrar = (devolverFoco = false) => {
             lista.hidden = true;
             contenedor.classList.remove('selector-personalizado-abierto');
             control.setAttribute('aria-expanded', 'false');
+            limpiarPosicionFlotante();
             if (devolverFoco) control.focus();
         };
 
@@ -484,13 +498,40 @@ document.addEventListener('DOMContentLoaded', () => {
             document.querySelectorAll('.selector-personalizado-abierto').forEach(abierto => {
                 if (abierto !== contenedor) {
                     abierto.classList.remove('selector-personalizado-abierto');
-                    abierto.querySelector('.selector-personalizado-lista').hidden = true;
+                    const otraLista = abierto.querySelector('.selector-personalizado-lista');
+                    otraLista.hidden = true;
+                    otraLista.style.position = '';
+                    otraLista.style.left = '';
+                    otraLista.style.right = '';
+                    otraLista.style.top = '';
+                    otraLista.style.bottom = '';
+                    otraLista.style.width = '';
+                    otraLista.style.maxHeight = '';
                     abierto.querySelector('.selector-personalizado-control').setAttribute('aria-expanded', 'false');
                 }
             });
             lista.hidden = false;
             contenedor.classList.add('selector-personalizado-abierto');
             control.setAttribute('aria-expanded', 'true');
+
+            // El menú de pago flota sobre el formulario y nunca obliga a desplazar toda la página.
+            if (esMetodoPago) {
+                const rect = control.getBoundingClientRect();
+                const margen = 12;
+                const espacioAbajo = Math.max(0, window.innerHeight - rect.bottom - 12);
+                const espacioArriba = Math.max(0, rect.top - 12);
+                const altoDeseado = Math.min(lista.scrollHeight, window.innerHeight - margen * 2);
+                const abrirArriba = espacioAbajo < altoDeseado && espacioArriba > espacioAbajo;
+                const altoDisponible = Math.max(100, abrirArriba ? espacioArriba - 7 : espacioAbajo - 7);
+                lista.style.position = 'fixed';
+                lista.style.left = rect.left + 'px';
+                lista.style.right = 'auto';
+                lista.style.width = rect.width + 'px';
+                lista.style.maxHeight = Math.min(altoDeseado, altoDisponible) + 'px';
+                lista.style.overflowY = 'auto';
+                lista.style.top = abrirArriba ? 'auto' : (rect.bottom + 7) + 'px';
+                lista.style.bottom = abrirArriba ? (window.innerHeight - rect.top + 7) + 'px' : 'auto';
+            }
         };
 
         [...select.options].forEach((opcion, indice) => {
