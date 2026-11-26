@@ -5520,10 +5520,10 @@ a:focus-visible {
     }
 }
 
-/* AH Parrilla — texto "Selecciona una opción" más pequeño */
+/* AH Parrilla — texto "Selecciona una opción" más discreto */
 .especial-dia .selector-personalizado-control .selector-personalizado-texto,
 #almuerzos .selector-personalizado-control .selector-personalizado-texto {
-    font-size: 10px !important;
+    font-size: 12px !important;
     line-height: 1.35;
     font-weight: 500;
 }
@@ -5531,6 +5531,6 @@ a:focus-visible {
 @media (max-width: 600px) {
     .especial-dia .selector-personalizado-control .selector-personalizado-texto,
     #almuerzos .selector-personalizado-control .selector-personalizado-texto {
-        font-size: 10px !important;
+        font-size: 12px !important;
     }
 }
