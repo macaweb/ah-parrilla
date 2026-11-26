@@ -6037,3 +6037,34 @@ a:focus-visible {
     border-color: rgba(240, 217, 173, .48);
     background: linear-gradient(135deg, rgba(240, 217, 173, .09), rgba(240, 217, 173, .025));
 }
+
+
+/* AH Parrilla — precios de categoría con el mismo acabado del Especial del día */
+#almuerzos .etiqueta-precio,
+#sopas .etiqueta-precio {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 9px 20px;
+    border: 1px solid rgba(255, 202, 112, .9);
+    border-radius: 999px;
+    color: #241306;
+    background: linear-gradient(135deg, #ffe29a, #f1a52e);
+    font-size: clamp(18px, 3.5vw, 21px);
+    font-weight: 950;
+    line-height: 1.1;
+    letter-spacing: .2px;
+    text-shadow: 0 1px rgba(255,255,255,.25);
+    box-shadow: 0 5px 16px rgba(229, 150, 35, .24), inset 0 1px rgba(255,255,255,.48);
+}
+#almuerzos .etiqueta-precio,
+#sopas .etiqueta-precio {
+    color: #241306;
+}
+@media (max-width: 600px) {
+    #almuerzos .etiqueta-precio,
+    #sopas .etiqueta-precio {
+        padding: 8px 16px;
+        font-size: 18px;
+    }
+}
