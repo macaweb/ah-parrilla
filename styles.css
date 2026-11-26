@@ -5729,3 +5729,19 @@ a:focus-visible {
     }
 }
 
+
+
+/* AH Parrilla — selección sin chulo, conservando el tono marfil y el zoom */
+.selector-almuerzos .selector-personalizado-opcion[aria-selected="true"]::after,
+.selector-especial .selector-personalizado-opcion[aria-selected="true"]::after,
+.formulario-pedido .selector-personalizado-opcion[aria-selected="true"]::after {
+    content: none !important;
+    display: none !important;
+}
+.selector-almuerzos .selector-personalizado-opcion[aria-selected="true"],
+.selector-especial .selector-personalizado-opcion[aria-selected="true"],
+.formulario-pedido .selector-personalizado-opcion[aria-selected="true"] {
+    transform: scale(1.025) !important;
+    transform-origin: center;
+    transition: transform .18s ease, background .18s ease, color .18s ease;
+}
