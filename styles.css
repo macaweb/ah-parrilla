@@ -5435,3 +5435,87 @@ a:focus-visible {
         grid-template-columns: 1fr;
     }
 }
+
+
+/* AH Parrilla — jerarquía más discreta para los selectores del menú
+   Mantiene intactos los títulos y textos de las demás secciones. */
+.selector-almuerzos {
+    gap: 7px;
+    padding: 13px;
+}
+
+.selector-almuerzos h3 {
+    font-size: 14px;
+    line-height: 1.3;
+    font-weight: 700;
+}
+
+.selector-almuerzos > p {
+    color: #d8c8b4;
+    font-size: 11px;
+    line-height: 1.4;
+}
+
+.selector-almuerzos label {
+    margin-top: 2px;
+    color: #e8c78f;
+    font-size: 11px;
+    font-weight: 700;
+}
+
+.especial-dia .selector-especial select,
+#almuerzos .selector-almuerzos select {
+    min-height: 44px;
+    padding: 9px 42px 9px 13px;
+    font-size: 13px;
+    font-weight: 600;
+}
+
+.selector-almuerzos .selector-personalizado-control,
+.selector-especial .selector-personalizado-control {
+    min-height: 44px;
+    padding: 9px 13px;
+    font-size: 13px;
+    font-weight: 600;
+}
+
+.selector-almuerzos .selector-personalizado-lista,
+.selector-especial .selector-personalizado-lista {
+    gap: 3px;
+    padding: 6px;
+}
+
+.selector-almuerzos .selector-personalizado-opcion,
+.selector-especial .selector-personalizado-opcion {
+    min-height: 36px;
+    padding: 8px 10px;
+    font-size: 12px;
+    font-weight: 500;
+}
+
+.selector-almuerzos select option,
+.selector-especial select option {
+    font-size: 12px;
+    font-weight: 500;
+}
+
+@media (max-width: 600px) {
+    .selector-almuerzos {
+        gap: 7px;
+        padding: 12px;
+    }
+
+    .selector-almuerzos h3 {
+        font-size: 14px;
+    }
+
+    .selector-almuerzos > p,
+    .selector-almuerzos label {
+        font-size: 11px;
+    }
+
+    .selector-almuerzos .selector-personalizado-opcion,
+    .selector-especial .selector-personalizado-opcion {
+        font-size: 12px;
+    }
+}
