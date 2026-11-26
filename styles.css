@@ -4867,9 +4867,9 @@ a:focus-visible {
 }
 
 
-/* Retoque fino del especial: un poco mas de presencia para la foto, misma altura */
+/* Foto del especial con mayor protagonismo, sin aumentar la seccion */
 .especial-dia .presentacion-especial {
-    grid-template-columns: minmax(0, 1fr) minmax(0, 1.05fr);
+    grid-template-columns: minmax(0, 1.12fr) minmax(0, .88fr);
     gap: clamp(10px, 2vw, 18px);
 }
 
@@ -4895,7 +4895,7 @@ a:focus-visible {
 
 @media (max-width: 420px) {
     .especial-dia .presentacion-especial {
-        grid-template-columns: minmax(0, .9fr) minmax(0, 1.1fr);
+        grid-template-columns: minmax(0, 1fr) minmax(0, .95fr);
         gap: 9px;
     }
 
