@@ -5745,3 +5745,13 @@ a:focus-visible {
     transform-origin: center;
     transition: transform .18s ease, background .18s ease, color .18s ease;
 }
+
+
+/* AH Parrilla — respuesta verde al tocar Enviar mi pedido */
+#fondo-carrito .enviar-pedido:active {
+    transform: scale(1.025) !important;
+    border-color: #d7e8ad !important;
+    background: linear-gradient(135deg, #648347, #38572f 58%, #294526) !important;
+    color: #fffbea !important;
+    box-shadow: 0 0 0 4px rgba(126, 164, 86, .28), 0 5px 18px rgba(54, 91, 43, .48) !important;
+}
