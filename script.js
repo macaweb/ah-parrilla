@@ -307,13 +307,10 @@ document.addEventListener('DOMContentLoaded', () => {
         };
     };
 
-    const especialDelDia = document.querySelector('.especial-dia');
-    const opcionesSopasEspecial = especialDelDia
-        ? [...especialDelDia.querySelectorAll('.opcion-del-dia:not(.opcion-jugos-del-dia) .lista-opciones-dia li')].map(item => item.textContent.trim()).filter(Boolean)
-        : [];
-    const opcionesBebidasEspecial = especialDelDia
-        ? [...especialDelDia.querySelectorAll('.opcion-jugos-del-dia .lista-opciones-dia li')].map(item => item.textContent.trim()).filter(Boolean)
-        : [];
+    // Opciones del especial: ahora viven directamente en el JavaScript;
+    // ya no dependen de listas duplicadas en el HTML.
+    const opcionesSopasEspecial = ['Fríjoles', 'Sopa de lentejas', 'Crema de auyama'];
+    const opcionesBebidasEspecial = ['Claro', 'Guarapo', 'Jugo de guayaba', 'Jugo de maracuyá'];
 
     // ALMUERZOS: primero se elige el plato y luego sus dos acompañamientos.
     const seccionAlmuerzos = document.getElementById('almuerzos');
