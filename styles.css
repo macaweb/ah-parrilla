@@ -6106,3 +6106,59 @@ a:focus-visible {
         grid-template-columns: repeat(2, minmax(0, 1fr));
     }
 }
+
+
+/* AH Parrilla — paleta suave y uniforme para el selector de jugos */
+#jugos .sabores-jugos {
+    border: 1px solid rgba(220, 198, 158, .32);
+    border-radius: 12px;
+    background: linear-gradient(145deg, rgba(225, 208, 177, .075), rgba(25, 20, 14, .78));
+    box-shadow: inset 0 1px 0 rgba(255, 248, 232, .045), 0 6px 18px rgba(0, 0, 0, .13);
+}
+#jugos .sabores-jugos h4,
+#jugos .titulo-preparacion-jugo {
+    color: #e6d2ad;
+    font-family: Georgia, "Times New Roman", serif;
+    font-size: 13px;
+    font-weight: 600;
+    letter-spacing: .09em;
+}
+#jugos .lista-sabores .boton-sabor-jugo,
+#jugos .opciones-preparacion-jugo .opcion-preparacion-jugo {
+    border: 1px solid rgba(211, 192, 157, .35);
+    border-radius: 9px;
+    background: linear-gradient(145deg, rgba(225, 208, 177, .09), rgba(35, 29, 21, .88));
+    color: #f4ead8;
+    box-shadow: inset 0 1px 0 rgba(255, 248, 232, .045);
+    transition: background .2s ease, border-color .2s ease, box-shadow .2s ease, transform .2s ease, color .2s ease;
+}
+/* Fruta seleccionada: champagne cálido */
+#jugos .lista-sabores .boton-sabor-jugo.seleccionado {
+    border-color: #e4c995;
+    background: linear-gradient(135deg, #e6d2ad, #c8ad7e);
+    color: #302416;
+    box-shadow: 0 0 0 2px rgba(214, 190, 145, .14), 0 4px 12px rgba(0, 0, 0, .2);
+}
+/* Preparación seleccionada: beige piedra, cercano pero diferente */
+#jugos .opciones-preparacion-jugo .opcion-preparacion-jugo.seleccionada {
+    border-color: #c9c1ad;
+    background: linear-gradient(135deg, #d8d1c1, #b7ad99);
+    color: #29251e;
+    box-shadow: 0 0 0 2px rgba(201, 193, 173, .14), 0 4px 12px rgba(0, 0, 0, .2);
+}
+#jugos .lista-sabores .boton-sabor-jugo:focus-visible,
+#jugos .opciones-preparacion-jugo .opcion-preparacion-jugo:focus-visible {
+    outline: 2px solid #ead9b8;
+    outline-offset: 3px;
+}
+#jugos .selector-preparacion-jugo {
+    border-color: rgba(201, 193, 173, .28);
+    background: linear-gradient(145deg, rgba(201, 193, 173, .065), rgba(25, 20, 14, .82));
+    box-shadow: inset 0 1px 0 rgba(255, 248, 232, .04), 0 6px 18px rgba(0, 0, 0, .12);
+}
+@media (prefers-reduced-motion: reduce) {
+    #jugos .lista-sabores .boton-sabor-jugo,
+    #jugos .opciones-preparacion-jugo .opcion-preparacion-jugo {
+        transition: none;
+    }
+}
