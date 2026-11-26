@@ -6162,3 +6162,136 @@ a:focus-visible {
         transition: none;
     }
 }
+
+
+/* AH Parrilla — dar protagonismo a las opciones que completan el almuerzo */
+.especial-dia .opciones-del-dia {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    align-items: stretch;
+    gap: 16px;
+    width: 100%;
+    margin: 22px 0 18px;
+    padding: 15px;
+    border: 1px solid rgba(226, 194, 137, .28);
+    border-radius: 18px;
+    background: linear-gradient(135deg, rgba(225, 196, 143, .09), rgba(12, 9, 6, .42));
+    box-shadow: inset 0 1px rgba(255,255,255,.055), 0 10px 26px rgba(0,0,0,.18);
+}
+.especial-dia .opcion-del-dia,
+.especial-dia .opcion-jugos-del-dia {
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+    justify-content: flex-start;
+    gap: 11px;
+    min-width: 0;
+    padding: 17px 16px 14px;
+    border: 1px solid rgba(226, 194, 137, .42);
+    border-radius: 13px;
+    background: linear-gradient(155deg, rgba(111, 76, 36, .36), rgba(24, 17, 11, .94));
+    box-shadow: inset 0 1px rgba(255, 244, 220, .08), 0 5px 15px rgba(0,0,0,.2);
+    text-align: left;
+}
+.especial-dia .opcion-del-dia::before,
+.especial-dia .opcion-jugos-del-dia::before {
+    content: "";
+    display: block;
+    width: 46px;
+    height: 3px;
+    margin: 0 0 1px;
+    border-radius: 3px;
+    background: linear-gradient(90deg, #f0d5a6, #b88a4c);
+}
+.especial-dia .icono-del-dia {
+    display: none;
+}
+.especial-dia .etiqueta-del-dia {
+    display: block;
+    margin: 0 0 2px;
+    color: #f0d5a6;
+    font-family: Georgia, "Times New Roman", serif;
+    font-size: clamp(13px, 1.6vw, 15px);
+    font-weight: 700;
+    letter-spacing: .12em;
+    line-height: 1.35;
+    text-align: left;
+}
+.especial-dia .lista-opciones-dia {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    align-content: start;
+    gap: 7px;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+.especial-dia .lista-opciones-dia li,
+.especial-dia .opcion-del-dia .lista-opciones-dia li,
+.especial-dia .opcion-jugos-del-dia .lista-opciones-dia li {
+    display: flex;
+    align-items: center;
+    min-width: 0;
+    min-height: 38px;
+    padding: 7px 9px 7px 21px;
+    border: 1px solid rgba(239, 216, 180, .16);
+    border-radius: 8px;
+    color: #fff2df;
+    background: rgba(255, 244, 224, .065);
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: clamp(12px, 1.35vw, 14px);
+    font-weight: 650;
+    line-height: 1.3;
+    text-align: left;
+}
+.especial-dia .lista-opciones-dia li::before {
+    content: "";
+    top: 50%;
+    left: 9px;
+    width: 5px;
+    height: 5px;
+    border-radius: 50%;
+    background: #e8c58e;
+    box-shadow: none;
+    transform: translateY(-50%);
+}
+.especial-dia .opcion-del-dia:not(.opcion-jugos-del-dia) .lista-opciones-dia li:last-child {
+    grid-column: auto;
+    justify-self: stretch;
+    width: auto;
+    max-width: none;
+}
+@media (max-width: 600px) {
+    .especial-dia .opciones-del-dia {
+        grid-template-columns: 1fr;
+        gap: 12px;
+        margin: 19px 0 16px;
+        padding: 11px;
+    }
+    .especial-dia .opcion-del-dia,
+    .especial-dia .opcion-jugos-del-dia {
+        padding: 15px 13px 13px;
+    }
+    .especial-dia .etiqueta-del-dia {
+        font-size: 13px;
+        margin-bottom: 1px;
+    }
+    .especial-dia .lista-opciones-dia {
+        gap: 7px;
+    }
+    .especial-dia .lista-opciones-dia li,
+    .especial-dia .opcion-del-dia .lista-opciones-dia li,
+    .especial-dia .opcion-jugos-del-dia .lista-opciones-dia li {
+        min-height: 36px;
+        padding: 7px 7px 7px 19px;
+        font-size: 12px;
+    }
+    .especial-dia .lista-opciones-dia li::before {
+        left: 8px;
+    }
+}
+@media (max-width: 360px) {
+    .especial-dia .lista-opciones-dia {
+        grid-template-columns: 1fr;
+    }
+}
