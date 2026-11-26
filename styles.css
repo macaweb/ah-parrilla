@@ -6011,3 +6011,29 @@ a:focus-visible {
 @media (prefers-reduced-motion: reduce) {
     #cerrar-menu-lateral { transition: none; }
 }
+
+
+/* Precios de almuerzos y sopas: champagne cálido, elegante y legible */
+#almuerzos .etiqueta-precio,
+#sopas .etiqueta-precio {
+    display: inline-block;
+    padding: 8px 16px;
+    border: 1px solid rgba(232, 189, 114, .48);
+    border-radius: 6px;
+    background: linear-gradient(135deg, rgba(232, 189, 114, .10), rgba(232, 189, 114, .035));
+    font-size: 17px;
+    font-weight: 900;
+    letter-spacing: .035em;
+    text-shadow: 0 2px 12px rgba(232, 189, 114, .12);
+}
+
+#almuerzos .etiqueta-precio {
+    color: #E8BD72;
+    border-color: rgba(232, 189, 114, .55);
+}
+
+#sopas .etiqueta-precio {
+    color: #F0D9AD;
+    border-color: rgba(240, 217, 173, .48);
+    background: linear-gradient(135deg, rgba(240, 217, 173, .09), rgba(240, 217, 173, .025));
+}
