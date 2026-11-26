@@ -4865,3 +4865,41 @@ a:focus-visible {
         scroll-behavior: auto;
     }
 }
+
+
+/* Retoque fino del especial: un poco mas de presencia para la foto, misma altura */
+.especial-dia .presentacion-especial {
+    grid-template-columns: minmax(0, 1fr) minmax(0, 1.05fr);
+    gap: clamp(10px, 2vw, 18px);
+}
+
+.especial-dia .foto-especial {
+    height: clamp(116px, 18vw, 164px);
+    border-color: rgba(255, 205, 127, .76);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, .3), 0 0 0 3px rgba(255, 174, 57, .1);
+}
+
+.especial-dia .datos-especial {
+    gap: 8px;
+}
+
+.especial-dia .lista-opciones-dia {
+    column-gap: 6px;
+    row-gap: 5px;
+}
+
+.especial-dia .lista-opciones-dia li {
+    padding-right: 8px;
+    padding-left: 8px;
+}
+
+@media (max-width: 420px) {
+    .especial-dia .presentacion-especial {
+        grid-template-columns: minmax(0, .9fr) minmax(0, 1.1fr);
+        gap: 9px;
+    }
+
+    .especial-dia .foto-especial {
+        height: 116px;
+    }
+}
