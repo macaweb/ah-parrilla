@@ -6595,3 +6595,192 @@ a:focus-visible {
     color: #e8bd72;
     text-shadow: 0 1px 8px rgba(232, 189, 114, .2);
 }
+
+
+/* AH Parrilla — navegación con carácter, selección viva y llegada a cada categoría */
+.panel-menu-lateral {
+    position: relative;
+    isolation: isolate;
+    gap: 7px;
+    padding: 0 17px 28px;
+    background:
+        radial-gradient(ellipse at 12% 8%, rgba(190, 111, 45, .22), transparent 38%),
+        radial-gradient(ellipse at 100% 58%, rgba(111, 133, 79, .13), transparent 42%),
+        linear-gradient(155deg, #29190e 0%, #17100a 48%, #0c0806 100%);
+}
+.panel-menu-lateral::before {
+    content: "";
+    position: absolute;
+    z-index: -1;
+    top: 82px;
+    left: 17px;
+    right: 17px;
+    height: 1px;
+    background: linear-gradient(90deg, transparent, rgba(230, 180, 105, .62), transparent);
+}
+.cabecera-menu-lateral {
+    position: relative;
+    min-height: 88px;
+    margin-bottom: 12px;
+    border-bottom: 1px solid rgba(218, 167, 99, .28);
+    background: linear-gradient(90deg, rgba(230, 180, 105, .08), transparent 78%);
+}
+.marca-menu-lateral {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+}
+.marca-menu-lateral > span {
+    color: #f5d39a;
+    font-size: 16px;
+    font-weight: 950;
+    letter-spacing: 2.4px;
+    text-shadow: 0 2px 12px rgba(229, 169, 59, .2);
+}
+.marca-menu-lateral small {
+    color: #b9a58a;
+    font-size: 9px;
+    font-weight: 750;
+    letter-spacing: 2.1px;
+}
+.cabecera-menu-lateral button {
+    border-color: rgba(232, 189, 114, .48);
+    background: linear-gradient(145deg, #49301b, #24170e);
+    color: #f5d39a;
+    box-shadow: 0 4px 14px rgba(0,0,0,.28), inset 0 1px rgba(255,255,255,.08);
+    transition: transform .2s ease, background .2s ease;
+}
+.cabecera-menu-lateral button:active { transform: rotate(90deg) scale(.92); }
+.titulo-navegacion-lateral {
+    margin: 3px 0 7px;
+    padding: 0 5px;
+    color: #d9b77f;
+    font-size: 10px;
+    font-weight: 900;
+    letter-spacing: 1.8px;
+}
+.panel-menu-lateral > a {
+    position: relative;
+    isolation: isolate;
+    gap: 12px;
+    min-height: 51px;
+    padding: 9px 12px;
+    overflow: hidden;
+    border: 1px solid transparent;
+    border-bottom-color: rgba(216, 189, 141, .12);
+    border-radius: 11px;
+    background: linear-gradient(100deg, rgba(255,255,255,.035), rgba(255,255,255,0));
+    color: #f2e5d2;
+    font-size: 14px;
+    font-weight: 750;
+    letter-spacing: .15px;
+    transition: background .25s ease, color .25s ease, border-color .25s ease, transform .25s ease, box-shadow .25s ease;
+}
+.panel-menu-lateral > a::before {
+    flex: 0 0 5px;
+    width: 5px;
+    height: 5px;
+    margin: 0;
+    background: #bd9660;
+    box-shadow: 0 0 0 4px rgba(189, 150, 96, .11);
+    transition: all .25s ease;
+}
+.panel-menu-lateral > a .icono-menu-lateral {
+    display: grid;
+    flex: 0 0 32px;
+    width: 32px;
+    height: 32px;
+    place-items: center;
+    border: 1px solid rgba(221, 184, 129, .2);
+    border-radius: 9px;
+    background: rgba(224, 188, 137, .08);
+    color: #d9b77f;
+    transition: all .25s ease;
+}
+.panel-menu-lateral > a .icono-menu-lateral svg {
+    width: 18px;
+    height: 18px;
+    fill: none;
+    stroke: currentColor;
+    stroke-width: 1.7;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+}
+.panel-menu-lateral > a.seleccionada,
+.panel-menu-lateral > a[aria-current="location"] {
+    border-color: rgba(255, 194, 111, .78);
+    background: linear-gradient(105deg, #b85a25 0%, #91421d 58%, #67351d 100%);
+    color: #fff8ed;
+    box-shadow: 0 5px 17px rgba(0,0,0,.28), 0 0 0 1px rgba(255, 197, 126, .13), inset 0 1px rgba(255,255,255,.17);
+    transform: translateX(4px);
+}
+.panel-menu-lateral > a.seleccionada::before,
+.panel-menu-lateral > a[aria-current="location"]::before {
+    width: 7px;
+    height: 7px;
+    background: #ffe0a7;
+    box-shadow: 0 0 0 5px rgba(255, 224, 167, .16), 0 0 12px rgba(255, 224, 167, .7);
+}
+.panel-menu-lateral > a.seleccionada .icono-menu-lateral,
+.panel-menu-lateral > a[aria-current="location"] .icono-menu-lateral {
+    border-color: rgba(255, 239, 211, .48);
+    background: rgba(255, 239, 211, .18);
+    color: #fff0d2;
+    box-shadow: inset 0 1px rgba(255,255,255,.12);
+}
+.panel-menu-lateral > a:focus-visible {
+    outline: 2px solid #f3c77f;
+    outline-offset: 3px;
+}
+.panel-menu-lateral > a.enlace-contacto-lateral {
+    margin-top: 3px;
+}
+.separador-menu-lateral {
+    margin: 9px 0 3px;
+    color: #d6a45d;
+}
+.separador-menu-lateral::before,
+.separador-menu-lateral::after {
+    background: linear-gradient(90deg, transparent, rgba(214,164,93,.42), transparent);
+}
+.pie-menu-lateral {
+    margin-top: auto;
+    padding: 22px 0 0;
+    color: #b7a18a;
+    font-family: Georgia, "Times New Roman", serif;
+    font-size: 13px;
+    font-style: italic;
+    letter-spacing: .4px;
+    text-align: center;
+}
+.categorias a.seleccionada,
+.categorias a[aria-current="location"] {
+    border-color: #f0bd70;
+    background: linear-gradient(135deg, #bd642d, #91451f);
+    color: #fff8ed;
+    box-shadow: 0 3px 12px rgba(174, 91, 39, .28), inset 0 1px rgba(255,255,255,.2);
+}
+.categoria-menu {
+    scroll-margin-top: 24px;
+}
+.categoria-menu.navegacion-destacada {
+    animation: llegada-categoria-ah .95s cubic-bezier(.2,.75,.25,1) both;
+}
+.categoria-menu.navegacion-destacada > h2 {
+    animation: brillo-titulo-categoria-ah 1.25s ease both;
+}
+@keyframes llegada-categoria-ah {
+    0% { opacity: .72; transform: translateY(15px); filter: drop-shadow(0 0 0 rgba(224,164,83,0)); }
+    55% { opacity: 1; transform: translateY(-3px); filter: drop-shadow(0 8px 18px rgba(224,164,83,.22)); }
+    100% { opacity: 1; transform: translateY(0); filter: drop-shadow(0 0 0 rgba(224,164,83,0)); }
+}
+@keyframes brillo-titulo-categoria-ah {
+    0%, 100% { box-shadow: inherit; }
+    45% { box-shadow: 0 0 0 2px rgba(242,190,112,.22), 0 0 24px rgba(242,190,112,.28); }
+}
+@media (prefers-reduced-motion: reduce) {
+    .panel-menu-lateral > a,
+    .cabecera-menu-lateral button { transition: none; }
+    .categoria-menu.navegacion-destacada,
+    .categoria-menu.navegacion-destacada > h2 { animation: none; }
+}
