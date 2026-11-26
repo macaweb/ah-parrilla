@@ -5282,3 +5282,156 @@ a:focus-visible {
         font-size: 7px;
     }
 }
+
+
+/* AH Parrilla — acabado editorial elegante para sopas y bebidas */
+.especial-dia .opciones-del-dia {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 14px;
+    width: 100%;
+    margin: 18px 0 14px;
+}
+
+.especial-dia .opcion-del-dia,
+.especial-dia .opcion-jugos-del-dia {
+    position: relative;
+    min-width: 0;
+    padding: 17px 16px 15px;
+    overflow: hidden;
+    border: 1px solid rgba(229, 169, 59, .2);
+    border-radius: 15px;
+    background:
+        linear-gradient(135deg, rgba(255, 255, 255, .045), transparent 48%),
+        linear-gradient(145deg, rgba(82, 48, 19, .34), rgba(13, 9, 6, .72));
+    box-shadow: inset 0 1px rgba(255,255,255,.045), 0 8px 22px rgba(0,0,0,.13);
+    text-align: left;
+}
+
+.especial-dia .opcion-del-dia::before,
+.especial-dia .opcion-jugos-del-dia::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 16px;
+    right: 16px;
+    height: 1px;
+    background: linear-gradient(90deg, transparent, rgba(244, 190, 104, .8), transparent);
+}
+
+.especial-dia .etiqueta-del-dia {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 9px;
+    margin: 0 0 12px;
+    color: #f2c477;
+    font-family: Georgia, "Times New Roman", serif;
+    font-size: 12px;
+    font-weight: 600;
+    letter-spacing: .16em;
+    line-height: 1.4;
+    text-align: center;
+}
+
+.especial-dia .etiqueta-del-dia::before,
+.especial-dia .etiqueta-del-dia::after {
+    content: "";
+    width: 17px;
+    height: 1px;
+    background: rgba(229, 169, 59, .48);
+}
+
+.especial-dia .lista-opciones-dia {
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+
+.especial-dia .lista-opciones-dia li {
+    position: relative;
+    padding: 8px 4px 8px 17px;
+    border: 0;
+    border-bottom: 1px solid rgba(255, 232, 201, .075);
+    border-radius: 0;
+    color: #f8ead7;
+    background: transparent;
+    font-family: Georgia, "Times New Roman", serif;
+    font-size: 14px;
+    font-weight: 400;
+    line-height: 1.4;
+    text-align: left;
+}
+
+.especial-dia .lista-opciones-dia li:last-child {
+    border-bottom: 0;
+    padding-bottom: 2px;
+}
+
+.especial-dia .lista-opciones-dia li::before {
+    content: "✦";
+    display: block;
+    position: absolute;
+    top: 9px;
+    left: 1px;
+    width: auto;
+    height: auto;
+    border-radius: 0;
+    background: none;
+    color: #dca34f;
+    font-size: 8px;
+    transform: none;
+}
+
+.especial-dia .lista-opciones-dia li::after {
+    display: none;
+}
+
+@media (max-width: 600px) {
+    .especial-dia .opciones-del-dia {
+        grid-template-columns: 1fr;
+        gap: 10px;
+        margin: 14px 0 12px;
+    }
+
+    .especial-dia .opcion-del-dia,
+    .especial-dia .opcion-jugos-del-dia {
+        padding: 14px 13px 12px;
+        border-radius: 13px;
+    }
+
+    .especial-dia .etiqueta-del-dia {
+        margin-bottom: 9px;
+        font-size: 11px;
+        letter-spacing: .15em;
+    }
+
+    .especial-dia .lista-opciones-dia {
+        display: grid;
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        column-gap: 12px;
+    }
+
+    .especial-dia .lista-opciones-dia li {
+        padding: 7px 2px 7px 15px;
+        font-size: 13px;
+        line-height: 1.35;
+    }
+
+    .especial-dia .lista-opciones-dia li:last-child {
+        padding-bottom: 7px;
+    }
+
+    .especial-dia .lista-opciones-dia li::before {
+        top: 8px;
+    }
+}
+
+@media (max-width: 360px) {
+    .especial-dia .lista-opciones-dia {
+        grid-template-columns: 1fr;
+    }
+}
