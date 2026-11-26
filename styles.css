@@ -4719,7 +4719,7 @@ a:focus-visible {
 }
 
 .leyenda-plato-especial {
-    color: #f2bd62;
+    color: var(--naranja);
     font-size: 10px;
     font-weight: 900;
     letter-spacing: .15em;
