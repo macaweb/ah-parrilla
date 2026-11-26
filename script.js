@@ -612,7 +612,8 @@ document.addEventListener('DOMContentLoaded', () => {
         const textoOriginal = boton.dataset.textoOriginal || boton.textContent;
         boton.dataset.textoOriginal = textoOriginal;
         const esBotonIcono = boton.classList.contains('boton-agregar-icono');
-        boton.textContent = esBotonIcono ? '✓' : '✓ Agregado';
+        const esBotonEspecialOAlmuerzo = boton.id === 'agregar-menu-especial' || boton.classList.contains('boton-agregar-almuerzo');
+        boton.textContent = esBotonEspecialOAlmuerzo ? 'Agregado' : (esBotonIcono ? '✓' : '✓ Agregado');
         boton.classList.remove('confirmacion-agregado');
         void boton.offsetWidth;
         boton.classList.add('confirmacion-agregado');
