@@ -5534,3 +5534,96 @@ a:focus-visible {
         font-size: 12px !important;
     }
 }
+
+/* AH Parrilla — desplegables más elegantes, con separadores y selección en tono marfil */
+.selector-almuerzos .selector-personalizado-lista,
+.selector-especial .selector-personalizado-lista {
+    gap: 0;
+    padding: 6px;
+    border: 1px solid #e8ddce;
+    border-radius: 12px;
+    background: #fbf8f2;
+    box-shadow: 0 14px 30px rgba(0,0,0,.28), inset 0 1px 0 rgba(255,255,255,.9);
+}
+
+.selector-almuerzos .selector-personalizado-opcion,
+.selector-especial .selector-personalizado-opcion {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 12px;
+    min-height: 39px;
+    padding: 10px 12px;
+    border: 0;
+    border-bottom: 1px solid #eae2d7;
+    border-radius: 0;
+    background: transparent;
+    color: #594532;
+    font-weight: 500;
+    text-align: left;
+    transform: none;
+    box-shadow: none;
+}
+
+.selector-almuerzos .selector-personalizado-opcion:last-child,
+.selector-especial .selector-personalizado-opcion:last-child {
+    border-bottom: 0;
+}
+
+.selector-almuerzos .selector-personalizado-opcion[aria-selected="true"],
+.selector-especial .selector-personalizado-opcion[aria-selected="true"],
+.selector-almuerzos .selector-personalizado-opcion.selector-personalizado-eleccion-inmediata,
+.selector-especial .selector-personalizado-opcion.selector-personalizado-eleccion-inmediata {
+    border-color: #e3d5c2 !important;
+    border-bottom-color: #e3d5c2 !important;
+    border-radius: 7px;
+    background: #f0e6d8 !important;
+    color: #63452d !important;
+    transform: none;
+    box-shadow: inset 3px 0 0 #a98760 !important;
+}
+
+.selector-almuerzos .selector-personalizado-opcion[aria-selected="true"]::after,
+.selector-especial .selector-personalizado-opcion[aria-selected="true"]::after {
+    content: "✓";
+    flex: 0 0 auto;
+    color: #8b6845;
+    font-size: 13px;
+    font-weight: 700;
+}
+
+.selector-almuerzos .selector-personalizado-opcion:hover:not(:disabled),
+.selector-almuerzos .selector-personalizado-opcion:focus-visible,
+.selector-especial .selector-personalizado-opcion:hover:not(:disabled),
+.selector-especial .selector-personalizado-opcion:focus-visible {
+    outline: none;
+    border-radius: 7px;
+    background: #f5eee4;
+    color: #503b29;
+}
+
+.selector-almuerzos .selector-personalizado-opcion:active:not(:disabled),
+.selector-especial .selector-personalizado-opcion:active:not(:disabled) {
+    border-color: #e3d5c2;
+    background: #f0e6d8;
+    color: #63452d;
+    transform: none;
+}
+
+.selector-almuerzos .selector-personalizado-control.selector-personalizado-confirmado,
+.selector-especial .selector-personalizado-control.selector-personalizado-confirmado {
+    border-color: rgba(229,169,59,.72) !important;
+    background: linear-gradient(145deg, rgba(255,255,255,.045), rgba(255,255,255,0)), #21150c !important;
+    color: #fff3dc !important;
+    box-shadow: inset 0 1px 0 rgba(255,235,195,.08), 0 4px 12px rgba(0,0,0,.24) !important;
+    animation: none !important;
+}
+
+@media (max-width: 600px) {
+    .selector-almuerzos .selector-personalizado-opcion,
+    .selector-especial .selector-personalizado-opcion {
+        min-height: 40px;
+        padding: 10px 11px;
+    }
+}
+
