@@ -6295,3 +6295,25 @@ a:focus-visible {
         grid-template-columns: 1fr;
     }
 }
+
+
+/* AH Parrilla — tonos de selección suaves para jugos; no modifica tipografía ni medidas */
+#jugos .lista-sabores .boton-sabor-jugo.seleccionado,
+#jugos .lista-sabores .boton-sabor-jugo[aria-pressed="true"] {
+    border-color: #dfc18d;
+    background: linear-gradient(135deg, #ead9b8, #d4bd91);
+    color: #332719;
+    box-shadow: 0 0 0 2px rgba(223, 193, 141, .13), 0 3px 10px rgba(0, 0, 0, .16);
+}
+#jugos .opciones-preparacion-jugo .opcion-preparacion-jugo.seleccionada,
+#jugos .opciones-preparacion-jugo .opcion-preparacion-jugo.seleccionado,
+#jugos .opciones-preparacion-jugo .opcion-preparacion-jugo[aria-pressed="true"] {
+    border-color: #c9c3b4;
+    background: linear-gradient(135deg, #ded9cc, #c4bdad);
+    color: #302b23;
+    box-shadow: 0 0 0 2px rgba(201, 195, 180, .13), 0 3px 10px rgba(0, 0, 0, .16);
+}
+#jugos .lista-sabores .boton-sabor-jugo:active,
+#jugos .opciones-preparacion-jugo .opcion-preparacion-jugo:active {
+    filter: brightness(1.06);
+}
