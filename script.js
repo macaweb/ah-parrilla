@@ -1,17 +1,6 @@
 // Navegación de categorías y pedidos por WhatsApp.
 document.addEventListener('DOMContentLoaded', () => {
-    const enlaces = document.querySelectorAll('.categorias a');
-    enlaces.forEach(enlace => enlace.addEventListener('click', () => {
-        enlaces.forEach(item => { item.classList.remove('seleccionada'); item.removeAttribute('aria-current'); });
-        enlace.classList.add('seleccionada');
-        enlace.setAttribute('aria-current', 'location');
-    }));
-    document.addEventListener('click', evento => {
-        if (!evento.target.closest('.categorias a')) {
-            enlaces.forEach(enlace => { enlace.classList.remove('seleccionada'); enlace.removeAttribute('aria-current'); });
-            if (document.activeElement?.matches('.categorias a')) document.activeElement.blur();
-        }
-    });
+    const enlaces = [...document.querySelectorAll('.categorias a')];
 
     // Menú lateral: abre, cierra y navega a cada sección.
     const botonMenu = document.getElementById('abrir-menu-lateral');
@@ -84,25 +73,54 @@ document.addEventListener('DOMContentLoaded', () => {
     });
     const enlacesMenuLateral = [...fondoMenu.querySelectorAll('.panel-menu-lateral > a')];
     const marcarEnlaceMenu = enlaceElegido => {
+        const destino = enlaceElegido?.getAttribute('href');
         enlacesMenuLateral.forEach(enlace => {
             const activo = enlace === enlaceElegido;
             enlace.classList.toggle('seleccionada', activo);
             if (activo) enlace.setAttribute('aria-current', 'location');
             else enlace.removeAttribute('aria-current');
         });
+        enlaces.forEach(enlace => {
+            const activo = enlace.getAttribute('href') === destino;
+            enlace.classList.toggle('seleccionada', activo);
+            if (activo) enlace.setAttribute('aria-current', 'location');
+            else enlace.removeAttribute('aria-current');
+        });
     };
+
+    let temporizadorDestacado = null;
+    const navegarASeccion = (enlace, desdeLateral = false) => {
+        const destino = document.querySelector(enlace.getAttribute('href'));
+        if (!destino) return;
+        if (desdeLateral) cerrarMenuLateral(false);
+        const enlaceLateral = enlacesMenuLateral.find(item => item.getAttribute('href') === enlace.getAttribute('href'));
+        marcarEnlaceMenu(enlaceLateral || enlace);
+
+        destino.classList.remove('navegacion-destacada');
+        void destino.offsetWidth;
+        destino.classList.add('navegacion-destacada');
+        if (temporizadorDestacado !== null) window.clearTimeout(temporizadorDestacado);
+        temporizadorDestacado = window.setTimeout(() => {
+            destino.classList.remove('navegacion-destacada');
+            temporizadorDestacado = null;
+        }, 1450);
+
+        destino.scrollIntoView({
+            behavior: window.matchMedia('(prefers-reduced-motion: reduce)').matches ? 'auto' : 'smooth',
+            block: 'start'
+        });
+    };
+
     enlacesMenuLateral.forEach(enlace => {
-        // Resalta en el mismo instante en que comienza el toque, sin esperar al click.
-        enlace.addEventListener('pointerdown', () => marcarEnlaceMenu(enlace));
-        enlace.addEventListener('click', () => {
-            marcarEnlaceMenu(enlace);
-            const enlaceCategoria = [...enlaces].find(item => item.getAttribute('href') === enlace.getAttribute('href'));
-            if (enlaceCategoria) {
-                enlaces.forEach(item => { item.classList.remove('seleccionada'); item.removeAttribute('aria-current'); });
-                enlaceCategoria.classList.add('seleccionada');
-                enlaceCategoria.setAttribute('aria-current', 'location');
-            }
-            cerrarMenuLateral(false);
+        enlace.addEventListener('click', evento => {
+            evento.preventDefault();
+            navegarASeccion(enlace, true);
+        });
+    });
+    enlaces.forEach(enlace => {
+        enlace.addEventListener('click', evento => {
+            evento.preventDefault();
+            navegarASeccion(enlace, false);
         });
     });
 
