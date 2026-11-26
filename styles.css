@@ -4973,3 +4973,19 @@ a:focus-visible {
 .especial-dia .card-especial .nombre-especial {
     text-transform: none;
 }
+
+/* AH Parrilla — conservar nitidez y mostrar completa la foto del especial */
+.especial-dia .foto-especial {
+    display: block;
+    width: auto;
+    max-width: 100%;
+    height: auto;
+    max-height: none;
+    object-fit: contain;
+    object-position: center;
+    align-self: center;
+}
+
+.especial-dia .presentacion-especial {
+    align-items: center;
+}
