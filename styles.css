@@ -5062,3 +5062,118 @@ a:focus-visible {
         letter-spacing: .1em;
     }
 }
+
+
+/* AH Parrilla — opciones del especial con acabado de carta elegante */
+.especial-dia .eyebrow-especial {
+    font-family: Georgia, "Times New Roman", serif;
+    font-size: 12px;
+    font-style: italic;
+    font-weight: 600;
+    letter-spacing: .19em;
+    text-transform: uppercase;
+}
+
+.especial-dia .opciones-del-dia {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 12px;
+    width: 100%;
+    margin: 12px 0 10px;
+}
+
+.especial-dia .opcion-del-dia,
+.especial-dia .opcion-jugos-del-dia {
+    position: relative;
+    display: block;
+    min-width: 0;
+    padding: 16px 17px 15px;
+    border: 1px solid rgba(229, 169, 59, .25);
+    border-radius: 12px;
+    background: linear-gradient(145deg, rgba(255, 190, 103, .075), rgba(12, 9, 6, .3));
+    box-shadow: inset 0 1px rgba(255, 255, 255, .035);
+    text-align: left;
+}
+
+.especial-dia .etiqueta-del-dia {
+    display: block;
+    margin: 0 0 12px;
+    color: #efb967;
+    font-family: Georgia, "Times New Roman", serif;
+    font-size: 13px;
+    font-weight: 600;
+    letter-spacing: .12em;
+    line-height: 1.35;
+}
+
+.especial-dia .lista-opciones-dia {
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+    gap: 0;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+
+.especial-dia .lista-opciones-dia li {
+    position: relative;
+    padding: 8px 0 8px 14px;
+    border: 0;
+    border-bottom: 1px solid rgba(255, 224, 183, .09);
+    border-radius: 0;
+    color: #fff1dc;
+    background: transparent;
+    font-family: Georgia, "Times New Roman", serif;
+    font-size: 14px;
+    font-weight: 400;
+    line-height: 1.35;
+}
+
+.especial-dia .lista-opciones-dia li:last-child {
+    padding-bottom: 1px;
+    border-bottom: 0;
+}
+
+.especial-dia .lista-opciones-dia li::before {
+    display: block;
+    position: absolute;
+    top: 50%;
+    left: 0;
+    width: 4px;
+    height: 4px;
+    border-radius: 50%;
+    background: #e9a64b;
+    content: "";
+    transform: translateY(-50%);
+}
+
+@media (max-width: 520px) {
+    .especial-dia .opciones-del-dia {
+        grid-template-columns: 1fr;
+        gap: 9px;
+        margin-top: 10px;
+    }
+
+    .especial-dia .opcion-del-dia,
+    .especial-dia .opcion-jugos-del-dia {
+        padding: 13px 15px;
+    }
+
+    .especial-dia .etiqueta-del-dia {
+        margin-bottom: 7px;
+        font-size: 12px;
+    }
+
+    .especial-dia .lista-opciones-dia {
+        display: grid;
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        column-gap: 12px;
+    }
+
+    .especial-dia .lista-opciones-dia li {
+        font-size: 13px;
+        padding-top: 7px;
+        padding-bottom: 7px;
+    }
+}
