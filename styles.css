@@ -4926,3 +4926,44 @@ a:focus-visible {
         height: 116px;
     }
 }
+
+
+/* Especial del dia: fotografia arriba y nombre del plato debajo */
+.especial-dia .presentacion-especial {
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+    gap: 12px;
+    text-align: center;
+    width: 100%;
+}
+
+.especial-dia .foto-especial {
+    width: 100%;
+    height: clamp(170px, 27vw, 220px);
+    object-fit: cover;
+    object-position: center;
+}
+
+.especial-dia .datos-especial {
+    width: 100%;
+    align-items: center;
+    gap: 7px;
+    text-align: center;
+}
+
+.especial-dia .card-especial .nombre-especial {
+    margin: 0;
+    font-size: clamp(23px, 4.5vw, 31px);
+}
+
+.especial-dia .card-especial .precio-nombre-especial {
+    align-self: center;
+    margin-top: 2px;
+}
+
+@media (max-width: 600px) {
+    .especial-dia .foto-especial {
+        height: 170px;
+    }
+}
