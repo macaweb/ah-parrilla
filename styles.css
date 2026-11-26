@@ -6563,3 +6563,35 @@ a:focus-visible {
     color: #e8bd72;
     text-shadow: 0 1px 8px rgba(232, 189, 114, .2);
 }
+
+
+/* AH Parrilla — títulos en minúscula visual y sin recuadros en Especial y Almuerzos */
+#opciones-sopa-especial .grupo-opciones-pedido h4,
+#opciones-bebida-especial .grupo-opciones-pedido h4,
+.selector-almuerzos .grupo-sopas-acompanamiento .grupo-opciones-pedido h4,
+.selector-almuerzos .grupo-bebidas-acompanamiento .grupo-opciones-pedido h4 {
+    display: block;
+    width: fit-content;
+    padding: 0;
+    margin: 0 auto 12px;
+    border: 0;
+    border-radius: 0;
+    background: none;
+    box-shadow: none;
+    font-size: 13px;
+    font-weight: 850;
+    letter-spacing: .25px;
+    line-height: 1.4;
+    text-align: center;
+    text-transform: none;
+}
+#opciones-sopa-especial .grupo-opciones-pedido h4,
+.selector-almuerzos .grupo-sopas-acompanamiento .grupo-opciones-pedido h4 {
+    color: #c5d69f;
+    text-shadow: 0 1px 8px rgba(163, 190, 124, .18);
+}
+#opciones-bebida-especial .grupo-opciones-pedido h4,
+.selector-almuerzos .grupo-bebidas-acompanamiento .grupo-opciones-pedido h4 {
+    color: #e8bd72;
+    text-shadow: 0 1px 8px rgba(232, 189, 114, .2);
+}
