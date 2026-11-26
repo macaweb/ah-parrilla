@@ -2646,17 +2646,17 @@ a:focus-visible {
 }
 
 
-/* Resaltar el almuerzo elegido con el mismo naranja de la navegación */
+/* Resaltar el almuerzo elegido con verde oliva cálido, distinto al dorado de jugos */
 #almuerzos .plato-listado.almuerzo-elegido {
-    border: 1px solid var(--dorado);
-    border-left: 4px solid var(--dorado);
-    background: linear-gradient(135deg, #D35400, #B94A00);
-    color: var(--blanco);
-    box-shadow: 0 0 0 2px rgba(229, 169, 59, .2), 0 5px 14px rgba(0, 0, 0, .28);
+    border: 1px solid #a9b58a;
+    border-left: 4px solid #c5d69f;
+    background: linear-gradient(135deg, #59694a, #3f5037);
+    color: #fffaf0;
+    box-shadow: 0 0 0 2px rgba(169, 181, 138, .2), 0 5px 14px rgba(0, 0, 0, .28);
 }
 
 #almuerzos .plato-listado.almuerzo-elegido h3 {
-    color: var(--blanco);
+    color: #fffaf0;
 }
 
 #almuerzos .plato-listado.almuerzo-seleccionable:focus-visible {
