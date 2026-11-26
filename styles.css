@@ -6535,3 +6535,31 @@ a:focus-visible {
 #opciones-bebida-especial {
     margin-top: 14px;
 }
+
+
+/* AH Parrilla — títulos de acompañamientos sin recuadros */
+#opciones-sopa-especial .grupo-opciones-pedido h4,
+#opciones-bebida-especial .grupo-opciones-pedido h4 {
+    display: block;
+    width: fit-content;
+    padding: 0;
+    margin: 0 auto 12px;
+    border: 0;
+    border-radius: 0;
+    background: none;
+    box-shadow: none;
+    font-size: 13px;
+    font-weight: 900;
+    letter-spacing: .85px;
+    line-height: 1.35;
+    text-align: center;
+    text-transform: uppercase;
+}
+#opciones-sopa-especial .grupo-opciones-pedido h4 {
+    color: #c5d69f;
+    text-shadow: 0 1px 8px rgba(163, 190, 124, .18);
+}
+#opciones-bebida-especial .grupo-opciones-pedido h4 {
+    color: #e8bd72;
+    text-shadow: 0 1px 8px rgba(232, 189, 114, .2);
+}
