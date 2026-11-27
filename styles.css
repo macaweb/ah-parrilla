@@ -7271,3 +7271,36 @@ a:focus-visible {
         font-size: 10.5px !important;
     }
 }
+
+
+/* Vista de escritorio: centrar mejor Domicilios y Visítanos */
+@media (min-width: 601px) {
+    .footer-contenido-final .footer-domicilios {
+        align-items: center !important;
+        text-align: center !important;
+        justify-self: stretch;
+    }
+    .footer-contenido-final .footer-domicilios h3 {
+        width: 100%;
+        text-align: center !important;
+    }
+    .footer-contenido-final .footer-domicilios a.footer-red-link {
+        justify-content: center !important;
+        align-self: center !important;
+        text-align: center !important;
+    }
+    .footer-contenido-final .footer-visitanos {
+        justify-self: center;
+        align-items: center !important;
+        text-align: center !important;
+    }
+    .footer-contenido-final .footer-visitanos h3 {
+        width: 100%;
+        text-align: center !important;
+    }
+    .footer-contenido-final .footer-visitanos a.footer-direccion {
+        align-self: center !important;
+        justify-content: center !important;
+        text-align: center !important;
+    }
+}
