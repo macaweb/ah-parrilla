@@ -7304,3 +7304,41 @@ a:focus-visible {
         text-align: center !important;
     }
 }
+
+
+/* Separador elegante bajo la portada */
+.separador-portada {
+    position: relative;
+    width: min(76%, 420px);
+    height: 1px;
+    margin: 0 auto 28px;
+    background: linear-gradient(90deg, transparent, rgba(190, 151, 77, .72) 22%, rgba(230, 204, 145, .95) 50%, rgba(190, 151, 77, .72) 78%, transparent);
+    opacity: .9;
+}
+.separador-portada::after {
+    content: "";
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    width: 7px;
+    height: 7px;
+    transform: translate(-50%, -50%) rotate(45deg);
+    background: #c7a15b;
+    border: 2px solid #fffaf0;
+    box-sizing: content-box;
+}
+@media (max-width: 600px) {
+    .separador-portada {
+        width: 68%;
+        margin-bottom: 22px;
+    }
+}
+@media (prefers-reduced-motion: no-preference) {
+    .separador-portada {
+        animation: separador-portada-aparecer .9s ease both;
+    }
+    @keyframes separador-portada-aparecer {
+        from { opacity: 0; transform: scaleX(.82); }
+        to { opacity: .9; transform: scaleX(1); }
+    }
+}
