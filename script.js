@@ -327,8 +327,8 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // Opciones del especial: ahora viven directamente en el JavaScript;
     // ya no dependen de listas duplicadas en el HTML.
-    const opcionesSopasEspecial = ['Fríjoles', 'Sopa de guineo', 'Crema de tomate'];
-    const opcionesBebidasEspecial = ['Claro', 'Guarapo', 'Jugo de tamarindo', 'Chicha de piña'];
+    const opcionesSopasCompartidas = ['Fríjoles', 'Sopa de guineo', 'Crema de tomate'];
+    const opcionesBebidasCompartidas = ['Claro', 'Guarapo', 'Jugo de tamarindo', 'Chicha de piña'];
 
     // ALMUERZOS: primero se elige el plato y luego sus dos acompañamientos.
     const seccionAlmuerzos = document.getElementById('almuerzos');
@@ -349,8 +349,8 @@ document.addEventListener('DOMContentLoaded', () => {
         grupoSopas.className = 'grupo-opciones-contenedor grupo-sopas-acompanamiento';
         const grupoBebidas = document.createElement('div');
         grupoBebidas.className = 'grupo-opciones-contenedor grupo-bebidas-acompanamiento';
-        const selectorSopas = crearGrupoOpciones(grupoSopas, 'Sopa o crema (obligatoria)', opcionesSopasEspecial);
-        const selectorBebidas = crearGrupoOpciones(grupoBebidas, 'Jugo o bebida (obligatorio)', opcionesBebidasEspecial);
+        const selectorSopas = crearGrupoOpciones(grupoSopas, 'Sopa o crema (obligatoria)', opcionesSopasCompartidas);
+        const selectorBebidas = crearGrupoOpciones(grupoBebidas, 'Jugo o bebida (obligatorio)', opcionesBebidasCompartidas);
 
         const botonAgregarAlmuerzo = document.createElement('button');
         botonAgregarAlmuerzo.type = 'button';
@@ -645,8 +645,8 @@ document.addEventListener('DOMContentLoaded', () => {
     if (bloqueEspecial) {
         const contenedorSopas = document.getElementById('opciones-sopa-especial');
         const contenedorBebidas = document.getElementById('opciones-bebida-especial');
-        const selectorSopas = crearGrupoOpciones(contenedorSopas, 'Sopa o crema (obligatoria)', opcionesSopasEspecial);
-        const selectorBebidas = crearGrupoOpciones(contenedorBebidas, 'Jugo o bebida (obligatorio)', opcionesBebidasEspecial);
+        const selectorSopas = crearGrupoOpciones(contenedorSopas, 'Sopa o crema (obligatoria)', opcionesSopasCompartidas);
+        const selectorBebidas = crearGrupoOpciones(contenedorBebidas, 'Jugo o bebida (obligatorio)', opcionesBebidasCompartidas);
         const botonAgregarEspecial = document.getElementById('agregar-menu-especial');
         botonAgregarEspecial.textContent = 'Agregar +';
         botonAgregarEspecial.addEventListener('click', () => {
