@@ -6777,3 +6777,36 @@ a:focus-visible {
     .categoria-menu.navegacion-destacada,
     .categoria-menu.navegacion-destacada > h2 { animation: none; }
 }
+
+
+/* AH Parrilla — destello cálido y discreto exclusivo del Especial del día */
+@keyframes especial-destello-marco {
+    0%, 100% {
+        opacity: .42;
+        box-shadow: 0 0 0 rgba(246, 189, 84, 0);
+    }
+    50% {
+        opacity: .95;
+        box-shadow: 0 0 18px rgba(246, 189, 84, .16), inset 0 0 12px rgba(246, 189, 84, .07);
+    }
+}
+@keyframes especial-destello-titulo {
+    0%, 100% {
+        text-shadow: 0 2px 14px rgba(255, 133, 25, .16);
+    }
+    50% {
+        text-shadow: 0 0 7px rgba(255, 226, 169, .32), 0 2px 20px rgba(255, 157, 53, .3);
+    }
+}
+.especial-dia::before {
+    animation: especial-destello-marco 3.8s ease-in-out infinite;
+}
+.especial-dia .banner-destacado h2 {
+    animation: especial-destello-titulo 4.6s ease-in-out infinite;
+}
+@media (prefers-reduced-motion: reduce) {
+    .especial-dia::before,
+    .especial-dia .banner-destacado h2 {
+        animation: none !important;
+    }
+}
