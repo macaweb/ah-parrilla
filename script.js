@@ -80,11 +80,11 @@ document.addEventListener('DOMContentLoaded', () => {
             if (activo) enlace.setAttribute('aria-current', 'location');
             else enlace.removeAttribute('aria-current');
         });
+        // La navegación superior no conserva un estado seleccionado al desplazarse.
+        // El resaltado automático se mantiene únicamente en el menú lateral.
         enlaces.forEach(enlace => {
-            const activo = enlace.getAttribute('href') === destino;
-            enlace.classList.toggle('seleccionada', activo);
-            if (activo) enlace.setAttribute('aria-current', 'location');
-            else enlace.removeAttribute('aria-current');
+            enlace.classList.remove('seleccionada');
+            enlace.removeAttribute('aria-current');
         });
     };
 
