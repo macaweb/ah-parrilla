@@ -820,13 +820,6 @@ a:focus-visible {
     border-color: var(--dorado);
 }
 
-/* Mantener resaltado mientras el enlace tiene el foco */
-.categorias a:focus {
-    background-color: var(--naranja);
-    color: var(--blanco);
-    border-color: var(--dorado);
-}
-
 .categorias a:focus-visible {
     outline: 2px solid var(--dorado);
     outline-offset: 3px;
