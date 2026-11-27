@@ -6941,3 +6941,74 @@ a:focus-visible {
         grid-column: 1 / -1;
     }
 }
+
+
+/* AH Parrilla — footer móvil compacto: tres columnas en una sola línea */
+@media (max-width: 600px) {
+    .footer-contenido-final {
+        grid-template-columns: repeat(3, minmax(0, 1fr)) !important;
+        gap: 18px 9px !important;
+    }
+    .footer-contenido-final .footer-marca {
+        grid-column: 1 / -1 !important;
+    }
+    .footer-contenido-final .footer-columna {
+        min-width: 0;
+        gap: 7px !important;
+    }
+    .footer-contenido-final .footer-columna h3 {
+        margin: 0 0 3px;
+        font-size: 10px;
+        line-height: 1.2;
+        letter-spacing: .15px;
+        white-space: nowrap;
+    }
+    .footer-contenido-final .footer-visitanos .footer-direccion,
+    .footer-contenido-final .footer-domicilios a.footer-red-link,
+    .footer-contenido-final .footer-redes a.footer-red-link {
+        display: flex;
+        align-items: flex-start;
+        gap: 4px;
+        width: 100%;
+        min-width: 0;
+        margin: 0;
+        padding: 3px 0;
+        font-size: 9px;
+        line-height: 1.35;
+        overflow-wrap: anywhere;
+        word-break: normal;
+    }
+    .footer-contenido-final .footer-visitanos .footer-direccion {
+        flex-direction: column;
+        gap: 2px;
+    }
+    .footer-contenido-final .footer-social-icon,
+    .footer-contenido-final .footer-didi-icon {
+        flex: 0 0 13px;
+        width: 13px;
+        height: 13px;
+        margin-top: 1px;
+    }
+    .footer-contenido-final .footer-red-copy {
+        min-width: 0;
+        gap: 2px;
+    }
+    .footer-contenido-final .footer-redes .footer-red-copy strong {
+        font-size: 9px;
+        line-height: 1.2;
+    }
+    .footer-contenido-final .footer-redes .footer-red-copy small {
+        font-size: 8px;
+        line-height: 1.2;
+        overflow-wrap: anywhere;
+    }
+}
+@media (max-width: 360px) {
+    .pie-pagina { padding-right: 12px; padding-left: 12px; }
+    .footer-contenido-final { column-gap: 6px !important; }
+    .footer-contenido-final .footer-columna h3 { font-size: 9.5px; }
+    .footer-contenido-final .footer-visitanos .footer-direccion,
+    .footer-contenido-final .footer-domicilios a.footer-red-link,
+    .footer-contenido-final .footer-redes a.footer-red-link { font-size: 8.5px; }
+    .footer-contenido-final .footer-redes .footer-red-copy small { font-size: 7.5px; }
+}
