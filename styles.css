@@ -7012,3 +7012,90 @@ a:focus-visible {
     .footer-contenido-final .footer-redes a.footer-red-link { font-size: 8.5px; }
     .footer-contenido-final .footer-redes .footer-red-copy small { font-size: 7.5px; }
 }
+
+
+/* AH Parrilla — domicilios y redes en dos columnas; ubicación centrada debajo */
+.footer-contenido-final {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+    align-items: start;
+}
+.footer-contenido-final .footer-marca {
+    grid-column: 1 / -1 !important;
+}
+.footer-contenido-final .footer-domicilios {
+    grid-column: 1;
+}
+.footer-contenido-final .footer-redes {
+    grid-column: 2;
+}
+.footer-contenido-final .footer-visitanos {
+    grid-column: 1 / -1;
+    justify-self: center;
+    width: 100%;
+    margin-top: 4px;
+    text-align: center;
+    align-items: center;
+}
+.footer-contenido-final .footer-visitanos h3 {
+    text-align: center;
+}
+.footer-contenido-final .footer-visitanos .footer-direccion {
+    display: inline-flex;
+    flex-direction: row !important;
+    align-items: center;
+    justify-content: center;
+    gap: 8px !important;
+    width: auto;
+    max-width: 100%;
+    margin: 0 auto;
+    text-align: center;
+    font-size: 13px;
+    line-height: 1.45;
+}
+.footer-contenido-final .footer-ubicacion-icon {
+    display: block;
+    flex: 0 0 17px;
+    width: 17px;
+    height: 17px;
+    fill: none;
+    stroke: #d99b42;
+    stroke-width: 1.8;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+}
+@media (max-width: 600px) {
+    .footer-contenido-final {
+        grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+        gap: 18px 16px !important;
+    }
+    .footer-contenido-final .footer-domicilios,
+    .footer-contenido-final .footer-redes {
+        grid-column: auto;
+    }
+    .footer-contenido-final .footer-visitanos {
+        grid-column: 1 / -1;
+        margin-top: 2px;
+    }
+    .footer-contenido-final .footer-visitanos .footer-direccion {
+        flex-direction: row !important;
+        align-items: center;
+        justify-content: center;
+        gap: 6px !important;
+        font-size: 10px;
+        line-height: 1.4;
+        white-space: normal;
+    }
+    .footer-contenido-final .footer-ubicacion-icon {
+        flex-basis: 14px;
+        width: 14px;
+        height: 14px;
+    }
+    .footer-contenido-final .footer-visitanos .footer-direccion span {
+        display: inline;
+    }
+}
+@media (max-width: 360px) {
+    .footer-contenido-final { column-gap: 10px !important; }
+    .footer-contenido-final .footer-visitanos .footer-direccion { font-size: 9px; }
+}
