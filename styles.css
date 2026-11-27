@@ -2108,7 +2108,7 @@ a:focus-visible {
     width: 29px; height: 29px; border: 1px solid #b97927; border-radius: 6px;
     background: #2b1a0c; color: #ffd17a; font-size: 18px; font-weight: 800; cursor: pointer;
 }
-.quitar-item { margin-left: 5px; border: 0 !important; background: transparent !important; color: #ff9b83 !important; font-size: 12px !important; text-decoration: underline; }
+.quitar-item { margin-left: 5px; padding: 5px 3px; border: 0 !important; background: transparent !important; color: #ff9b83 !important; font-size: 14px !important; text-decoration: underline; touch-action: manipulation; -webkit-tap-highlight-color: transparent; }
 .total-carrito {
     display: flex; justify-content: space-between; gap: 12px; margin: 16px 0 22px;
     padding: 15px 2px; border-top: 1px solid #76502c; border-bottom: 1px solid #76502c;
