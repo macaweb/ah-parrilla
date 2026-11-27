@@ -6921,3 +6921,23 @@ a:focus-visible {
         display: none !important;
     }
 }
+
+/* AH Parrilla — marca del pie arriba de las columnas, igual que en móvil */
+.footer-contenido-final {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+}
+.footer-contenido-final .footer-marca {
+    grid-column: 1 / -1;
+    width: 100%;
+}
+.footer-contenido-final .footer-marca > p:last-child {
+    max-width: 100%;
+}
+@media (max-width: 760px) {
+    .footer-contenido-final {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+    .footer-contenido-final .footer-marca {
+        grid-column: 1 / -1;
+    }
+}
