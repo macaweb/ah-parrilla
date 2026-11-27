@@ -722,8 +722,21 @@ document.addEventListener('DOMContentLoaded', () => {
             const numero = document.createElement('span'); numero.textContent = p.cantidad;
             const mas = document.createElement('button'); mas.type = 'button'; mas.textContent = '+'; mas.setAttribute('aria-label','Agregar uno');
             mas.addEventListener('click', () => cambiar(p.nombre, 1));
-            const quitar = document.createElement('button'); quitar.type = 'button'; quitar.className = 'quitar-item'; quitar.textContent = 'Quitar';
-            quitar.addEventListener('click', () => { carrito.delete(p.nombre); renderizar(); });
+            const quitar = document.createElement('button'); quitar.type = 'button'; quitar.className = 'quitar-item'; quitar.textContent = 'Eliminar';
+            quitar.setAttribute('aria-label', 'Eliminar ' + p.nombre + ' del pedido');
+            quitar.addEventListener('click', evento => {
+                evento.preventDefault();
+                const contenido = document.querySelector('.contenido-carrito');
+                const posicionPanel = contenido ? contenido.scrollTop : 0;
+                const posicionPagina = window.scrollY;
+                carrito.delete(p.nombre);
+                renderizar();
+                // Evita que el navegador acerque o desplace la vista al desaparecer el botón pulsado.
+                requestAnimationFrame(() => {
+                    if (contenido) contenido.scrollTop = posicionPanel;
+                    window.scrollTo(0, posicionPagina);
+                });
+            });
             controles.append(menos, numero, mas, quitar);
             info.append(controles); item.append(info, subtotal); itemsEl.append(item);
         });
