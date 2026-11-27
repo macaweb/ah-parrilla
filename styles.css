@@ -2646,17 +2646,17 @@ a:focus-visible {
 }
 
 
-/* Resaltar el almuerzo elegido con verde oliva cálido, distinto al dorado de jugos */
+/* El plato principal seleccionado comparte el terracota vivo de la barra lateral */
 #almuerzos .plato-listado.almuerzo-elegido {
-    border: 1px solid #a9b58a;
-    border-left: 4px solid #c5d69f;
-    background: linear-gradient(135deg, #59694a, #3f5037);
-    color: #fffaf0;
-    box-shadow: 0 0 0 2px rgba(169, 181, 138, .2), 0 5px 14px rgba(0, 0, 0, .28);
+    border: 1px solid #ffc27a;
+    border-left: 5px solid #ffe0a7;
+    background: linear-gradient(110deg, #b85a25 0%, #91421f 58%, #67351d 100%);
+    color: #fff8ed;
+    box-shadow: 0 0 0 2px rgba(255, 194, 111, .2), 0 6px 18px rgba(0, 0, 0, .3), inset 0 1px rgba(255,255,255,.14);
 }
 
 #almuerzos .plato-listado.almuerzo-elegido h3 {
-    color: #fffaf0;
+    color: #fff8ed;
 }
 
 #almuerzos .plato-listado.almuerzo-seleccionable:focus-visible {
