@@ -327,8 +327,8 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // Opciones del especial: ahora viven directamente en el JavaScript;
     // ya no dependen de listas duplicadas en el HTML.
-    const opcionesSopasEspecial = ['Fríjoles', 'Sopa de lentejas', 'Crema de auyama'];
-    const opcionesBebidasEspecial = ['Claro', 'Guarapo', 'Jugo de guayaba', 'Jugo de maracuyá'];
+    const opcionesSopasEspecial = ['Fríjoles', 'Sopa de guineo', 'Crema de tomate'];
+    const opcionesBebidasEspecial = ['Claro', 'Guarapo', 'Jugo de tamarindo', 'Chicha de piña'];
 
     // ALMUERZOS: primero se elige el plato y luego sus dos acompañamientos.
     const seccionAlmuerzos = document.getElementById('almuerzos');
