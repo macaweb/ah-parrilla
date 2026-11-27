@@ -6810,3 +6810,19 @@ a:focus-visible {
         animation: none !important;
     }
 }
+
+
+/* AH Parrilla — marca lateral con la misma tipografía y dos tonos del pie de página */
+.marca-menu-lateral > span {
+    color: #fff4e5;
+    font-family: Georgia, "Times New Roman", serif;
+    font-size: 18px;
+    font-weight: 700;
+    letter-spacing: 1.5px;
+    line-height: 1.15;
+    text-shadow: 0 2px 10px rgba(0, 0, 0, .22);
+}
+.marca-menu-lateral > span b {
+    color: #d99b42;
+    font-weight: inherit;
+}
