@@ -7393,3 +7393,10 @@ a:focus-visible {
         font-size: 11.5px !important;
     }
 }
+
+
+/* Ocultar sin dejar espacios las secciones desactivadas los sábados */
+.especial-dia[hidden],
+#almuerzos .selector-almuerzos[hidden] {
+    display: none !important;
+}
