@@ -1,5 +1,7 @@
 // Navegación de categorías y pedidos por WhatsApp.
 document.addEventListener('DOMContentLoaded', () => {
+    // Los sábados no se ofrecen Especial del día ni acompañamientos del almuerzo.
+    const esSabado = new Date().getDay() === 6;
     const enlaces = [...document.querySelectorAll('.categorias a')];
 
     // Menú lateral: abre, cierra y navega a cada sección.
@@ -336,6 +338,7 @@ document.addEventListener('DOMContentLoaded', () => {
     if (seccionAlmuerzos && listaAlmuerzos) {
         const selectorAlmuerzos = document.createElement('div');
         selectorAlmuerzos.className = 'selector-almuerzos';
+        if (esSabado) selectorAlmuerzos.hidden = true;
         const tituloSelector = document.createElement('h3');
         tituloSelector.textContent = 'Completa tu almuerzo';
         const avisoPlato = document.createElement('p');
@@ -643,6 +646,7 @@ document.addEventListener('DOMContentLoaded', () => {
     // El especial requiere una sopa o crema y una bebida, sin cobros adicionales.
     const bloqueEspecial = document.querySelector('.especial-dia');
     if (bloqueEspecial) {
+        if (esSabado) bloqueEspecial.hidden = true;
         const contenedorSopas = document.getElementById('opciones-sopa-especial');
         const contenedorBebidas = document.getElementById('opciones-bebida-especial');
         const selectorSopas = crearGrupoOpciones(contenedorSopas, 'Sopa o crema (obligatoria)', opcionesSopasCompartidas);
