@@ -241,6 +241,22 @@ document.addEventListener('DOMContentLoaded', () => {
         if (!precio) return;
 
         if (seccion.id === 'almuerzos') {
+            // Los sábados cada almuerzo se agrega directamente con el botón +.
+            // De domingo a viernes se mantiene el flujo de selección y acompañamientos.
+            if (esSabado) {
+                const boton = document.createElement('button');
+                boton.type = 'button';
+                boton.className = 'boton-agregar boton-agregar-icono';
+                boton.textContent = '+';
+                boton.setAttribute('aria-label', 'Agregar ' + titulo + ' al pedido');
+                boton.addEventListener('click', () => {
+                    agregar(titulo, precio, 2000, 'almuerzos');
+                    confirmarAgregado(boton);
+                });
+                plato.appendChild(boton);
+                return;
+            }
+
             plato.classList.add('almuerzo-seleccionable');
             plato.setAttribute('role', 'button');
             plato.setAttribute('tabindex', '0');
@@ -379,7 +395,7 @@ document.addEventListener('DOMContentLoaded', () => {
         });
         selectorAlmuerzos.append(tituloSelector, avisoPlato, textoSelector, grupoSopas, grupoBebidas, botonAgregarAlmuerzo);
         listaAlmuerzos.insertAdjacentElement('afterend', selectorAlmuerzos);
-        listaAlmuerzos.querySelectorAll('.boton-agregar, .selector-jugo-pedido, .selector-almuerzo-individual, select').forEach(elemento => elemento.remove());
+        listaAlmuerzos.querySelectorAll('.selector-jugo-pedido, .selector-almuerzo-individual, select').forEach(elemento => elemento.remove());
     }
 
     // Los sabores se seleccionan directamente desde sus etiquetas.
